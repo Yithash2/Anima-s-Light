@@ -23,6 +23,8 @@ public class WallJumpModule : MonoBehaviour
 
     public JumpModule JM;
 
+    [SerializeField] Transform playerTransform;
+
     void Start(){
 
         rb = GetComponent<Rigidbody2D>();
@@ -30,7 +32,7 @@ public class WallJumpModule : MonoBehaviour
     }
     void Update(){
 
-        if(Input.GetKeyDown(KeyCode.Space) && Walled()){
+        if(!JM.Grounded() && Input.GetKeyDown(KeyCode.Space) && Walled()){
             WallJump();
         }
 
@@ -47,11 +49,14 @@ public class WallJumpModule : MonoBehaviour
         
         float verticalJumpForce = Mathf.Sqrt(wallJumpHeight * -2 * (Physics2D.gravity.y * rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
-        float totalTimeInAir = 2 * timeToPeak;
+        float totalTimeInAir = -2 * timeToPeak;
         float horizontalJumpForce = wallJumpLength / totalTimeInAir;
 
+        float wallJumpDirection = -playerTransform.localScale.x;
+        rb.velocity = new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce);
 
-        rb.velocity = new Vector2(horizontalJumpForce , verticalJumpForce);
+        if(playerTransform.localScale.x != wallJumpDirection)
+        Run.Flip(playerTransform);
 
     }
 
