@@ -71,8 +71,8 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Inputs();
 
+        Inputs();
         _currentState.UpdateStates();
     }
 
@@ -90,7 +90,7 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
         
-        if(Input.GetKeyUp(KeyCode.Space) && _rb.velocity.y > 0 ) _jumpReleased = true;
+        if(Input.GetKeyUp(KeyCode.Space)) _jumpReleased = true;
     }
 
     public bool Grounded(){

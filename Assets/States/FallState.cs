@@ -9,7 +9,7 @@ public class FallState : BaseState{
     }
     public override void EnterState()
     {
-        Debug.Log("Falling");
+
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.GravityMult;
     }
 
