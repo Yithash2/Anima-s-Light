@@ -12,7 +12,7 @@ public class GroundState : BaseState{
     public override void EnterState()
     {
         _ctx.Rb.gravityScale = _ctx.GravityScale;
-        Debug.Log("Grounded");
+
     }
 
     public override void UpdateState(){

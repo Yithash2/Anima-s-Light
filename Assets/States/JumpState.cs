@@ -8,17 +8,16 @@ public class JumpState : BaseState{
     }
     public override void EnterState()
     {
-        Debug.Log("Jump");
+        _ctx.Rb.gravityScale = _ctx.GravityScale;
+
         HandleJumpStart();
         
     }
 
     public override void UpdateState(){
 
-
-        if(_ctx.JumpReleased && _ctx.Rb.velocity.y >= 0) {
+        if(_ctx.JumpReleased) {
             HandleJumpEnd();
-            
         }
         
         CheckSwitchState();
@@ -26,7 +25,7 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
-        
+        _ctx.JumpReleased = false;
     }
 
     public override void CheckSwitchState()
@@ -34,7 +33,7 @@ public class JumpState : BaseState{
         if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
         }
-        else if( _ctx.Rb.velocity.y <= -0.5){
+        else if(_ctx.Rb.velocity.y <= -0.5){
             SwitchState(_factory.Falling());
         }
     }
@@ -49,12 +48,11 @@ public class JumpState : BaseState{
     }
 
     void HandleJumpStart(){
+
         _ctx.BufferCounter = 0;
         _ctx.JumpPressed = false;
 
         _ctx.IsJumping = true;
-
-        _ctx.Rb.gravityScale = _ctx.GravityScale;
 
         float jumpForce = Mathf.Sqrt(_ctx.initalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
                 
@@ -64,7 +62,7 @@ public class JumpState : BaseState{
     void HandleJumpEnd(){
         _ctx.JumpReleased = false;
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,0);
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
     }
 
 }
