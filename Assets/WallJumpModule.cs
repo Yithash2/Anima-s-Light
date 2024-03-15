@@ -42,8 +42,6 @@ public class WallJumpModule : MonoBehaviour
 
     void WallJump(){
 
-        Debug.Log("IM JUMPING");
-
         bufferCounter = 0;
         jumpPressed = false;
         
@@ -78,7 +76,6 @@ public class WallJumpModule : MonoBehaviour
     bool Walled(){
 
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
-        
     }
 
     void OnDrawGizmos(){

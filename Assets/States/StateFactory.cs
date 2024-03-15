@@ -29,4 +29,16 @@ public class StateFactory
     public IddleState Iddle(){
         return new IddleState(_context, this);
     }
+
+    public WalledState Walled(){
+        return new WalledState(_context, this);
+    }
+
+    public WallJumpState WallJump(){
+        return new WallJumpState(_context, this);
+    }
+
+    public GroundSlamState GroundSlam(){
+        return new GroundSlamState(_context, this);
+    }
 }

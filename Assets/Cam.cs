@@ -8,21 +8,17 @@ public class cam : MonoBehaviour
     #region Input
     [SerializeField] GameObject player;
     [SerializeField] Vector3 ofset;
-    [SerializeField] float smooth_speed= 0.125f;
-
-    Rigidbody2D rb;
-    [SerializeField] float Timer = 2f;
-
-    float elapsed = 0f;
+    public float smooth_speed = 0.125f;
 
     [SerializeField] float moveShiftMultX;
     [SerializeField] float moveShiftMultY;
+
+//    [SerializeField] PlayerStateMachine _playerStateMachine;
 
     float intialOfsetY;
     #endregion
 
     void Start(){
-        rb = player.GetComponent<Rigidbody2D>();
         intialOfsetY = ofset.y;
     }
     void FixedUpdate()
