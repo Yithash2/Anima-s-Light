@@ -75,7 +75,7 @@ public class JumpModule : MonoBehaviour
             }
         }
         
-        if(Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0 ) jumpReleased = true;
+        if(Input.GetKeyUp(KeyCode.Space)) jumpReleased = true; else jumpReleased = false;
     }
     void clampVelocity(){
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -clampedVelocity, clampedVelocity));

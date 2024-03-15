@@ -10,7 +10,7 @@ public class RunState : BaseState{
     }
 
     public override void UpdateState(){
-        
+
         Run();
 
         CheckSwitchState();
@@ -23,7 +23,7 @@ public class RunState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.xInput == 0){
+        if(_ctx.XInput == 0){
             SwitchState(_factory.Iddle());
         }
     }
@@ -35,6 +35,15 @@ public class RunState : BaseState{
 
     void Run(){
 
-        _ctx.Rb.velocity = new Vector2(_ctx.TargetSpeed * _ctx.xInput , _ctx.Rb.velocity.y);
+        _ctx.TargetSpeed = _ctx.XInput * _ctx.MaxVelocity;
+        Debug.Log(_ctx.TargetSpeed);
+
+        float speedDif = _ctx.TargetSpeed - _ctx.Rb.velocity.x;
+        Debug.Log(speedDif);
+
+        float movement = speedDif * _ctx.AccelRate;
+        Debug.Log(movement);
+
+        _ctx.Rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }
 }

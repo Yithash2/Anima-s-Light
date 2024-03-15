@@ -1,8 +1,9 @@
+# if (UNITY_EDITOR)
+
 using TilemapShadowCaster.Runtime;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace TilemapShadowCaster.Editor
 {
@@ -39,3 +40,5 @@ namespace TilemapShadowCaster.Editor
         }
     }
 }
+
+#endif

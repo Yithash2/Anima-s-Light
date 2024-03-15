@@ -1,4 +1,6 @@
-﻿using TilemapShadowCaster.Runtime;
+﻿#if(UNITY_EDITOR)
+
+using TilemapShadowCaster.Runtime;
 using UnityEditor;
 
 namespace TilemapShadowCaster.Editor
@@ -14,3 +16,5 @@ namespace TilemapShadowCaster.Editor
         }
     }
 }
+
+#endif
