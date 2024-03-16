@@ -157,7 +157,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)) _jumpPressed = true;
 
-        if(_jumpPressed && !Grounded()){
+        if((_jumpPressed && !Grounded()) ^ (_jumpPressed && !Walled())){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
             }else{
