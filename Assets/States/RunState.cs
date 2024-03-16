@@ -36,13 +36,10 @@ public class RunState : BaseState{
     void Run(){
 
         _ctx.TargetSpeed = _ctx.XInput * _ctx.MaxVelocity;
-        Debug.Log(_ctx.TargetSpeed);
 
         float speedDif = _ctx.TargetSpeed - _ctx.Rb.velocity.x;
-        Debug.Log(speedDif);
 
         float movement = speedDif * _ctx.AccelRate;
-        Debug.Log(movement);
 
         _ctx.Rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }

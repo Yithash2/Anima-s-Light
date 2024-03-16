@@ -4,7 +4,6 @@ public class WalledState : BaseState
 {
     public WalledState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        InitialiseSubState();
         _isRootState = true;
     }
 
@@ -12,9 +11,9 @@ public class WalledState : BaseState
     {
 
         _ctx.Animator.Play(_ctx.Animations[4].name);
-        
 
-        Debug.Log("IS WALLED");
+        _ctx.WallJumpControlCounter = 0;
+        
     }
 
     public override void UpdateState()
@@ -28,7 +27,7 @@ public class WalledState : BaseState
 
     public override void QuitState()
     {
-
+        _ctx.WallJumpControlCounter = 0;
     }
 
     public override void CheckSwitchState()
@@ -37,17 +36,14 @@ public class WalledState : BaseState
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
-        }else if(!_ctx.isWalled){
-            SwitchState(_factory.Falling());
         }else if(_ctx.JumpPressed){
             SwitchState(_factory.WallJump());
+        }else if(!_ctx.IsWalled){
+            SwitchState(_factory.Falling());
         }
     }
 
     public override void InitialiseSubState()
     {
-        if(_ctx.XInput != 0){
-            SetSubState(_factory.Running());
-        }
     }
 }

@@ -12,6 +12,8 @@ public class FallState : BaseState{
         _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.GravityMult;
 
+         _ctx.YCamOffcet = -1;
+
     }
 
     public override void UpdateState(){
@@ -24,7 +26,7 @@ public class FallState : BaseState{
 
     public override void QuitState()
     {
-        
+        _ctx.YCamOffcet = 0;
     }
 
     public override void CheckSwitchState()
@@ -33,7 +35,7 @@ public class FallState : BaseState{
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.isWalled){
+        }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());
         }
     }

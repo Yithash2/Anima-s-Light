@@ -6,7 +6,7 @@ public class IddleState : BaseState
     :base (currentContext, stateFactory){}
     public override void EnterState()
     {
-        _ctx.Animator.Play(_ctx.Animations[0].name);
+
     }
 
     public override void UpdateState(){
@@ -21,7 +21,7 @@ public class IddleState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.XInput != 0){
+        if(_ctx.XInput != 0 && _ctx.CanMove){
             SwitchState(_factory.Running());
         }
     }

@@ -9,10 +9,10 @@ public class JumpState : BaseState{
     public override void EnterState()
     {
         _ctx.Animator.Play(_ctx.Animations[2].name);
-
+        _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
-
+        _ctx.AudioSource.Play();
 
         HandleJumpStart();
         
@@ -41,7 +41,7 @@ public class JumpState : BaseState{
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.isWalled){
+        }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= -0.5){
             SwitchState(_factory.Falling());

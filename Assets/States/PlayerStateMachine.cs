@@ -7,6 +7,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     [SerializeField] Animator _animator;
     [SerializeField] AnimationClip[] _animations;
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip[] _audioClips;
 
     #region Jump related
     private Rigidbody2D _rb;
@@ -33,6 +35,8 @@ public class PlayerStateMachine : MonoBehaviour
     [Header ("Timers")]
     [SerializeField] float bufferTime;
     float _bufferCounter;
+    [SerializeField] float _wallJumpControlTime;
+    float _wallJumpCounter;
     #endregion
 
     [Header ("Run")]
@@ -65,6 +69,10 @@ public class PlayerStateMachine : MonoBehaviour
     StateFactory _states;
 
     #region Get Sets
+
+    public AudioSource AudioSource {get {return _audioSource;}}
+    public AudioClip[] AudioClips {get {return _audioClips;}}
+    public float WallJumpControlCounter {get {return _wallJumpCounter;} set {_wallJumpCounter = value;}}
     public float YInput {get {return _yInput;}}
     public float GroundSlamMult {get {return groundSlamMult;}}
     public float MaxVelocity {get {return _maxVelocity;}}
@@ -89,11 +97,13 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
     public bool JumpPressed {get {return _jumpPressed;} set { _jumpPressed = value;}}
     public bool IsGounded {get {return Grounded();}}
-    public bool isWalled{get {return Walled();}}
+    public bool IsWalled{get {return Walled();}}
     public float BufferCounter {get {return _bufferCounter;} set {_bufferCounter = value;}}
     public BaseState CurrentState {get {return _currentState;} set { _currentState = value;}}
     public Transform PlayerTransform {get {return _playerTransform;}}
     public float SmoothSpeed {get {return _camera.smooth_speed;} set{_camera.smooth_speed = value;}}
+    public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
+    public bool CanMove {get {return _canMove();}}
 
     Transform _playerTransform;
     #endregion
@@ -113,7 +123,9 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void Start(){
-        
+        float verticalJumpForce = Mathf.Sqrt(WallJumpHeight * -2 * (Physics2D.gravity.y * Rb.gravityScale));
+        float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * Rb.gravityScale);
+        _wallJumpControlTime = timeToPeak;
     }
 
     // Update is called once per frame
@@ -162,6 +174,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     bool Walled(){
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
+    }
+
+    bool _canMove(){
+
+        if(_wallJumpCounter < _wallJumpControlTime){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public void Flip(){

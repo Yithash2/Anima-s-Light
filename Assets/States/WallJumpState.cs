@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class WallJumpState : BaseState
@@ -17,15 +19,24 @@ public class WallJumpState : BaseState
 
         _ctx.Rb.gravityScale = _ctx.GravityMult * _ctx.GravityScale;
 
+        _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
+        _ctx.AudioSource.clip = _ctx.AudioClips[0];
+        _ctx.AudioSource.Play();
+        _ctx.WallJumpControlCounter = 0;
+
         WallJump();
+
+        
     }
 
     public override void UpdateState()
     {
+        _ctx.WallJumpControlCounter += Time.deltaTime;
+
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.AirMult : _ctx.RunDeccelAmount * _ctx.AirMult;
 
-
         CheckSwitchState();
+
     }
 
     public override void QuitState()
@@ -35,12 +46,13 @@ public class WallJumpState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.YInput < 0){
+        if(_ctx.YInput < 0 && _ctx.CanMove){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.isWalled){
+        }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());
+            
         }
     }
 
@@ -64,7 +76,7 @@ public class WallJumpState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.XInput != 0){
+        if(_ctx.XInput != 0 && _ctx.CanMove){
             SetSubState(_factory.Running());
         }else{
             SetSubState(_factory.Iddle());
