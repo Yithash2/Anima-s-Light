@@ -12,22 +12,39 @@ public class GroundSlamState : BaseState
 
         _ctx.Rb.velocity = new Vector2(0, 0);
 
-        _ctx.SmoothSpeed = 1f;
+        _ctx.SmoothSpeed = 0.5f;
+
+        _ctx.AudioSource.clip = _ctx.AudioClips[1];
+
+        _ctx.AudioSource.loop = true;
+
+        _ctx.AudioSource.Play();
 
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.GroundSlamMult;
+
+        _ctx.YCamOffcet = -3;
+
+        _ctx.WallJumpControlCounter = 1000000000;
 
     }
 
     public override void UpdateState(){
 
-        _ctx.Rb.velocity = new Vector2(0, Mathf.Clamp(_ctx.Rb.velocity.y, -60, 60));
+        _ctx.Rb.velocity = new Vector2(0, Mathf.Clamp(_ctx.Rb.velocity.y, -40, 40));
                 
+        
+
         CheckSwitchState();
     }
 
     public override void QuitState()
     {
-        _ctx.Rb.velocity  = new Vector2(0, 0);
+
+        _ctx.YCamOffcet = 0;
+
+        _ctx.AudioSource.loop = false;
+
+        _ctx.AudioSource.Stop();
 
         _ctx.SmoothSpeed = 0.125f;
     }
@@ -35,8 +52,7 @@ public class GroundSlamState : BaseState
     public override void CheckSwitchState()
     {
         if(_ctx.JumpPressed){
-            SwitchState(_factory.Falling());
-            _ctx.JumpPressed = false;
+            SwitchState(_factory.Jumping());
         }
         else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());

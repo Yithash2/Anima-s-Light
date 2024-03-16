@@ -14,16 +14,13 @@ public class GroundState : BaseState{
         _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
-
         
-        
-
+        _ctx.WallJumpControlCounter = 1000000000;
     }
 
     public override void UpdateState(){
 
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount : _ctx.RunDeccelAmount;
-        Debug.Log(_ctx.AccelRate);
 
         CheckSwitchState();
 

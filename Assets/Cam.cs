@@ -13,6 +13,8 @@ public class cam : MonoBehaviour
     [SerializeField] float moveShiftMultX;
     [SerializeField] float moveShiftMultY;
 
+    public float verticalShift;
+
 //    [SerializeField] PlayerStateMachine _playerStateMachine;
 
     float intialOfsetY;
@@ -31,7 +33,6 @@ public class cam : MonoBehaviour
 
         #region déplacement avec fleche
         float horizontalShift = Input.GetAxis("Horizontal") * moveShiftMultX; // le changement d'ofset par rapport au déplacement horizontal
-        float verticalShift = Input.GetAxis("Vertical") * moveShiftMultY + intialOfsetY; //le changement d'ofset par rapport au déplacement vertical
         ofset = new Vector3(horizontalShift, verticalShift,ofset.z);
         }
         #endregion
