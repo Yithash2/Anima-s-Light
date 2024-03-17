@@ -14,8 +14,10 @@ public class GroundState : BaseState{
         _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
+
+        _ctx.MaxVelocity = _ctx.PlayerData.GroundVelocity;
         
-        _ctx.WallJumpControlCounter = 1000000000;
+        _ctx.WallJumpCounter = 1000000000;
     }
 
     public override void UpdateState(){
@@ -28,7 +30,7 @@ public class GroundState : BaseState{
 
     public override void QuitState()
     {
-        
+        _ctx.MaxVelocity = _ctx.PlayerData.AirVelocity;
     }
 
     public override void CheckSwitchState()
