@@ -20,7 +20,7 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.AirMult : _ctx.RunDeccelAmount * _ctx.AirMult;
+        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
 
 
         if(_ctx.JumpReleased) {
@@ -41,6 +41,8 @@ public class JumpState : BaseState{
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
+                    _ctx.AudioSource.clip = _ctx.AudioClips[3];
+        _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= -0.5){
@@ -64,13 +66,14 @@ public class JumpState : BaseState{
 
         _ctx.IsJumping = true;
 
-        float jumpForce = Mathf.Sqrt(_ctx.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
+        float jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
                 
         _ctx.Rb.velocity += new Vector2(0, jumpForce);
     }
 
     void HandleJumpEnd(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
+        _ctx.IsJumping = true;
     }
 
 }

@@ -20,11 +20,12 @@ public class GroundSlamState : BaseState
 
         _ctx.AudioSource.Play();
 
-        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.GroundSlamMult;
+        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GroundSlamMult;
 
         _ctx.YCamOffcet = -3;
 
-        _ctx.WallJumpControlCounter = 1000000000;
+
+        _ctx.WallJumpCounter = 1000000000;
 
     }
 
@@ -44,7 +45,9 @@ public class GroundSlamState : BaseState
 
         _ctx.AudioSource.loop = false;
 
-        _ctx.AudioSource.Stop();
+        _ctx.AudioSource.clip = _ctx.AudioClips[2];
+
+        _ctx.AudioSource.Play();
 
         _ctx.SmoothSpeed = 0.125f;
     }

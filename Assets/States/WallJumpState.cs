@@ -17,12 +17,12 @@ public class WallJumpState : BaseState
 
         _ctx.Animator.Play(_ctx.Animations[3].name);
 
-        _ctx.Rb.gravityScale = _ctx.GravityMult * _ctx.GravityScale;
+        _ctx.Rb.gravityScale = _ctx.PlayerData.GravityMult * _ctx.GravityScale;
 
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
-        _ctx.WallJumpControlCounter = 0;
+        _ctx.WallJumpCounter = 0;
 
         WallJump();
 
@@ -31,9 +31,9 @@ public class WallJumpState : BaseState
 
     public override void UpdateState()
     {
-        _ctx.WallJumpControlCounter += Time.deltaTime;
+        _ctx.WallJumpCounter += Time.deltaTime;
 
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.AirMult : _ctx.RunDeccelAmount * _ctx.AirMult;
+        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
 
         CheckSwitchState();
 
@@ -41,7 +41,7 @@ public class WallJumpState : BaseState
 
     public override void QuitState()
     {
-        
+
     }
 
     public override void CheckSwitchState()
@@ -50,8 +50,11 @@ public class WallJumpState : BaseState
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
+                    _ctx.AudioSource.clip = _ctx.AudioClips[3];
+        _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());
+
             
         }
     }
@@ -61,10 +64,10 @@ public class WallJumpState : BaseState
         _ctx.BufferCounter = 0;
         _ctx.JumpPressed = false;
         
-        float verticalJumpForce = Mathf.Sqrt(_ctx.WallJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
+        float verticalJumpForce = Mathf.Sqrt(_ctx.PlayerData.WallJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * _ctx.Rb.gravityScale);
         float totalTimeInAir = -2 * timeToPeak;
-        float horizontalJumpForce = _ctx.WallJumpLength / totalTimeInAir;
+        float horizontalJumpForce = _ctx.PlayerData.WallJumpLength / totalTimeInAir;
 
         float wallJumpDirection = -_ctx.PlayerTransform.localScale.x;
         _ctx.Rb.velocity = new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce);

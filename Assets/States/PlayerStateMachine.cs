@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour
 {
 
+    public PlayerDateScriptableObject PlayerData;
+
     [SerializeField] Animator _animator;
     [SerializeField] AnimationClip[] _animations;
     [SerializeField] AudioSource _audioSource;
@@ -12,9 +14,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     #region Jump related
     private Rigidbody2D _rb;
-    [SerializeField] float initalJumpHeight;
-    [SerializeField] float wallJumpHeight;
-    [SerializeField] float wallJumpLength;
 
     [Header("Check")]
     [SerializeField] Transform _groundCheck;
@@ -27,31 +26,21 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("Fast Fall")]
     float _gravityScale;
-    [SerializeField] float gravityMult;
-    [SerializeField] float groundSlamMult;
-    [SerializeField] float clampedVelocity;
-    [SerializeField] float slideSpeed;
 
     [Header ("Timers")]
     [SerializeField] float bufferTime;
     float _bufferCounter;
-    [SerializeField] float _wallJumpControlTime;
     float _wallJumpCounter;
+
     #endregion
 
     [Header ("Run")]
-    [SerializeField] float acc;
-
-    [SerializeField] float _timeToAccelerate;
-    [SerializeField] float _maxVelocity;
-    [SerializeField] float _runAcceleration;
-    [SerializeField] float _runDecceleration;
-    [SerializeField] float _airMult;
-    float _accelRate;
-    float _targetSpeed;
     float _runAccelAmount;
     float _runDeccelAmount;
-
+    float _maxVelocity;
+    
+    float _accelRate;
+    float _targetSpeed;
 
     public cam _camera;
     //Inputs
@@ -69,28 +58,18 @@ public class PlayerStateMachine : MonoBehaviour
     StateFactory _states;
 
     #region Get Sets
-
-    public AudioSource AudioSource {get {return _audioSource;}}
-    public AudioClip[] AudioClips {get {return _audioClips;}}
-    public float WallJumpControlCounter {get {return _wallJumpCounter;} set {_wallJumpCounter = value;}}
-    public float YInput {get {return _yInput;}}
-    public float GroundSlamMult {get {return groundSlamMult;}}
-    public float MaxVelocity {get {return _maxVelocity;}}
-    public float AirMult {get {return _airMult;}}
     public float RunAccelAmount {get {return _runAccelAmount;}}
     public float RunDeccelAmount {get {return _runDeccelAmount;}}
+    public float MaxVelocity {get {return _maxVelocity;} set {_maxVelocity = value;}}
+    public AudioSource AudioSource {get {return _audioSource;}}
+    public AudioClip[] AudioClips {get {return _audioClips;}}
+    public float WallJumpCounter {get {return _wallJumpCounter;}set {_wallJumpCounter = value;}}
+    public float YInput {get {return _yInput;}}
     public float TargetSpeed {get{return _targetSpeed;} set {_targetSpeed = value;}}
     public float AccelRate {get{return _accelRate;} set{_accelRate = value;}}
     public Animator Animator {get {return _animator;}}
     public AnimationClip[] Animations {get {return _animations;}}
-    public float SlideSpeed {get {return slideSpeed;}}
-    public float Accel {get {return acc;}}
     public float XInput {get {return _xInput;}}
-    public float ClampedVelocity {get {return clampedVelocity;}}
-    public float GravityMult {get {return gravityMult;}}
-    public float InitalJumpHeight {get {return initalJumpHeight;}}
-    public float WallJumpHeight {get {return wallJumpHeight;}}
-    public float WallJumpLength {get {return wallJumpLength;}}
     public bool JumpReleased {get {return _jumpReleased;} set{ _jumpReleased = value;}}
     public Rigidbody2D Rb {get {return _rb;}set {_rb = value;}}
     public float GravityScale {get {return _gravityScale;}}
@@ -122,20 +101,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
-    void Start(){
-        float verticalJumpForce = Mathf.Sqrt(WallJumpHeight * -2 * (Physics2D.gravity.y * Rb.gravityScale));
-        float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * Rb.gravityScale);
-        _wallJumpControlTime = timeToPeak;
-    }
-
     // Update is called once per frame
     void Update()
     {
 
-        _runAccelAmount = 60 * _runAcceleration / _maxVelocity;
-        _runDeccelAmount = 60 * _runDecceleration / _maxVelocity;
-
         Inputs();
+
+        _runAccelAmount = 60 * PlayerData.RunAcceleration / _maxVelocity;
+        _runDeccelAmount = 60 * PlayerData.RunDecceleration / _maxVelocity;
+
         
     }
 
@@ -143,7 +117,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _currentState.UpdateStates();
 
-        if(_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f)
+        if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && _canMove())
         {
             Flip();
         }
@@ -178,7 +152,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     bool _canMove(){
 
-        if(_wallJumpCounter < _wallJumpControlTime){
+        if(_wallJumpCounter < PlayerData.WallJumpControlTime){
             return false;
         }else{
             return true;
