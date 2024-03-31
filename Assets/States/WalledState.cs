@@ -34,7 +34,9 @@ public class WalledState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.YInput < 0){
+        if(_ctx.IsSpaced){
+            SwitchState(_factory.Spaced());
+        }else if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());

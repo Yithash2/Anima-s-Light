@@ -15,6 +15,8 @@ public class GroundState : BaseState{
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
+        _ctx.YCamOffcet = 2;
+
         _ctx.MaxVelocity = _ctx.PlayerData.GroundVelocity;
         
         _ctx.WallJumpCounter = 1000000000;
@@ -37,6 +39,8 @@ public class GroundState : BaseState{
     {
         if(_ctx.JumpPressed){
             SwitchState(_factory.Jumping());
+        }else if(_ctx.IsSpaced){
+            SwitchState(_factory.Spaced());
         }else if(!_ctx.IsGounded && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Falling());
         }

@@ -12,6 +12,8 @@ public class JumpState : BaseState{
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
+        _ctx.YCamOffcet = -1;
+
         _ctx.AudioSource.Play();
 
         HandleJumpStart();
@@ -37,11 +39,13 @@ public class JumpState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.YInput < 0){
+        if(_ctx.IsSpaced){
+            SwitchState(_factory.Spaced());
+        }else if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
-                    _ctx.AudioSource.clip = _ctx.AudioClips[3];
+            _ctx.AudioSource.clip = _ctx.AudioClips[3];
         _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled){
             SwitchState(_factory.Walled());

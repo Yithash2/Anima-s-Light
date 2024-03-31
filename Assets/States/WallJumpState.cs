@@ -46,7 +46,9 @@ public class WallJumpState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.YInput < 0 && _ctx.CanMove){
+        if(_ctx.IsSpaced){
+            SwitchState(_factory.Spaced());
+        }if(_ctx.YInput < 0 && _ctx.CanMove){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGounded){
             SwitchState(_factory.Grounded());
