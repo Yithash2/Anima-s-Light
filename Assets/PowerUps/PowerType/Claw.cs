@@ -1,29 +1,38 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Claw : MonoBehaviour
 {
-    int _posIndex = 0;
+
+    int _posIndex;
 
     [SerializeField] PlayerDateScriptableObject NormalPlayer;
     [SerializeField] PlayerDateScriptableObject ClawedPlayer;
     [SerializeField] PlayerStateMachine PSM;
-    SpriteRenderer _spriteRenderer;
     [SerializeField] Animator _animator;
 
     void Start(){
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _posIndex = 0;
+        PSM.PlayerData = NormalPlayer;
     }
 
-    void OnTriggerEnter2D(){
+    void DoSomething(){
+
         if(_posIndex == 0){
             PSM.PlayerData = ClawedPlayer;
             _animator.Play("Taken");
             _posIndex = 1;
         }else{
+
             PSM.PlayerData = NormalPlayer;
             _animator.Play("Base");
             _posIndex = 0;
         }
     }
-    
+
+    void OnTriggerEnter2D(Collider2D collider){
+        DoSomething();
+    }
+
 }
+

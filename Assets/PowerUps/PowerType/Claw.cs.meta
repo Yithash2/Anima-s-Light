@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ce7e7cf72329ff6498ecf61a81115779
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - NormalPlayer: {fileID: 11400000, guid: e91a017f7e7904c4a85dad14b3325be7, type: 2}
+  - ClawedPlayer: {fileID: 11400000, guid: b60a626e7c4cb484585de0628d48785c, type: 2}
+  - PSM: {fileID: 1343236479114496738, guid: 845afbad412a5a8419fbc8f5e953a280, type: 3}
+  - _animator: {instanceID: 0}
+  - player: {fileID: 6062772145467735728, guid: 845afbad412a5a8419fbc8f5e953a280, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

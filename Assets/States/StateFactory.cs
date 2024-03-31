@@ -41,4 +41,8 @@ public class StateFactory
     public GroundSlamState GroundSlam(){
         return new GroundSlamState(_context, this);
     }
+
+    public SpaceState Spaced(){
+        return new SpaceState(_context, this);
+    }
 }

@@ -24,6 +24,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Vector2 wallSize;
     [SerializeField] LayerMask wallLayer;
 
+    [SerializeField] Transform spaceCheck;
+    [SerializeField] Vector2 spaceSize;
+    [SerializeField] LayerMask SpaceLayer;
+
     [Header("Fast Fall")]
     float _gravityScale;
 
@@ -52,10 +56,13 @@ public class PlayerStateMachine : MonoBehaviour
     float _xInput;
     float _yInput;
     bool _isFacingRight;
-    
 
+    public Transform respawnPoint;
+    
     BaseState _currentState;
     StateFactory _states;
+
+
 
     #region Get Sets
     public float RunAccelAmount {get {return _runAccelAmount;}}
@@ -76,6 +83,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
     public bool JumpPressed {get {return _jumpPressed;} set { _jumpPressed = value;}}
     public bool IsGounded {get {return Grounded();}}
+    public bool IsSpaced {get {return Spaced();}}
     public bool IsWalled{get {return Walled();}}
     public float BufferCounter {get {return _bufferCounter;} set {_bufferCounter = value;}}
     public BaseState CurrentState {get {return _currentState;} set { _currentState = value;}}
@@ -85,11 +93,12 @@ public class PlayerStateMachine : MonoBehaviour
     public bool CanMove {get {return _canMove();}}
 
     Transform _playerTransform;
+
+    public string _deadlyTag;
     #endregion
     // Start is called before the first frame update
     void Awake()
     { 
-        
         _rb = GetComponent<Rigidbody2D>();
         _playerTransform = GetComponent<Transform>();
         _gravityScale = _rb.gravityScale;
@@ -107,10 +116,17 @@ public class PlayerStateMachine : MonoBehaviour
 
         Inputs();
 
-        _runAccelAmount = 60 * PlayerData.RunAcceleration / _maxVelocity;
-        _runDeccelAmount = 60 * PlayerData.RunDecceleration / _maxVelocity;
+        _runAccelAmount = 50 * PlayerData.RunAcceleration / _maxVelocity;
+        _runDeccelAmount = 50 * PlayerData.RunDecceleration / _maxVelocity;
 
-        
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+
+        if(collision.gameObject.CompareTag(_deadlyTag)){
+            Rb.velocity = new Vector2(0, 0);
+            transform.position = respawnPoint.position;
+        }
     }
 
     void FixedUpdate(){
@@ -146,6 +162,10 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer);
     }
 
+    bool Spaced(){
+        return Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer);
+    }
+
     bool Walled(){
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
@@ -171,6 +191,8 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.DrawWireCube(wallCheck.position, wallSize);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(_groundCheck.position, _checkSize);
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(spaceCheck.position, spaceSize);
     }
 
 }
