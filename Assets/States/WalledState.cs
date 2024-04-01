@@ -22,7 +22,7 @@ public class WalledState : BaseState
     {
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed, 0));
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed, float.MaxValue));
 
         CheckSwitchState();
     }
@@ -34,17 +34,17 @@ public class WalledState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced){
+        if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
         }else if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
-        }else if(_ctx.IsGounded){
-            SwitchState(_factory.Grounded());
-                    _ctx.AudioSource.clip = _ctx.AudioClips[3];
+        }else if(_ctx.IsGrounded()){
+        SwitchState(_factory.Grounded());
+        _ctx.AudioSource.clip = _ctx.AudioClips[3];
         _ctx.AudioSource.Play();
         }else if(_ctx.JumpPressed){
             SwitchState(_factory.WallJump());
-        }else if(!_ctx.IsWalled){
+        }else if(!_ctx.IsWalled()){
             SwitchState(_factory.Falling());
         }
     }

@@ -6,7 +6,6 @@ public class RunState : BaseState{
 
     public override void EnterState()
     {
-        Debug.Log("Run");
     }
 
     public override void UpdateState(){

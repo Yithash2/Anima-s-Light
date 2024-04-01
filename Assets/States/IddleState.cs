@@ -21,7 +21,7 @@ public class IddleState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.XInput != 0 && _ctx.CanMove){
+        if(_ctx.XInput != 0 && _ctx.CanMove()){
             SwitchState(_factory.Running());
         }
     }

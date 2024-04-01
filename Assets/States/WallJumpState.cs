@@ -46,15 +46,15 @@ public class WallJumpState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced){
+        if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }if(_ctx.YInput < 0 && _ctx.CanMove){
+        }if(_ctx.YInput < 0 && _ctx.CanMove()){
             SwitchState(_factory.GroundSlam());
-        }else if(_ctx.IsGounded){
+        }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
                     _ctx.AudioSource.clip = _ctx.AudioClips[3];
         _ctx.AudioSource.Play();
-        }else if(_ctx.IsWalled){
+        }else if(_ctx.IsWalled()){
             SwitchState(_factory.Walled());
 
             
@@ -72,7 +72,7 @@ public class WallJumpState : BaseState
         float horizontalJumpForce = _ctx.PlayerData.WallJumpLength / totalTimeInAir;
 
         float wallJumpDirection = -_ctx.PlayerTransform.localScale.x;
-        _ctx.Rb.velocity = new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce);
+        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce);
 
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();
@@ -81,7 +81,7 @@ public class WallJumpState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.XInput != 0 && _ctx.CanMove){
+        if(_ctx.XInput != 0 && _ctx.CanMove()){
             SetSubState(_factory.Running());
         }else{
             SetSubState(_factory.Iddle());

@@ -17,7 +17,7 @@ public class FallState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, _ctx.PlayerData.ClampedVelocity));
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
 
@@ -35,14 +35,17 @@ public class FallState : BaseState{
     {
         if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
-        }else if(_ctx.IsSpaced){
+        }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(_ctx.IsGounded){
+        }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];
             _ctx.AudioSource.Play();
-        }else if(_ctx.IsWalled){
+        }else if(_ctx.IsWalled()){
             SwitchState(_factory.Walled());
+        }else if(_ctx.JumpPressed && _ctx.CanJump()){
+            SwitchState(_factory.Jumping());
+            
         }
     }
 

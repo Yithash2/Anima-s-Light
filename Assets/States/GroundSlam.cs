@@ -10,8 +10,6 @@ public class GroundSlamState : BaseState
     {
         _ctx.Animator.Play(_ctx.Animations[5].name);
 
-        _ctx.Rb.velocity = new Vector2(0, 0);
-
         _ctx.SmoothSpeed = 0.5f;
 
         _ctx.AudioSource.clip = _ctx.AudioClips[1];
@@ -31,9 +29,7 @@ public class GroundSlamState : BaseState
 
     public override void UpdateState(){
 
-        _ctx.Rb.velocity = new Vector2(0, Mathf.Clamp(_ctx.Rb.velocity.y, -40, 40));
-                
-        
+        _ctx.Rb.velocity = new Vector2(0, Mathf.Clamp(_ctx.Rb.velocity.y, -40, float.MaxValue));  
 
         CheckSwitchState();
     }
@@ -54,13 +50,11 @@ public class GroundSlamState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced){
-            SwitchState(_factory.Spaced());
-        }if(_ctx.JumpPressed){
+        if(_ctx.JumpPressed){
             SwitchState(_factory.Falling());
             _ctx.JumpPressed = false;
         }
-        else if(_ctx.IsGounded){
+        else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
         }
     }
