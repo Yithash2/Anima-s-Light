@@ -47,10 +47,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _distortionScale: 3.85
-    - _distortionSpeed: 0.31
+    - _distortionScale: 8.52
+    - _distortionSpeed: 0.11
     m_Colors:
-    - _distortionPower: {r: 3.66, g: 0, b: 0, a: 0}
+    - _distortionPower: {r: 0.76, g: 0.35, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &869542840093846124
 MonoBehaviour:

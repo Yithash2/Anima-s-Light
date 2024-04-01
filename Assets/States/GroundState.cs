@@ -37,11 +37,11 @@ public class GroundState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.JumpPressed){
+        if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.Jumping());
-        }else if(_ctx.IsSpaced){
+        }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsGounded && _ctx.Rb.velocity.y < 0){
+        }else if(!_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Falling());
         }
     }

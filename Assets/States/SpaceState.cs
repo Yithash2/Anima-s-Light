@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class SpaceState : BaseState
@@ -23,28 +20,29 @@ public class SpaceState : BaseState
 
     public override void EnterState()
     {
-        _ctx.Rb.angularDrag = 4;
+        _ctx.Rb.drag = 7;
     }
 
     public override void UpdateState()
     {
+        _ctx.JumpCount = 0;
         CheckSwitchState();
     }
 
     public override void QuitState()
     {
-        _ctx.Rb.angularDrag = 0;
+         _ctx.Rb.drag = 0;
     }
 
     public override void CheckSwitchState()
     {
-        if(_ctx.JumpPressed){
+        if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.Jumping());
         }else if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
-        }else if(!_ctx.IsSpaced && _ctx.IsGounded){
+        }else if(!_ctx.IsSpaced() && _ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
-        }else if(!_ctx.IsSpaced && _ctx.Rb.velocity.y < 0){
+        }else if(!_ctx.IsSpaced() && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Falling());
         }
     }

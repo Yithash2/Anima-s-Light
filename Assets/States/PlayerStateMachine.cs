@@ -15,6 +15,9 @@ public class PlayerStateMachine : MonoBehaviour
     #region Jump related
     private Rigidbody2D _rb;
 
+    [SerializeField] private int _numberOfJumps = 1;
+    private int _jumpCount;
+
     [Header("Check")]
     [SerializeField] Transform _groundCheck;
     [SerializeField] Vector2 _checkSize;
@@ -35,6 +38,9 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float bufferTime;
     float _bufferCounter;
     float _wallJumpCounter;
+
+    [SerializeField] float _coyoteTime;
+    float _coyoteCounter;
 
     #endregion
 
@@ -65,6 +71,8 @@ public class PlayerStateMachine : MonoBehaviour
 
 
     #region Get Sets
+    public int NumberOfJumps {get {return _numberOfJumps;} set{_numberOfJumps = value;}}
+    public int JumpCount {get {return _jumpCount;} set{_jumpCount = value;}}
     public float RunAccelAmount {get {return _runAccelAmount;}}
     public float RunDeccelAmount {get {return _runDeccelAmount;}}
     public float MaxVelocity {get {return _maxVelocity;} set {_maxVelocity = value;}}
@@ -82,15 +90,13 @@ public class PlayerStateMachine : MonoBehaviour
     public float GravityScale {get {return _gravityScale;}}
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
     public bool JumpPressed {get {return _jumpPressed;} set { _jumpPressed = value;}}
-    public bool IsGounded {get {return Grounded();}}
-    public bool IsSpaced {get {return Spaced();}}
-    public bool IsWalled{get {return Walled();}}
     public float BufferCounter {get {return _bufferCounter;} set {_bufferCounter = value;}}
+    public float CoyoteTime {get {return _coyoteTime;}}
+    public float CoyoteCounter {get {return _coyoteCounter;} set {_coyoteCounter = value;}}
     public BaseState CurrentState {get {return _currentState;} set { _currentState = value;}}
     public Transform PlayerTransform {get {return _playerTransform;}}
     public float SmoothSpeed {get {return _camera.smooth_speed;} set{_camera.smooth_speed = value;}}
     public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
-    public bool CanMove {get {return _canMove();}}
 
     Transform _playerTransform;
 
@@ -113,6 +119,12 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
+            CoyoteTimer();    
+        }else{
+            _coyoteCounter = 0;
+            _jumpCount = 0;
+        }
 
         Inputs();
 
@@ -120,6 +132,8 @@ public class PlayerStateMachine : MonoBehaviour
         _runDeccelAmount = 50 * PlayerData.RunDecceleration / _maxVelocity;
 
     }
+
+    
 
     void OnCollisionEnter2D(Collision2D collision){
 
@@ -133,7 +147,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _currentState.UpdateStates();
 
-        if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && _canMove())
+        if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
             Flip();
         }
@@ -147,7 +161,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)) _jumpPressed = true;
 
-        if((_jumpPressed && !Grounded()) ^ (_jumpPressed && !Walled())){
+        if((_jumpPressed && !IsGrounded()) ^ (_jumpPressed && !IsWalled())){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
             }else{
@@ -158,25 +172,48 @@ public class PlayerStateMachine : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space)) _jumpReleased = true; else _jumpReleased = false;
     }
 
-    bool Grounded(){
-        return Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer);
+    void CoyoteTimer(){
+        if(_coyoteCounter <= CoyoteTime){
+            _coyoteCounter += Time.deltaTime;
+            _jumpCount = 0;
+        }
+
     }
 
-    bool Spaced(){
+    public bool CanJump(){
+
+        if(_jumpCount < _numberOfJumps){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public bool IsGrounded(){
+        if(_coyoteCounter <= _coyoteTime){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public bool IsSpaced(){
         return Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer);
     }
 
-    bool Walled(){
+    public bool IsWalled(){
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 
-    bool _canMove(){
+    public bool CanMove(){
 
         if(_wallJumpCounter < PlayerData.WallJumpControlTime){
             return false;
         }else{
             return true;
         }
+        
     }
 
     public void Flip(){

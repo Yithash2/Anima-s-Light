@@ -51,8 +51,6 @@ public class UiManager : MonoBehaviour
                 o.enabled = false;
             }
 
-            Time.timeScale = 0.2f;
-
             _eventSystem.SetSelectedGameObject(_firstSelected);
             _pausePanelAnimator.Play(_pausePanelOppening.name);
             _pausePanelClosed = false;
@@ -63,7 +61,6 @@ public class UiManager : MonoBehaviour
                 o.enabled = true;
             }
 
-            Time.timeScale = 1;
 
             _pausePanelAnimator.Play(_pausePanelClosing.name);
             _pausePanelClosed = true;
