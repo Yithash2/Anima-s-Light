@@ -10,6 +10,9 @@ public class IddleState : BaseState
     }
 
     public override void UpdateState(){
+        if(_ctx.CanMove()){
+            _ctx.Rb.velocity = new Vector2(_ctx.BaselineVelocityX, _ctx.Rb.velocity.y);
+        }
         
         CheckSwitchState();
     }
