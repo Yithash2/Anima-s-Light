@@ -15,7 +15,7 @@ MonoBehaviour:
   initalJumpHeight: 6
   wallJumpHeight: 4
   wallJumpLength: 8
-  gravityMult: 1.3
+  gravityMult: 1.1
   groundSlamMult: 3
   clampedVelocity: 20
   slideSpeed: 3

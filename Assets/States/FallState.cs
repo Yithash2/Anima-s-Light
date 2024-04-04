@@ -17,10 +17,13 @@ public class FallState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity - _ctx.BaselineVelocityY), float.MaxValue));
+
+        _ctx.MaxVelocity = _ctx.PlayerData.AirVelocity + _ctx.BaselineVelocityX;
 
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
 
+        
         CheckSwitchState();
     }
 
@@ -33,7 +36,8 @@ public class FallState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.YInput < 0){
+        
+      if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());

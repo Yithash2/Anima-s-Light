@@ -14,7 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     #region Jump related
     private Rigidbody2D _rb;
-
+    [SerializeField] private float _baselineVelocityY;
     [SerializeField] private int _numberOfJumps = 1;
     private int _jumpCount;
 
@@ -48,6 +48,7 @@ public class PlayerStateMachine : MonoBehaviour
     float _runAccelAmount;
     float _runDeccelAmount;
     float _maxVelocity;
+    [SerializeField] private float _baselineVelocityX;
     
     float _accelRate;
     float _targetSpeed;
@@ -71,6 +72,8 @@ public class PlayerStateMachine : MonoBehaviour
 
 
     #region Get Sets
+    public float BaselineVelocityX {get {return _baselineVelocityX;} set{_baselineVelocityX = value;}}
+    public float BaselineVelocityY {get {return _baselineVelocityY;} set{_baselineVelocityY = value;}}
     public int NumberOfJumps {get {return _numberOfJumps;} set{_numberOfJumps = value;}}
     public int JumpCount {get {return _jumpCount;} set{_jumpCount = value;}}
     public float RunAccelAmount {get {return _runAccelAmount;}}
@@ -152,6 +155,12 @@ public class PlayerStateMachine : MonoBehaviour
             Flip();
         }
 
+        
+
+
+
+        
+
     }
 
     void Inputs(){
@@ -192,9 +201,32 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool IsGrounded(){
         if(_coyoteCounter <= _coyoteTime){
+            try{
+                if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer).CompareTag("MovingPlatform")){
+                    _baselineVelocityX = 0;
+                    _baselineVelocityY = 0;
+                }
+            }catch{
+
+            }
             return true;
         }else{
             return false;
+        }
+    }
+
+    public bool IsOnMovingPlatform(){
+        try{
+            if((!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer).CompareTag("MovingPlatform")) || (!Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer).CompareTag("MovingPlatform")) || (!Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer).CompareTag("MovingPlatform"))){
+                _baselineVelocityX = 0;
+                _baselineVelocityY = 0;
+                return false;
+            }{
+                return true;
+            }
+
+        }catch{
+                return false;
         }
     }
 
@@ -203,6 +235,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public bool IsWalled(){
+        
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 

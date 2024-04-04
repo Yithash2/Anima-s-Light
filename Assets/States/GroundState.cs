@@ -17,14 +17,21 @@ public class GroundState : BaseState{
 
         _ctx.YCamOffcet = 2;
 
-        _ctx.MaxVelocity = _ctx.PlayerData.GroundVelocity;
+
+        
         
         _ctx.WallJumpCounter = 1000000000;
     }
 
     public override void UpdateState(){
 
+        _ctx.MaxVelocity = _ctx.PlayerData.GroundVelocity + _ctx.BaselineVelocityX;
+
         _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount : _ctx.RunDeccelAmount;
+
+        if(_ctx.BaselineVelocityY < 0){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.BaselineVelocityY);
+        }
 
         CheckSwitchState();
 
@@ -32,7 +39,7 @@ public class GroundState : BaseState{
 
     public override void QuitState()
     {
-        _ctx.MaxVelocity = _ctx.PlayerData.AirVelocity;
+        
     }
 
     public override void CheckSwitchState()
@@ -41,7 +48,7 @@ public class GroundState : BaseState{
             SwitchState(_factory.Jumping());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
+        }else if(!_ctx.IsOnMovingPlatform() && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Falling());
         }
     }

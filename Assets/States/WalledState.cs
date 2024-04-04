@@ -39,9 +39,9 @@ public class WalledState : BaseState
         }else if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
-        SwitchState(_factory.Grounded());
-        _ctx.AudioSource.clip = _ctx.AudioClips[3];
-        _ctx.AudioSource.Play();
+            SwitchState(_factory.Grounded());
+            _ctx.AudioSource.clip = _ctx.AudioClips[3];
+            _ctx.AudioSource.Play();
         }else if(_ctx.JumpPressed){
             SwitchState(_factory.WallJump());
         }else if(!_ctx.IsWalled()){

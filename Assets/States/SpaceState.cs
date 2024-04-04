@@ -31,14 +31,15 @@ public class SpaceState : BaseState
 
     public override void QuitState()
     {
-         _ctx.Rb.drag = 0;
+        _ctx.Rb.drag = 0;
+
     }
 
     public override void CheckSwitchState()
     {
         if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.Jumping());
-        }else if(_ctx.YInput < 0){
+        }else if(_ctx.YInput < 0 && !_ctx.IsGrounded()){
             SwitchState(_factory.GroundSlam());
         }else if(!_ctx.IsSpaced() && _ctx.IsGrounded()){
             SwitchState(_factory.Grounded());

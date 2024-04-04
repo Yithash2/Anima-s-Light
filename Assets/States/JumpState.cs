@@ -76,7 +76,12 @@ public class JumpState : BaseState{
 
         float jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
                 
-        _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce);
+        if(_ctx.IsSpaced()){
+            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY);
+        }else{
+            _ctx.Rb.velocity += new Vector2(0, jumpForce + _ctx.BaselineVelocityY);
+        }
+        
     }
 
     void HandleJumpEnd(){

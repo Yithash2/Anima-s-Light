@@ -29,7 +29,7 @@ public class GroundSlamState : BaseState
 
     public override void UpdateState(){
 
-        _ctx.Rb.velocity = new Vector2(0, Mathf.Clamp(_ctx.Rb.velocity.y, -40, float.MaxValue));  
+        _ctx.Rb.velocity = new Vector2(_ctx.BaselineVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(40 - _ctx.BaselineVelocityY), float.MaxValue));  
 
         CheckSwitchState();
     }

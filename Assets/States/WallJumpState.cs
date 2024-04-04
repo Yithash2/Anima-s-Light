@@ -41,20 +41,20 @@ public class WallJumpState : BaseState
 
     public override void QuitState()
     {
-
+        
     }
 
     public override void CheckSwitchState()
     {
         if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }if(_ctx.YInput < 0 && _ctx.CanMove()){
+        }else if(_ctx.YInput < 0 && _ctx.CanMove()){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
                     _ctx.AudioSource.clip = _ctx.AudioClips[3];
-        _ctx.AudioSource.Play();
-        }else if(_ctx.IsWalled()){
+                    _ctx.AudioSource.Play();
+        }else if(_ctx.IsWalled() && _ctx.CanMove()){
             SwitchState(_factory.Walled());
 
             
