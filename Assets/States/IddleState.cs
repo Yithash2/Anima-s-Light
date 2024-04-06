@@ -4,13 +4,17 @@ public class IddleState : BaseState
 {
     public IddleState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){}
+
+    
+
     public override void EnterState()
     {
 
     }
 
     public override void UpdateState(){
-        if(_ctx.CanMove()){
+
+        if(_ctx.BaselineVelocityX != 0){
             _ctx.Rb.velocity = new Vector2(_ctx.BaselineVelocityX, _ctx.Rb.velocity.y);
         }
         
