@@ -19,6 +19,7 @@ public class MovingPlatforms : MonoBehaviour
     [SerializeField] bool isLooping;
 
     void OnValidate(){
+        pTRvects.Clear();
 
         foreach(Transform t in pointsToReach){
             pTRvects.Add(t.position);

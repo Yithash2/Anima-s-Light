@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class checkpoint : MonoBehaviour, IDataPersistance
@@ -14,15 +15,19 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     public string PlayerTag;
     private bool isActivated = false;
 
+    void Update(){
+
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.CompareTag(PlayerTag) && !isActivated){
+            Spawnpoint.SetParent(transform);
             Spawnpoint.position = transform.position;
             isActivated = true;
             PlayerData.CurrentCheckpointId = id;
         }else if(collider.CompareTag(PlayerTag) && IsPassableMultipleTimes){
-            Spawnpoint.position = transform.position;
+            Spawnpoint.SetParent(transform);
             PlayerData.CurrentCheckpointId = id;
         }
     }

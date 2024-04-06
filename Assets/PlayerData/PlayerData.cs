@@ -26,6 +26,7 @@ public class PlayerData : MonoBehaviour, IDataPersistance
                 if(check.id == CurrentCheckpointId){
                     player.position = check.gameObject.transform.position;
                     respawnPoint.position = check.gameObject.transform.position;
+                    respawnPoint.SetParent(check.gameObject.transform);
                 }
             }
         }

@@ -12,7 +12,6 @@ public class DataPersistanceManager : MonoBehaviour
     public static DataPersistanceManager Instance {get; private set;}
 
     private GameData _gameData;
-    bool wannaSave = true;
     private List<IDataPersistance> dataPersistanceObjects;
     private FileDataHandler dataHandler;
     private void Awake(){

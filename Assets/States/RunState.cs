@@ -36,7 +36,7 @@ public class RunState : BaseState{
 
         _ctx.TargetSpeed = _ctx.XInput * _ctx.MaxVelocity;
 
-        float speedDif = _ctx.TargetSpeed - _ctx.Rb.velocity.x;
+        float speedDif = _ctx.TargetSpeed - (_ctx.Rb.velocity.x - _ctx.BaselineVelocityX);
 
         float movement = speedDif * _ctx.AccelRate;
 
