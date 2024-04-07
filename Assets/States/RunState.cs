@@ -40,6 +40,6 @@ public class RunState : BaseState{
 
         float movement = speedDif * _ctx.AccelRate;
 
-        _ctx.Rb.AddForce((movement + _ctx.BaselineVelocityX) * Vector2.right, ForceMode2D.Force);
+        _ctx.Rb.velocity += (movement + _ctx.BaselineVelocityX) * Time.deltaTime * Vector2.right;
     }
 }

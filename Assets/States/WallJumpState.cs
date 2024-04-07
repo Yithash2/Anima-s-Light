@@ -65,6 +65,8 @@ public class WallJumpState : BaseState
 
         void WallJump(){
 
+        Debug.Log("WallJump");
+
         _ctx.BufferCounter = 0;
         _ctx.JumpPressed = false;
         
