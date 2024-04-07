@@ -24,9 +24,6 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
-
-
         if(_ctx.JumpReleased) {
             HandleJumpEnd();
         }
