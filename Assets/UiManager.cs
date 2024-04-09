@@ -13,7 +13,7 @@ public class UiManager : MonoBehaviour
 
     [Header("Pause Panel")]
     [SerializeField] private Animator _pausePanelAnimator;
-    [SerializeField] private GameObject _firstSelected;
+    [SerializeField] private GameObject _pauseFirstSelected;
     [SerializeField] private AnimationClip _pausePanelClosing;
     [SerializeField] private AnimationClip _pausePanelOppening;
     [SerializeField] private List<MonoBehaviour> _playerControls;
@@ -22,6 +22,19 @@ public class UiManager : MonoBehaviour
     [Header("RestartButton")]
     [SerializeField] private DataPersistanceManager _dataPersistance; 
     [SerializeField] private Scene _currentScene;
+    
+
+    [Header("Option Menu")]
+    [SerializeField] private GameObject _optionMenuButton;
+    [SerializeField] private GameObject _optionMenu;
+    [SerializeField] private GameObject _optionFirstSelected;
+    private bool _optionMenuOpen = false;
+
+    [Header("Main Menu")]
+    [SerializeField] private GameObject _mainMenu;
+
+    private Camera[] cameras;
+    
 
 
     // Start is called before the first frame update
@@ -35,6 +48,9 @@ public class UiManager : MonoBehaviour
 
     void Start(){
         _currentScene = SceneManager.GetActiveScene();
+
+        cameras = FindObjectsOfType<Camera>();
+        SetCameraAspect(cameras);
     }
 
     // Update is called once per frame
@@ -51,7 +67,7 @@ public class UiManager : MonoBehaviour
                 o.enabled = false;
             }
 
-            _eventSystem.SetSelectedGameObject(_firstSelected);
+            _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
             _pausePanelAnimator.Play(_pausePanelOppening.name);
             _pausePanelClosed = false;
             
@@ -68,9 +84,27 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    private void SetCameraAspect(Camera[] cams){
+        foreach (Camera cam in cams){
+            cam.aspect = 16/9;
+        }
+    }
 
-    public void OptionButton(){
-        //TODO : Options
+
+    public void OptionButton(){  
+        if(_optionMenuOpen){
+            _optionMenuOpen = false;
+            _mainMenu.SetActive(true);
+            _optionMenu.SetActive(false);
+            _eventSystem.SetSelectedGameObject(_optionMenuButton);
+        }else{
+            _optionMenuOpen = true;
+            _mainMenu.SetActive(false);
+            _optionMenu.SetActive(true);
+            _eventSystem.SetSelectedGameObject(_optionFirstSelected);
+        }
+        
+        
     }
 
     public void QuitButton(){
