@@ -8,7 +8,7 @@ public class JumpState : BaseState{
     }
     public override void EnterState()
     {
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        //_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
         _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
@@ -76,7 +76,7 @@ public class JumpState : BaseState{
         if(_ctx.IsSpaced()){
             _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY);
         }else{
-            _ctx.Rb.velocity += new Vector2(0, jumpForce + _ctx.BaselineVelocityY);
+            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY).normalized * jumpForce;
         }
         
     }

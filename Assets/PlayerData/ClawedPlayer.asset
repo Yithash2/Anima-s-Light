@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b030891cb2e6884ea284839d13c8d44, type: 3}
   m_Name: ClawedPlayer
   m_EditorClassIdentifier: 
-  initalJumpHeight: 4
+  initalJumpHeight: 6
   wallJumpHeight: 8
   wallJumpLength: 6
   gravityMult: 1.3
   groundSlamMult: 6
   clampedVelocity: 20
   slideSpeed: 0.5
-  _wallJumpControlTime: 0.2
-  acc: 2
+  _wallJumpControlTime: 0.13
+  acc: 5
   _airVelocity: 15
   _groundVelocity: 20
-  _runAcceleration: 1.2
+  _runAcceleration: 3
   _runDecceleration: 6
   _airMult: 3
