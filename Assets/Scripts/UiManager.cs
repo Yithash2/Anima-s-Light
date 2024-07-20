@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class UiManager : MonoBehaviour
     [Header("Main Menu")]
     [SerializeField] private GameObject _mainMenu;
 
+    [Header("Play Menu")]
+    [SerializeField] private GameObject _playMenuButton;
+    [SerializeField] private GameObject _playMenu;
+    [SerializeField] private GameObject _playFirstSelected;
+    [SerializeField] private Button _continueButton;
+    private bool _playMenuOpen = false;
+    [Space(2)]
+
     private Camera[] cameras;
     
 
@@ -49,8 +58,9 @@ public class UiManager : MonoBehaviour
     void Start(){
         _currentScene = SceneManager.GetActiveScene();
 
-        cameras = FindObjectsOfType<Camera>();
-        SetCameraAspect(cameras);
+        if(!DataPersistanceManager.Instance.HasGameData()){
+            _continueButton.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -84,11 +94,6 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    private void SetCameraAspect(Camera[] cams){
-        foreach (Camera cam in cams){
-            cam.aspect = 16/9;
-        }
-    }
 
 
     public void OptionButton(){  
@@ -104,7 +109,34 @@ public class UiManager : MonoBehaviour
             _eventSystem.SetSelectedGameObject(_optionFirstSelected);
         }
         
-        
+    }
+
+    public void PlayButton(){
+        if(_playMenuOpen){
+            _playMenuOpen = false;
+            _mainMenu.SetActive(true);
+            _playMenu.SetActive(false);
+            _eventSystem.SetSelectedGameObject(_playMenuButton);
+        }else{
+            _playMenuOpen = true;
+            _mainMenu.SetActive(false);
+            _playMenu.SetActive(true);
+            _eventSystem.SetSelectedGameObject(_playFirstSelected);
+        }
+    }
+
+    public void ContinueButton(){
+        SceneManager.LoadScene(1);
+    }
+
+    public void NewGameButton(){
+        DataPersistanceManager.Instance.NewGame();
+        SceneManager.LoadScene(1);
+    }
+
+    public void MenuPauseButton(){
+        _dataPersistance.SaveGame();
+        SceneManager.LoadScene("LevelMenu");
     }
 
     public void QuitButton(){
