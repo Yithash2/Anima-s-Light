@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 public class JumpState : BaseState{
     
     public JumpState(PlayerStateMachine currentContext, StateFactory stateFactory)
@@ -65,7 +66,6 @@ public class JumpState : BaseState{
     void HandleJumpStart(){
 
         _ctx.BufferCounter = 0;
-        _ctx.JumpPressed = false;
         _ctx.JumpCount ++;
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
 
@@ -79,11 +79,13 @@ public class JumpState : BaseState{
             _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY).normalized * jumpForce;
         }
         
+        _ctx.JumpPressed = false;
     }
 
     void HandleJumpEnd(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
         _ctx.IsJumping = true;
     }
+
 
 }
