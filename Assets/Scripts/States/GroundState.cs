@@ -19,7 +19,7 @@ public class GroundState : BaseState{
 
 
         
-        
+        _ctx.BufferCounter = 0;
         _ctx.WallJumpCounter = 1000000000;
     }
 

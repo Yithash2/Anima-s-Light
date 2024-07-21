@@ -170,11 +170,13 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)) _jumpPressed = true;
 
-        if((_jumpPressed && !IsGrounded()) ^ (_jumpPressed && !IsWalled())){
+        if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
+                Debug.Log(_bufferCounter);
             }else{
                 _jumpPressed = false;
+                _bufferCounter = 0;
             }
         }
         
@@ -182,9 +184,11 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void CoyoteTimer(){
-        if(_coyoteCounter <= CoyoteTime){
+        if(_coyoteCounter < CoyoteTime){
             _coyoteCounter += Time.deltaTime;
             _jumpCount = 0;
+        }else{
+            _jumpCount = _numberOfJumps;
         }
 
     }
