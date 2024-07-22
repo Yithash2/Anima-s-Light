@@ -44,14 +44,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
 
-    [Header ("Run")]
-    float _runAccelAmount;
-    float _runDeccelAmount;
-    float _maxVelocity;
     [SerializeField] private float _baselineVelocityX;
-    
-    float _accelRate;
-    float _targetSpeed;
+    private float _acceleration;
 
     public cam _camera;
     //Inputs
@@ -72,19 +66,15 @@ public class PlayerStateMachine : MonoBehaviour
 
 
     #region Get Sets
+    public float Acceleration {get { return _acceleration;} set { _acceleration = value; } }
     public float BaselineVelocityX {get {return _baselineVelocityX;} set{_baselineVelocityX = value;}}
     public float BaselineVelocityY {get {return _baselineVelocityY;} set{_baselineVelocityY = value;}}
     public int NumberOfJumps {get {return _numberOfJumps;} set{_numberOfJumps = value;}}
     public int JumpCount {get {return _jumpCount;} set{_jumpCount = value;}}
-    public float RunAccelAmount {get {return _runAccelAmount;}}
-    public float RunDeccelAmount {get {return _runDeccelAmount;}}
-    public float MaxVelocity {get {return _maxVelocity;} set {_maxVelocity = value;}}
     public AudioSource AudioSource {get {return _audioSource;}}
     public AudioClip[] AudioClips {get {return _audioClips;}}
     public float WallJumpCounter {get {return _wallJumpCounter;}set {_wallJumpCounter = value;}}
     public float YInput {get {return _yInput;}}
-    public float TargetSpeed {get{return _targetSpeed;} set {_targetSpeed = value;}}
-    public float AccelRate {get{return _accelRate;} set{_accelRate = value;}}
     public Animator Animator {get {return _animator;}}
     public AnimationClip[] Animations {get {return _animations;}}
     public float XInput {get {return _xInput;}}
@@ -130,9 +120,6 @@ public class PlayerStateMachine : MonoBehaviour
         }
 
         Inputs();
-
-        _runAccelAmount = 50 * PlayerData.RunAcceleration / _maxVelocity;
-        _runDeccelAmount = 50 * PlayerData.RunDecceleration / _maxVelocity;
 
     }
 

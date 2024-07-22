@@ -25,9 +25,7 @@ public class GroundState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.MaxVelocity = _ctx.PlayerData.GroundVelocity + _ctx.BaselineVelocityX;
-
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount : _ctx.RunDeccelAmount;
+        _ctx.Acceleration = _ctx.PlayerData.RunAcceleration;
 
         if(_ctx.BaselineVelocityY < 0){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.BaselineVelocityY);

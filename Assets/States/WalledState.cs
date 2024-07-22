@@ -12,15 +12,13 @@ public class WalledState : BaseState
 
         _ctx.Animator.Play(_ctx.Animations[4].name);
 
-        _ctx.MaxVelocity = _ctx.PlayerData.AirVelocity;
-
         _ctx.WallJumpCounter = 0;
         
     }
 
     public override void UpdateState()
     {
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
+        _ctx.Acceleration = _ctx.PlayerData.AirAcceleration;
 
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.BaselineVelocityY, float.MaxValue));
 

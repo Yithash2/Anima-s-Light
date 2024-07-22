@@ -34,12 +34,10 @@ public class RunState : BaseState{
 
     void Run(){
 
-        _ctx.TargetSpeed = _ctx.XInput * _ctx.MaxVelocity;
+        _ctx.Rb.AddForce(new Vector2(_ctx.XInput, 0) * _ctx.Acceleration);
 
-        float speedDif = _ctx.TargetSpeed - (_ctx.Rb.velocity.x - _ctx.BaselineVelocityX);
-
-        float movement = speedDif * _ctx.AccelRate;
-
-        _ctx.Rb.velocity += (movement + _ctx.BaselineVelocityX) * Time.deltaTime * Vector2.right;
+        if(Mathf.Abs(_ctx.Rb.velocity.x) > _ctx.PlayerData.MaxSpeed){
+            _ctx.Rb.velocity = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _ctx.PlayerData.MaxSpeed + _ctx.BaselineVelocityX, _ctx.Rb.velocity.y);
+        }
     }
 }
