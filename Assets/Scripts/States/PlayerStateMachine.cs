@@ -46,6 +46,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     [SerializeField] private float _baselineVelocityX;
     private float _acceleration;
+    [SerializeField, Range(0.01f, 1)] private float _airDrag;
 
     public cam _camera;
     //Inputs
@@ -143,8 +144,11 @@ public class PlayerStateMachine : MonoBehaviour
         }
 
         
-
-
+        
+        if(!IsOnMovingPlatform()){
+            _baselineVelocityX = Mathf.Lerp(_baselineVelocityX, 0, _airDrag);
+            _baselineVelocityX = Mathf.Lerp(_baselineVelocityY, 0, _airDrag);
+        }
 
         
 
@@ -157,11 +161,12 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)) _jumpPressed = true;
 
-        if((_jumpPressed && !IsGrounded()) ^ (_jumpPressed && !IsWalled())){
+        if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
                 Debug.Log(_bufferCounter);
             }else{
+                _bufferCounter = 0;
                 _jumpPressed = false;
                 _bufferCounter = 0;
             }
@@ -174,6 +179,8 @@ public class PlayerStateMachine : MonoBehaviour
         if(_coyoteCounter < CoyoteTime){
             _coyoteCounter += Time.deltaTime;
             _jumpCount = 0;
+        }else{
+            _jumpCount = _numberOfJumps;
         }
 
     }
