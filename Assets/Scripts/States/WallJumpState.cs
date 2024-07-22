@@ -33,7 +33,7 @@ public class WallJumpState : BaseState
     {
         _ctx.WallJumpCounter += Time.deltaTime;
 
-        _ctx.AccelRate = (Mathf.Abs(_ctx.TargetSpeed) > 0.01f) ? _ctx.RunAccelAmount * _ctx.PlayerData.AirMult : _ctx.RunDeccelAmount * _ctx.PlayerData.AirMult;
+        _ctx.Acceleration = _ctx.PlayerData.AirAcceleration;
 
         CheckSwitchState();
 

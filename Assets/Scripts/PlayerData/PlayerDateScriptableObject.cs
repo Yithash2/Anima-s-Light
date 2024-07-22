@@ -19,30 +19,27 @@ public class PlayerDateScriptableObject : ScriptableObject
     #endregion
     
     #region Run
-    [SerializeField] float acc;
-    [SerializeField] float _airVelocity;
-    [SerializeField] float _groundVelocity;
-    [SerializeField] float _runAcceleration;
-    [SerializeField] float _runDecceleration;
-    [SerializeField] float _airMult;
+    [SerializeField] private float _runAcceleration;
+    [SerializeField] private float _airAcceleration;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _linearDrag;
+
 
     #endregion
 
     #region Get Sets
     public float WallJumpControlTime {get {return _wallJumpControlTime;} }
     public float GroundSlamMult {get {return groundSlamMult;}}
-    public float GroundVelocity {get {return _groundVelocity;}}
-    public float AirVelocity {get {return _airVelocity;}}
-    public float AirMult {get {return _airMult;}}
-    public float RunAcceleration {get {return _runAcceleration;}}
-    public float RunDecceleration {get {return _runDecceleration;}}
     public float SlideSpeed {get {return slideSpeed;}}
-    public float Accel {get {return acc;}}
     public float ClampedVelocity {get {return clampedVelocity;}}
     public float GravityMult {get {return gravityMult;}}
     public float InitalJumpHeight {get {return initalJumpHeight;}}
     public float WallJumpHeight {get {return wallJumpHeight;}}
     public float WallJumpLength {get {return wallJumpLength;}}
+    public float RunAcceleration {get {return _runAcceleration;}}
+    public float AirAcceleration {get {return _airAcceleration;}}
+    public float MaxSpeed {get {return _maxSpeed;}}
+    public float LinearDrag {get {return _linearDrag;}}
     #endregion
 
 }
