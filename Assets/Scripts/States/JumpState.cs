@@ -19,6 +19,8 @@ public class JumpState : BaseState{
 
         _ctx.AudioSource.Play();
 
+        _ctx.Rb.velocity = Vector2.zero;
+
         HandleJumpStart();
         
     }
@@ -46,7 +48,7 @@ public class JumpState : BaseState{
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];
-        _ctx.AudioSource.Play();
+            _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= -0.5){

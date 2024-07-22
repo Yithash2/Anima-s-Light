@@ -20,7 +20,9 @@ public class JumpBoostersPowerUp : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.CompareTag(playerTag) && _isActivated){
-            Player.Rb.velocity = new Vector2(Player.Rb.velocity.x /11, Player.Rb.velocity.y /11);
+            Player.Rb.velocity = Vector2.zero;
+            Player.CoyoteCounter = 0;
+            Player.BufferCounter = 0;
             Player.JumpCount = 0;
             _isActivated = false;
         }

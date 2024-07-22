@@ -15,12 +15,12 @@ MonoBehaviour:
   initalJumpHeight: 6
   wallJumpHeight: 4
   wallJumpLength: 8
-  gravityMult: 1.3
-  groundSlamMult: 3
+  gravityMult: 2
+  groundSlamMult: 6
   clampedVelocity: 20
   slideSpeed: 3
   _wallJumpControlTime: 0.4
   _runAcceleration: 50
-  _airAcceleration: 100
-  _maxSpeed: 20
+  _airAcceleration: 200
+  _maxSpeed: 15
   _linearDrag: 0

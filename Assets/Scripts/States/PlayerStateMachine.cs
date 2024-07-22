@@ -114,7 +114,10 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
-            CoyoteTimer();    
+            if(_jumpCount < 1){
+                CoyoteTimer();
+            }
+                
         }else{
             _coyoteCounter = 0;
             _jumpCount = 0;
@@ -180,7 +183,7 @@ public class PlayerStateMachine : MonoBehaviour
             _coyoteCounter += Time.deltaTime;
             _jumpCount = 0;
         }else{
-            _jumpCount = _numberOfJumps;
+           _jumpCount = 1;
         }
 
     }
