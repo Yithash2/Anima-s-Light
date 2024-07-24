@@ -1,4 +1,5 @@
 using System.Globalization;
+using Unity.Collections;
 using UnityEngine;
 
 
@@ -14,7 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     #region Jump related
     private Rigidbody2D _rb;
-    [SerializeField] private float _baselineVelocityY;
+    [SerializeField] private float _platformVelocityY;
     [SerializeField] private int _numberOfJumps = 1;
     private int _jumpCount;
 
@@ -44,8 +45,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private float _baselineVelocityX;
-    private float _acceleration;
+    [SerializeField] private float _platformVelocityX;
+    [SerializeField] private float _platformCoyoteTime;
+    [ReadOnly, SerializeField] private float _platformCoyoteCounter;
+    private float _accelerationTime;
     [SerializeField, Range(0.01f, 1)] private float _airDrag;
 
     public cam _camera;
@@ -64,12 +67,22 @@ public class PlayerStateMachine : MonoBehaviour
     BaseState _currentState;
     StateFactory _states;
 
+    private bool _isOnMovingPlatform;
+    private float _latePlatformVelocityX;
+    private float _latePlatformVelocityY;
+    private float _platformAccelerationX;
+    private float _platformAccelerationY;
+
+
+
 
 
     #region Get Sets
-    public float Acceleration {get { return _acceleration;} set { _acceleration = value; } }
-    public float BaselineVelocityX {get {return _baselineVelocityX;} set{_baselineVelocityX = value;}}
-    public float BaselineVelocityY {get {return _baselineVelocityY;} set{_baselineVelocityY = value;}}
+    public Vector2 LatePlatformVelocity {get { return new Vector2(_latePlatformVelocityX, _latePlatformVelocityY);}set { _latePlatformVelocityX = value.x; _latePlatformVelocityY = value.y; } }
+    public bool IsOnMovingPlatform {get {return _isOnMovingPlatform;}set { _isOnMovingPlatform = value;} }
+    public float AccelerationTime {get { return _accelerationTime;} set { _accelerationTime = value; } }
+    public float PlatformVelocityX {get {return _platformVelocityX;} set{_platformVelocityX = value;}}
+    public float PlatformVelocityY {get {return _platformVelocityY;} set{_platformVelocityY = value;}}
     public int NumberOfJumps {get {return _numberOfJumps;} set{_numberOfJumps = value;}}
     public int JumpCount {get {return _jumpCount;} set{_jumpCount = value;}}
     public AudioSource AudioSource {get {return _audioSource;}}
@@ -110,6 +123,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    void Start(){
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -125,6 +142,42 @@ public class PlayerStateMachine : MonoBehaviour
 
         Inputs();
 
+        if(_platformAccelerationX != 0 && _platformVelocityX == 0){
+            _platformCoyoteCounter = 0;
+        }
+
+        
+
+    }
+
+    void FixedUpdate(){
+
+        _currentState.UpdateStates();
+
+        if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
+        {
+            Flip();
+        }
+
+    }
+
+    void LateUpdate(){
+
+        if(_isOnMovingPlatform){
+            _platformAccelerationX = (_latePlatformVelocityX - _platformVelocityX)/Time.deltaTime;
+            _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.deltaTime;
+
+            PlatformCoyoteTimer(); 
+         
+        }else{
+            _latePlatformVelocityX = Mathf.Lerp(_latePlatformVelocityX, 0, _airDrag);
+            _latePlatformVelocityY = Mathf.Lerp(_latePlatformVelocityY, 0, _airDrag);
+            _platformVelocityX = Mathf.Lerp(_platformVelocityX, 0, _airDrag);
+            _platformVelocityX = Mathf.Lerp(_platformVelocityY, 0, _airDrag);
+        }
+        
+
+        
     }
 
     
@@ -137,25 +190,22 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    void FixedUpdate(){
+    void PlatformCoyoteTimer(){
+        if(_platformCoyoteCounter < _platformCoyoteTime){
+            _platformCoyoteCounter+= Time.deltaTime;
 
-        _currentState.UpdateStates();
+        }else{
+            if(!(_platformAccelerationX != 0 && _platformVelocityX == 0)){
+                _latePlatformVelocityX = _platformVelocityX;
+                _latePlatformVelocityY = _platformVelocityY;
+            }
+            
 
-        if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
-        {
-            Flip();
         }
-
-        
-        
-        if(!IsOnMovingPlatform()){
-            _baselineVelocityX = Mathf.Lerp(_baselineVelocityX, 0, _airDrag);
-            _baselineVelocityX = Mathf.Lerp(_baselineVelocityY, 0, _airDrag);
-        }
-
-        
-
     }
+    
+
+    
 
     void Inputs(){
         _yInput = Input.GetAxisRaw("Vertical");
@@ -202,8 +252,8 @@ public class PlayerStateMachine : MonoBehaviour
         if(_coyoteCounter <= _coyoteTime){
             try{
                 if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer).CompareTag("MovingPlatform")){
-                    _baselineVelocityX = 0;
-                    _baselineVelocityY = 0;
+                    _platformVelocityX = 0;
+                    _platformVelocityY = 0;
                 }
             }catch{
 
@@ -214,20 +264,6 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public bool IsOnMovingPlatform(){
-        try{
-            if((!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer).CompareTag("MovingPlatform")) || (!Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer).CompareTag("MovingPlatform")) || (!Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer).CompareTag("MovingPlatform"))){
-                _baselineVelocityX = 0;
-                _baselineVelocityY = 0;
-                return false;
-            }{
-                return true;
-            }
-
-        }catch{
-                return false;
-        }
-    }
 
     public bool IsSpaced(){
         return Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer);

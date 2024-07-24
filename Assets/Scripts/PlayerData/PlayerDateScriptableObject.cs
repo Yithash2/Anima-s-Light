@@ -36,8 +36,8 @@ public class PlayerDateScriptableObject : ScriptableObject
     public float InitalJumpHeight {get {return initalJumpHeight;}}
     public float WallJumpHeight {get {return wallJumpHeight;}}
     public float WallJumpLength {get {return wallJumpLength;}}
-    public float RunAcceleration {get {return _runAcceleration;}}
-    public float AirAcceleration {get {return _airAcceleration;}}
+    public float GroundAccelTime {get {return _runAcceleration;}}
+    public float AirAccelTime {get {return _airAcceleration;}}
     public float MaxSpeed {get {return _maxSpeed;}}
     public float LinearDrag {get {return _linearDrag;}}
     #endregion

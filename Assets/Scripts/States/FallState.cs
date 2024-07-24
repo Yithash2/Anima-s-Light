@@ -17,9 +17,9 @@ public class FallState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity - _ctx.BaselineVelocityY), float.MaxValue));
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity - _ctx.PlatformVelocityY), float.MaxValue));
 
-        _ctx.Acceleration = _ctx.PlayerData.AirAcceleration;
+        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
         
         CheckSwitchState();

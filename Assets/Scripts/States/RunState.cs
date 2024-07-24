@@ -4,6 +4,7 @@ public class RunState : BaseState{
     public RunState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){}
 
+    float _targetSpeed;
 
     public override void EnterState()
     {
@@ -11,16 +12,15 @@ public class RunState : BaseState{
 
     public override void UpdateState(){
 
-        
-        
+        _targetSpeed = Mathf.Abs(_ctx.LatePlatformVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > _ctx.PlayerData.MaxSpeed ){
+        if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
             Run();
         }
 
-        if(_ctx.XInput != 0){
-            Acceleration();
-        }
+        
+       Acceleration();
+        
 
         CheckSwitchState();
     }
@@ -43,13 +43,13 @@ public class RunState : BaseState{
     }
 
     void Run(){
-
-        _ctx.Rb.velocity = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * (_ctx.PlayerData.MaxSpeed + _ctx.BaselineVelocityX), _ctx.Rb.velocity.y);
-        
+        Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
+        _ctx.Rb.velocity = _direction;
     }
 
     void Acceleration(){
-        _ctx.Rb.AddForce(new Vector2(_ctx.XInput, 0) * _ctx.Acceleration);
+        Vector2 _direction = new Vector2(_ctx.XInput, 0) * _targetSpeed / _ctx.AccelerationTime;
+        _ctx.Rb.AddForce(_direction);
     }
 
     void Deceleration(){

@@ -41,7 +41,7 @@ public class MovingPlatforms : MonoBehaviour
         }else if(_waitCounter > WaitTime){
             Vector3 direction = pointsToReach[_currentTargetPoint].position - transform.position;
             RB.velocity = direction.normalized * platformSpeed;
-                    }
+            }
     }
 
     int GetcurrentIndex(int currentPoint){
@@ -73,24 +73,62 @@ public class MovingPlatforms : MonoBehaviour
         
     }
 
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
+            PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
+            if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
+        }
+    }
 
     void OnCollisionStay2D(Collision2D collision){
 
         if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
             PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
-            if(_allowPlayerXDisplacement)PSM.BaselineVelocityX = RB.velocity.x;
-            if(_allowPlayerYDisplacement)PSM.BaselineVelocityY = RB.velocity.y;
+            if(_allowPlayerXDisplacement)PSM.PlatformVelocityX = RB.velocity.x;
+            if(_allowPlayerYDisplacement)PSM.PlatformVelocityY = RB.velocity.y;
         }
     }
 
-        void OnTriggerStay2D(Collider2D collider){
+    void OnCollisionExit2D(Collision2D collision){
+        if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
+            PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
+            if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collider){
         Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
         if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
 
             if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
                 PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
-                if(_allowPlayerXDisplacement)PSM.BaselineVelocityX = RB.velocity.x;
-                if(_allowPlayerYDisplacement)PSM.BaselineVelocityY = RB.velocity.y;
+                if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
+            }
+
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider){
+        Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
+        if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
+
+            if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
+                PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
+                if(_allowPlayerXDisplacement)PSM.PlatformVelocityX = RB.velocity.x;
+                if(_allowPlayerYDisplacement)PSM.PlatformVelocityY = RB.velocity.y;
+            }
+
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider){
+        Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
+        if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
+
+            if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
+                PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
+                if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
             }
 
         }

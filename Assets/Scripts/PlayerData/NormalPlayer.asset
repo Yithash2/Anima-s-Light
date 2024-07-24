@@ -20,7 +20,7 @@ MonoBehaviour:
   clampedVelocity: 20
   slideSpeed: 3
   _wallJumpControlTime: 0.4
-  _runAcceleration: 50
-  _airAcceleration: 200
+  _runAcceleration: 0.4
+  _airAcceleration: 0.1
   _maxSpeed: 15
   _linearDrag: 0

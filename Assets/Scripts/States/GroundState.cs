@@ -25,10 +25,10 @@ public class GroundState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.Acceleration = _ctx.PlayerData.RunAcceleration;
+        _ctx.AccelerationTime = _ctx.PlayerData.GroundAccelTime;
 
-        if(_ctx.BaselineVelocityY < 0){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.BaselineVelocityY);
+        if(_ctx.PlatformVelocityY < 0){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.PlatformVelocityY);
         }
 
         CheckSwitchState();
@@ -46,7 +46,7 @@ public class GroundState : BaseState{
             SwitchState(_factory.Jumping());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsOnMovingPlatform() && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
+        }else if(!_ctx.IsOnMovingPlatform && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Falling());
         }
     }

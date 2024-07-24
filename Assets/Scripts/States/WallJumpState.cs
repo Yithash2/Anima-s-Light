@@ -33,7 +33,7 @@ public class WallJumpState : BaseState
     {
         _ctx.WallJumpCounter += Time.deltaTime;
 
-        _ctx.Acceleration = _ctx.PlayerData.AirAcceleration;
+        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
         CheckSwitchState();
 
@@ -70,10 +70,10 @@ public class WallJumpState : BaseState
         _ctx.BufferCounter = 0;
         _ctx.JumpPressed = false;
         
-        float verticalJumpForce = Mathf.Sqrt(_ctx.PlayerData.WallJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
+        float verticalJumpForce = Mathf.Sqrt((_ctx.PlayerData.WallJumpHeight + _ctx.LatePlatformVelocity.y) * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * _ctx.Rb.gravityScale);
         float totalTimeInAir = -2 * timeToPeak;
-        float horizontalJumpForce = _ctx.PlayerData.WallJumpLength / totalTimeInAir;
+        float horizontalJumpForce = (_ctx.PlayerData.WallJumpLength + _ctx.LatePlatformVelocity.x) / totalTimeInAir;
 
         float wallJumpDirection = -_ctx.PlayerTransform.localScale.x;
 

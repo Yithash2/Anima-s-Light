@@ -14,10 +14,11 @@ public class IddleState : BaseState
 
     public override void UpdateState(){
 
-        if(_ctx.BaselineVelocityX != 0){
-            _ctx.Rb.velocity = new Vector2(_ctx.BaselineVelocityX, _ctx.Rb.velocity.y);
+        if(_ctx.IsOnMovingPlatform && _currentSuperState != _factory.Jumping()){
+            _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, _ctx.Rb.velocity.y);
         }
-        
+
+
         CheckSwitchState();
     }
 

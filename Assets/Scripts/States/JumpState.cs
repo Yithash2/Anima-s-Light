@@ -19,7 +19,7 @@ public class JumpState : BaseState{
 
         _ctx.AudioSource.Play();
 
-        _ctx.Rb.velocity = Vector2.zero;
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
         HandleJumpStart();
         
@@ -76,9 +76,9 @@ public class JumpState : BaseState{
         float jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
                 
         if(_ctx.IsSpaced()){
-            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY);
+            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce);
         }else{
-            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce + _ctx.BaselineVelocityY).normalized * jumpForce;
+            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce);
         }
         
         _ctx.JumpPressed = false;
