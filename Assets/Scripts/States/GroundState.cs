@@ -14,6 +14,7 @@ public class GroundState : BaseState{
         _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
+        _ctx.Rb.drag = 0.5f;
 
         _ctx.YCamOffcet = 2;
 
@@ -37,7 +38,7 @@ public class GroundState : BaseState{
 
     public override void QuitState()
     {
-        
+        _ctx.Rb.drag = 0;
     }
 
     public override void CheckSwitchState()

@@ -210,7 +210,7 @@ public class PlayerStateMachine : MonoBehaviour
             _platformAccelerationX = (_latePlatformVelocityX - _platformVelocityX)/Time.fixedDeltaTime;
             _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.fixedDeltaTime;      
          
-        }else{    
+        }else if(!_isJumping){    
 
             _latePlatformVelocityX = Mathf.Lerp(_latePlatformVelocityX, 0, _airDrag);
             _latePlatformVelocityY = Mathf.Lerp(_latePlatformVelocityY, 0, _airDrag);

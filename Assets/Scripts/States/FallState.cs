@@ -11,8 +11,7 @@ public class FallState : BaseState{
     {
         _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
-
-         _ctx.YCamOffcet = -1;
+        _ctx.YCamOffcet = -1;
 
     }
 

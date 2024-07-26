@@ -52,6 +52,7 @@ public class JumpState : BaseState{
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= -0.5){
             SwitchState(_factory.Falling());
+            _ctx.StoredVelocity = Vector2.zero;
         }
     }
 
