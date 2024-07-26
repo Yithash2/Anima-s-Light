@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Globalization;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -78,7 +80,9 @@ public class PlayerStateMachine : MonoBehaviour
 
 
     #region Get Sets
-    public Vector2 LatePlatformVelocity {get { return new Vector2(_latePlatformVelocityX, _latePlatformVelocityY);}set { _latePlatformVelocityX = value.x; _latePlatformVelocityY = value.y; } }
+    public float StoredVelocityResetCounter {get {return _platformCoyoteCounter;}set {_platformCoyoteCounter = value;}}
+    public Vector2 PlatformAcceleration {get { return new Vector2(_platformAccelerationX, _platformAccelerationY);}set { _platformAccelerationX = value.x; _platformAccelerationY = value.y; } }
+    public Vector2 StoredVelocity {get { return new Vector2(_latePlatformVelocityX, _latePlatformVelocityY);}set { _latePlatformVelocityX = value.x; _latePlatformVelocityY = value.y; } }
     public bool IsOnMovingPlatform {get {return _isOnMovingPlatform;}set { _isOnMovingPlatform = value;} }
     public float AccelerationTime {get { return _accelerationTime;} set { _accelerationTime = value; } }
     public float PlatformVelocityX {get {return _platformVelocityX;} set{_platformVelocityX = value;}}
@@ -142,8 +146,10 @@ public class PlayerStateMachine : MonoBehaviour
 
         Inputs();
 
-        if(_platformAccelerationX != 0 && _platformVelocityX == 0){
+        if(_isOnMovingPlatform && _platformAccelerationX != 0 && _platformVelocityX == 0){
             _platformCoyoteCounter = 0;
+        }else if(_isOnMovingPlatform){
+            _platformCoyoteCounter = _platformCoyoteTime;
         }
 
         
@@ -159,26 +165,19 @@ public class PlayerStateMachine : MonoBehaviour
             Flip();
         }
 
+        StartCoroutine(LateFixedUpdate());
+
     }
 
     void LateUpdate(){
 
-        if(_isOnMovingPlatform){
-            _platformAccelerationX = (_latePlatformVelocityX - _platformVelocityX)/Time.deltaTime;
-            _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.deltaTime;
-
-            PlatformCoyoteTimer(); 
-         
-        }else{
-            _latePlatformVelocityX = Mathf.Lerp(_latePlatformVelocityX, 0, _airDrag);
-            _latePlatformVelocityY = Mathf.Lerp(_latePlatformVelocityY, 0, _airDrag);
-            _platformVelocityX = Mathf.Lerp(_platformVelocityX, 0, _airDrag);
-            _platformVelocityX = Mathf.Lerp(_platformVelocityY, 0, _airDrag);
-        }
+        
+        
         
 
-        
     }
+
+
 
     
 
@@ -186,6 +185,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(collision.gameObject.CompareTag(_deadlyTag)){
             Rb.velocity = new Vector2(0, 0);
+            
             transform.position = respawnPoint.position;
         }
     }
@@ -203,10 +203,33 @@ public class PlayerStateMachine : MonoBehaviour
 
         }
     }
-    
 
-    
+    IEnumerator LateFixedUpdate(){
+        yield return new WaitForEndOfFrame();
+        if(_isOnMovingPlatform){
+            _platformAccelerationX = (_latePlatformVelocityX - _platformVelocityX)/Time.fixedDeltaTime;
+            _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.fixedDeltaTime;      
+         
+        }else{    
 
+            _latePlatformVelocityX = Mathf.Lerp(_latePlatformVelocityX, 0, _airDrag);
+            _latePlatformVelocityY = Mathf.Lerp(_latePlatformVelocityY, 0, _airDrag);
+            _platformVelocityX = Mathf.Lerp(_platformVelocityX, 0, _airDrag);
+            _platformVelocityY = Mathf.Lerp(_platformVelocityY, 0, _airDrag);
+        }
+
+        PlatformCoyoteTimer();
+        
+        if(_isJumping && _platformAccelerationX != 0 && _platformVelocityX == 0){
+            _rb.velocity += StoredVelocity; 
+            yield return 5;
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
+            _isJumping = false;
+        }
+        
+    }
+    
     void Inputs(){
         _yInput = Input.GetAxisRaw("Vertical");
 

@@ -12,7 +12,7 @@ public class RunState : BaseState{
 
     public override void UpdateState(){
 
-        _targetSpeed = Mathf.Abs(_ctx.LatePlatformVelocity.x) + _ctx.PlayerData.MaxSpeed;
+        _targetSpeed = Mathf.Abs(_ctx.PlatformVelocityX) + _ctx.PlayerData.MaxSpeed;
 
         if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
             Run();

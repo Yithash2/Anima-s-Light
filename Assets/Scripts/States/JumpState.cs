@@ -9,8 +9,6 @@ public class JumpState : BaseState{
     }
     public override void EnterState()
     {
-        //_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
-
         _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.Rb.gravityScale = _ctx.GravityScale;
@@ -27,6 +25,7 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
+
         if(_ctx.JumpReleased) {
             HandleJumpEnd();
         }
@@ -36,7 +35,7 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
-
+       
     }
 
     public override void CheckSwitchState()
@@ -74,19 +73,18 @@ public class JumpState : BaseState{
         _ctx.IsJumping = true;
 
         float jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
-                
-        if(_ctx.IsSpaced()){
-            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce);
-        }else{
-            _ctx.Rb.velocity += new Vector2(_ctx.Rb.velocity.x, jumpForce);
-        }
+
+            
+        _ctx.Rb.velocity += new Vector2(0, jumpForce);
+        
+        
         
         _ctx.JumpPressed = false;
     }
 
     void HandleJumpEnd(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
-        _ctx.IsJumping = true;
+        _ctx.IsJumping = false;
     }
 
 
