@@ -74,7 +74,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private bool _isOnMovingPlatform;
     private float _latePlatformVelocityX;
-    public float _latePlatformVelocityY;
+    private float _latePlatformVelocityY;
     private float _platformAccelerationX;
     private float _platformAccelerationY;
 
