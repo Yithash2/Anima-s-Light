@@ -14,7 +14,6 @@ public class GroundState : BaseState{
         _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
-        _ctx.Rb.drag = 0.5f;
 
         _ctx.YCamOffcet = 2;
 
@@ -30,6 +29,11 @@ public class GroundState : BaseState{
 
         if(_ctx.PlatformVelocityY < 0){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.PlatformVelocityY);
+        if(!_ctx.IsOnMovingPlatform){
+            _ctx.Rb.drag = 0.5f;
+            _ctx.StoredVelocity = Vector2.zero;
+            _ctx.PlatformVelocityX = 0;
+            _ctx.PlatformVelocityY = 0;
         }
 
         CheckSwitchState();

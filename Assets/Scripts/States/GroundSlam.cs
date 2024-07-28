@@ -20,6 +20,8 @@ public class GroundSlamState : BaseState
 
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GroundSlamMult;
 
+        _ctx.Rb.velocity = new Vector2(_ctx.StoredVelocity.x, _ctx.Rb.velocity.y);
+
         _ctx.YCamOffcet = -3;
 
 

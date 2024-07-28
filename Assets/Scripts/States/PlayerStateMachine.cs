@@ -34,6 +34,9 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Vector2 spaceSize;
     [SerializeField] LayerMask SpaceLayer;
 
+    [SerializeField] Transform _suffocationCheck;
+    [SerializeField] float _suffocationRadius;
+
     [Header("Fast Fall")]
     float _gravityScale;
 
@@ -71,7 +74,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private bool _isOnMovingPlatform;
     private float _latePlatformVelocityX;
-    private float _latePlatformVelocityY;
+    public float _latePlatformVelocityY;
     private float _platformAccelerationX;
     private float _platformAccelerationY;
 
@@ -152,6 +155,10 @@ public class PlayerStateMachine : MonoBehaviour
             _platformCoyoteCounter = _platformCoyoteTime;
         }
 
+        if(IsSuffocating()){
+            tag = "Respawn";
+        }
+
         
 
     }
@@ -166,6 +173,10 @@ public class PlayerStateMachine : MonoBehaviour
         }
 
         StartCoroutine(LateFixedUpdate());
+
+        if(tag == "Respawn"){
+            Respawn();
+        }
 
     }
 
@@ -184,10 +195,16 @@ public class PlayerStateMachine : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
 
         if(collision.gameObject.CompareTag(_deadlyTag)){
-            Rb.velocity = new Vector2(0, 0);
-            
-            transform.position = respawnPoint.position;
+            tag = "Respawn";
         }
+    }
+
+    void Respawn(){
+
+        Rb.velocity = new Vector2(0, 0);
+        transform.position = respawnPoint.position;
+        tag = "Player";
+
     }
 
     void PlatformCoyoteTimer(){
@@ -221,7 +238,7 @@ public class PlayerStateMachine : MonoBehaviour
         PlatformCoyoteTimer();
         
         if(_isJumping && _platformAccelerationX != 0 && _platformVelocityX == 0){
-            _rb.velocity += StoredVelocity; 
+            _rb.velocity += new Vector2(_latePlatformVelocityX,0); 
             yield return 5;
             yield return new WaitForFixedUpdate();
             yield return new WaitForEndOfFrame();
@@ -271,6 +288,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    public bool IsSuffocating(){
+        return Physics2D.OverlapCircle(_suffocationCheck.position, _suffocationRadius, GroundLayer);
+    }
+
     public bool IsGrounded(){
         if(_coyoteCounter <= _coyoteTime){
             try{
@@ -315,6 +336,8 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void OnDrawGizmos(){
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(_suffocationCheck.position,_suffocationRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(wallCheck.position, wallSize);
         Gizmos.color = Color.blue;
