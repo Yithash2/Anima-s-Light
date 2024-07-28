@@ -21,21 +21,18 @@ public class GroundState : BaseState{
         
         _ctx.BufferCounter = 0;
         _ctx.WallJumpCounter = 1000000000;
+        _ctx.IsJumping = false;
     }
 
     public override void UpdateState(){
 
         _ctx.AccelerationTime = _ctx.PlayerData.GroundAccelTime;
 
-        if(_ctx.PlatformVelocityY < 0){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.PlatformVelocityY);
-        if(!_ctx.IsOnMovingPlatform){
-            _ctx.Rb.drag = 0.5f;
-        }
-
         CheckSwitchState();
 
+        
     }
+
 
     public override void QuitState()
     {
