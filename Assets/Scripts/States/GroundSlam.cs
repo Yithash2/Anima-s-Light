@@ -22,14 +22,13 @@ public class GroundSlamState : BaseState
 
         _ctx.YCamOffcet = -3;
 
-
         _ctx.WallJumpCounter = 1000000000;
 
     }
 
     public override void UpdateState(){
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(40 - _ctx.PlatformVelocityY), float.MaxValue));  
+        _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 4 - _ctx.PlatformVelocityY), float.MaxValue));  
 
         CheckSwitchState();
     }

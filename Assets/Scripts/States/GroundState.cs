@@ -21,10 +21,11 @@ public class GroundState : BaseState{
         
         _ctx.BufferCounter = 0;
         _ctx.WallJumpCounter = 1000000000;
-        _ctx.IsJumping = false;
+
     }
 
     public override void UpdateState(){
+        
 
         _ctx.AccelerationTime = _ctx.PlayerData.GroundAccelTime;
 
@@ -36,7 +37,6 @@ public class GroundState : BaseState{
 
     public override void QuitState()
     {
-        _ctx.Rb.drag = 0;
     }
 
     public override void CheckSwitchState()
@@ -45,7 +45,7 @@ public class GroundState : BaseState{
             SwitchState(_factory.Jumping());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsOnMovingPlatform && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < 0){
+        }else if(!_ctx.IsOnMovingPlatform && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < _ctx.StoredVelocity.y){
             SwitchState(_factory.Falling());
         }
     }

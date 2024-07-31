@@ -13,10 +13,12 @@ public class FallState : BaseState{
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
         _ctx.YCamOffcet = -1;
 
+        
+
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity - _ctx.PlatformVelocityY), float.MaxValue));
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 

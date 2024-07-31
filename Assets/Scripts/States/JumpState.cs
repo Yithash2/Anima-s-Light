@@ -35,6 +35,7 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
+        _ctx.IsJumping = false;
        
     }
 
@@ -52,7 +53,6 @@ public class JumpState : BaseState{
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= -0.5){
             SwitchState(_factory.Falling());
-            _ctx.StoredVelocity = Vector2.zero;
         }
     }
 
@@ -74,8 +74,16 @@ public class JumpState : BaseState{
         _ctx.IsJumping = true;
 
         float jumpForce;
+        float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
 
-        jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
+        if(_ctx.StoredVelocity.y >= 0){
+            jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity)  + _ctx.StoredVelocity.y;
+        }else if(_ctx.PlatformVelocityY != 0){
+            float a = _ctx.StoredVelocity.y * Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
+            jumpForce = Mathf.Sqrt((_ctx.PlayerData.InitalJumpHeight - a) * -2 * gravity) - Mathf.Sqrt(Mathf.Abs(a) * -2 * gravity);
+        }else{
+            jumpForce = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
+        }
             
         _ctx.Rb.velocity += new Vector2(0, jumpForce);
         
@@ -86,7 +94,6 @@ public class JumpState : BaseState{
 
     void HandleJumpEnd(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
-        _ctx.IsJumping = false;
     }
 
 

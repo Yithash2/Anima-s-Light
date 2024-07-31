@@ -149,17 +149,17 @@ public class PlayerStateMachine : MonoBehaviour
 
         Inputs();
 
-        if(_isOnMovingPlatform && _platformAccelerationX != 0 && _platformVelocityX == 0){
+        if(_isOnMovingPlatform && ((_platformAccelerationY != 0 && _platformVelocityY == 0)||(_platformAccelerationX != 0 && _platformVelocityX == 0))){
             _platformCoyoteCounter = 0;
         }else if(_isOnMovingPlatform){
             _platformCoyoteCounter = _platformCoyoteTime;
         }
 
+        Debug.Log(StoredVelocity);
+
         if(IsSuffocating()){
             tag = "Respawn";
         }
-
-        
 
     }
 
@@ -212,7 +212,7 @@ public class PlayerStateMachine : MonoBehaviour
             _platformCoyoteCounter+= Time.deltaTime;
 
         }else{
-            if(!(_platformAccelerationX != 0 && _platformVelocityX == 0)){
+            if(!(_platformAccelerationY != 0 && _platformVelocityY == 0)||!(_platformAccelerationX != 0 && _platformVelocityX == 0)){
                 _latePlatformVelocityX = _platformVelocityX;
                 _latePlatformVelocityY = _platformVelocityY;
             }
@@ -228,7 +228,6 @@ public class PlayerStateMachine : MonoBehaviour
             _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.fixedDeltaTime;      
          
         }else if(!_isJumping){    
-
             _latePlatformVelocityX = Mathf.Lerp(_latePlatformVelocityX, 0, _airDrag);
             _latePlatformVelocityY = Mathf.Lerp(_latePlatformVelocityY, 0, _airDrag);
             _platformVelocityX = Mathf.Lerp(_platformVelocityX, 0, _airDrag);
@@ -237,8 +236,9 @@ public class PlayerStateMachine : MonoBehaviour
 
         PlatformCoyoteTimer();
         
-        if(_isJumping && _platformAccelerationX != 0 && _platformVelocityX == 0){
-            _rb.velocity += new Vector2(_latePlatformVelocityX,0); 
+        
+        if(_isJumping && ((_platformAccelerationY != 0 && _platformVelocityY == 0)||(_platformAccelerationX != 0 && _platformVelocityX == 0))){
+            _rb.velocity += _latePlatformVelocityY < 0? new Vector2(_latePlatformVelocityX + (_playerTransform.localScale.x * _latePlatformVelocityY),0) : new Vector2(_latePlatformVelocityX,0); 
             yield return 5;
             yield return new WaitForFixedUpdate();
             yield return new WaitForEndOfFrame();

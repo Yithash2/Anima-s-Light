@@ -17,7 +17,7 @@ MonoBehaviour:
   wallJumpLength: 6
   gravityMult: 2
   groundSlamMult: 6
-  clampedVelocity: 20
+  clampedVelocity: 40
   slideSpeed: 0.5
   _wallJumpControlTime: 0.13
   _runAcceleration: 0.4
