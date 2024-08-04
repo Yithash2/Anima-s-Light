@@ -1420,7 +1420,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "8f756b18a68948738ab46584de70469d",
     "m_Id": 0,
-    "m_DisplayName": "Texture2D",
+    "m_DisplayName": "mainTex",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1435,11 +1435,11 @@
     "m_Guid": {
         "m_GuidSerialized": "1e93729f-c140-4ec4-9133-b88cff775fc5"
     },
-    "m_Name": "Texture2D",
+    "m_Name": "mainTex",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture2D",
-    "m_DefaultReferenceName": "_Texture2D",
-    "m_OverrideReferenceName": "",
+    "m_RefNameGeneratedByDisplayName": "mainTex",
+    "m_DefaultReferenceName": "_mainTex",
+    "m_OverrideReferenceName": "_MainTex",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1449,7 +1449,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"c965cf304986f0a48be2400d045562b8\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "isMainTexture": false,

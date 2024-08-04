@@ -81,4 +81,9 @@ public class FileDataHandler
         }
         return modifiedData;
     }
+
+    public bool GameDataExist(){
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        return File.Exists(fullPath);
+    }
 }

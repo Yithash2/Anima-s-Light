@@ -75,12 +75,12 @@ public class UiManager : MonoBehaviour
     }
 
     public void ContinueButton(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("LevelSelector _temp");
     }
 
     public void NewGameButton(){
         DataPersistanceManager.Instance.NewGame();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("LevelSelector _temp");
     }
 
     public void MenuPauseButton(){

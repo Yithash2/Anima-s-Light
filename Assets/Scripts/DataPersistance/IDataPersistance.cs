@@ -6,5 +6,5 @@ public interface IDataPersistance
 {
    void loadData(GameData data);
 
-   void saveData(ref GameData data);
+   void saveData( GameData data);
 }
