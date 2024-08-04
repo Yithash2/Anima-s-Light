@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class checkpoint : MonoBehaviour, IDataPersistance
 {
-    public PlayerData PlayerData;
     public bool IsPassableMultipleTimes;
     public string id;
     [ContextMenu("create new id")]
@@ -13,36 +12,59 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     }
     public Transform Spawnpoint;
     public string PlayerTag;
-    private bool isActivated = false;
+     public int isActivated = 0;
 
-    void Update(){
+    private checkpoint[] checks;
 
+    void Start(){
+        checks = FindObjectsOfType<checkpoint>();
+
+        if(isActivated == 2){
+            Spawnpoint.SetParent(transform);
+            Spawnpoint.position = transform.position;
+            Transform Player = GameObject.Find("Player").transform;
+            Player.position = transform.position;
+        }
+    }
+
+    void UpdateCurrentCheckpoint(){
+        foreach(checkpoint check in checks){
+            if(check.isActivated == 2){
+                check.isActivated = 1;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag(PlayerTag) && !isActivated){
+        if(collider.CompareTag(PlayerTag) && isActivated == 0){
             Spawnpoint.SetParent(transform);
             Spawnpoint.position = transform.position;
-            isActivated = true;
-            PlayerData.CurrentCheckpointId = id;
+            UpdateCurrentCheckpoint();
+            isActivated = 2;
         }else if(collider.CompareTag(PlayerTag) && IsPassableMultipleTimes){
             Spawnpoint.SetParent(transform);
-            PlayerData.CurrentCheckpointId = id;
         }
+
+        DataPersistanceManager.Instance.SaveGame();
     }
 
     public void loadData(GameData data){
+        try{
+            isActivated = data.checkpoints[id];
+        }catch{
             
-        data.checkpoints.TryGetValue(id, out isActivated);
-            
+        }
+             
     }
 
-    public void saveData(ref GameData data){
-
+    public void saveData(GameData data){
+        
         if(data.checkpoints.ContainsKey(id)){
             data.checkpoints.Remove(id);
         }
         data.checkpoints.Add(id, isActivated);
+        
+        
     }
 }

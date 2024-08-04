@@ -13,6 +13,7 @@ public class DataPersistanceManager : MonoBehaviour
     public static DataPersistanceManager Instance {get; private set;}
 
     private GameData _gameData;
+    public bool _levelRestart {get; private set;}
     private List<IDataPersistance> dataPersistanceObjects;
     private FileDataHandler dataHandler;
     private void Awake(){
@@ -26,27 +27,31 @@ public class DataPersistanceManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, FileName, useEncryption);
+
+        _levelRestart = false;
+    }
+
+    public void RestartLevel(){
+        _gameData.checkpoints.TPCLear();
+        dataHandler.Save(_gameData);
+        
+        
     }
 
     private void OnEnable(){
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDisable(){
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
+        Time.timeScale = 1f;
     }
-
-    public void OnSceneUnloaded(Scene current){
-        SaveGame();
-    }
-
 
     public void DeleteData(){
         dataHandler.Reset();
@@ -54,10 +59,12 @@ public class DataPersistanceManager : MonoBehaviour
 
     public void NewGame(){
         this._gameData = new GameData();
+        SaveGame();
     }
 
     public void LoadGame(){
         this._gameData = dataHandler.Load();
+        
 
         //TODO . LOAD ANY SAVE DATA FROM A FILE
         if(this._gameData == null){
@@ -75,9 +82,9 @@ public class DataPersistanceManager : MonoBehaviour
             Debug.LogWarning("No data was found. A new Game needs to be started before data can be saved");
             return;
         }
-        //TODO . Pass the data to other scripts
+        
         foreach(IDataPersistance dataPersistanceObj in dataPersistanceObjects){
-                    dataPersistanceObj.saveData(ref _gameData);
+                    dataPersistanceObj.saveData(_gameData);
                 }
         //save that data in a file
         dataHandler.Save(_gameData);
@@ -94,6 +101,6 @@ public class DataPersistanceManager : MonoBehaviour
     }
 
     public bool HasGameData(){
-        return _gameData != null;
+        return dataHandler.GameDataExist();
     }
 }

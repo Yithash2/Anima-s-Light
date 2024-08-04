@@ -33,4 +33,11 @@ public class SerializeDictionary<Tkey, Tvalue> : Dictionary<Tkey, Tvalue>, ISeri
             this.Add(keys[i], values[i]);
         }
     }
+
+    public void TPCLear(){
+        this.Clear();
+        keys.Clear();
+        values.Clear();
+
+    }
 }
