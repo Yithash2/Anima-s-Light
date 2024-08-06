@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &273600680414651324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6357250604616642695}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6357250604616642695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273600680414651324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8551025964284116128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466024357484426625
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +101,7 @@ Transform:
   - {fileID: 3725201130712967224}
   - {fileID: 5659014622266715217}
   - {fileID: 2253543913915930082}
+  - {fileID: 6357250604616642695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7874610399577188666
@@ -135,11 +167,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.3029225
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
-  m_GravityScale: 6
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -199,7 +231,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5047f4f2cbbea6c4ca7134e09280704e, type: 3}
   - {fileID: 8300000, guid: d296be12fe3278142b891359727c6d06, type: 3}
   - {fileID: 8300000, guid: 52ea665d3344f1b40b0bad35cf3ede74, type: 3}
-  _baselineVelocityY: 0
+  _platformVelocityY: 0
   _numberOfJumps: 1
   _groundCheck: {fileID: 3725201130712967224}
   _checkSize: {x: 0.85, y: 0.36}
@@ -216,9 +248,14 @@ MonoBehaviour:
   SpaceLayer:
     serializedVersion: 2
     m_Bits: 128
+  _suffocationCheck: {fileID: 6357250604616642695}
+  _suffocationRadius: 0.4
   bufferTime: 0.05
   _coyoteTime: 0.1
-  _baselineVelocityX: 0
+  _platformVelocityX: 0
+  _platformCoyoteTime: 0.2
+  _platformCoyoteCounter: 0
+  _airDrag: 0.76
   _camera: {fileID: 0}
   respawnPoint: {fileID: 0}
   _deadlyTag: Deadly
@@ -248,7 +285,7 @@ MonoBehaviour:
   - {x: 0.3622427, y: -0.40540195, z: 0}
   m_ShapePathHash: -486074619
   m_Mesh: {fileID: 0}
-  m_InstanceId: 46714
+  m_InstanceId: -28256
   m_LocalBounds:
     m_Center: {x: 0.06165588, y: -0.11246523, z: 0}
     m_Extent: {x: 0.30058682, y: 0.2929367, z: 0}
