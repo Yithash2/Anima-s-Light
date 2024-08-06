@@ -171,7 +171,7 @@ Rigidbody2D:
   m_Mass: 1.3029225
   m_LinearDrag: 0.2
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_Bits: 128
   _suffocationCheck: {fileID: 6357250604616642695}
   _suffocationRadius: 0.4
-  bufferTime: 0.05
+  bufferTime: 0.1
   _coyoteTime: 0.1
   _platformVelocityX: 0
   _platformCoyoteTime: 0.2
@@ -285,7 +285,7 @@ MonoBehaviour:
   - {x: 0.3622427, y: -0.40540195, z: 0}
   m_ShapePathHash: -486074619
   m_Mesh: {fileID: 0}
-  m_InstanceId: -28256
+  m_InstanceId: -2118
   m_LocalBounds:
     m_Center: {x: 0.06165588, y: -0.11246523, z: 0}
     m_Extent: {x: 0.30058682, y: 0.2929367, z: 0}
