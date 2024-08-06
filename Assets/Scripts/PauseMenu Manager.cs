@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    [SerializeField] private EventSystem _eventSystem;
+    private EventSystem _eventSystem;
 
     [Header("Pause Panel")]
     [SerializeField] private Animator _pausePanelAnimator;
@@ -20,7 +20,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Start()
     {
-        
+        _eventSystem = EventSystem.current;
     }
 
     // Update is called once per frame

@@ -18,8 +18,6 @@ public class GroundState : BaseState{
         _ctx.YCamOffcet = 2;
 
         _ctx.BufferCounter = 0;
-        
-        _ctx.BufferCounter = 0;
         _ctx.WallJumpCounter = 1000000000;
 
     }

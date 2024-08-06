@@ -35,6 +35,7 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
+        _ctx.JumpReleased = false;
         _ctx.IsJumping = false;
        
     }
@@ -51,8 +52,9 @@ public class JumpState : BaseState{
             _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Walled());
-        }else if(_ctx.Rb.velocity.y <= -0.5){
+        }else if(_ctx.Rb.velocity.y <= 0){
             SwitchState(_factory.Falling());
+            _ctx.JumpReleased = false;
         }
     }
 
@@ -67,6 +69,7 @@ public class JumpState : BaseState{
 
     void HandleJumpStart(){
 
+        _ctx.JumpReleased = false;
         _ctx.BufferCounter = 0;
         _ctx.JumpCount ++;
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
@@ -93,6 +96,7 @@ public class JumpState : BaseState{
     }
 
     void HandleJumpEnd(){
+        _ctx.JumpReleased = false;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
     }
 

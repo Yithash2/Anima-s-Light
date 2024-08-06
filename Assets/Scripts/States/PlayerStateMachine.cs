@@ -116,9 +116,20 @@ public class PlayerStateMachine : MonoBehaviour
 
     public string _deadlyTag;
     #endregion
+
+    public static PlayerStateMachine Instance {get; private set;}
     // Start is called before the first frame update
     void Awake()
-    { 
+    {
+        if(Instance != null){
+            Debug.Log("Found more then one PlayerStateMachine, and destoyed it");
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    void Start(){
         _rb = GetComponent<Rigidbody2D>();
         _playerTransform = GetComponent<Transform>();
         _gravityScale = _rb.gravityScale;
@@ -126,11 +137,6 @@ public class PlayerStateMachine : MonoBehaviour
         _states = new StateFactory(this);
         _currentState = _states.Grounded();
         _currentState.EnterState();
-
-
-    }
-
-    void Start(){
     }
 
 
@@ -199,6 +205,8 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
+
+
     void Respawn(){
 
         Rb.velocity = new Vector2(0, 0);
@@ -212,7 +220,7 @@ public class PlayerStateMachine : MonoBehaviour
             _platformCoyoteCounter+= Time.deltaTime;
 
         }else{
-            if(!(_platformAccelerationY != 0 && _platformVelocityY == 0)||!(_platformAccelerationX != 0 && _platformVelocityX == 0)){
+            if(!(_platformAccelerationY != 0 && _platformVelocityY == 0) && !(_platformAccelerationX != 0 && _platformVelocityX == 0)){
                 _latePlatformVelocityX = _platformVelocityX;
                 _latePlatformVelocityY = _platformVelocityY;
             }
@@ -257,15 +265,14 @@ public class PlayerStateMachine : MonoBehaviour
         if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
-                Debug.Log(_bufferCounter);
             }else{
                 _bufferCounter = 0;
                 _jumpPressed = false;
-                _bufferCounter = 0;
             }
         }
         
-        if(Input.GetKeyUp(KeyCode.Space)) _jumpReleased = true; else _jumpReleased = false;
+        if(Input.GetKeyUp(KeyCode.Space)) _jumpReleased = true;
+
     }
 
     void CoyoteTimer(){

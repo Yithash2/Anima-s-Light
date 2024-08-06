@@ -12,7 +12,7 @@ public class LevelInfo : MonoBehaviour
     void Awake()
     {
         if(Instance != null){
-            Debug.Log("Found more then one DataPersistanceManager, and destoyed it");
+            Debug.Log("Found more then one LevelInfo, and destoyed it");
             Destroy(this.gameObject);
             return;
         }

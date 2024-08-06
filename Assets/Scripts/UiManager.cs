@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
 
-    [SerializeField] private EventSystem _eventSystem;
-    [SerializeField] private DataPersistanceManager _dataPersistance; 
+    private EventSystem _eventSystem;
+    private DataPersistanceManager _dataPersistance; 
     
 
     [Header("Option Menu")]
@@ -27,9 +27,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject _playFirstSelected;
     [SerializeField] private Button _continueButton;
     private bool _playMenuOpen = false;
-    [Space(2)]
 
-    private Camera[] cameras;
     
 
 
@@ -40,7 +38,10 @@ public class UiManager : MonoBehaviour
 
     void Start(){
 
-        if(!DataPersistanceManager.Instance.HasGameData()){
+        _eventSystem = EventSystem.current;
+        _dataPersistance = DataPersistanceManager.Instance;
+
+        if(!_dataPersistance.HasGameData()){
             _continueButton.interactable = false;
         }
     }

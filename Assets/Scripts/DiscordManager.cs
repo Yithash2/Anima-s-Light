@@ -25,7 +25,7 @@ public class DiscordManager : MonoBehaviour
             Assets =
             {
                 LargeImage = "logo_anima_s_light", // Larger Image Asset Value
-                LargeText = ":D",
+                LargeText = ">:D",
             }
             
             };

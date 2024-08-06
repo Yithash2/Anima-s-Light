@@ -7,7 +7,7 @@ public class JumpBoostersPowerUp : MonoBehaviour
 
     [SerializeField] Sprite ActivatedSprite;
     [SerializeField] Sprite DesactivatedSprite;
-    [SerializeField] PlayerStateMachine Player;
+    PlayerStateMachine Player;
 
     bool _isActivated = true;
 
@@ -17,11 +17,16 @@ public class JumpBoostersPowerUp : MonoBehaviour
 
     float resetCounter;
 
+    void Start(){
+        Player = PlayerStateMachine.Instance;
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.CompareTag(playerTag) && _isActivated){
-            if(Player.Rb.velocity.y < 0 ) {
-                Player.Rb.velocity = Vector2.zero;
+
+            if(Player.Rb.velocity.y < -2 ) {
+                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, 0);
                 Player.CoyoteCounter = 0;
                 Player.BufferCounter = 0;
                 Player.JumpCount = 0;

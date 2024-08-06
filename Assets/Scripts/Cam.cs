@@ -6,7 +6,7 @@ using UnityEngine;
 public class cam : MonoBehaviour
 {
     #region Input
-    [SerializeField] GameObject player;
+    GameObject player;
     [SerializeField] Vector3 ofset;
     public float smooth_speed = 0.125f;
 
@@ -21,6 +21,7 @@ public class cam : MonoBehaviour
     #endregion
 
     void Start(){
+        player = PlayerStateMachine.Instance.gameObject;
         intialOfsetY = ofset.y;
     }
     void FixedUpdate()

@@ -39,7 +39,7 @@ public class FallState : BaseState{
       if(_ctx.YInput < 0){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsSpaced()){
-            SwitchState(_factory.Spaced());
+            SwitchState(_factory.Grounded());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];

@@ -250,10 +250,10 @@ MonoBehaviour:
     m_Bits: 128
   _suffocationCheck: {fileID: 6357250604616642695}
   _suffocationRadius: 0.4
-  bufferTime: 0.1
+  bufferTime: 0.2
   _coyoteTime: 0.1
   _platformVelocityX: 0
-  _platformCoyoteTime: 0.2
+  _platformCoyoteTime: 0.4
   _platformCoyoteCounter: 0
   _airDrag: 0.76
   _camera: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   - {x: 0.3622427, y: -0.40540195, z: 0}
   m_ShapePathHash: -486074619
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2118
+  m_InstanceId: -115802
   m_LocalBounds:
     m_Center: {x: 0.06165588, y: -0.11246523, z: 0}
     m_Extent: {x: 0.30058682, y: 0.2929367, z: 0}

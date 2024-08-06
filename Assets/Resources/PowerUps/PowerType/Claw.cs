@@ -8,10 +8,11 @@ public class Claw : MonoBehaviour
 
     [SerializeField] PlayerDateScriptableObject NormalPlayer;
     [SerializeField] PlayerDateScriptableObject ClawedPlayer;
-    [SerializeField] PlayerStateMachine PSM;
+    PlayerStateMachine PSM;
     [SerializeField] Animator _animator;
 
     void Start(){
+        PSM = PlayerStateMachine.Instance;
         _posIndex = 0;
         PSM.PlayerData = NormalPlayer;
     }
