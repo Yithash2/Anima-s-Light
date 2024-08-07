@@ -35,7 +35,7 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
-        _ctx.JumpReleased = false;
+
         _ctx.IsJumping = false;
        
     }
@@ -54,7 +54,6 @@ public class JumpState : BaseState{
             SwitchState(_factory.Walled());
         }else if(_ctx.Rb.velocity.y <= 0){
             SwitchState(_factory.Falling());
-            _ctx.JumpReleased = false;
         }
     }
 

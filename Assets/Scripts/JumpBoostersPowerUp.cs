@@ -14,27 +14,32 @@ public class JumpBoostersPowerUp : MonoBehaviour
     public string playerTag;
 
     public float ResetTime;
+    CircleCollider2D _collider;
 
     float resetCounter;
 
     void Start(){
         Player = PlayerStateMachine.Instance;
+        _collider = GetComponent<CircleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.CompareTag(playerTag) && _isActivated){
+            Player.BufferCounter = 0;
 
-            if(Player.Rb.velocity.y < -2 ) {
+            if( Player.JumpPressed && PlayerIsAbove())  {
                 Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, 0);
                 Player.CoyoteCounter = 0;
-                Player.BufferCounter = 0;
                 Player.JumpCount = 0;
                 _isActivated = false;
             }
         }
     }
 
+    bool PlayerIsAbove(){
+        return Player.transform.position.y >= transform.position.y - 1;
+    }
     void Update(){
 
             if(!_isActivated){

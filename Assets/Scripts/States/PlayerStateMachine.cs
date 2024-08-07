@@ -161,8 +161,6 @@ public class PlayerStateMachine : MonoBehaviour
             _platformCoyoteCounter = _platformCoyoteTime;
         }
 
-        Debug.Log(StoredVelocity);
-
         if(IsSuffocating()){
             tag = "Respawn";
         }
@@ -260,7 +258,10 @@ public class PlayerStateMachine : MonoBehaviour
 
         _xInput = Input.GetAxisRaw("Horizontal"); 
 
-        if(Input.GetKeyDown(KeyCode.Space)) _jumpPressed = true;
+        if(Input.GetKeyDown(KeyCode.Space)){
+            _bufferCounter = 0;
+            _jumpPressed = true;
+        }
 
         if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
@@ -270,8 +271,12 @@ public class PlayerStateMachine : MonoBehaviour
                 _jumpPressed = false;
             }
         }
+
+        Debug.Log(_bufferCounter);
         
-        if(Input.GetKeyUp(KeyCode.Space)) _jumpReleased = true;
+        if(!Input.GetKey(KeyCode.Space)){
+            _jumpReleased = true;
+        }
 
     }
 

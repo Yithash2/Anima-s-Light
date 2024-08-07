@@ -417,17 +417,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc761dd6ef91cd43acd0aa9bc7d22a2, type: 3}
---- !u!114 &860104091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1331332395907481887, guid: edc761dd6ef91cd43acd0aa9bc7d22a2, type: 3}
-  m_PrefabInstance: {fileID: 860104090}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94fcfcb540b7de54ea07f3f1bd2417be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &999346456
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 52.2}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 550.2688, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855138631
@@ -553,7 +542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU WIN
+  m_text: "YOU WIN\n\nMerci d'avoir jou\xE9 a la d\xE9mo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 27022c45f9e93b74d80b05218e7e5682, type: 2}
   m_sharedMaterial: {fileID: -2248202715886147234, guid: 27022c45f9e93b74d80b05218e7e5682, type: 2}
@@ -580,8 +569,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -732,8 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174780c352dccd3429dd79cace67b4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventSystem: {fileID: 999346458}
-  _dataPersistance: {fileID: 860104091}
   _optionMenuButton: {fileID: 0}
   _optionMenu: {fileID: 0}
   _optionFirstSelected: {fileID: 0}
