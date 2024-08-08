@@ -11,12 +11,17 @@ public class PauseMenuManager : MonoBehaviour
 
     [Header("Pause Panel")]
     [SerializeField] private Animator _pausePanelAnimator;
+    [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _pauseFirstSelected;
     [SerializeField] private AnimationClip _pausePanelClosing;
     [SerializeField] private AnimationClip _pausePanelOppening;
     [SerializeField] private AnimationClip _pausePanelClosed;
     [SerializeField] private AnimationClip _pausePanelOpen;
-    [SerializeField] private List<MonoBehaviour> _playerControls;
+
+
+    [SerializeField] private GameObject _optionButton;
+    [SerializeField] GameObject _optionFirstSelected;
+    [SerializeField] GameObject _optionMenu;
 
     void Start()
     {
@@ -35,21 +40,14 @@ public class PauseMenuManager : MonoBehaviour
             Time.timeScale = 1f;
             if(Input.GetKeyDown(KeyCode.Escape)){
 
-                foreach(MonoBehaviour o in _playerControls){
-                    o.enabled = false;
-                }
-
                 _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
                 _pausePanelAnimator.Play(_pausePanelOppening.name);
             
             } 
         }else if(IsAnimating(_pausePanelOpen.name)){
             Time.timeScale = 0f;
-            if(Input.GetKeyDown(KeyCode.Escape)){
 
-                foreach(MonoBehaviour o in _playerControls){
-                    o.enabled = true;
-                }
+            if(Input.GetKeyDown(KeyCode.Escape)){
 
                 Time.timeScale = 1f;
                 _pausePanelAnimator.Play(_pausePanelClosing.name);
@@ -58,7 +56,32 @@ public class PauseMenuManager : MonoBehaviour
             
         }
         
-        
+    }
+
+    public void Resume(){
+        StartCoroutine(ClosePanel());
+    }
+
+    IEnumerator ClosePanel(){
+        yield return new WaitUntil(() => IsAnimating(_pausePanelOpen.name));
+
+        Time.timeScale = 1f;
+        _pausePanelAnimator.Play(_pausePanelClosing.name);
+        _eventSystem.SetSelectedGameObject(null);
+    }
+
+    public void OptionMenu(){
+        if(_optionMenu.activeInHierarchy){
+            _optionMenu.SetActive(false);
+            _pauseMenu.SetActive(true);
+            _pausePanelAnimator.Play("Open");
+            _eventSystem.SetSelectedGameObject(_optionButton);
+        }else{
+            _optionMenu.SetActive(true);
+            _pauseMenu.SetActive(false);
+
+        }
+
     }
 
     public void MenuButton(){
