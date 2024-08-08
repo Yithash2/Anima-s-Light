@@ -10,7 +10,7 @@ public class WalledState : BaseState
     public override void EnterState()
     {
 
-        _ctx.Animator.Play(_ctx.Animations[4].name);
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[4].name);
 
         _ctx.WallJumpCounter = 0;
         

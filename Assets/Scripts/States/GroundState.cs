@@ -11,11 +11,12 @@ public class GroundState : BaseState{
     
     public override void EnterState()
     {
-        _ctx.Animator.Play(_ctx.Animations[0].name);
+        
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
-        _ctx.YCamOffcet = 2;
+        
 
         _ctx.BufferCounter = 0;
         _ctx.WallJumpCounter = 1000000000;
@@ -23,7 +24,7 @@ public class GroundState : BaseState{
     }
 
     public override void UpdateState(){
-        
+        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
 
         _ctx.AccelerationTime = _ctx.PlayerData.GroundAccelTime;
 

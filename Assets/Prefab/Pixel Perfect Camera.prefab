@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 9176444637299887421}
   - component: {fileID: 3700552889564789603}
   - component: {fileID: 238605457614065238}
+  - component: {fileID: 6897061408692098921}
   m_Layer: 0
   m_Name: Pixel Perfect Camera
   m_TagString: MainCamera
@@ -229,11 +230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c5899c9be740a43aaf7cbbd482bb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  ofset: {x: 0, y: 5, z: -10}
+  ofset: {x: 0, y: 0, z: -10}
   smooth_speed: 0.125
   moveShiftMultX: 0
   moveShiftMultY: 0
+  animator: {fileID: 6897061408692098921}
   verticalShift: 0
 --- !u!81 &9176444637299887421
 AudioListener:
@@ -267,3 +268,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2d9a657cd5b014381e21ce60cbde42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6897061408692098921
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804049331300437832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d874c794a511c2e4e8209a6a4c4450a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

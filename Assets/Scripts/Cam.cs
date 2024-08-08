@@ -13,6 +13,10 @@ public class cam : MonoBehaviour
     [SerializeField] float moveShiftMultX;
     [SerializeField] float moveShiftMultY;
 
+    [SerializeField] Animator animator;
+
+    public Animator CamAnimator { get{ return animator; } }
+
     public float verticalShift;
 
 //    [SerializeField] PlayerStateMachine _playerStateMachine;

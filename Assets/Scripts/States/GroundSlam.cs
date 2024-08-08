@@ -8,9 +8,10 @@ public class GroundSlamState : BaseState
 
     public override void EnterState()
     {
-        _ctx.Animator.Play(_ctx.Animations[5].name);
+        
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[5].name);
 
-        _ctx.SmoothSpeed = 0.5f;
+        _ctx.SmoothSpeed = 1f;
 
         _ctx.AudioSource.clip = _ctx.AudioClips[1];
 
@@ -20,13 +21,15 @@ public class GroundSlamState : BaseState
 
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GroundSlamMult;
 
-        _ctx.YCamOffcet = -3;
 
         _ctx.WallJumpCounter = 1000000000;
 
     }
 
     public override void UpdateState(){
+
+        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.5f);
+
 
         _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 4 - _ctx.PlatformVelocityY), float.MaxValue));  
 
@@ -35,8 +38,6 @@ public class GroundSlamState : BaseState
 
     public override void QuitState()
     {
-
-        _ctx.YCamOffcet = 0;
 
         _ctx.AudioSource.loop = false;
 

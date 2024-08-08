@@ -9,11 +9,12 @@ public class JumpState : BaseState{
     }
     public override void EnterState()
     {
-        _ctx.Animator.Play(_ctx.Animations[2].name);
+        
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
-        _ctx.YCamOffcet = -1;
+        
 
         _ctx.AudioSource.Play();
 
@@ -25,6 +26,7 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
+        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -2, 0.5f);
 
         if(_ctx.JumpReleased) {
             HandleJumpEnd();

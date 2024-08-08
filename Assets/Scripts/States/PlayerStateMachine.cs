@@ -78,6 +78,8 @@ public class PlayerStateMachine : MonoBehaviour
     private float _platformAccelerationX;
     private float _platformAccelerationY;
 
+    private bool _isDead;
+
 
 
 
@@ -157,19 +159,23 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(_isOnMovingPlatform && ((_platformAccelerationY != 0 && _platformVelocityY == 0)||(_platformAccelerationX != 0 && _platformVelocityX == 0))){
             _platformCoyoteCounter = 0;
+
         }else if(_isOnMovingPlatform){
             _platformCoyoteCounter = _platformCoyoteTime;
+        }else{
+
         }
 
         if(IsSuffocating()){
             tag = "Respawn";
+            _isDead = true;
         }
 
     }
 
     void FixedUpdate(){
 
-        _currentState.UpdateStates();
+        
 
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
@@ -180,6 +186,8 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(tag == "Respawn"){
             Respawn();
+        }else{
+            _currentState.UpdateStates();
         }
 
     }
@@ -200,17 +208,40 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(collision.gameObject.CompareTag(_deadlyTag)){
             tag = "Respawn";
+            _isDead = true;
         }
     }
 
 
 
     void Respawn(){
-
         Rb.velocity = new Vector2(0, 0);
-        transform.position = respawnPoint.position;
-        tag = "Player";
+        if(_isDead){
+            _animator.Play("Death");
+            _camera.CamAnimator.Play("Cam zoom");
+            _camera.verticalShift = 0;
+            _isDead = false;
+        }
+        
+        if(IsAnimating("Death End")){
+            transform.position = respawnPoint.position;
+            _animator.Play("Respawn");
+            _camera.CamAnimator.Play("Cam dezoom");
+            tag = "Player";
+        }else if(IsAnimating("iddle")){
+            _currentState.EnterState();
+        }
+        
+        
 
+    }
+
+    public bool IsAnimating(string animationName){
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName(animationName)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     void PlatformCoyoteTimer(){

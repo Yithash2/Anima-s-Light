@@ -15,7 +15,7 @@ public class WallJumpState : BaseState
     public override void EnterState()
     {
 
-        _ctx.Animator.Play(_ctx.Animations[3].name);
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
 
         _ctx.Rb.gravityScale = _ctx.PlayerData.GravityMult * _ctx.GravityScale;
 
