@@ -18,42 +18,60 @@ public class OptionMenuManager : MonoBehaviour
 
     [SerializeField] Tabulation[] tabs;
 
+    [Header("Audio tab")]
     [SerializeField] Slider _masterVolumeSlider;
     [SerializeField] Slider _musicVolumeSlider;
     [SerializeField] Slider _SFXVolumeSlider;
     EventSystem _eventSystem;
 
+    [Header("Controls tab")]
+    [SerializeField] GameObject _controlChoisePanel;
+    [SerializeField] GameObject _keyboardControlButton;
+    [SerializeField] GameObject _keyboardControlPanel;
+    [SerializeField] GameObject _keyboardControlFirstSelected;
+    [SerializeField] GameObject _controllerControlPanel;
+    [SerializeField] GameObject _controllerControlButton;
+    [SerializeField] GameObject _controllerControlFirstSelected;
+    
     [SerializeField] Button _backButton;
 
-    public InputActionReference cancel { get; set; }
 
     public void Start(){
         _eventSystem = EventSystem.current;
 
-        _currentTab = tabs[0];
-        _currentTab.TabGameObject.SetActive(true);
-        _eventSystem.SetSelectedGameObject(_currentTab.FirstSelected);
-        _currentTab.TabButton.interactable = false;
+        SearchForTab(tabs[0].TabName);
 
         UpdateVolumes();
     }
-
-    void OnEnable(){
-        _currentTab = tabs[0];
-        _currentTab.TabGameObject.SetActive(true);
-        _eventSystem.SetSelectedGameObject(_currentTab.FirstSelected);
-        _currentTab.TabButton.interactable = false;
+    public void KeyboardControls(){
+        if(!_keyboardControlPanel.activeInHierarchy){
+            _controlChoisePanel.SetActive(false);
+            _keyboardControlPanel.SetActive(true);
+            _eventSystem.SetSelectedGameObject(_keyboardControlFirstSelected);
+        }else{
+            _controlChoisePanel.SetActive(true);
+            _keyboardControlPanel.SetActive(false);
+            _eventSystem.SetSelectedGameObject(_keyboardControlButton);
+        }
     }
 
-    public void OpenTab(string TabName){
-        
-        _currentTab.TabGameObject.SetActive(false);
-        _currentTab.TabButton.interactable = true;
-        
-        _currentTab = SearchForTab(TabName);
-        _currentTab.TabGameObject.SetActive(true);
-        _eventSystem.SetSelectedGameObject(_currentTab.FirstSelected);
-        _currentTab.TabButton.interactable = false;
+    public void ControllerControls(){
+        if(!_controllerControlPanel.activeInHierarchy){
+            _controlChoisePanel.SetActive(false);
+            _controllerControlPanel.SetActive(true);
+            _eventSystem.SetSelectedGameObject(_controllerControlFirstSelected);
+        }else{
+            _controlChoisePanel.SetActive(true);
+            _controllerControlPanel.SetActive(false);
+            _eventSystem.SetSelectedGameObject(_controllerControlButton);
+        }
+    }
+    
+    public void OpenTab(string TabName){  
+        _controlChoisePanel.SetActive(true);
+        _controllerControlPanel.SetActive(false);
+        _keyboardControlPanel.SetActive(false); 
+        SearchForTab(TabName);
     }
 
 
@@ -82,18 +100,24 @@ public class OptionMenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
     
+    public void Back(){
+        SearchForTab(tabs[0].TabName);
 
-    public Tabulation SearchForTab(string TabToFind){
+        UpdateVolumes();
+    }
 
-        Dictionary<string, Tabulation> tabsSearch = new Dictionary<string, Tabulation>();
+    public void SearchForTab(string TabToFind){
         
         foreach(Tabulation tab in tabs ){
-            tabsSearch.Add(tab.TabName, tab);
+            if(tab.TabName != TabToFind){
+                tab.TabGameObject.SetActive(false);
+                tab.TabButton.interactable = true;
+            }else{
+                tab.TabGameObject.SetActive(true);
+                tab.TabButton.interactable=false;
+                _eventSystem.SetSelectedGameObject(tab.FirstSelected);
+            }
         }
-
-        Tabulation _tabFound = new Tabulation();
-        tabsSearch.TryGetValue(TabToFind,out _tabFound);
-        return _tabFound;
-        
+       
     }
 }
