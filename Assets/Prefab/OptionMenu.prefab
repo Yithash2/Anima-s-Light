@@ -592,6 +592,7 @@ MonoBehaviour:
   _masterVolumeSlider: {fileID: 7056034237502927574}
   _musicVolumeSlider: {fileID: 6008461612009732128}
   _SFXVolumeSlider: {fileID: 8016386097099317728}
+  _backButton: {fileID: 2158426031970646909}
 --- !u!1 &3994757417336614612
 GameObject:
   m_ObjectHideFlags: 0

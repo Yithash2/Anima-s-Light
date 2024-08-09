@@ -34,7 +34,7 @@ public class WalledState : BaseState
     {
         if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(_ctx.YInput < 0){
+        }else if(_ctx.DivePressed){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());

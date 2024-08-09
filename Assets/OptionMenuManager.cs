@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
 
 
 
@@ -21,6 +23,10 @@ public class OptionMenuManager : MonoBehaviour
     [SerializeField] Slider _SFXVolumeSlider;
     EventSystem _eventSystem;
 
+    [SerializeField] Button _backButton;
+
+    public InputActionReference cancel { get; set; }
+
     public void Start(){
         _eventSystem = EventSystem.current;
 
@@ -30,6 +36,13 @@ public class OptionMenuManager : MonoBehaviour
         _currentTab.TabButton.interactable = false;
 
         UpdateVolumes();
+    }
+
+    void OnEnable(){
+        _currentTab = tabs[0];
+        _currentTab.TabGameObject.SetActive(true);
+        _eventSystem.SetSelectedGameObject(_currentTab.FirstSelected);
+        _currentTab.TabButton.interactable = false;
     }
 
     public void OpenTab(string TabName){

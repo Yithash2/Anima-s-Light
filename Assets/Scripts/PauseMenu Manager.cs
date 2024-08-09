@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] GameObject _optionFirstSelected;
     [SerializeField] GameObject _optionMenu;
 
+    [SerializeField] MonoBehaviour[] _toDisable;
+
+    private bool _echapPressed = false;
+
     void Start()
     {
         _eventSystem = EventSystem.current;
@@ -35,11 +40,22 @@ public class PauseMenuManager : MonoBehaviour
 
     }
 
+    public void Echap(InputAction.CallbackContext ctx){
+        if(ctx.started){
+            _echapPressed = true;
+        }
+    }
+
     private void HanglePausePanelClosingOpening(){
         if(IsAnimating(_pausePanelClosed.name)){
             Time.timeScale = 1f;
-            if(Input.GetKeyDown(KeyCode.Escape)){
+            if(_echapPressed){
+                _echapPressed = false;
 
+                foreach(MonoBehaviour o in _toDisable){
+                    o.enabled = false;
+                }
+                
                 _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
                 _pausePanelAnimator.Play(_pausePanelOppening.name);
             
@@ -47,10 +63,15 @@ public class PauseMenuManager : MonoBehaviour
         }else if(IsAnimating(_pausePanelOpen.name)){
             Time.timeScale = 0f;
 
-            if(Input.GetKeyDown(KeyCode.Escape)){
-
+            if(_echapPressed){
+                _echapPressed = false;
                 Time.timeScale = 1f;
                 _pausePanelAnimator.Play(_pausePanelClosing.name);
+
+                foreach(MonoBehaviour o in _toDisable){
+                    o.enabled = true;
+                }
+
                 _eventSystem.SetSelectedGameObject(null);
             }
             
@@ -67,6 +88,13 @@ public class PauseMenuManager : MonoBehaviour
 
         Time.timeScale = 1f;
         _pausePanelAnimator.Play(_pausePanelClosing.name);
+
+        foreach(MonoBehaviour o in _toDisable){
+            o.enabled = true;
+        }
+
+        PlayerStateMachine.Instance.JumpPressed = false;
+
         _eventSystem.SetSelectedGameObject(null);
     }
 

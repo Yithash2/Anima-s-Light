@@ -35,7 +35,7 @@ public class FallState : BaseState{
     public override void CheckSwitchState()
     {
         
-      if(_ctx.YInput < 0){
+      if(_ctx.DivePressed){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Grounded());

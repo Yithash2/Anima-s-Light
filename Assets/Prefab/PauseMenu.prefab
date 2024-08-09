@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6716120734698133662}
+      - m_Target: {fileID: 8236811842667299588}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 6359254480588996354}
   - component: {fileID: 2186275555926668773}
   - component: {fileID: 4097958679110979266}
-  - component: {fileID: 6716120734698133662}
   m_Layer: 5
   m_Name: Pause
   m_TagString: Untagged
@@ -237,28 +236,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6716120734698133662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932780672250762933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0aa293dc2a3a24cbc537cb137bfd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pausePanelAnimator: {fileID: 4097958679110979266}
-  _pauseMenu: {fileID: 2932780672250762933}
-  _pauseFirstSelected: {fileID: 969686478738311479}
-  _pausePanelClosing: {fileID: 7400000, guid: 90f6dc54f0947a0479aa2f7cb70fae9a, type: 2}
-  _pausePanelOppening: {fileID: 7400000, guid: 131324c4474bc92469ac8ab411a6ab73, type: 2}
-  _pausePanelClosed: {fileID: 7400000, guid: a7306b46a6f814d47bc6bc124156a919, type: 2}
-  _pausePanelOpen: {fileID: 7400000, guid: ed36fb766cca9d54dbb841e96daad565, type: 2}
-  _optionButton: {fileID: 8189992526509317714}
-  _optionFirstSelected: {fileID: 4739259411738370575}
-  _optionMenu: {fileID: 4210302774559544576}
 --- !u!1 &3815003148746252165
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +759,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6716120734698133662}
+      - m_Target: {fileID: 8236811842667299588}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: MenuButton
         m_Mode: 1
@@ -1018,10 +995,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 4255697272532885099}
+    m_SelectOnDown: {fileID: 2702983994877827111}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1049,7 +1026,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6716120734698133662}
+      - m_Target: {fileID: 8236811842667299588}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -1316,7 +1293,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6716120734698133662}
+      - m_Target: {fileID: 8236811842667299588}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: OptionMenu
         m_Mode: 1
@@ -1340,6 +1317,7 @@ GameObject:
   - component: {fileID: 3757966489862137297}
   - component: {fileID: 4219408941331931882}
   - component: {fileID: 2721193054456628398}
+  - component: {fileID: 8236811842667299588}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1431,6 +1409,30 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8236811842667299588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426838625602667621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0aa293dc2a3a24cbc537cb137bfd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pausePanelAnimator: {fileID: 4097958679110979266}
+  _pauseMenu: {fileID: 2932780672250762933}
+  _pauseFirstSelected: {fileID: 969686478738311479}
+  _pausePanelClosing: {fileID: 7400000, guid: 90f6dc54f0947a0479aa2f7cb70fae9a, type: 2}
+  _pausePanelOppening: {fileID: 7400000, guid: 131324c4474bc92469ac8ab411a6ab73, type: 2}
+  _pausePanelClosed: {fileID: 7400000, guid: a7306b46a6f814d47bc6bc124156a919, type: 2}
+  _pausePanelOpen: {fileID: 7400000, guid: ed36fb766cca9d54dbb841e96daad565, type: 2}
+  _optionButton: {fileID: 8189992526509317714}
+  _optionFirstSelected: {fileID: 4739259411738370575}
+  _optionMenu: {fileID: 4210302774559544576}
+  _toDisable:
+  - {fileID: 0}
 --- !u!1 &8709377938851343721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1554,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6716120734698133662}
+      - m_Target: {fileID: 8236811842667299588}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -1721,7 +1723,11 @@ PrefabInstance:
     - target: {fileID: 2158426031970646909, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6716120734698133662}
+      objectReference: {fileID: 8236811842667299588}
+    - target: {fileID: 2158426031970646909, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OptionMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2334124025155867131, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
