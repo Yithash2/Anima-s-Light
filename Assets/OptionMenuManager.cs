@@ -32,6 +32,11 @@ public class OptionMenuManager : MonoBehaviour
     [SerializeField] GameObject _controllerControlPanel;
     [SerializeField] GameObject _controllerControlButton;
     [SerializeField] GameObject _controllerControlFirstSelected;
+
+    [Header("Graphic tab")]
+    [SerializeField] Toggle _windowedToggle;
+    [SerializeField] Toggle _showSpeedrunTimeToggle;
+    [SerializeField] Toggle _showDeathCountToggle;
     
     [SerializeField] Button _backButton;
 
@@ -42,6 +47,17 @@ public class OptionMenuManager : MonoBehaviour
         SearchForTab(tabs[0].TabName);
 
         UpdateVolumes();
+
+        if(Screen.fullScreen) _windowedToggle.isOn = false;
+        else _windowedToggle.isOn = true;
+
+        if(PlayerPrefs.GetInt("Speedrunner") == 1)_showSpeedrunTimeToggle.isOn = true;
+        else _showSpeedrunTimeToggle.isOn = false;
+
+        if(PlayerPrefs.GetInt("Winner") == 1) _showDeathCountToggle.isOn = true;
+        else _showDeathCountToggle.isOn = false;
+            
+        
     }
     public void KeyboardControls(){
         if(!_keyboardControlPanel.activeInHierarchy){
@@ -86,7 +102,7 @@ public class OptionMenuManager : MonoBehaviour
     }
 
     public void MasterVolume(float value){
-        audioMixer.SetFloat("Master Volume", (Mathf.Log10(value)*20));
+        audioMixer.SetFloat("Master Volume", Mathf.Log10(value)*20);
         PlayerPrefs.SetFloat("MasterVolume", value);
     }
 
@@ -104,6 +120,21 @@ public class OptionMenuManager : MonoBehaviour
         SearchForTab(tabs[0].TabName);
 
         UpdateVolumes();
+    }
+
+    public void FullScrrenToggle(bool toggle){
+        Screen.fullScreen = !toggle;
+    }
+
+    public void SpeedrunTileToggle(bool toggle){
+        if (toggle) PlayerPrefs.SetInt("Speedrunner", 1);
+        else PlayerPrefs.SetInt("Speedrunner", 0);
+    }
+
+    public void ShowDeathCounterToggle(bool toggle){
+        if (toggle) PlayerPrefs.SetInt("Winner", 1);
+        else PlayerPrefs.SetInt("Winner", 0);
+
     }
 
     public void SearchForTab(string TabToFind){
