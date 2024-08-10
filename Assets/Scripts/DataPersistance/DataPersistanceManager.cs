@@ -33,9 +33,28 @@ public class DataPersistanceManager : MonoBehaviour
 
     public void RestartLevel(){
         _gameData.checkpoints.TPCLear();
+        _gameData.currentTimer.Clear();
+
+        SetTotalDeathCount();
+
         dataHandler.Save(_gameData);
-        
-        
+    }
+
+    public void SetTotalDeathCount(){
+        if(HasPlayedALevel()){
+            _gameData.LevelTotalDeathCount[_gameData.currentLevelDeathCount.First().Key] += _gameData.currentLevelDeathCount.First().Value;
+        }
+        _gameData.currentLevelDeathCount.Clear();
+    }
+
+    public bool HasPlayedALevel(){
+        foreach(KeyValuePair<string, int> pair in _gameData.Levels){
+            if(pair.Value == 1 || pair.Value == 3){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnEnable(){

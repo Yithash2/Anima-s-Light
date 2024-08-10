@@ -9,6 +9,8 @@ public class LevelInfo : MonoBehaviour
     public Level level;
 
     public string[] UnlockLevel;
+
+    public bool SetLevelDeath = true;
     void Awake()
     {
         if(Instance != null){

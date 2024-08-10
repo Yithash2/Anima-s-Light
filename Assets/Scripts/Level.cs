@@ -19,4 +19,8 @@ public struct Level{
     case 2 : niveau gagné
     case 3 : niveau gagné et dernier niveau jouer
     */
+    public int TotalDeathCount;
+
+    public float BestTime; //In miliseconds
+    
 }

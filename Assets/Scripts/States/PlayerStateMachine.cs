@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
+
 public class PlayerStateMachine : MonoBehaviour
 {
 
@@ -227,6 +228,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         
         if(IsAnimating("Death End")){
+            DeathCounter.Instance.AddToDeathCount();
             transform.position = respawnPoint.position;
             _animator.Play("Respawn");
             _camera.CamAnimator.Play("Cam dezoom");
