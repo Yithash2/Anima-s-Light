@@ -31,7 +31,7 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
         UpdateDeathCounter();
     }
 
-    void UpdateDeathCounter(){
+    public void UpdateDeathCounter(){
         TotalNumberOfDeathText.text = TotalNumberOfDeath.ToString() + "x";
     }
 

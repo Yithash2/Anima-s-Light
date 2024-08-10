@@ -51,6 +51,8 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
         }
 
         DataPersistanceManager.Instance.SaveGame();
+        TotalDeathCounter.Instance.UpdateDeathCounter();
+
 
         foreach(Level level in levels){
             if(level.levelIndex == -1){
@@ -68,6 +70,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             for(int i = 0; i < levels.Length; i++){
                 levels[i].levelIndex = data.Levels[levels[i].LevelName];
                 levels[i].TotalDeathCount = data.LevelTotalDeathCount[levels[i].LevelName];
+                levels[i].BestTime = data.LevelBestTime[levels[i].LevelName];
             }
 
         }catch{
