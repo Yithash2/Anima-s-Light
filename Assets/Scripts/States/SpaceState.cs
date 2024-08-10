@@ -39,7 +39,7 @@ public class SpaceState : BaseState
     {
         if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.Jumping());
-        }else if(_ctx.YInput < 0 && !_ctx.IsGrounded()){
+        }else if(_ctx.DivePressed && !_ctx.IsGrounded()){
             SwitchState(_factory.GroundSlam());
         }else if(!_ctx.IsSpaced() && _ctx.IsGrounded()){
             SwitchState(_factory.Grounded());

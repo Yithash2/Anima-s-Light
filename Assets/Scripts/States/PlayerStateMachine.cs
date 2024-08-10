@@ -3,6 +3,8 @@ using System.Globalization;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 
 public class PlayerStateMachine : MonoBehaviour
@@ -64,7 +66,7 @@ public class PlayerStateMachine : MonoBehaviour
     bool _isJumping;
 
     float _xInput;
-    float _yInput;
+    bool _divePressed;
     bool _isFacingRight;
 
     public Transform respawnPoint;
@@ -97,7 +99,7 @@ public class PlayerStateMachine : MonoBehaviour
     public AudioSource AudioSource {get {return _audioSource;}}
     public AudioClip[] AudioClips {get {return _audioClips;}}
     public float WallJumpCounter {get {return _wallJumpCounter;}set {_wallJumpCounter = value;}}
-    public float YInput {get {return _yInput;}}
+    public bool DivePressed {get {return _divePressed;}}
     public Animator Animator {get {return _animator;}}
     public AnimationClip[] Animations {get {return _animations;}}
     public float XInput {get {return _xInput;}}
@@ -129,6 +131,7 @@ public class PlayerStateMachine : MonoBehaviour
             return;
         }
         Instance = this;
+
     }
 
     void Start(){
@@ -140,6 +143,7 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState = _states.Grounded();
         _currentState.EnterState();
     }
+
 
 
     // Update is called once per frame
@@ -224,6 +228,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         
         if(IsAnimating("Death End")){
+            DeathCounter.Instance.AddToDeathCount();
             transform.position = respawnPoint.position;
             _animator.Play("Respawn");
             _camera.CamAnimator.Play("Cam dezoom");
@@ -283,16 +288,31 @@ public class PlayerStateMachine : MonoBehaviour
         }
         
     }
-    
-    void Inputs(){
-        _yInput = Input.GetAxisRaw("Vertical");
 
-        _xInput = Input.GetAxisRaw("Horizontal"); 
-
-        if(Input.GetKeyDown(KeyCode.Space)){
+    public void Jump(InputAction.CallbackContext ctx){
+        if(ctx.started){
             _bufferCounter = 0;
             _jumpPressed = true;
+        }else {
+            _jumpReleased = true;
         }
+    }
+
+    public void Move(InputAction.CallbackContext ctx){
+        _xInput = ctx.ReadValue<float>();
+    }
+
+    public void Dive(InputAction.CallbackContext ctx){
+        if(ctx.performed){
+            _divePressed = true;
+        }else{
+            _divePressed = false;
+        }
+    }
+    
+    void Inputs(){
+
+        
 
         if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
@@ -301,12 +321,6 @@ public class PlayerStateMachine : MonoBehaviour
                 _bufferCounter = 0;
                 _jumpPressed = false;
             }
-        }
-
-        Debug.Log(_bufferCounter);
-        
-        if(!Input.GetKey(KeyCode.Space)){
-            _jumpReleased = true;
         }
 
     }

@@ -6,10 +6,20 @@ using UnityEngine.UI;
 using System.Linq; 
 
 
-public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
+public class LevelSelectorManager : MonoBehaviour, IDataPersistance
 {
     public Level[] levels;
-    public GameObject LevelInf;    
+    public GameObject LevelInf; 
+
+    public static LevelSelectorManager Instance {get; private set;} 
+    void Awake(){
+        if(Instance != null){
+            Debug.Log("Found more then one LevelSelectorManager, and destoyed it");
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+    }  
     void Start()
     {
         try{
@@ -19,13 +29,21 @@ public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
             for(int i = 0; i < levels.Length; i++){
                 if(lv.LevelName == levels[i].LevelName){
                     levels[i].levelIndex = lv.levelIndex;
+                    if(LevelInfo.Instance.SetLevelDeath){
+                        levels[i].TotalDeathCount = lv.TotalDeathCount;
+                    }
+
+                    levels[i].BestTime = lv.BestTime;
                 }
 
                 if((lvs.Count != 0) && (lvs[0] == levels[i].LevelName)){
-                    levels[i].levelIndex = 0;
+                    if(levels[i].levelIndex == -1) levels[i].levelIndex = 0;
                     lvs.RemoveAt(0);
                 }
+
             }
+
+            
 
             LevelInfo.Instance.SelfDestroy();
         }catch{
@@ -49,6 +67,7 @@ public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
         try{
             for(int i = 0; i < levels.Length; i++){
                 levels[i].levelIndex = data.Levels[levels[i].LevelName];
+                levels[i].TotalDeathCount = data.LevelTotalDeathCount[levels[i].LevelName];
             }
 
         }catch{
@@ -61,8 +80,13 @@ public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
         foreach(Level lv in levels){
             if(data.Levels.ContainsKey(lv.LevelName)){
                 data.Levels.Remove(lv.LevelName);
+                data.LevelTotalDeathCount.Remove(lv.LevelName);
+                data.LevelBestTime.Remove(lv.LevelName);
             }
             data.Levels.Add(lv.LevelName, lv.levelIndex);
+            data.LevelTotalDeathCount.Add(lv.LevelName, lv.TotalDeathCount);
+            data.LevelBestTime.Add(lv.LevelName, lv.BestTime);
+
         }
     }
 
@@ -74,9 +98,11 @@ public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
                 break;
             }
         }
-        Instantiate(LevelInf);
+
+        DataPersistanceManager.Instance.SaveGame();
 
         ClearCurrentLevelIndex();
+        
 
         if(lv.levelIndex != 1 && lv.levelIndex != 3){
 
@@ -89,10 +115,10 @@ public class LevelSelector_Manager : MonoBehaviour, IDataPersistance
                 }
             }
         }
+        
+        Instantiate(LevelInf);
 
         LevelInfo.Instance.level = lv;
-
-        DataPersistanceManager.Instance.SaveGame();
 
         SceneManager.LoadScene(lv.LevelSceneName);
     }

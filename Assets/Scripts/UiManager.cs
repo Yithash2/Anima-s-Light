@@ -56,7 +56,9 @@ public class UiManager : MonoBehaviour
             _optionMenuOpen = true;
             _mainMenu.SetActive(false);
             _optionMenu.SetActive(true);
-            _eventSystem.SetSelectedGameObject(_optionFirstSelected);
+            OptionMenuManager OPM = _optionMenu.GetComponent<OptionMenuManager>();
+            _eventSystem.SetSelectedGameObject(OPM.CurrentTab.FirstSelected);
+            
         }
         
     }

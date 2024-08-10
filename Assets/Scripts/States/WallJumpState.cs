@@ -50,7 +50,7 @@ public class WallJumpState : BaseState
             SwitchState(_factory.Spaced());
         }else if(_ctx.Rb.velocity.y < _ctx.StoredVelocity.y && _ctx.CanMove()){
             SwitchState(_factory.Falling());
-        }else if(_ctx.YInput < 0 && _ctx.CanMove()){
+        }else if(_ctx.DivePressed && _ctx.CanMove()){
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
