@@ -5,7 +5,7 @@ using TMPro;
 
 public class DeathCounter : MonoBehaviour, IDataPersistance
 {
-    public int DeathCount;
+    public ulong DeathCount;
 
     [SerializeField] GameObject DeathCounterUI;
     [SerializeField] TextMeshProUGUI DeathCounterText;
@@ -52,7 +52,7 @@ public class DeathCounter : MonoBehaviour, IDataPersistance
 
     public void saveData(GameData data){
         data.currentLevelDeathCount.Clear();
-        data.currentLevelDeathCount = new SerializeDictionary<string, int>();
+        data.currentLevelDeathCount = new SerializeDictionary<string, ulong>();
         data.currentLevelDeathCount.Add(LevelInfo.Instance.level.LevelName, DeathCount);
     }
 }

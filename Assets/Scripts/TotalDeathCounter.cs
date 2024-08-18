@@ -8,7 +8,7 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
 {
     public static TotalDeathCounter Instance { get; private set; }
 
-    public int TotalNumberOfDeath;
+    public ulong TotalNumberOfDeath;
     public GameObject DeathCounterObject;
     public TextMeshProUGUI TotalNumberOfDeathText;
 
@@ -40,7 +40,7 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
         foreach(Level lvl in LevelSelectorManager.Instance.levels){    
             TotalNumberOfDeath += lvl.TotalDeathCount;
 
-            int currentDeathCount;
+            ulong currentDeathCount;
             if(data.currentLevelDeathCount.TryGetValue(lvl.LevelName, out currentDeathCount)){
                 currentDeathCount = data.currentLevelDeathCount[lvl.LevelName];
                 TotalNumberOfDeath += currentDeathCount;
