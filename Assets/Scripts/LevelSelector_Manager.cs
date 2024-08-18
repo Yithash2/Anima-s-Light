@@ -43,16 +43,14 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
 
             }
 
+            DataPersistanceManager.Instance.SaveGame();
+
             
 
             LevelInfo.Instance.SelfDestroy();
         }catch{
 
         }
-
-        DataPersistanceManager.Instance.SaveGame();
-        TotalDeathCounter.Instance.UpdateDeathCounter();
-
 
         foreach(Level level in levels){
             if(level.levelIndex == -1){
@@ -91,6 +89,8 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             data.LevelBestTime.Add(lv.LevelName, lv.BestTime);
 
         }
+
+        TotalDeathCounter.Instance.UpdateDeathCounter();
     }
 
     public void LoadLevel(string levelName){
@@ -101,11 +101,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
                 break;
             }
         }
-
-        DataPersistanceManager.Instance.SaveGame();
-
-        ClearCurrentLevelIndex();
-        
+       
 
         if(lv.levelIndex != 1 && lv.levelIndex != 3){
 
@@ -115,9 +111,13 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             for(int i = 0; i < levels.Length; i++){
                 if(lv.LevelName == levels[i].LevelName){
                     levels[i].levelIndex += 1;
+                }else if(levels[i].levelIndex == 1 ||levels[i].levelIndex == 3){
+                    levels[i].levelIndex -= 1;
                 }
             }
         }
+
+        DataPersistanceManager.Instance.SaveGame();
         
         Instantiate(LevelInf);
 
@@ -126,13 +126,13 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
         SceneManager.LoadScene(lv.LevelSceneName);
     }
 
-    void ClearCurrentLevelIndex(){
+    /*void ClearCurrentLevelIndex(){
         for(int i = 0;i < levels.Length; i++){
             if(levels[i].levelIndex == 1 || levels[i].levelIndex == 3){
                 levels[i].levelIndex -= 1;
             }
         }
-    }
+    }*/
 
 
 }

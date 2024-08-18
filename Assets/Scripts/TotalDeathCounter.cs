@@ -36,20 +36,25 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
     }
 
     public void loadData(GameData data){
-        TotalNumberOfDeath = data.TotalDeathCount;  
+
+        foreach(Level lvl in LevelSelectorManager.Instance.levels){    
+            TotalNumberOfDeath += lvl.TotalDeathCount;
+
+            int currentDeathCount;
+            if(data.currentLevelDeathCount.TryGetValue(lvl.LevelName, out currentDeathCount)){
+                currentDeathCount = data.currentLevelDeathCount[lvl.LevelName];
+                TotalNumberOfDeath += currentDeathCount;
+            }
+                
+        }
+        UpdateDeathCounter();
     }
 
     public void saveData(GameData data){
-        TotalNumberOfDeath = 0;
-        
-
-        if(DataPersistanceManager.Instance.HasPlayedALevel()){
-            foreach(Level lvl in LevelSelectorManager.Instance.levels){    
-                TotalNumberOfDeath +=  lvl.TotalDeathCount;
-            }
-            TotalNumberOfDeath += data.currentLevelDeathCount.First().Value;
-        }
-
         data.TotalDeathCount = TotalNumberOfDeath;
+        
+        UpdateDeathCounter();
+
+
     }
 }
