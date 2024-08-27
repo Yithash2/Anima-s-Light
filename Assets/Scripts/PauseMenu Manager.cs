@@ -24,8 +24,6 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] GameObject _optionFirstSelected;
     [SerializeField] GameObject _optionMenu;
 
-    [SerializeField] MonoBehaviour[] _toDisable;
-
     private bool _echapPressed = false;
 
     void Start()
@@ -48,13 +46,9 @@ public class PauseMenuManager : MonoBehaviour
 
     private void HanglePausePanelClosingOpening(){
         if(IsAnimating(_pausePanelClosed.name)){
-            Time.timeScale = 1f;
+            
             if(_echapPressed){
                 _echapPressed = false;
-
-                foreach(MonoBehaviour o in _toDisable){
-                    o.enabled = false;
-                }
                 
                 _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
                 _pausePanelAnimator.Play(_pausePanelOppening.name);
@@ -67,10 +61,6 @@ public class PauseMenuManager : MonoBehaviour
                 _echapPressed = false;
                 Time.timeScale = 1f;
                 _pausePanelAnimator.Play(_pausePanelClosing.name);
-
-                foreach(MonoBehaviour o in _toDisable){
-                    o.enabled = true;
-                }
 
                 _eventSystem.SetSelectedGameObject(null);
             }
@@ -88,10 +78,6 @@ public class PauseMenuManager : MonoBehaviour
 
         Time.timeScale = 1f;
         _pausePanelAnimator.Play(_pausePanelClosing.name);
-
-        foreach(MonoBehaviour o in _toDisable){
-            o.enabled = true;
-        }
 
         PlayerStateMachine.Instance.JumpPressed = false;
 

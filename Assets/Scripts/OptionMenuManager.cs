@@ -36,7 +36,9 @@ public class OptionMenuManager : MonoBehaviour
     [Header("Graphic tab")]
     [SerializeField] Toggle _windowedToggle;
     [SerializeField] Toggle _showSpeedrunTimeToggle;
+    [SerializeField] GameObject _speedrunTimeGO;
     [SerializeField] Toggle _showDeathCountToggle;
+    [SerializeField] GameObject _deathCountGO;
     
     [SerializeField] Button _backButton;
 
@@ -127,13 +129,23 @@ public class OptionMenuManager : MonoBehaviour
     }
 
     public void SpeedrunTileToggle(bool toggle){
-        if (toggle) PlayerPrefs.SetInt("Speedrunner", 1);
-        else PlayerPrefs.SetInt("Speedrunner", 0);
+        if (toggle) {
+            PlayerPrefs.SetInt("Speedrunner", 1);
+            _speedrunTimeGO.SetActive(true);
+        }else {
+            PlayerPrefs.SetInt("Speedrunner", 0);
+            _speedrunTimeGO.SetActive(false);
+        }
     }
 
     public void ShowDeathCounterToggle(bool toggle){
-        if (toggle) PlayerPrefs.SetInt("Winner", 1);
-        else PlayerPrefs.SetInt("Winner", 0);
+        if (toggle) {
+            PlayerPrefs.SetInt("Winner", 1);
+            _deathCountGO.SetActive(true);
+        }else{
+            PlayerPrefs.SetInt("Winner", 0);
+            _deathCountGO.SetActive(false);
+        }
 
     }
 

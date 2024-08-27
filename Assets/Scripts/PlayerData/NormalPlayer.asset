@@ -21,6 +21,6 @@ MonoBehaviour:
   slideSpeed: 3
   _wallJumpControlTime: 0.4
   _runAcceleration: 0.4
-  _airAcceleration: 0.1
+  _airAcceleration: 0.2
   _maxSpeed: 15
   _linearDrag: 0

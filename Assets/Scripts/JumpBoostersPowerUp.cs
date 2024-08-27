@@ -14,13 +14,17 @@ public class JumpBoostersPowerUp : MonoBehaviour
     public string playerTag;
 
     public float ResetTime;
+
     CircleCollider2D _collider;
+    float _radius;
+
 
     float resetCounter;
 
     void Start(){
         Player = PlayerStateMachine.Instance;
         _collider = GetComponent<CircleCollider2D>();
+        _radius = _collider.radius;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -29,13 +33,14 @@ public class JumpBoostersPowerUp : MonoBehaviour
             Player.BufferCounter = 0;
 
             if(PlayerIsAbove())  {
-                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, 0);
+                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/1.25f);
                 Player.CoyoteCounter = 0;
                 Player.JumpCount = 0;
                 _isActivated = false;
             }
         }
     }
+
 
     bool PlayerIsAbove(){
         return Player.transform.position.y > transform.position.y;
@@ -55,6 +60,11 @@ public class JumpBoostersPowerUp : MonoBehaviour
             }else{
                 resetCounter = 0;
                 SpriteRenderer.sprite = ActivatedSprite;
+
+                if(Vector2.Distance(Player.transform.position, transform.position) <= 35){
+                    if(Player.Rb.velocity.y <= 0) _collider.radius = Mathf.Sqrt((1/160f)*(-Player.Rb.velocity.y))+_radius;
+                    else _collider.radius = _radius;
+                }
 
             }
 

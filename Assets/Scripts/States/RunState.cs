@@ -53,6 +53,6 @@ public class RunState : BaseState{
     }
 
     void Deceleration(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/2, _ctx.Rb.velocity.y);   
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
     }
 }

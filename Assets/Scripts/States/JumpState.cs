@@ -26,6 +26,8 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
+        _ctx.AccelerationTime = Mathf.Lerp(_ctx.PlayerData.GroundAccelTime, _ctx.PlayerData.AirAccelTime, 0.125f);
+
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -2, 0.5f);
 
         if(_ctx.JumpReleased) {
@@ -46,8 +48,6 @@ public class JumpState : BaseState{
     {
         if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(_ctx.DivePressed){
-            SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];

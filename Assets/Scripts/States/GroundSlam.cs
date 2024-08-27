@@ -31,7 +31,7 @@ public class GroundSlamState : BaseState
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.5f);
 
 
-        _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 4 - _ctx.PlatformVelocityY), float.MaxValue));  
+        _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 2 - _ctx.PlatformVelocityY), float.MaxValue));  
 
         CheckSwitchState();
     }

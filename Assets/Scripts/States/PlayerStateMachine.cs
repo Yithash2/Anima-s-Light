@@ -46,8 +46,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float bufferTime;
     float _bufferCounter;
     float _wallJumpCounter;
-
     [SerializeField] float _coyoteTime;
+
+    [SerializeField] float _drowningTime = 10;
+    float _drowningCounter;
     float _coyoteCounter;
 
     #endregion
@@ -82,11 +84,14 @@ public class PlayerStateMachine : MonoBehaviour
 
     private bool _isDead;
 
-
-
-
+    [SerializeField] GameObject _bubble;
+    [SerializeField] Animator _bubbleAnimator;
 
     #region Get Sets
+    public GameObject Bubble {get {return _bubble;}}
+    public Animator BubbleAnimator {get {return _bubbleAnimator;}}
+    public float DrowningCounter {get { return _drowningCounter; }set { _drowningCounter = value;}}
+    public float DrowningTime {get { return _drowningTime;}}
     public float StoredVelocityResetCounter {get {return _platformCoyoteCounter;}set {_platformCoyoteCounter = value;}}
     public Vector2 PlatformAcceleration {get { return new Vector2(_platformAccelerationX, _platformAccelerationY);}set { _platformAccelerationX = value.x; _platformAccelerationY = value.y; } }
     public Vector2 StoredVelocity {get { return new Vector2(_latePlatformVelocityX, _latePlatformVelocityY);}set { _latePlatformVelocityX = value.x; _latePlatformVelocityY = value.y; } }
@@ -115,6 +120,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform PlayerTransform {get {return _playerTransform;}}
     public float SmoothSpeed {get {return _camera.smooth_speed;} set{_camera.smooth_speed = value;}}
     public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
+    public bool IsDead {get {return _isDead;} set {_isDead = value;}}
 
     Transform _playerTransform;
 
@@ -170,10 +176,26 @@ public class PlayerStateMachine : MonoBehaviour
 
         }
 
-        if(IsSuffocating()){
+        if(IsSuffocating() && !_isDead){
             tag = "Respawn";
             _isDead = true;
         }
+
+        if(IsSpaced()){
+            if(_drowningCounter < _drowningTime){
+                _drowningCounter += Time.deltaTime;
+            }
+        }else if(_bubble.activeInHierarchy){
+            _drowningCounter = 0;
+            _bubbleAnimator.Play("Basic");
+            _bubbleAnimator.speed = 1;
+            _bubble.SetActive(false);
+            _rb.drag = 0;
+            
+        }
+            
+
+        
 
     }
 
@@ -210,7 +232,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
 
-        if(collision.gameObject.CompareTag(_deadlyTag)){
+        if(collision.gameObject.CompareTag(_deadlyTag) && !_isDead){
             tag = "Respawn";
             _isDead = true;
         }

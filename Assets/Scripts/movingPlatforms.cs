@@ -5,44 +5,33 @@ using UnityEngine;
 public class MovingPlatforms : MonoBehaviour
 {
 
-    [SerializeField] Transform[] pointsToReach;
-    [HideInInspector] public List<Vector3> pTRvects;
+    [SerializeField] MovingPlatformPoints[] pointsToReach;
+    private bool IsWaiting;
     [SerializeField] float platformSpeed;
     [SerializeField] int _currentTargetPoint = 0;
     private bool isOnReturn;
     [SerializeField] Rigidbody2D RB;
 
-    [SerializeField] float WaitTime;
     float _waitCounter;
+
+    public GameObject Player;
 
     [SerializeField] bool _allowPlayerXDisplacement;
     [SerializeField] bool _allowPlayerYDisplacement;
     [SerializeField] bool isLooping;
 
-    void OnValidate(){
-        pTRvects.Clear();
-
-        foreach(Transform t in pointsToReach){
-            pTRvects.Add(t.position);
-        }
-
-        if(isLooping) pTRvects.Add(pointsToReach[0].position);
-    }
     void Update()
     {
 
-        if(Vector3.Distance(transform.position, pointsToReach[_currentTargetPoint].position) <= 0.5 + Mathf.Sqrt(platformSpeed * Time.deltaTime)){
-            _currentTargetPoint = GetcurrentIndex(_currentTargetPoint);
-            _waitCounter = 0;
-        }
-
-        if(_waitCounter <= WaitTime){
+        if(Vector3.Distance(transform.position, pointsToReach[_currentTargetPoint].transform.position) <= 0.5 + Mathf.Sqrt(platformSpeed * Time.deltaTime) && !IsWaiting){
             RB.velocity = Vector2.zero;
-            _waitCounter += Time.deltaTime;
-        }else if(_waitCounter > WaitTime){
-            Vector3 direction = pointsToReach[_currentTargetPoint].position - transform.position;
+            StartCoroutine(WaitForSeconds());
+            
+        }else if(!IsWaiting){
+            Vector3 direction = pointsToReach[_currentTargetPoint].transform.position - transform.position;
             RB.velocity = direction.normalized * platformSpeed;
-            }
+        }
+            
     }
 
     int GetcurrentIndex(int currentPoint){
@@ -74,9 +63,18 @@ public class MovingPlatforms : MonoBehaviour
         
     }
 
+    IEnumerator WaitForSeconds(){
+        IsWaiting = true;
+        yield return new WaitForSeconds(pointsToReach[_currentTargetPoint].WaitTime);
+        _currentTargetPoint = GetcurrentIndex(_currentTargetPoint);
+        IsWaiting = false;
+        
+    }
+
     void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
             PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
+            Player.transform.SetParent(transform);
             if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
         }
     }
@@ -93,6 +91,7 @@ public class MovingPlatforms : MonoBehaviour
     void OnCollisionExit2D(Collision2D collision){
         if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
             PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
+            Player.transform.SetParent(null);
             if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
         }
 
@@ -103,6 +102,7 @@ public class MovingPlatforms : MonoBehaviour
         if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
 
             if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
+                Player.transform.SetParent(transform);
                 PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
                 if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
             }
@@ -128,6 +128,7 @@ public class MovingPlatforms : MonoBehaviour
         if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
 
             if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
+                Player.transform.SetParent(null);
                 PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
                 if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
             }
@@ -136,10 +137,13 @@ public class MovingPlatforms : MonoBehaviour
     }
 
     void OnDrawGizmos(){
-        for(int i = 0; i < pTRvects.ToArray().Length-1; i++){
-            Gizmos.DrawLine(pTRvects.ToArray()[i], pTRvects.ToArray()[i+1]);
+        for(int i = 0; i < pointsToReach.Length-1; i++){
+            Gizmos.DrawLine(pointsToReach[i].transform.position, pointsToReach[i+1].transform.position);
         }
         
+        if(isLooping){
+            Gizmos.DrawLine(pointsToReach[0].transform.position, pointsToReach[pointsToReach.Length-1].transform.position);
+        }
             
     }
 }
