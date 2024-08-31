@@ -33,7 +33,7 @@ public class JumpBoostersPowerUp : MonoBehaviour
             Player.BufferCounter = 0;
 
             if(PlayerIsAbove())  {
-                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/1.25f);
+                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/5f);
                 Player.CoyoteCounter = 0;
                 Player.JumpCount = 0;
                 _isActivated = false;

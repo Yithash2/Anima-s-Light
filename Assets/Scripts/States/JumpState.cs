@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 public class JumpState : BaseState{
     
@@ -28,7 +28,7 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
+        
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -2, 0.5f);
 
@@ -106,4 +106,4 @@ public class JumpState : BaseState{
     }
 
 
-}
+}*/

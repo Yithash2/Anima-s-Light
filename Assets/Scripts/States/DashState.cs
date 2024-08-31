@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 public class DashState : BaseState{
     
@@ -36,15 +36,14 @@ public class DashState : BaseState{
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
         
-        if(_ctx.CanMove()){
-            CheckSwitchState();
-        }
+        
+        CheckSwitchState();
+        
         
     }
 
     public override void QuitState()
     {
-        _ctx.StoredVelocity = Vector2.zero;
 
         _ctx.DashCounter = 1000000000;
 
@@ -52,21 +51,28 @@ public class DashState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced()){
-            SwitchState(_factory.Spaced());
-        }else if(_ctx.IsWalled() && _ctx.JumpPressed){
-            _ctx.JumpPressed = false;
-            _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/3f);  
-            SwitchState(_factory.WallJump());  
-        }else if(_ctx.IsWalled()){
-            SwitchState(_factory.Walled());
-        }else if(_ctx.IsGrounded()){
-            SwitchState(_factory.Grounded());
-            _ctx.AudioSource.clip = _ctx.AudioClips[3];
-            _ctx.AudioSource.Play();
-        }else if(_ctx.Rb.velocity.y <= 0){
-            SwitchState(_factory.Falling());
+        if(_ctx.CanMove()){
+            if(_ctx.IsSpaced()){
+                SwitchState(_factory.Spaced());
+            }else if(_ctx.IsWalled()){
+                SwitchState(_factory.Walled());
+            }else if(_ctx.IsGrounded()){
+                SwitchState(_factory.Grounded());
+                _ctx.AudioSource.clip = _ctx.AudioClips[3];
+                _ctx.AudioSource.Play();
+            }else if(_ctx.Rb.velocity.y <= 0){
+                SwitchState(_factory.Falling());
+            } 
+        }else{
+            if(_ctx.IsWalled()){
+                _ctx.JumpPressed = false;
+
+                _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/4f);
+
+                SwitchState(_factory.WallJump());  
+            }
         }
+        
     }
 
     public override void InitialiseSubState()
@@ -74,32 +80,9 @@ public class DashState : BaseState{
 
     }
 
-    void HandleJumpStart(){
-
-        if(_ctx.StoredVelocity.y < 0){
-            _ctx.StoredVelocity = Vector2.zero;
-        }
-        
-        _ctx.BufferCounter = 0;
-       
-        float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
-
-        float verticalJumpForce = Mathf.Sqrt((3 + _ctx.StoredVelocity.y) * -2 * gravity);
-        float timeToPeak = verticalJumpForce / Mathf.Abs(gravity);
-        float totalTimeInAir = 2 * timeToPeak;
-        horizontalJumpForce = ((20) + _ctx.StoredVelocity.x) / totalTimeInAir;
-
-        
-        if((_ctx.Rb.velocity.y < 0 && _ctx.Rb.velocity.x == 0)){
-            _ctx.Rb.velocity = Vector2.zero;
-        }
-        
-
-        _ctx.ApplyForceAtEndOfFrame(new Vector2(horizontalJumpForce * _ctx.XInput , verticalJumpForce));  
-
-    }
+    
 
 
 
 
-}
+}*/
