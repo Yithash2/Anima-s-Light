@@ -2038,6 +2038,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.56195617
       objectReference: {fileID: 0}
+    - target: {fileID: 2088933094489815085, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
+      propertyPath: m_text
+      value: G/H
+      objectReference: {fileID: 0}
     - target: {fileID: 2158426031970646909, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2213,6 +2217,14 @@ PrefabInstance:
     - target: {fileID: 7785439269104089178, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463665479675391279, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
+      propertyPath: m_text
+      value: RT
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963753592035833213, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
+      propertyPath: m_text
+      value: LB/RB
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4677420998952290372, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}

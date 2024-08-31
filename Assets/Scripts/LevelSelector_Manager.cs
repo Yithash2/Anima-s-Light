@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Linq; 
+using System.Linq;
+using System;
 
 
 public class LevelSelectorManager : MonoBehaviour, IDataPersistance
 {
     public Level[] levels;
-    public GameObject LevelInf; 
+    public GameObject LevelInf;
+
+    public GameObject WinScreen_temp; 
 
     public static LevelSelectorManager Instance {get; private set;} 
     void Awake(){
@@ -26,6 +29,10 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             List<string> lvs = LevelInfo.Instance.UnlockLevel.ToList();
             Level lv = LevelInfo.Instance.level;
 
+            bool hasWon = true;
+
+            if(lvs[0] != "WIN") hasWon = false;
+            
             for(int i = 0; i < levels.Length; i++){
                 if(lv.LevelName == levels[i].LevelName){
                     levels[i].levelIndex = lv.levelIndex;
@@ -41,11 +48,14 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
                     lvs.RemoveAt(0);
                 }
 
+                if(levels[i].levelIndex < 2) hasWon = false;
+
             }
 
             DataPersistanceManager.Instance.SaveGame();
-
             
+
+            if(hasWon) WinScreen_temp.SetActive(true);
 
             LevelInfo.Instance.SelfDestroy();
         }catch{
@@ -57,6 +67,10 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
                 level.button.interactable = false;
             }
         }
+    }
+
+    public void CONTINUE_temp(){
+        WinScreen_temp.SetActive(false);
     }
 
     public void ReturnToMainMenu(){

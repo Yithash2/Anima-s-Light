@@ -192,6 +192,7 @@ ScriptedImporter:
     cells:
     - name: tree_tops_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 104
         y: 257
@@ -200,6 +201,7 @@ ScriptedImporter:
       spriteId: 4f4f9bda0ee9e0542a9c2ba9cc0a45fd
     - name: tree_tops_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 44
         y: 223
@@ -208,6 +210,7 @@ ScriptedImporter:
       spriteId: f4a12aa45ffe7404b9d7c49ede85d96a
     - name: tree_tops_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 38
         y: 219

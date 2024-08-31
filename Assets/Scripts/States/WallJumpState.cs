@@ -22,7 +22,12 @@ public class WallJumpState : BaseState
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
-        _ctx.WallJumpCounter = 0;
+
+        if(_ctx.Rb.velocity.y > 0){
+            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime*3/4;
+        }else{
+            _ctx.WallJumpCounter = 0;
+        }
 
         WallJump();
 
@@ -41,7 +46,8 @@ public class WallJumpState : BaseState
 
     public override void QuitState()
     {
-        
+        _ctx.JumpPressed = false;
+        _ctx.WallJumpCounter = 100000000;
     }
 
     public override void CheckSwitchState()
@@ -54,8 +60,8 @@ public class WallJumpState : BaseState
             SwitchState(_factory.GroundSlam());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
-                    _ctx.AudioSource.clip = _ctx.AudioClips[3];
-                    _ctx.AudioSource.Play();
+            _ctx.AudioSource.clip = _ctx.AudioClips[3];
+            _ctx.AudioSource.Play();
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Walled());
         }
@@ -63,10 +69,7 @@ public class WallJumpState : BaseState
 
         void WallJump(){
 
-        Debug.Log("WallJump");
-
         _ctx.BufferCounter = 0;
-        _ctx.JumpPressed = false;
         
         float verticalJumpForce = Mathf.Sqrt((_ctx.PlayerData.WallJumpHeight + _ctx.StoredVelocity.y) * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * _ctx.Rb.gravityScale);
@@ -75,7 +78,9 @@ public class WallJumpState : BaseState
 
         float wallJumpDirection = -_ctx.PlayerTransform.localScale.x;
 
-        _ctx.Rb.velocity = new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce);
+        if(_ctx.Rb.velocity.y <= 0) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+
+        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x));
 
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();
@@ -84,10 +89,8 @@ public class WallJumpState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.XInput != 0 && _ctx.CanMove()){
-            SetSubState(_factory.Running());
-        }else{
-            SetSubState(_factory.Iddle());
-        }
+        
+        SetSubState(_factory.Iddle());
+        
     }
 }

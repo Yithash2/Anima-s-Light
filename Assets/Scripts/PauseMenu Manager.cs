@@ -35,7 +35,7 @@ public class PauseMenuManager : MonoBehaviour
      void Update()
     {
         HanglePausePanelClosingOpening();
-
+        
     }
 
     public void Echap(InputAction.CallbackContext ctx){
@@ -45,27 +45,32 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     private void HanglePausePanelClosingOpening(){
-        if(IsAnimating(_pausePanelClosed.name)){
-            
-            if(_echapPressed){
-                _echapPressed = false;
+            if(_pauseMenu.activeInHierarchy){
+                if(IsAnimating(_pausePanelClosed.name)){
                 
-                _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
-                _pausePanelAnimator.Play(_pausePanelOppening.name);
-            
-            } 
-        }else if(IsAnimating(_pausePanelOpen.name)){
-            Time.timeScale = 0f;
+                if(_echapPressed){
+                    _echapPressed = false;
+                    
+                    _eventSystem.SetSelectedGameObject(_pauseFirstSelected);
+                    _pausePanelAnimator.Play(_pausePanelOppening.name);
+                
+                } 
+            }else if(IsAnimating(_pausePanelOpen.name)){
+                Time.timeScale = 0f;
 
-            if(_echapPressed){
-                _echapPressed = false;
-                Time.timeScale = 1f;
-                _pausePanelAnimator.Play(_pausePanelClosing.name);
+                if(_echapPressed){
+                    _echapPressed = false;
+                    Time.timeScale = 1f;
+                    _pausePanelAnimator.Play(_pausePanelClosing.name);
 
-                _eventSystem.SetSelectedGameObject(null);
+                    _eventSystem.SetSelectedGameObject(null);
+                }
+                
             }
-            
+        }else if(_echapPressed && _optionMenu.activeInHierarchy){
+            OptionMenu();
         }
+        
         
     }
 

@@ -16,10 +16,11 @@ public class RunState : BaseState{
 
         if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
             Run();
+        }else{
+            Acceleration();
         }
 
         
-       Acceleration();
         
 
         CheckSwitchState();
@@ -43,12 +44,14 @@ public class RunState : BaseState{
     }
 
     void Run(){
+        
         Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
-        _ctx.Rb.velocity = _direction;
+        
+        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
     }
 
     void Acceleration(){
-        Vector2 _direction = new Vector2(_ctx.XInput, 0) * _targetSpeed / _ctx.AccelerationTime;
+        Vector2 _direction = new Vector2(_ctx.XInput, 0) * (_targetSpeed / _ctx.AccelerationTime);
         _ctx.Rb.AddForce(_direction);
     }
 

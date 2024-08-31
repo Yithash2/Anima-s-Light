@@ -27,7 +27,7 @@ public class WalledState : BaseState
 
     public override void QuitState()
     {
-        _ctx.WallJumpCounter = 0;
+        _ctx.WallJumpCounter = 100000000;
     }
 
     public override void CheckSwitchState()

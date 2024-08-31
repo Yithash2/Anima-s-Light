@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelector _temp.unity
     guid: 64e335ab9c2650747a3560592a684415
   - enabled: 1
+    path: Assets/Scenes/Tutorial Scene.unity
+    guid: db2bf608c36e1794b997421b9a85d6de
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1

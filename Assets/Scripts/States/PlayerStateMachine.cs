@@ -19,7 +19,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     #region Jump related
     private Rigidbody2D _rb;
-    [SerializeField] private float _platformVelocityY;
+    private Vector2 _lateVelocity;
+    private Vector2 _acceleration;
+    private float _platformVelocityY;
     [SerializeField] private int _numberOfJumps = 1;
     private int _jumpCount;
 
@@ -45,7 +47,9 @@ public class PlayerStateMachine : MonoBehaviour
     [Header ("Timers")]
     [SerializeField] float bufferTime;
     float _bufferCounter;
-    float _wallJumpCounter;
+    float _wallJumpCounter = 10000;
+
+    float _dashCounter = 10000;
     [SerializeField] float _coyoteTime;
 
     [SerializeField] float _drowningTime = 10;
@@ -88,6 +92,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _bubbleAnimator;
 
     #region Get Sets
+    public Vector2 Acceleration  {get {return _acceleration;}}
+    public float DashCounter {get{return _dashCounter;} set {_dashCounter = value;}} 
     public GameObject Bubble {get {return _bubble;}}
     public Animator BubbleAnimator {get {return _bubbleAnimator;}}
     public float DrowningCounter {get { return _drowningCounter; }set { _drowningCounter = value;}}
@@ -148,6 +154,8 @@ public class PlayerStateMachine : MonoBehaviour
         _states = new StateFactory(this);
         _currentState = _states.Grounded();
         _currentState.EnterState();
+
+        
     }
 
 
@@ -202,7 +210,6 @@ public class PlayerStateMachine : MonoBehaviour
     void FixedUpdate(){
 
         
-
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
             Flip();
@@ -210,17 +217,18 @@ public class PlayerStateMachine : MonoBehaviour
 
         StartCoroutine(LateFixedUpdate());
 
-        if(tag == "Respawn"){
+        if(tag == "Respawn" && IsDead){
             Respawn();
         }else{
             _currentState.UpdateStates();
         }
+ 
 
     }
 
     void LateUpdate(){
 
-        
+        _lateVelocity = _rb.velocity;
         
         
 
@@ -242,11 +250,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Respawn(){
         Rb.velocity = new Vector2(0, 0);
-        if(_isDead){
+        if(!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
             _animator.Play("Death");
             _camera.CamAnimator.Play("Cam zoom");
             _camera.verticalShift = 0;
-            _isDead = false;
+            
         }
         
         if(IsAnimating("Death End")){
@@ -255,8 +263,7 @@ public class PlayerStateMachine : MonoBehaviour
             _animator.Play("Respawn");
             _camera.CamAnimator.Play("Cam dezoom");
             tag = "Player";
-        }else if(IsAnimating("iddle")){
-            _currentState.EnterState();
+            _isDead = false;
         }
         
         
@@ -287,6 +294,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     IEnumerator LateFixedUpdate(){
         yield return new WaitForEndOfFrame();
+
+        _acceleration = new Vector2(_lateVelocity.x - _rb.velocity.x, _lateVelocity.y - _rb.velocity.y);
+
+
+
         if(_isOnMovingPlatform){
             _platformAccelerationX = (_latePlatformVelocityX - _platformVelocityX)/Time.fixedDeltaTime;
             _platformAccelerationY = (_latePlatformVelocityY - _platformVelocityY)/Time.fixedDeltaTime;      
@@ -315,7 +327,9 @@ public class PlayerStateMachine : MonoBehaviour
         if(ctx.started){
             _bufferCounter = 0;
             _jumpPressed = true;
-        }else {
+        }
+        
+        if(!ctx.performed){
             _jumpReleased = true;
         }
     }
@@ -397,9 +411,17 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 
-    public bool CanMove(){
+    public void ApplyForceAtEndOfFrame(Vector2 force){
+        StartCoroutine(applyForceAtEndOfFrame(force));
+    }
+    private IEnumerator applyForceAtEndOfFrame(Vector2 force){
+        yield return new WaitForEndOfFrame();
+        _rb.velocity += force;
+    }
 
-        if(_wallJumpCounter < PlayerData.WallJumpControlTime){
+    public bool CanMove(){
+ 
+        if((_wallJumpCounter < PlayerData.WallJumpControlTime) || (_dashCounter < 0.8)){
             return false;
         }else{
             return true;

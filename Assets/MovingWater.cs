@@ -10,6 +10,8 @@ public class MovingWater : MonoBehaviour
     [SerializeField] Vector3 _direction;
     [SerializeField] float _speed;
 
+     [SerializeField] LayerMask _waterLayer;
+
     
     void OnValidate()
     {
@@ -40,7 +42,9 @@ public class MovingWater : MonoBehaviour
     // Update is called once per frame
     void OnTriggerStay2D(Collider2D collider)
     {
-        StartCoroutine(AddforceAtEndOfFrame(collider.attachedRigidbody,_direction.normalized * _speed));
+        if(collider.IsTouchingLayers(_waterLayer)){
+            StartCoroutine(AddforceAtEndOfFrame(collider.attachedRigidbody,_direction.normalized * _speed));
+        }
     }
 
     IEnumerator AddforceAtEndOfFrame(Rigidbody2D rb, Vector2 force){

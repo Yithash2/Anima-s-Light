@@ -44,6 +44,8 @@ public class UiManager : MonoBehaviour
         if(!_dataPersistance.HasGameData()){
             _continueButton.interactable = false;
         }
+
+        Application.targetFrameRate = 60;
     }
 
     public void OptionButton(){  
@@ -83,7 +85,7 @@ public class UiManager : MonoBehaviour
 
     public void NewGameButton(){
         DataPersistanceManager.Instance.NewGame();
-        SceneManager.LoadScene("LevelSelector _temp");
+        SceneManager.LoadScene("Tutorial Scene");
     }
 
     public void MenuPauseButton(){

@@ -45,4 +45,8 @@ public class StateFactory
     public SpaceState Spaced(){
         return new SpaceState(_context, this);
     }
+
+    public DashState Dash(){
+        return new DashState(_context, this);
+    }
 }

@@ -272,6 +272,7 @@ ScriptedImporter:
     cells:
     - name: Background
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -289,6 +290,7 @@ ScriptedImporter:
     cells:
     - name: Tree
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 172
@@ -306,6 +308,7 @@ ScriptedImporter:
     cells:
     - name: Tree tops
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 307
@@ -323,6 +326,7 @@ ScriptedImporter:
     cells:
     - name: Tombs
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 677
         y: 297
@@ -340,6 +344,7 @@ ScriptedImporter:
     cells:
     - name: Fences
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 647
         y: 298
@@ -357,6 +362,7 @@ ScriptedImporter:
     cells:
     - name: Layer 2
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 51
         y: 159
@@ -374,6 +380,7 @@ ScriptedImporter:
     cells:
     - name: Layer 1
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: -2

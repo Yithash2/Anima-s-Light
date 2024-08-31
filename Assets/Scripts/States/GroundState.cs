@@ -19,14 +19,13 @@ public class GroundState : BaseState{
         
 
         _ctx.BufferCounter = 0;
-        _ctx.WallJumpCounter = 1000000000;
 
     }
 
     public override void UpdateState(){
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
 
-        _ctx.AccelerationTime = _ctx.PlayerData.GroundAccelTime;
+        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime ,_ctx.PlayerData.GroundAccelTime, 0.2f);
 
         CheckSwitchState();
 
@@ -40,7 +39,9 @@ public class GroundState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.JumpPressed && _ctx.CanJump()){
+        if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
+            SwitchState(_factory.Dash());
+        }else if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.Jumping());
         }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());

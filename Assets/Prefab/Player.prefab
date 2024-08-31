@@ -182,9 +182,9 @@ GameObject:
   - component: {fileID: 3348651127387589753}
   - component: {fileID: 624709401088304332}
   - component: {fileID: 2000800739352205166}
-  - component: {fileID: 2619648100695870738}
   - component: {fileID: 4094608591495732036}
   - component: {fileID: 2358996823964208035}
+  - component: {fileID: 6525199499976159195}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -276,7 +276,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.3029225
+  m_Mass: 0.6529196
   m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 4
@@ -339,10 +339,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5047f4f2cbbea6c4ca7134e09280704e, type: 3}
   - {fileID: 8300000, guid: d296be12fe3278142b891359727c6d06, type: 3}
   - {fileID: 8300000, guid: 52ea665d3344f1b40b0bad35cf3ede74, type: 3}
-  _platformVelocityY: 0
   _numberOfJumps: 1
   _groundCheck: {fileID: 3725201130712967224}
-  _checkSize: {x: 0.85, y: 0.36}
+  _checkSize: {x: 0.51, y: 0.36}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -357,7 +356,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _suffocationCheck: {fileID: 6357250604616642695}
-  _suffocationRadius: 0.4
+  _suffocationRadius: 0.28
   bufferTime: 0.4
   _coyoteTime: 0.2
   _drowningTime: 10
@@ -390,51 +389,18 @@ MonoBehaviour:
   m_SelfShadows: 1
   m_ApplyToSortingLayers: c1e51253cd632e8600000000
   m_ShapePath:
-  - {x: -0.23893094, y: -0.40540195, z: 0}
+  - {x: -0.13812256, y: -0.3966217, z: 0}
+  - {x: -0.29266357, y: -0.25332642, z: 0}
   - {x: -0.13281548, y: 0.1725288, z: 0}
   - {x: 0.22018492, y: 0.18047148, z: 0}
-  - {x: 0.3622427, y: -0.40540195, z: 0}
-  m_ShapePathHash: -486074619
+  - {x: 0.34033203, y: -0.24760437, z: 0}
+  - {x: 0.17633057, y: -0.39796448, z: 0}
+  m_ShapePathHash: 248525837
   m_Mesh: {fileID: 0}
-  m_InstanceId: -494622
+  m_InstanceId: 163082
   m_LocalBounds:
-    m_Center: {x: 0.06165588, y: -0.11246523, z: 0}
-    m_Extent: {x: 0.30058682, y: 0.2929367, z: 0}
---- !u!70 &2619648100695870738
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2489568136785853311}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03549373, y: 0.069125056}
-  m_Size: {x: 1.1025882, y: 1.4183121}
-  m_Direction: 0
+    m_Center: {x: 0.023834229, y: -0.1087465, z: 0}
+    m_Extent: {x: 0.3164978, y: 0.28921798, z: 0}
 --- !u!82 &4094608591495732036
 AudioSource:
   m_ObjectHideFlags: 0
@@ -665,6 +631,51 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!61 &6525199499976159195
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489568136785853311}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.03462231}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6139234, y: 1.0635197}
+  m_EdgeRadius: 0
 --- !u!1 &4171550526382030151
 GameObject:
   m_ObjectHideFlags: 0

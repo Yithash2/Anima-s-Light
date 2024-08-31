@@ -7,6 +7,8 @@ public class JumpState : BaseState{
         InitialiseSubState();
         _isRootState = true;
     }
+
+    float jumpForce;
     public override void EnterState()
     {
         
@@ -26,7 +28,7 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.PlayerData.GroundAccelTime, _ctx.PlayerData.AirAccelTime, 0.125f);
+        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -2, 0.5f);
 
@@ -34,6 +36,7 @@ public class JumpState : BaseState{
             HandleJumpEnd();
         }
         
+
         CheckSwitchState();
     }
 
@@ -52,8 +55,9 @@ public class JumpState : BaseState{
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];
             _ctx.AudioSource.Play();
-        }else if(_ctx.IsWalled()){
-            SwitchState(_factory.Walled());
+        }else if(_ctx.IsWalled() && _ctx.XInput == 0 && Mathf.Abs(6*_ctx.Rb.velocity.y) < Mathf.Abs(_ctx.Rb.velocity.x) ){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,jumpForce);
+            SwitchState(_factory.WallJump());    
         }else if(_ctx.Rb.velocity.y <= 0){
             SwitchState(_factory.Falling());
         }
@@ -77,7 +81,7 @@ public class JumpState : BaseState{
 
         _ctx.IsJumping = true;
 
-        float jumpForce;
+        
         float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
 
         if(_ctx.StoredVelocity.y >= 0){

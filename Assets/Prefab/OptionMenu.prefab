@@ -500,10 +500,10 @@ RectTransform:
   - {fileID: 5953774199059856150}
   m_Father: {fileID: 2334124025155867131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 321.01}
-  m_SizeDelta: {x: 0, y: -642.01}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.22858, y: 321.01}
+  m_SizeDelta: {x: 1383.6, y: 110.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1586268207797577168
 CanvasRenderer:
@@ -1020,7 +1020,9 @@ MonoBehaviour:
   _controllerControlFirstSelected: {fileID: 3772611580289556907}
   _windowedToggle: {fileID: 6963474555335935186}
   _showSpeedrunTimeToggle: {fileID: 2533974346657260978}
+  _speedrunTimeGO: {fileID: 0}
   _showDeathCountToggle: {fileID: 916332560478445214}
+  _deathCountGO: {fileID: 0}
   _backButton: {fileID: 2158426031970646909}
 --- !u!1 &3994757417336614612
 GameObject:
@@ -4424,10 +4426,10 @@ RectTransform:
   - {fileID: 8312842585072260703}
   m_Father: {fileID: 2334124025155867131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -322}
-  m_SizeDelta: {x: 0, y: -642.01}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.22932, y: -322}
+  m_SizeDelta: {x: 1383.6, y: 110.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4609061606076363641
 CanvasRenderer:
@@ -4781,7 +4783,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: B
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -4917,7 +4919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Dive
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -4965,7 +4967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: G/H
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5105,7 +5107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Move
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5342,7 +5344,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: S
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5482,7 +5484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Dive
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5530,7 +5532,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Espace
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5670,7 +5672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5718,7 +5720,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: LB/RB
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5854,7 +5856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Move
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -5902,7 +5904,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: RT
       objectReference: {fileID: 0}
     - target: {fileID: 3047043799087982583, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -6038,7 +6040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: 
+      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 7934668849280583457, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
