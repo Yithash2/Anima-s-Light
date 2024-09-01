@@ -14,9 +14,9 @@ public class StateFactory
         return new GroundState(_context, this);
     }
 
-    /*public JumpState Jumping(){
+    public JumpState Jumping(){
         return new JumpState(_context, this);
-    }*/
+    }
 
     public FallState Falling(){
         return new FallState(_context, this);
@@ -34,9 +34,9 @@ public class StateFactory
         return new WalledState(_context, this);
     }
 
-    /*public WallJumpState WallJump(){
+    public WallJumpState WallJump(){
         return new WallJumpState(_context, this);
-    }*/
+    }
 
     public GroundSlamState GroundSlam(){
         return new GroundSlamState(_context, this);
@@ -46,7 +46,7 @@ public class StateFactory
         return new SpaceState(_context, this);
     }
 
-    /*public DashState Dash(){
+    public DashState Dash(){
         return new DashState(_context, this);
-    }*/
+    }
 }

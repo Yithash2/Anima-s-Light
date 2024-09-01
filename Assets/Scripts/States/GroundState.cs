@@ -16,10 +16,7 @@ public class GroundState : BaseState{
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
-        _ctx.IsDashing = false;
-        _ctx.DashCounter = 1000;
-        _ctx.IsWallJumping = false;
-        _ctx.WallJumpCounter = 1000;
+        
 
         _ctx.BufferCounter = 0;
 
@@ -30,18 +27,7 @@ public class GroundState : BaseState{
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime ,_ctx.PlayerData.GroundAccelTime, 0.2f);
 
-        if(_ctx.CanMove()){
-
-            if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
-                _ctx.HandleDash();
-            }else if(_ctx.JumpPressed && _ctx.CanJump()){
-                _ctx.HandleJumpStart();
-            }
-
-            CheckSwitchState();
-        }
-
-        
+        CheckSwitchState();
 
         
     }
@@ -53,9 +39,13 @@ public class GroundState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced()){
+        if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
+            SwitchState(_factory.Dash());
+        }else if(_ctx.JumpPressed && _ctx.CanJump()){
+            SwitchState(_factory.Jumping());
+        }else if(_ctx.IsSpaced()){
             SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsGrounded()){
+        }else if(!_ctx.IsOnMovingPlatform && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < _ctx.StoredVelocity.y){
             SwitchState(_factory.Falling());
         }
     }

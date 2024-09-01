@@ -50,7 +50,10 @@ public class GroundSlamState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(!_ctx.DivePressed){
+        if(_ctx.IsGrounded() && _ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
+            _ctx.Rb.velocity = new Vector2(Mathf.Abs(_ctx.Rb.velocity.y)*_ctx.XInput, 0);
+            SwitchState(_factory.Dash());
+        }else if(!_ctx.DivePressed){
             SwitchState(_factory.Falling());
             _ctx.JumpPressed = false;
         }else if(_ctx.IsGrounded()){

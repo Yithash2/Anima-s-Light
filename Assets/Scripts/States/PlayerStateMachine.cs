@@ -24,9 +24,6 @@ public class PlayerStateMachine : MonoBehaviour
     private float _platformVelocityY;
     [SerializeField] private int _numberOfJumps = 1;
     private int _jumpCount;
-    float _jumpForce;
-    float _horizontalDashForce;
-    float _horizontalWallJumpForce;
 
     [Header("Check")]
     [SerializeField] Transform _groundCheck;
@@ -52,9 +49,7 @@ public class PlayerStateMachine : MonoBehaviour
     float _bufferCounter;
     float _wallJumpCounter = 10000;
 
-    [SerializeField] float _dashTime = 0.8f;
     float _dashCounter = 10000;
-
     [SerializeField] float _coyoteTime;
 
     [SerializeField] float _drowningTime = 10;
@@ -75,8 +70,6 @@ public class PlayerStateMachine : MonoBehaviour
     bool _jumpReleased;
 
     bool _isJumping;
-    bool _isDashing;
-    bool _isWallJumping;
 
     float _xInput;
     bool _divePressed;
@@ -99,8 +92,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _bubbleAnimator;
 
     #region Get Sets
-    public float HorizontalDashForce {get { return _horizontalDashForce;}}
-    public float JumpForce {get {return _jumpForce;}}
     public Vector2 Acceleration  {get {return _acceleration;}}
     public float DashCounter {get{return _dashCounter;} set {_dashCounter = value;}} 
     public GameObject Bubble {get {return _bubble;}}
@@ -126,8 +117,6 @@ public class PlayerStateMachine : MonoBehaviour
     public bool JumpReleased {get {return _jumpReleased;} set{ _jumpReleased = value;}}
     public Rigidbody2D Rb {get {return _rb;}set {_rb = value;}}
     public float GravityScale {get {return _gravityScale;}}
-    public bool IsWallJumping {get {return _isWallJumping;} set {_isWallJumping = value;}}
-    public bool IsDashing {get {return _isDashing;}set {_isDashing = value;}}
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
     public bool JumpPressed {get {return _jumpPressed;} set { _jumpPressed = value;}}
     public float BufferCounter {get {return _bufferCounter;} set {_bufferCounter = value;}}
@@ -146,7 +135,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     public static PlayerStateMachine Instance {get; private set;}
     // Start is called before the first frame update
-    void Awake(){
+    void Awake()
+    {
         if(Instance != null){
             Debug.Log("Found more then one PlayerStateMachine, and destoyed it");
             Destroy(this.gameObject);
@@ -167,8 +157,12 @@ public class PlayerStateMachine : MonoBehaviour
 
         
     }
-    
-    void Update(){
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
         if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
             if(_jumpCount < 1){
                 CoyoteTimer();
@@ -198,41 +192,17 @@ public class PlayerStateMachine : MonoBehaviour
         if(IsSpaced()){
             if(_drowningCounter < _drowningTime){
                 _drowningCounter += Time.deltaTime;
-
-                if(_drowningCounter < _drowningTime*6/10){
-                    _bubble.transform.localScale = Vector3.Lerp(new Vector3(3,3,0), new Vector3(1.5f,1.5f,0), (_drowningCounter+_drowningTime*4/10)/_drowningTime);
-                }else if(_drowningCounter < _drowningTime*8/10){
-                    _bubbleAnimator.Play("DangerZone");
-                }else if(_drowningCounter >= _drowningCounter*8/10){
-                    _bubbleAnimator.speed = Mathf.Lerp(1,3, (_drowningCounter + _drowningCounter*2/10)/_drowningTime*8/10);
-                }
             }
         }else if(_bubble.activeInHierarchy){
             _drowningCounter = 0;
             _bubbleAnimator.Play("Basic");
             _bubbleAnimator.speed = 1;
             _bubble.SetActive(false);
-            _rb.drag = 0;     
-        } 
-        
-
-        if(_isDashing) { 
-            if(_dashCounter < _dashTime){
-                _dashCounter += Time.deltaTime;
-                
-            }else{
-                _isDashing = false;
-            }
+            _rb.drag = 0;
+            
         }
+            
 
-        if(_isWallJumping){
-            if(_wallJumpCounter < PlayerData.WallJumpControlTime){
-                _wallJumpCounter += Time.deltaTime;
-            }else{
-                _isWallJumping = false;
-            }
-        }
-        
         
 
     }
@@ -252,10 +222,6 @@ public class PlayerStateMachine : MonoBehaviour
         }else{
             _currentState.UpdateStates();
         }
-
-        if(_rb.velocity.y <= 0 && IsJumping){
-            HandleJumpEnd();
-        }
  
 
     }
@@ -268,116 +234,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
-    public void HandleJumpStart(){
-        _rb.gravityScale = _gravityScale * PlayerData.GravityMult;
 
-        if(!IsAnimating("Respawn")) _animator.Play(_animations[2].name);
-        _audioSource.clip = AudioClips[0];
-        _audioSource.Play();
-
-        _rb.velocity = new Vector2(_rb.velocity.x, 0);
-
-        _jumpReleased = false;
-        _bufferCounter = 0;
-        _jumpCount ++;
-        _coyoteCounter = _coyoteTime + 1;
-
-        _isJumping = true;
-
-        
-        float gravity = Physics2D.gravity.y * _rb.gravityScale;
-
-        if(StoredVelocity.y >= 0){
-            _jumpForce = Mathf.Sqrt(PlayerData.InitalJumpHeight * -2 * gravity)  + StoredVelocity.y;
-        }else if(_platformVelocityY != 0){
-            float a = StoredVelocity.y * Mathf.Sqrt(PlayerData.InitalJumpHeight * -2 * gravity);
-            _jumpForce = Mathf.Sqrt((PlayerData.InitalJumpHeight - a) * -2 * gravity) - Mathf.Sqrt(Mathf.Abs(a) * -2 * gravity);
-        }else{
-            _jumpForce = Mathf.Sqrt(PlayerData.InitalJumpHeight * -2 * gravity);
-        }
-
-        Debug.Log(_jumpForce);
-            
-        _rb.velocity += new Vector2(0, _jumpForce);
-        
-        _jumpPressed = false;
-    }
-
-    public void HandleJumpEnd(){
-        _jumpReleased = false;
-        _isJumping = false;
-        _rb.velocity = new Vector2(_rb.velocity.x,_rb.velocity.y/3);
-    }
-
-    public void HandleDash(){
-
-        _rb.gravityScale = _gravityScale * PlayerData.GravityMult;
-
-        _isDashing = true;
-        _dashCounter = 0; 
-
-        _jumpPressed = false;
-
-        _coyoteCounter = _coyoteTime + 1;
-        
-        _bufferCounter = 0;
-       
-        float gravity = Physics2D.gravity.y * _rb.gravityScale;
-
-        float verticalJumpForce = Mathf.Sqrt((3 + StoredVelocity.y) * -2 * gravity);
-        float timeToPeak = verticalJumpForce / Mathf.Abs(gravity);
-        float totalTimeInAir = 2 * timeToPeak;
-        _horizontalDashForce = ((20) + StoredVelocity.x) / totalTimeInAir;
-
-        
-        if((_rb.velocity.y < 0 && _rb.velocity.x == 0)){
-            _rb.velocity = Vector2.zero;
-        }
-        
-
-        _rb.velocity += new Vector2(_horizontalDashForce * _xInput , verticalJumpForce);  
-
-    }
-
-    public void WallJump(){
-        
-            if(!IsAnimating("Respawn")) _animator.Play(_animations[3].name);
-
-            _rb.gravityScale = PlayerData.GravityMult * _gravityScale;
-
-            _audioSource.clip = _audioClips[0];
-            _audioSource.Play();
-
-            if(_rb.velocity.y > 0){
-                _wallJumpCounter = PlayerData.WallJumpControlTime*3/4;
-            }else{
-                _wallJumpCounter = 0;
-            }
-
-            _isWallJumping = true;
-
-            _bufferCounter = 0;
-
-            _jumpPressed = false;
-
-            float gravity = Physics2D.gravity.y * _rb.gravityScale;
-            
-            float verticalJumpForce = Mathf.Sqrt((PlayerData.WallJumpHeight + StoredVelocity.y) * -2 * (gravity));
-            float timeToPeak = verticalJumpForce / Mathf.Abs(gravity);
-            float totalTimeInAir = -2 * timeToPeak;
-            _horizontalWallJumpForce = (PlayerData.WallJumpLength + StoredVelocity.x) / totalTimeInAir;
-
-            float wallJumpDirection = -_playerTransform.localScale.x;
-
-            if(_rb.velocity.y <= 0) _rb.velocity = new Vector2(_rb.velocity.x, 0);
-
-            _rb.velocity = new Vector2((_horizontalWallJumpForce + Mathf.Abs(_rb.velocity.x)) * wallJumpDirection , verticalJumpForce + Mathf.Abs(_rb.velocity.x) + _rb.velocity.y);
-
-            if(_playerTransform.localScale.x != wallJumpDirection)
-
-            Flip();
-
-        }
 
     
 
@@ -390,9 +247,9 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
 
+
     void Respawn(){
         Rb.velocity = new Vector2(0, 0);
-        _jumpPressed = false;
         if(!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
             _animator.Play("Death");
             _camera.CamAnimator.Play("Cam zoom");
@@ -404,8 +261,6 @@ public class PlayerStateMachine : MonoBehaviour
             DeathCounter.Instance.AddToDeathCount();
             transform.position = respawnPoint.position;
             _animator.Play("Respawn");
-            _currentState = _states.Grounded();
-            _currentState.EnterState();
             _camera.CamAnimator.Play("Cam dezoom");
             tag = "Player";
             _isDead = false;
@@ -556,9 +411,17 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 
+    public void ApplyForceAtEndOfFrame(Vector2 force){
+        StartCoroutine(applyForceAtEndOfFrame(force));
+    }
+    private IEnumerator applyForceAtEndOfFrame(Vector2 force){
+        yield return new WaitForEndOfFrame();
+        _rb.velocity += force;
+    }
+
     public bool CanMove(){
  
-        if((_wallJumpCounter < PlayerData.WallJumpControlTime) || (_dashCounter < _dashTime)){
+        if((_wallJumpCounter < PlayerData.WallJumpControlTime) || (_dashCounter < 0.8)){
             return false;
         }else{
             return true;
