@@ -64,7 +64,8 @@ public class DashState : BaseState{
     public override void CheckSwitchState()
     {
         if(_ctx.IsWalled() && _ctx.JumpPressed){
-            _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/3);
+            _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/4);
+            _ctx.JumpPressed = false;
             SwitchState(_factory.WallJump());
         }else if(_stateFinished){
             if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){

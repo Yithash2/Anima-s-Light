@@ -28,8 +28,6 @@ public class FallState : BaseState{
     {
         if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
             SwitchState(_factory.Dive());
-        }else if(_ctx.JumpReleased && _ctx.Rb.velocity.y > 0 && _ctx.IsJumping){
-            SwitchState(_factory.JumpEnd());
         }else if(_ctx.XInput != 0){
             SwitchState(_factory.Controlling());
         }

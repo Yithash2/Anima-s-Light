@@ -23,10 +23,17 @@ public abstract class BaseState
     public void UpdateStates(){
         UpdateState();
 
-        if(_currentSubState != null){
-            _currentSubState.UpdateState();
-        }
+        
+        UpdateSubState(_currentSubState);
+        
     }
+
+    protected void UpdateSubState(BaseState subState) {
+    for (BaseState currentState = subState; currentState != null; currentState = currentState._currentSubState) {
+        currentState.UpdateState();
+    }
+}
+
     protected void SwitchState(BaseState newState){
         
             
@@ -37,10 +44,10 @@ public abstract class BaseState
         if(_isRootState){
             _ctx.CurrentState = newState;
             if(_currentSubState != null){
-                newState.SetSubState(_currentSubState);
+                newState.TransferSubState(_currentSubState);
             }   
         }else if(_currentSuperState != null){
-            _currentSuperState.SetSubState(newState);
+            _currentSuperState.TransferSubState(newState);
         }
         
         newState.EnterState();
@@ -49,10 +56,25 @@ public abstract class BaseState
         _currentSuperState = newSuperState;
     }
     protected void SetSubState(BaseState newSubState){
+        if(_currentSubState != null){
+            
+            _currentSubState.QuitState();
+            _currentSubState = newSubState;
+            newSubState.SetSuperState(this);
 
+            _currentSubState.EnterState();
+        }else{
+            _currentSubState = newSubState;
+            newSubState.SetSuperState(this);
+
+            _currentSubState.EnterState();
+        }
+        
+    }
+
+    protected void TransferSubState(BaseState newSubState){
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
-        
     }
     
 }

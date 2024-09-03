@@ -11,9 +11,7 @@ public class AirState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.JumpReleased && _ctx.Rb.velocity.y > 0 && _ctx.IsJumping){
-            SetSubState(_factory.JumpEnd());
-        }else if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
+        if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
             SetSubState(_factory.Dive());
         }else if(_ctx.XInput != 0){
             SetSubState(_factory.Controlling()); 

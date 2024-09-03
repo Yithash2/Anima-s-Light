@@ -15,7 +15,6 @@ public class WallJumpState : BaseState
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
 
-        Debug.Log("FDDD");
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
@@ -23,7 +22,7 @@ public class WallJumpState : BaseState
         _stateFinished = false;
 
         if(_ctx.Rb.velocity.y > 0){
-            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime/4;
+            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
         }else{
             _ctx.WallJumpCounter = 0;
         }
@@ -47,6 +46,7 @@ public class WallJumpState : BaseState
 
     public override void QuitState()
     {
+        _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime + 1;
         _ctx.JumpPressed = false;
         _ctx.IsWallJumping = false;
         _stateFinished = true;
@@ -83,7 +83,7 @@ public class WallJumpState : BaseState
 
         if(_ctx.Rb.velocity.y <= 0) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
-        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x));
+        _ctx.Rb.velocity = new Vector2((horizontalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x)) * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x) + _ctx.Rb.velocity.y);
 
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();

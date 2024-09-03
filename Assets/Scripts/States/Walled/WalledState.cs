@@ -12,11 +12,9 @@ public class WalledState : BaseState
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[4].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
-        if(_currentSubState != null){
-            _ctx.WaitForStateToFinish(_currentSubState);
-        }else{
-            InitialiseSubState();
-        }
+        
+        InitialiseSubState();
+        
     }
 
     public override void UpdateState()
@@ -48,11 +46,7 @@ public class WalledState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.IsJumping){
-            _ctx.Rb.velocity = new Vector2(0,_ctx.JumpPower);
-            SetSubState(_factory.WallJump());
-            _ctx.IsJumping = false;
-        }else if(_ctx.JumpPressed){
+        if(_ctx.JumpPressed){
             SetSubState(_factory.WallJump());
         } else{
             SetSubState(_factory.Rapelling());

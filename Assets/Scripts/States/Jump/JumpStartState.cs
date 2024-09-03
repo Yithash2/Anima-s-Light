@@ -4,12 +4,13 @@ public class JumpStartState : BaseState{
     
     public JumpStartState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        
     }
 
     float jumpForce;
     public override void EnterState()
     {
+
+        InitialiseSubState();
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
@@ -23,7 +24,7 @@ public class JumpStartState : BaseState{
         
     }
 
-    public override void UpdateState(){        
+    public override void UpdateState(){
         
         CheckSwitchState();
 
@@ -31,23 +32,37 @@ public class JumpStartState : BaseState{
 
     public override void QuitState()
     {
+        HandleJumpEnd();
     }
 
     public override void CheckSwitchState()
-    {
-        if(_ctx.XInput == 0){
-            SwitchState(_factory.Iddle());
-        }else{
-            SwitchState(_factory.Running());
+    {   
+        if(_ctx.IsWalled() && _ctx.XInput == 0 && Mathf.Sqrt(Mathf.Abs(5*_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
+            SwitchState(_factory.WallJump());
+            _stateFinished = false;
+        }else if(_ctx.JumpReleased || _ctx.Rb.velocity.y < 0){
+           if(_ctx.XInput == 0){
+                SwitchState(_factory.Iddle());
+            }else{
+                SwitchState(_factory.Running());
+            } 
         }
+        
     }
 
     public override void InitialiseSubState()
     {
-
+        if(_ctx.XInput == 0){
+            SetSubState(_factory.Rising());
+        }else{
+            SetSubState(_factory.JumpControlling());
+        }
     }
 
     void HandleJumpStart(){
+
+        _stateFinished = false;
 
         _ctx.JumpReleased = false;
         _ctx.BufferCounter = 0;
@@ -75,6 +90,13 @@ public class JumpStartState : BaseState{
         
         
         _ctx.JumpPressed = false;
+    }
+
+    void HandleJumpEnd(){
+        _ctx.IsJumping = false;
+        _ctx.JumpReleased = false;
+        _stateFinished = true;
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
     }
 
     

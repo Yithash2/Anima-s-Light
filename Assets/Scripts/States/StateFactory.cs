@@ -10,7 +10,9 @@ public class StateFactory
     public StateFactory(PlayerStateMachine currentContext){
         _context = currentContext;
         #region Ground States
-        _states["jump start"] = new JumpStartState(_context, this);
+        _states["jump"] = new JumpStartState(_context, this);
+        _states["rise"] = new RiseState(_context, this);
+        _states["jump controller"] = new JumpControllerState(_context, this);
         _states["grounded"] = new GroundState(_context, this);
         _states["iddle"] = new IddleState(_context, this);
         _states["run"] = new RunState(_context, this);
@@ -32,7 +34,6 @@ public class StateFactory
         #endregion
 
         #region Air States
-            _states["jump end"] = new JumpEndState(_context, this);
             _states["air"] = new AirState(_context, this);
             _states["fall"] = new FallState(_context, this);
             _states["dive"] = new GroundSlamState(_context, this);
@@ -59,7 +60,15 @@ public class StateFactory
         }
 
         public BaseState JumpStart(){
-            return _states["jump start"];
+            return _states["jump"];
+        }
+
+        public BaseState Rising(){
+            return _states["rise"];
+        }
+
+        public BaseState JumpControlling(){
+            return _states["jump controller"];
         }
     #endregion
 
@@ -101,10 +110,6 @@ public class StateFactory
     #region Air States
         public BaseState Fall(){
             return _states["fall"];
-        }
-
-        public BaseState JumpEnd(){
-            return _states["jump end"];
         }
 
         public BaseState Normal(){
