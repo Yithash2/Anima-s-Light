@@ -24,6 +24,7 @@ public class PlayerStateMachine : MonoBehaviour
     private float _platformVelocityY;
     [SerializeField] private int _numberOfJumps = 1;
     private int _jumpCount;
+    private float _jumpPower;
 
     [Header("Check")]
     [SerializeField] Transform _groundCheck;
@@ -70,6 +71,8 @@ public class PlayerStateMachine : MonoBehaviour
     bool _jumpReleased;
 
     bool _isJumping;
+    bool _isDashing;
+    bool _isWallJumping;
 
     float _xInput;
     bool _divePressed;
@@ -92,6 +95,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _bubbleAnimator;
 
     #region Get Sets
+    public float JumpPower {get { return _jumpPower;} set { _jumpPower = value;}}
     public Vector2 Acceleration  {get {return _acceleration;}}
     public float DashCounter {get{return _dashCounter;} set {_dashCounter = value;}} 
     public GameObject Bubble {get {return _bubble;}}
@@ -118,6 +122,8 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody2D Rb {get {return _rb;}set {_rb = value;}}
     public float GravityScale {get {return _gravityScale;}}
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
+    public bool IsDashing {get {return _isDashing;} set{_isDashing = value;}}
+    public bool IsWallJumping {get {return _isWallJumping;} set{_isWallJumping = value;}}
     public bool JumpPressed {get {return _jumpPressed;} set { _jumpPressed = value;}}
     public float BufferCounter {get {return _bufferCounter;} set {_bufferCounter = value;}}
     public float CoyoteTime {get {return _coyoteTime;}}
@@ -135,8 +141,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public static PlayerStateMachine Instance {get; private set;}
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake(){
         if(Instance != null){
             Debug.Log("Found more then one PlayerStateMachine, and destoyed it");
             Destroy(this.gameObject);
@@ -152,17 +157,13 @@ public class PlayerStateMachine : MonoBehaviour
         _gravityScale = _rb.gravityScale;
 
         _states = new StateFactory(this);
-        _currentState = _states.Grounded();
+        _currentState = _states.Normal();
         _currentState.EnterState();
 
         
     }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    void Update(){
         if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
             if(_jumpCount < 1){
                 CoyoteTimer();
@@ -172,6 +173,8 @@ public class PlayerStateMachine : MonoBehaviour
             _coyoteCounter = 0;
             _jumpCount = 0;
         }
+
+        //if(_rb.velocity.y < 0 && _isJumping) _isJumping = false;
 
         Inputs();
 
@@ -187,19 +190,6 @@ public class PlayerStateMachine : MonoBehaviour
         if(IsSuffocating() && !_isDead){
             tag = "Respawn";
             _isDead = true;
-        }
-
-        if(IsSpaced()){
-            if(_drowningCounter < _drowningTime){
-                _drowningCounter += Time.deltaTime;
-            }
-        }else if(_bubble.activeInHierarchy){
-            _drowningCounter = 0;
-            _bubbleAnimator.Play("Basic");
-            _bubbleAnimator.speed = 1;
-            _bubble.SetActive(false);
-            _rb.drag = 0;
-            
         }
             
 
@@ -234,10 +224,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
-
-
-    
-
     void OnCollisionEnter2D(Collision2D collision){
 
         if(collision.gameObject.CompareTag(_deadlyTag) && !_isDead){
@@ -245,8 +231,6 @@ public class PlayerStateMachine : MonoBehaviour
             _isDead = true;
         }
     }
-
-
 
     void Respawn(){
         Rb.velocity = new Vector2(0, 0);
@@ -318,7 +302,7 @@ public class PlayerStateMachine : MonoBehaviour
             yield return 5;
             yield return new WaitForFixedUpdate();
             yield return new WaitForEndOfFrame();
-            _isJumping = false;
+            //_isJumping = false;
         }
         
     }
@@ -411,12 +395,14 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 
-    public void ApplyForceAtEndOfFrame(Vector2 force){
-        StartCoroutine(applyForceAtEndOfFrame(force));
+    public void WaitForStateToFinish(BaseState SubState){
+        StartCoroutine(WaitStateFinish(SubState));
     }
-    private IEnumerator applyForceAtEndOfFrame(Vector2 force){
-        yield return new WaitForEndOfFrame();
-        _rb.velocity += force;
+
+    private IEnumerator WaitStateFinish(BaseState SubState){
+        yield return new WaitUntil(() => SubState.StateFinished);
+        _currentState.InitialiseSubState();
+        
     }
 
     public bool CanMove(){

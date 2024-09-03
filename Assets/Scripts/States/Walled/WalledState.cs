@@ -11,43 +11,51 @@ public class WalledState : BaseState
     {
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[4].name);
-
-        _ctx.WallJumpCounter = 0;
-        
+        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
+        if(_currentSubState != null){
+            _ctx.WaitForStateToFinish(_currentSubState);
+        }else{
+            InitialiseSubState();
+        }
     }
 
     public override void UpdateState()
     {
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.PlatformVelocityY, float.MaxValue));
+        //_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.PlatformVelocityY, float.MaxValue));
 
         CheckSwitchState();
     }
 
     public override void QuitState()
     {
-        _ctx.WallJumpCounter = 100000000;
+
     }
 
     public override void CheckSwitchState()
     {
         if(_ctx.IsSpaced()){
-            SwitchState(_factory.Spaced());
-        }else if(_ctx.DivePressed){
-            SwitchState(_factory.GroundSlam());
+            SwitchState(_factory.Wet());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];
             _ctx.AudioSource.Play();
-        }else if(_ctx.JumpPressed){
-            SwitchState(_factory.WallJump());
         }else if(!_ctx.IsWalled()){
-            SwitchState(_factory.Falling());
+            SwitchState(_factory.Normal());
         }
     }
 
     public override void InitialiseSubState()
     {
+        if(_ctx.IsJumping){
+            _ctx.Rb.velocity = new Vector2(0,_ctx.JumpPower);
+            SetSubState(_factory.WallJump());
+            _ctx.IsJumping = false;
+        }else if(_ctx.JumpPressed){
+            SetSubState(_factory.WallJump());
+        } else{
+            SetSubState(_factory.Rapelling());
+        }
     }
 }

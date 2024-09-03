@@ -5,6 +5,9 @@ public abstract class BaseState
     protected StateFactory _factory;
     protected BaseState _currentSubState;
     protected BaseState _currentSuperState;
+    protected bool _stateFinished = true;
+
+    public bool StateFinished {get { return _stateFinished; }}
 
     public BaseState(PlayerStateMachine currentContext, StateFactory stateFactory){
         _ctx = currentContext;
@@ -25,23 +28,31 @@ public abstract class BaseState
         }
     }
     protected void SwitchState(BaseState newState){
+        
+            
         QuitState();
 
-        newState.EnterState();
+        
 
         if(_isRootState){
             _ctx.CurrentState = newState;
+            if(_currentSubState != null){
+                newState.SetSubState(_currentSubState);
+            }   
         }else if(_currentSuperState != null){
             _currentSuperState.SetSubState(newState);
         }
         
+        newState.EnterState();
     }
     protected void SetSuperState(BaseState newSuperState){
         _currentSuperState = newSuperState;
     }
     protected void SetSubState(BaseState newSubState){
+
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
+        
     }
     
 }

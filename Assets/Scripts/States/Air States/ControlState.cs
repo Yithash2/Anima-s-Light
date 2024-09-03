@@ -1,40 +1,51 @@
 using UnityEngine;
 
-public class RunState : BaseState{
-    public RunState(PlayerStateMachine currentContext, StateFactory stateFactory)
+public class ControlState : BaseState{
+
+    public ControlState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){}
 
     float _targetSpeed;
 
+    bool _decelerated;
+
     public override void EnterState()
     {
+        _decelerated = false;
     }
 
     public override void UpdateState(){
 
+        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
+
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
-            Run();
-        }else{
-            Acceleration();
+        if(_ctx.XInput != 0){
+            if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
+                Run();
+            }else{
+                Acceleration();
+            }
         }
 
-        
-        
 
         CheckSwitchState();
     }
 
     public override void QuitState()
     {
-        Deceleration();
+        
     }
 
     public override void CheckSwitchState()
     {
-        if(_ctx.XInput == 0){
-            SwitchState(_factory.Iddle());
+        if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
+            SwitchState(_factory.Dive());
+        }else if(_ctx.JumpReleased && _ctx.Rb.velocity.y > 0 && _ctx.IsJumping){
+            SwitchState(_factory.JumpEnd());
+        }else if(_ctx.XInput == 0){
+            Deceleration();
+            SwitchState(_factory.Fall());
         }
     }
 
@@ -56,6 +67,7 @@ public class RunState : BaseState{
     }
 
     void Deceleration(){
+        _decelerated = true;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
     }
 }

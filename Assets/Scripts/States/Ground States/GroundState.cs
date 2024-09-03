@@ -5,13 +5,19 @@ public class GroundState : BaseState{
 
     public GroundState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        InitialiseSubState();
         _isRootState = true;
     }
     
     public override void EnterState()
     {
-        
+        Debug.Log(this.ToString());
+
+        if(_currentSubState != null){
+            _ctx.WaitForStateToFinish(_currentSubState);
+        }else{
+            InitialiseSubState();
+        }
+
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
@@ -39,23 +45,26 @@ public class GroundState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
-            SwitchState(_factory.Dash());
-        }else if(_ctx.JumpPressed && _ctx.CanJump()){
-            SwitchState(_factory.Jumping());
-        }else if(_ctx.IsSpaced()){
-            SwitchState(_factory.Spaced());
-        }else if(!_ctx.IsOnMovingPlatform && !_ctx.IsGrounded() && _ctx.Rb.velocity.y < _ctx.StoredVelocity.y){
-            SwitchState(_factory.Falling());
+        
+        if(_ctx.IsSpaced()){
+            SwitchState(_factory.Wet());
+        }else if(!_ctx.IsGrounded()){
+            SwitchState(_factory.Normal());
         }
     }
 
     public override void InitialiseSubState()
-    {
-        if(_ctx.XInput != 0){
+    {   
+        
+        if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
+            SetSubState(_factory.Dash());
+        }else if(_ctx.JumpPressed && _ctx.CanJump()){
+            SetSubState(_factory.JumpStart());
+        }else if(_ctx.XInput != 0){
             SetSubState(_factory.Running());
         }else{
             SetSubState(_factory.Iddle());
         }
+        
     }
 }

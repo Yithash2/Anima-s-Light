@@ -8,23 +8,22 @@ public class WallJumpState : BaseState
 {
     public WallJumpState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        InitialiseSubState();
-        _isRootState = true;
+        
     }
 
     public override void EnterState()
     {
-
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
 
-        _ctx.Rb.gravityScale = _ctx.PlayerData.GravityMult * _ctx.GravityScale;
-
+        Debug.Log("FDDD");
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
+        _stateFinished = false;
+
         if(_ctx.Rb.velocity.y > 0){
-            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime*3/4;
+            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime/4;
         }else{
             _ctx.WallJumpCounter = 0;
         }
@@ -36,9 +35,11 @@ public class WallJumpState : BaseState
 
     public override void UpdateState()
     {
-        _ctx.WallJumpCounter += Time.deltaTime;
-
-        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
+        if(_ctx.WallJumpCounter < _ctx.PlayerData.WallJumpControlTime){
+            _ctx.WallJumpCounter += Time.deltaTime;
+        }else{
+            _stateFinished = true;
+        }
 
         CheckSwitchState();
 
@@ -47,29 +48,31 @@ public class WallJumpState : BaseState
     public override void QuitState()
     {
         _ctx.JumpPressed = false;
-        _ctx.WallJumpCounter = 100000000;
+        _ctx.IsWallJumping = false;
+        _stateFinished = true;
     }
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsSpaced()){
-            SwitchState(_factory.Spaced());
-        }else if(_ctx.Rb.velocity.y < _ctx.StoredVelocity.y && _ctx.CanMove()){
-            SwitchState(_factory.Falling());
-        }else if(_ctx.DivePressed && _ctx.CanMove()){
-            SwitchState(_factory.GroundSlam());
-        }else if(_ctx.IsGrounded()){
-            SwitchState(_factory.Grounded());
-            _ctx.AudioSource.clip = _ctx.AudioClips[3];
-            _ctx.AudioSource.Play();
-        }else if(_ctx.IsWalled()){
-            SwitchState(_factory.Walled());
+        if(_ctx.IsWalled() && _ctx.JumpPressed){
+            SwitchState(_factory.WallJump());
+        }else if(_stateFinished){
+            if(_ctx.IsWalled()){
+                SwitchState(_factory.Rapelling());
+            }else{
+                SwitchState(_factory.Fall());
+            }
+            
         }
+        
     }
 
-        void WallJump(){
+    void WallJump(){
+
+        _ctx.IsWallJumping = true;
 
         _ctx.BufferCounter = 0;
+        _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
         
         float verticalJumpForce = Mathf.Sqrt((_ctx.PlayerData.WallJumpHeight + _ctx.StoredVelocity.y) * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * _ctx.Rb.gravityScale);
@@ -89,8 +92,6 @@ public class WallJumpState : BaseState
 
     public override void InitialiseSubState()
     {
-        
-        SetSubState(_factory.Iddle());
         
     }
 }
