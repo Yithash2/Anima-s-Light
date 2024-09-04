@@ -13,7 +13,7 @@ public class IddleState : BaseState
     }
 
     public override void UpdateState(){
-
+        Debug.Log(_stateTimeCounter + " : " + _stateTimer + " : " +  (_stateTimeCounter >= _stateTimer).ToString());
         CheckSwitchState();
     }
 
@@ -27,7 +27,9 @@ public class IddleState : BaseState
 
         if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0) SwitchState(_factory.Dash());
         else if(_ctx.JumpPressed && _ctx.CanJump()) SwitchState(_factory.JumpStart());
-        else if(_ctx.XInput != 0) SwitchState(_factory.Running());
+        else if(_ctx.XInput != 0){
+            Debug.Log("D");
+            SwitchState(_factory.Running());}
         
         
     }

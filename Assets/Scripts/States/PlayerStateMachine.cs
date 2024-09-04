@@ -395,19 +395,9 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
     }
 
-    public void WaitForStateToFinish(BaseState SubState){
-        StartCoroutine(WaitStateFinish(SubState));
-    }
-
-    private IEnumerator WaitStateFinish(BaseState SubState){
-        yield return new WaitUntil(() => SubState.StateFinished);
-        _currentState.InitialiseSubState();
-        
-    }
-
     public bool CanMove(){
  
-        if((_wallJumpCounter < PlayerData.WallJumpControlTime) || (_dashCounter < 0.8)){
+        if(!_currentState.CanTurn(_currentState)){
             return false;
         }else{
             return true;

@@ -8,7 +8,9 @@ public class WallJumpState : BaseState
 {
     public WallJumpState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        
+        _stateTimer = _ctx.PlayerData.WallJumpControlTime;
+        _canTurn = false;
+
     }
 
     public override void EnterState()
@@ -19,13 +21,12 @@ public class WallJumpState : BaseState
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
-        _stateFinished = false;
-
         if(_ctx.Rb.velocity.y > 0){
-            _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
+            _stateTimeCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
         }else{
-            _ctx.WallJumpCounter = 0;
+            _stateTimeCounter = 0;
         }
+
 
         WallJump();
 
@@ -34,11 +35,9 @@ public class WallJumpState : BaseState
 
     public override void UpdateState()
     {
-        if(_ctx.WallJumpCounter < _ctx.PlayerData.WallJumpControlTime){
-            _ctx.WallJumpCounter += Time.deltaTime;
-        }else{
-            _stateFinished = true;
-        }
+        Debug.Log(_stateTimeCounter);
+
+        _stateTimeCounter += Time.deltaTime;
 
         CheckSwitchState();
 
@@ -49,15 +48,15 @@ public class WallJumpState : BaseState
         _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime + 1;
         _ctx.JumpPressed = false;
         _ctx.IsWallJumping = false;
-        _stateFinished = true;
     }
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsWalled() && _ctx.JumpPressed){
-            SwitchState(_factory.WallJump());
-        }else if(_stateFinished){
-            if(_ctx.IsWalled()){
+       
+        if(_stateTimeCounter >= _stateTimer){
+            if(_ctx.IsWalled() && !_ctx.JumpReleased){
+                SwitchState(_factory.WallJump());
+            }else if(_ctx.IsWalled()){
                 SwitchState(_factory.Rapelling());
             }else{
                 SwitchState(_factory.Fall());

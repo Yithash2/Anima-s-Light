@@ -46,7 +46,7 @@ public class WalledState : BaseState
 
     public override void InitialiseSubState()
     {
-        if(_ctx.JumpPressed){
+        if(!_ctx.JumpReleased){
             SetSubState(_factory.WallJump());
         } else{
             SetSubState(_factory.Rapelling());

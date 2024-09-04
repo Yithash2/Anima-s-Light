@@ -28,11 +28,7 @@ public class AirState : BaseState
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
 
-        if(_currentSubState != null){
-            _ctx.WaitForStateToFinish(_currentSubState);
-        }else{
-            InitialiseSubState();
-        }
+        InitialiseSubState();
         
     }
 

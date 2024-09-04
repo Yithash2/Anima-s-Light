@@ -4,6 +4,7 @@ public class JumpStartState : BaseState{
     
     public JumpStartState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
+        _stateTimer = 1;
     }
 
     float jumpForce;
@@ -25,23 +26,26 @@ public class JumpStartState : BaseState{
     }
 
     public override void UpdateState(){
-        
-        CheckSwitchState();
+        Debug.Log(_stateTimeCounter);
+        if(_ctx.JumpReleased || _ctx.Rb.velocity.y < 0){
+            _stateTimeCounter = _stateTimer;
+        }
 
+        CheckSwitchState();
+        
     }
 
     public override void QuitState()
     {
-        HandleJumpEnd();
+        
     }
 
     public override void CheckSwitchState()
     {   
-        if(_ctx.IsWalled() && _ctx.XInput == 0 && Mathf.Sqrt(Mathf.Abs(5*_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
+        if(_ctx.IsWalled() && Mathf.Sqrt(Mathf.Abs(5*_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower*2);
             SwitchState(_factory.WallJump());
-            _stateFinished = false;
-        }else if(_ctx.JumpReleased || _ctx.Rb.velocity.y < 0){
+        }else if(_stateTimeCounter >= _stateTimer){
            if(_ctx.XInput == 0){
                 SwitchState(_factory.Iddle());
             }else{
@@ -61,8 +65,6 @@ public class JumpStartState : BaseState{
     }
 
     void HandleJumpStart(){
-
-        _stateFinished = false;
 
         _ctx.JumpReleased = false;
         _ctx.BufferCounter = 0;
@@ -95,7 +97,6 @@ public class JumpStartState : BaseState{
     void HandleJumpEnd(){
         _ctx.IsJumping = false;
         _ctx.JumpReleased = false;
-        _stateFinished = true;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
     }
 

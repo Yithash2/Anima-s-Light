@@ -5,16 +5,32 @@ public abstract class BaseState
     protected StateFactory _factory;
     protected BaseState _currentSubState;
     protected BaseState _currentSuperState;
-    protected bool _stateFinished = true;
+    
+    protected float _stateTimer = 0;
+    protected float _stateTimeCounter = 0;
 
-    public bool StateFinished {get { return _stateFinished; }}
+    protected bool _canTurn = true;
+
+    public float StateTimer {get { return _stateTimer;}protected set { _stateTimer = value; }}
+    public float StateTimeCounter {get { return _stateTimeCounter;}protected set { _stateTimeCounter = value; }}
+
+    public bool CanTurn(BaseState _currentState){
+        bool canTurn = true;
+        for (BaseState currentState = _currentState; currentState != null; currentState = currentState._currentSubState){
+            if(!currentState._canTurn){
+                canTurn = false;
+                break;
+            }
+        }
+        return canTurn;
+    }
 
     public BaseState(PlayerStateMachine currentContext, StateFactory stateFactory){
         _ctx = currentContext;
         _factory = stateFactory;
     }
 
-    public abstract void  EnterState();
+    public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void QuitState();
     public abstract void InitialiseSubState();
@@ -29,28 +45,34 @@ public abstract class BaseState
     }
 
     protected void UpdateSubState(BaseState subState) {
-    for (BaseState currentState = subState; currentState != null; currentState = currentState._currentSubState) {
-        currentState.UpdateState();
+        for (BaseState currentState = subState; currentState != null; currentState = currentState._currentSubState) {
+            currentState.UpdateState();
+        }
     }
-}
 
     protected void SwitchState(BaseState newState){
         
+        if(_currentSubState != null){
+            if(_currentSubState._stateTimeCounter >= _currentSubState._stateTimer){
+                QuitState();
+
+                if(_isRootState){
+                    _ctx.CurrentState = newState;
+                }else if(_currentSuperState != null){
+                    _currentSuperState.SetSubState(newState);
+                }
+                
+                newState.EnterState();
+            }
+        }else{
+            if(_isRootState){
+                _ctx.CurrentState = newState;
+            }else if(_currentSuperState != null){
+                _currentSuperState.SetSubState(newState);
+            }
             
-        QuitState();
-
-        
-
-        if(_isRootState){
-            _ctx.CurrentState = newState;
-            if(_currentSubState != null){
-                newState.TransferSubState(_currentSubState);
-            }   
-        }else if(_currentSuperState != null){
-            _currentSuperState.TransferSubState(newState);
+            newState.EnterState();
         }
-        
-        newState.EnterState();
     }
     protected void SetSuperState(BaseState newSuperState){
         _currentSuperState = newSuperState;
@@ -70,11 +92,6 @@ public abstract class BaseState
             _currentSubState.EnterState();
         }
         
-    }
-
-    protected void TransferSubState(BaseState newSubState){
-        _currentSubState = newSubState;
-        newSubState.SetSuperState(this);
     }
     
 }

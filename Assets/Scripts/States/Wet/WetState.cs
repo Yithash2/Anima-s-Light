@@ -18,12 +18,10 @@ public class WetState : BaseState
     public override void EnterState()
     {
         
-        if(_currentSubState != null){
-            _ctx.WaitForStateToFinish(_currentSubState);
-        }else{
-            InitialiseSubState();
-        }
-        Debug.Log("SPACE");
+
+        InitialiseSubState();
+        
+
         _ctx.Rb.drag = 4;
 
         _ctx.Bubble.SetActive(true);

@@ -4,14 +4,13 @@ public class DashState : BaseState{
     
     public DashState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        
+        _stateTimer = 8f;
+        _canTurn = false;
     }
 
     float horizontalJumpForce;
     public override void EnterState()
     {
-
-        Debug.Log("0");
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0]; 
@@ -19,8 +18,6 @@ public class DashState : BaseState{
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
 
         _ctx.DashCounter = 0;
-
-        _stateFinished = false;
 
         _ctx.AudioSource.Play();
 
@@ -30,16 +27,9 @@ public class DashState : BaseState{
 
     public override void UpdateState(){
 
-        if(_ctx.DashCounter > 0.8 && !_stateFinished) _stateFinished = true;
-        else{
-            _ctx.DashCounter += Time.deltaTime;
-            if(_ctx.DashCounter > 0.4){
-                if(_ctx.XInput == _ctx.PlayerTransform.localScale.x)_ctx.Rb.AddForce(new Vector2(15*-_ctx.XInput,0));
-                
-            }
-        }
-        
-        if(_ctx.IsGrounded()) _stateFinished = true;
+        Debug.Log(_stateTimeCounter);
+
+        _stateTimeCounter += Time.deltaTime;
         
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
         
@@ -52,7 +42,7 @@ public class DashState : BaseState{
 
     public override void QuitState()
     {
-        _stateFinished = true;
+
         _ctx.DashCounter = 1000000000;
 
         _ctx.IsDashing = false;
@@ -63,11 +53,10 @@ public class DashState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsWalled() && _ctx.JumpPressed){
-            _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/4);
-            _ctx.JumpPressed = false;
+        if(_ctx.IsWalled() && !_ctx.JumpReleased){
+            _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/3);
             SwitchState(_factory.WallJump());
-        }else if(_stateFinished){
+        }else if(_stateTimeCounter >= _stateTimer){
             if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){
                 SwitchState(_factory.Dash());
             }else if(_ctx.JumpPressed && _ctx.CanJump()){
