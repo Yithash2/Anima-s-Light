@@ -3,7 +3,9 @@ using UnityEngine;
 public class RapelState : BaseState{
 
     public RapelState(PlayerStateMachine currentContext, StateFactory stateFactory)
-    :base (currentContext, stateFactory){}
+    :base (currentContext, stateFactory){
+        _canTurn = false;
+    }
 
     float _targetSpeed;
 
@@ -43,7 +45,9 @@ public class RapelState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.JumpPressed){
+        if(_ctx.DivePressed){
+            SwitchState(_factory.Dive());
+        }else if(_ctx.JumpPressed){
             SwitchState(_factory.WallJump());
         }
     }

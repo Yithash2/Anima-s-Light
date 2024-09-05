@@ -130,7 +130,6 @@ public class PlayerStateMachine : MonoBehaviour
     public float CoyoteCounter {get {return _coyoteCounter;} set {_coyoteCounter = value;}}
     public BaseState CurrentState {get {return _currentState;} set { _currentState = value;}}
     public Transform PlayerTransform {get {return _playerTransform;}}
-    public float SmoothSpeed {get {return _camera.smooth_speed;} set{_camera.smooth_speed = value;}}
     public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
     public bool IsDead {get {return _isDead;} set {_isDead = value;}}
 

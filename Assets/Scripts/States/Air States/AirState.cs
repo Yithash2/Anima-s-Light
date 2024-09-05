@@ -24,9 +24,6 @@ public class AirState : BaseState
     public override void EnterState()
     {
         Debug.Log(this.ToString());
-        
-        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
-        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
 
         InitialiseSubState();
         

@@ -35,7 +35,6 @@ public class WallJumpState : BaseState
 
     public override void UpdateState()
     {
-        Debug.Log(_stateTimeCounter);
 
         _stateTimeCounter += Time.deltaTime;
 
@@ -45,23 +44,17 @@ public class WallJumpState : BaseState
 
     public override void QuitState()
     {
-        _ctx.WallJumpCounter = _ctx.PlayerData.WallJumpControlTime + 1;
-        _ctx.JumpPressed = false;
-        _ctx.IsWallJumping = false;
+        _stateTimeCounter = _stateTimer;
     }
 
     public override void CheckSwitchState()
     {
-       
-        if(_stateTimeCounter >= _stateTimer){
-            if(_ctx.IsWalled() && !_ctx.JumpReleased){
+       if(_ctx.IsWalled() && _ctx.JumpPressed){
                 SwitchState(_factory.WallJump());
-            }else if(_ctx.IsWalled()){
-                SwitchState(_factory.Rapelling());
-            }else{
-                SwitchState(_factory.Fall());
-            }
-            
+        }else if(_ctx.IsWalled()){
+            SwitchState(_factory.Rapelling());
+        }else if(_stateTimeCounter >= _stateTimer){ 
+            SwitchState(_factory.Fall());   
         }
         
     }
@@ -69,6 +62,8 @@ public class WallJumpState : BaseState
     void WallJump(){
 
         _ctx.IsWallJumping = true;
+
+        _ctx.JumpPressed = false;
 
         _ctx.BufferCounter = 0;
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;

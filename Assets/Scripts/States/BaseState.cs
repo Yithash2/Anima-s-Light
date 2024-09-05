@@ -65,6 +65,8 @@ public abstract class BaseState
                 newState.EnterState();
             }
         }else{
+            //QuitState();
+
             if(_isRootState){
                 _ctx.CurrentState = newState;
             }else if(_currentSuperState != null){
@@ -80,7 +82,7 @@ public abstract class BaseState
     protected void SetSubState(BaseState newSubState){
         if(_currentSubState != null){
             
-            _currentSubState.QuitState();
+            //_currentSubState.QuitState();
             _currentSubState = newSubState;
             newSubState.SetSuperState(this);
 

@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
-public class JumpStartState : BaseState{
+public class JumpState : BaseState{
     
-    public JumpStartState(PlayerStateMachine currentContext, StateFactory stateFactory)
+    public JumpState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
         _stateTimer = 1;
     }
@@ -12,6 +12,8 @@ public class JumpStartState : BaseState{
     {
 
         InitialiseSubState();
+
+        _stateTimeCounter = 0;
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
@@ -26,9 +28,9 @@ public class JumpStartState : BaseState{
     }
 
     public override void UpdateState(){
-        Debug.Log(_stateTimeCounter);
         if(_ctx.JumpReleased || _ctx.Rb.velocity.y < 0){
             _stateTimeCounter = _stateTimer;
+            HandleJumpEnd();
         }
 
         CheckSwitchState();
@@ -37,13 +39,14 @@ public class JumpStartState : BaseState{
 
     public override void QuitState()
     {
-        
+        _stateTimeCounter = _stateTimer;
     }
 
     public override void CheckSwitchState()
     {   
-        if(_ctx.IsWalled() && Mathf.Sqrt(Mathf.Abs(5*_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower*2);
+        if(_ctx.IsWalled() && Mathf.Sqrt(Mathf.Abs(6*_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && _ctx.XInput == 0 && !_ctx.JumpReleased){
+            _stateTimeCounter = _stateTimer;
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
             SwitchState(_factory.WallJump());
         }else if(_stateTimeCounter >= _stateTimer){
            if(_ctx.XInput == 0){

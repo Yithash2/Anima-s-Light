@@ -341,12 +341,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52ea665d3344f1b40b0bad35cf3ede74, type: 3}
   _numberOfJumps: 1
   _groundCheck: {fileID: 3725201130712967224}
-  _checkSize: {x: 0.51, y: 0.36}
+  _checkSize: {x: 0.58, y: 0.36}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
   wallCheck: {fileID: 5659014622266715217}
-  wallSize: {x: 0.36, y: 0.85}
+  wallSize: {x: 0.36, y: 0.92}
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -397,7 +397,7 @@ MonoBehaviour:
   - {x: 0.17633057, y: -0.39796448, z: 0}
   m_ShapePathHash: 248525837
   m_Mesh: {fileID: 0}
-  m_InstanceId: 163082
+  m_InstanceId: 104784
   m_LocalBounds:
     m_Center: {x: 0.023834229, y: -0.1087465, z: 0}
     m_Extent: {x: 0.3164978, y: 0.28921798, z: 0}

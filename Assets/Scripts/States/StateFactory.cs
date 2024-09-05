@@ -10,7 +10,7 @@ public class StateFactory
     public StateFactory(PlayerStateMachine currentContext){
         _context = currentContext;
         #region Ground States
-        _states["jump"] = new JumpStartState(_context, this);
+        _states["jump"] = new JumpState(_context, this);
         _states["rise"] = new RiseState(_context, this);
         _states["jump controller"] = new JumpControllerState(_context, this);
         _states["grounded"] = new GroundState(_context, this);

@@ -8,7 +8,7 @@ public class cam : MonoBehaviour
     #region Input
     GameObject player;
     [SerializeField] Vector3 ofset;
-    public float smooth_speed = 0.125f;
+    [SerializeField] float smooth_speed = 0.125f;
 
     [SerializeField] float moveShiftMultX;
     [SerializeField] float moveShiftMultY;

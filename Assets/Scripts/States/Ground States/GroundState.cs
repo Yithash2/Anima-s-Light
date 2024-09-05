@@ -54,16 +54,12 @@ public class GroundState : BaseState{
     {   
         
         if(_ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0){
-            Debug.Log(57);
             SetSubState(_factory.Dash());
         }else if(_ctx.JumpPressed && _ctx.CanJump()){
-            Debug.Log(60);
             SetSubState(_factory.JumpStart());
         }else if(_ctx.XInput != 0){
-            Debug.Log(63);
             SetSubState(_factory.Running());
         }else{
-            Debug.Log(66);
             SetSubState(_factory.Iddle());
         }
         

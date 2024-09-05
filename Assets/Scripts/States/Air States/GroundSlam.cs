@@ -42,13 +42,12 @@ public class GroundSlamState : BaseState
         _ctx.AudioSource.clip = _ctx.AudioClips[2];
 
         _ctx.AudioSource.Play();
-
-        _ctx.SmoothSpeed = 0.125f;
     }
 
     public override void CheckSwitchState()
     {
-        if(!_ctx.DivePressed){
+        if(_ctx.JumpPressed){
+            _ctx.JumpPressed = false;
             SwitchState(_factory.Controlling());
         }
     }
