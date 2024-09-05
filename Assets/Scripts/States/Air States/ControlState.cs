@@ -12,6 +12,7 @@ public class ControlState : BaseState{
     public override void EnterState()
     {
         _decelerated = false;
+        
     }
 
     public override void UpdateState(){

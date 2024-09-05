@@ -84,12 +84,12 @@ public abstract class BaseState
             _currentSubState = newSubState;
             newSubState.SetSuperState(this);
 
-            _currentSubState.EnterState();
+            //_currentSubState.EnterState();
         }else{
             _currentSubState = newSubState;
             newSubState.SetSuperState(this);
 
-            _currentSubState.EnterState();
+            //_currentSubState.EnterState();
         }
         
     }

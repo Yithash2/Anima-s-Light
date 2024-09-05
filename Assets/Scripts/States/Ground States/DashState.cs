@@ -29,6 +29,8 @@ public class DashState : BaseState{
 
         Debug.Log(_stateTimeCounter);
 
+        if(_ctx.IsGrounded()) _stateTimeCounter =  _stateTimer = 8f;
+
         _stateTimeCounter += Time.deltaTime;
         
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
@@ -58,6 +60,7 @@ public class DashState : BaseState{
             SwitchState(_factory.WallJump());
         }else if(_stateTimeCounter >= _stateTimer){
             if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){
+                Debug.LogWarning("KKD");
                 SwitchState(_factory.Dash());
             }else if(_ctx.JumpPressed && _ctx.CanJump()){
                 SwitchState(_factory.JumpStart());
