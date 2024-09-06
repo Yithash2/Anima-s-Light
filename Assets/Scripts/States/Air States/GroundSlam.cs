@@ -45,10 +45,21 @@ public class GroundSlamState : BaseState
     }
 
     public override void CheckSwitchState()
-    {
-        if(_ctx.JumpPressed){
+    {   
+        /*if(_ctx.IsGrounded()){
+            if(_ctx.XInput == 0){
+                Debug.Log("TERY KDDQ DQNKD");
+                SwitchState(_factory.Iddle());
+            }else{
+                SwitchState(_factory.Running());
+            }*/
+         if(_ctx.JumpPressed){
             _ctx.JumpPressed = false;
-            SwitchState(_factory.Controlling());
+            if(_ctx.XInput == 0){
+                SwitchState(_factory.Fall());
+            }else{
+                SwitchState(_factory.Controlling());
+            }
         }
     }
     

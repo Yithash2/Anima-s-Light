@@ -57,6 +57,7 @@ public class GroundState : BaseState{
             SetSubState(_factory.Dash());
         }else if(_ctx.JumpPressed && _ctx.CanJump()){
             SetSubState(_factory.JumpStart());
+            Debug.Log("JUIMPD");
         }else if(_ctx.XInput != 0){
             SetSubState(_factory.Running());
         }else{

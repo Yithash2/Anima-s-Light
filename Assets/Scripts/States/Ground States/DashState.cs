@@ -51,6 +51,7 @@ public class DashState : BaseState{
         _ctx.DashCounter = 1000000000;
 
         _stateTimeCounter = 100f;
+        _canTurn = true;
 
         _ctx.IsDashing = false;
 
@@ -71,13 +72,22 @@ public class DashState : BaseState{
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
         }else if(_stateTimeCounter >= _stateTimer){
-            if(_ctx.JumpPressed && _ctx.CanJump()){
-                SwitchState(_factory.JumpStart());
-            }else if(_ctx.XInput != 0){
-                SwitchState(_factory.Running());
+            if(_ctx.IsGrounded()){
+                if(_ctx.JumpPressed && _ctx.CanJump()){
+                    SwitchState(_factory.JumpStart());
+                }else if(_ctx.XInput != 0){
+                    SwitchState(_factory.Running());
+                }else{
+                    SwitchState(_factory.Iddle()); 
+                }
             }else{
-                SwitchState(_factory.Iddle()); 
+                if(_ctx.XInput != 0){
+                    SwitchState(_factory.Controlling());
+                }else{
+                    SwitchState(_factory.Fall());
+                }
             }
+            
         }  
     }
 
