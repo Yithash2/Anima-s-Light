@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"dd8cfe854675afbf","x":-420,"y":-340,"width":360,"height":380,"color":"2","type":"text","text":""},
+		{"id":"319fcdfd52e94042","x":-400,"y":-310,"width":200,"height":160,"type":"file","file":"Deny arc/DENY.md"}
+	],
+	"edges":[]
+}

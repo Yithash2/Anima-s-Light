@@ -1,0 +1,114 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Level 1.tmx",
+    "automapping.whileDrawing": false,
+    "expandedProjectPaths": [
+        "Rules",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Autotile Rule Set.tmx": {
+            "scale": 0.44902343749999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.2783819051763,
+                "y": 256.11135276207045
+            }
+        },
+        "C:/Users/Yithash/Desktop/DJIIhj/Deny Phase 1-2 Transition.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Yithash/Desktop/DJIIhj/mini_deny_tilemap5.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Deny Phase 1-2 Transition.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Level 1.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 36,
+                "y": 644
+            }
+        },
+        "Level Testu.tmx": {
+            "scale": 1.1973958333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 245.11526750761197,
+                "y": 433.02305350152244
+            }
+        },
+        "Rules/Autotile Rule Set.tmx": {
+            "scale": 3,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 728.8333333333333,
+                "y": 183.16666666666666
+            }
+        },
+        "Rules/TileTransition Rule Set.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -629,
+                "y": -565.6666666666666
+            }
+        },
+        "Spikes.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "mini_deny_tilemap5.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 1.1973958333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 346.1678990865594,
+                "y": 158.26011309264896
+            }
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/DJIIhj",
+    "last.imagePath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/DJIIhj",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "Level 1.tmx",
+        "Level Testu.tmx",
+        "Deny Phase 1-2 Transition.tsx",
+        "mini_deny_tilemap5.tsx"
+    ],
+    "project": "Anima's light levels.tiled-project",
+    "recentFiles": [
+        "mini_deny_tilemap5.tsx",
+        "Deny Phase 1-2 Transition.tsx",
+        "Level Testu.tmx",
+        "Level 1.tmx",
+        "Rules/Autotile Rule Set.tmx",
+        "Rules/TileTransition Rule Set.tmx",
+        "Spikes.tsx",
+        "Autotile Rule Set.tmx",
+        "C:/Users/Yithash/Desktop/DJIIhj/mini_deny_tilemap5.tsx",
+        "untitled.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
