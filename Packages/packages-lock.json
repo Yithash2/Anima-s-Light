@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "com.seanba.super-tiled2unity": {
-      "version": "file:C:/Users/Yithash/Downloads/super-tiled2unity.v2.2.1",
+      "version": "file:super-tiled2unity.v2.2.1",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.2d.tilemap": "1.0.0",
