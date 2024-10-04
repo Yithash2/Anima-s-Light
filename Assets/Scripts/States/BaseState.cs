@@ -8,16 +8,15 @@ public abstract class BaseState
     
     protected float _stateTimer = 0;
     protected float _stateTimeCounter = 0;
-
     protected bool _canTurn = true;
 
-    public float StateTimer {get { return _stateTimer;}protected set { _stateTimer = value; }}
-    public float StateTimeCounter {get { return _stateTimeCounter;}protected set { _stateTimeCounter = value; }}
+    public float StateTimer {get { return _stateTimer; } protected set { _stateTimer = value; } }
+    public float StateTimeCounter {get { return _stateTimeCounter; } protected set { _stateTimeCounter = value; } }
 
     public bool CanTurn(BaseState _currentState){
         bool canTurn = true;
         for (BaseState currentState = _currentState; currentState != null; currentState = currentState._currentSubState){
-            if(!currentState._canTurn){
+            if (!currentState._canTurn){
                 canTurn = false;
                 break;
             }
@@ -39,61 +38,75 @@ public abstract class BaseState
     public void UpdateStates(){
         UpdateState();
 
-        
-        UpdateSubState(_currentSubState);
-        
-    }
-
-    protected void UpdateSubState(BaseState subState) {
-        for (BaseState currentState = subState; currentState != null; currentState = currentState._currentSubState) {
-            currentState.UpdateState();
+        if (_currentSubState != null){
+            _currentSubState.UpdateStates();
         }
     }
 
+    // Updates substates recursively
+    protected void UpdateSubState(BaseState subState){
+        if (subState != null){
+            subState.UpdateState();
+            subState.UpdateSubState(subState._currentSubState);
+        }
+    }
+
+    // Fix to transition properly between states
     protected void SwitchState(BaseState newState){
         
-        if(_currentSubState != null){
-            if(_currentSubState._stateTimeCounter >= _currentSubState._stateTimer){
-                QuitState();
-
-                if(_isRootState){
-                    _ctx.CurrentState = newState;
-                }else if(_currentSuperState != null){
-                    _currentSuperState.SetSubState(newState);
-                }
-                
-                newState.EnterState();
-            }
-        }else{
-            QuitState();
-
-            if(_isRootState){
-                _ctx.CurrentState = newState;
-            }else if(_currentSuperState != null){
-                _currentSuperState.SetSubState(newState);
-            }
-            
-            newState.EnterState();
-        }
-    }
-    protected void SetSuperState(BaseState newSuperState){
-        _currentSuperState = newSuperState;
-    }
-    protected void SetSubState(BaseState newSubState){
-        if(_currentSubState != null){
-            
-            _currentSubState.QuitState();
-            _currentSubState = newSubState;
-            newSubState.SetSuperState(this);
-
-            //_currentSubState.EnterState();
-        }else{
-            _currentSubState = newSubState;
-            newSubState.SetSuperState(this);
-
-            //_currentSubState.EnterState();
+        if (_currentSubState != null && !StateTimerComplete(_currentSubState)){
+            // Block the transition if the timer has not expired
+            return;
         }
         
+        // Quit current state and all substates properly
+        QuitAllSubStates();
+        QuitState();
+
+        // Switch context to the new state
+        if (_isRootState)
+        {
+            _ctx.CurrentState = newState;
+        }
+        else if (_currentSuperState != null)
+        {
+            _currentSuperState.SetSubState(newState);
+        }
+
+        // Enter new state
+        newState.EnterState();
     }
-    
+
+    // Quit the current substate and all nested substates
+    protected void QuitAllSubStates()
+    {
+        if (_currentSubState != null)
+        {
+            _currentSubState.QuitAllSubStates();
+            _currentSubState.QuitState();
+            _currentSubState = null; // Clear reference to substate
+        }
+    }
+
+    protected void SetSuperState(BaseState newSuperState)
+    {
+        _currentSuperState = newSuperState;
+    }
+
+    protected void SetSubState(BaseState newSubState)
+    {
+        if (_currentSubState != null)
+        {
+            _currentSubState.QuitState();  // Quit current substate before setting a new one
+        }
+        
+        _currentSubState = newSubState;
+        newSubState.SetSuperState(this);
+    }
+
+    protected bool StateTimerComplete(BaseState subState)
+    {
+        // Check if the substate's time counter has reached or exceeded its timer
+        return subState._stateTimeCounter >= subState._stateTimer;
+    }
 }

@@ -12,7 +12,7 @@ public class GroundState : BaseState{
     {
         Debug.Log(this.ToString());
 
-
+        Debug.Log(_currentSubState);
         InitialiseSubState();
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
@@ -58,11 +58,12 @@ public class GroundState : BaseState{
         }else if(_ctx.JumpPressed && _ctx.CanJump()){
             SetSubState(_factory.JumpStart());
             Debug.Log("JUIMPD");
-        }else if(_ctx.XInput != 0){
-            SetSubState(_factory.Running());
         }else{
-            SetSubState(_factory.Iddle());
-        }
+            SetSubState(_factory.Running());
+        }/*else{
+            //SetSubState(_factory.Iddle());
+            Debug.Log("IM B");
+        }*/
         
     }
 }

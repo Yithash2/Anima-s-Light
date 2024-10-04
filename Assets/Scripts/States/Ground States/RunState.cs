@@ -8,9 +8,7 @@ public class RunState : BaseState{
 
     public override void EnterState()
     {
-        _ctx.AudioSource.loop = false;
-
-        _ctx.AudioSource.clip = null;
+        
     }
 
     public override void UpdateState(){
@@ -37,11 +35,14 @@ public class RunState : BaseState{
     {
         
         if(_ctx.JumpPressed && _ctx.DivePressed) SwitchState(_factory.Dash());
-        else if(_ctx.JumpPressed && _ctx.CanJump()) SwitchState(_factory.JumpStart());
+        else if(_ctx.JumpPressed && _ctx.CanJump()){
+            SwitchState(_factory.JumpStart());
+            Debug.Log("CHERCHER C");}
         else if(_ctx.XInput == 0){
             Deceleration();
             SwitchState(_factory.Iddle());
-        } 
+            Debug.Log("IM C");
+        }
         
     }
 

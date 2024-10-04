@@ -37,16 +37,18 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag(PlayerTag) && isActivated == 0){
-            Spawnpoint.SetParent(transform);
-            Spawnpoint.position = transform.position;
-            UpdateCurrentCheckpoint();
-            isActivated = 2;
-        }else if(collider.CompareTag(PlayerTag) && IsPassableMultipleTimes){
-            Spawnpoint.SetParent(transform);
-        }
+        if(isActivated != 2){
+            if(collider.CompareTag(PlayerTag) && isActivated == 0){
+                Spawnpoint.SetParent(transform);
+                Spawnpoint.position = transform.position;
+                UpdateCurrentCheckpoint();
+                isActivated = 2;
+            }else if(collider.CompareTag(PlayerTag) && IsPassableMultipleTimes){
+                Spawnpoint.SetParent(transform);
+            }
 
-        DataPersistanceManager.Instance.SaveGame();
+            DataPersistanceManager.Instance.SaveGame();
+        }
     }
 
     public void loadData(GameData data){

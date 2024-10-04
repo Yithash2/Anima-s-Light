@@ -27,6 +27,8 @@ public class SwimState : BaseState{
 
         if(_ctx.JumpPressed){
             HandleSwimUp();
+        }else{
+            HandleSwimStop();
         }
 
         
@@ -70,5 +72,9 @@ public class SwimState : BaseState{
 
     void HandleSwimUp(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 10);
+    }
+    
+    void HandleSwimStop(){
+         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.Rb.velocity.y/3);
     }
 }

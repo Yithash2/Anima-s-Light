@@ -143,7 +143,7 @@ public class PlayerStateMachine : MonoBehaviour
     void Awake(){
         if(Instance != null){
             Debug.Log("Found more then one PlayerStateMachine, and destoyed it");
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             return;
         }
         Instance = this;

@@ -28,8 +28,9 @@ public class JumpState : BaseState{
     }
 
     public override void UpdateState(){
-        if(_ctx.JumpReleased || _ctx.Rb.velocity.y < 0){
-            _stateTimeCounter = _stateTimer;
+        Debug.Log("ZZZZZZZZZZ");
+        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0)){
+            _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }
 
@@ -39,7 +40,8 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
-        _stateTimeCounter = _stateTimer;
+        Debug.Log("I finished");
+        _stateTimeCounter = _stateTimer + 1;
     }
 
     public override void CheckSwitchState()
@@ -53,7 +55,7 @@ public class JumpState : BaseState{
                 SwitchState(_factory.Iddle());
             }else{
                 SwitchState(_factory.Running());
-            } 
+            }
         }
         
     }

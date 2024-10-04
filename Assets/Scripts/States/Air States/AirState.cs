@@ -31,7 +31,6 @@ public class AirState : BaseState
 
     public override void UpdateState()
     { 
-        Debug.Log("FKQD?QLNIJBKL");
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.5f);
 

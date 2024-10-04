@@ -3,7 +3,7 @@ using UnityEngine;
 public class GroundSlamState : BaseState
 {public GroundSlamState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-
+        _stateTimer = 1;
     }
 
     public override void EnterState()
@@ -24,7 +24,11 @@ public class GroundSlamState : BaseState
 
     public override void UpdateState(){
 
-        //_ctx.SmoothSpeed = Mathf.Lerp(_ctx.SmoothSpeed, 1, 0.0125f);
+        if(_ctx.IsGrounded()){
+            _stateTimeCounter = 1;
+        }
+
+        Debug.Log("Ground slam Update");
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.0125f);
 
@@ -36,6 +40,9 @@ public class GroundSlamState : BaseState
 
     public override void QuitState()
     {
+        _stateTimeCounter = 0;
+        
+        Debug.Log("Ground slam stopped");
 
         _ctx.AudioSource.loop = false;
 
@@ -46,14 +53,8 @@ public class GroundSlamState : BaseState
 
     public override void CheckSwitchState()
     {   
-        /*if(_ctx.IsGrounded()){
-            if(_ctx.XInput == 0){
-                Debug.Log("TERY KDDQ DQNKD");
-                SwitchState(_factory.Iddle());
-            }else{
-                SwitchState(_factory.Running());
-            }*/
-         if(_ctx.JumpPressed){
+        
+        if(_ctx.JumpPressed){
             _ctx.JumpPressed = false;
             if(_ctx.XInput == 0){
                 SwitchState(_factory.Fall());
@@ -61,6 +62,8 @@ public class GroundSlamState : BaseState
                 SwitchState(_factory.Controlling());
             }
         }
+
+        
     }
     
     public override void InitialiseSubState(){}
