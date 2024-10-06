@@ -101,8 +101,15 @@
             "id": "734a10ba6ca060d4",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "canvas",
+              "state": {
+                "file": "Deny arc/LP-DENY.canvas",
+                "viewState": {
+                  "x": -240,
+                  "y": -150,
+                  "zoom": -1.3164736647952546
+                }
+              }
             }
           }
         ]
@@ -171,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Deny arc/DENY.md",
+                "file": "Deny arc/LP-DENY.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,7 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Deny arc/DENY.md",
+                "file": "Deny arc/LP-DENY.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,7 +218,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Deny arc/DENY.md"
+                "file": "Deny arc/LP-DENY.canvas"
               }
             }
           },
@@ -245,10 +252,10 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "5d88b2e1947a148d",
+  "active": "734a10ba6ca060d4",
   "lastOpenFiles": [
-    "Deny arc/LP-DENY.canvas",
     "Deny arc/DENY.md",
+    "Deny arc/LP-DENY.canvas",
     "Depression arc",
     "Acceptance arc",
     "Bargaining arc",
