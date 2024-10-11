@@ -53,9 +53,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             }
 
             DataPersistanceManager.Instance.SaveGame();
-            
-
-            if(hasWon) WinScreen_temp.SetActive(true);
+            DataPersistanceManager.Instance.LoadGame();
 
             LevelInfo.Instance.SelfDestroy();
         }catch{

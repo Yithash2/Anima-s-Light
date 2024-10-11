@@ -33,7 +33,7 @@ public class JumpBoostersPowerUp : MonoBehaviour
             Player.BufferCounter = 0;
 
             if(PlayerIsAbove())  {
-                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/1.25f);
+                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/4f);
                 Player.CoyoteCounter = 0;
                 Player.JumpCount = 0;
                 _isActivated = false;
@@ -48,7 +48,11 @@ public class JumpBoostersPowerUp : MonoBehaviour
     void Update(){
 
             if(!_isActivated){
-                
+                if(Player.tag == "Respawn"){
+                    resetCounter = ResetTime +1;
+                    _isActivated = true;
+                    SpriteRenderer.sprite = ActivatedSprite;
+                }
 
                 if(resetCounter <= ResetTime){
                     resetCounter += Time.deltaTime;

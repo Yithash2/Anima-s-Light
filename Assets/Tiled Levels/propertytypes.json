@@ -1,0 +1,16 @@
+[
+    {
+        "color": "#ffa0a0a4",
+        "drawFill": true,
+        "id": 1,
+        "members": [
+        ],
+        "name": "JumpBooster",
+        "type": "class",
+        "useAs": [
+            "property",
+            "object",
+            "project"
+        ]
+    }
+]

@@ -378,6 +378,10 @@
   </data>
  </layer>
  <layer id="4" name="output_ground" width="30" height="20" offsetx="0" offsety="-2">
+  <properties>
+   <property name="unity:ignore" value="Collision"/>
+   <property name="unity:layer" value="Ground"/>
+  </properties>
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

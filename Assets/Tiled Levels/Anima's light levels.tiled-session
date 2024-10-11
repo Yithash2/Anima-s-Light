@@ -7,7 +7,8 @@
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "Rules",
-        "."
+        ".",
+        "ObjectTemplate"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -34,19 +35,19 @@
             "scaleInEditor": 1
         },
         "Level 1.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 1,
+            "scale": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 1212.121212121212,
-                "y": -48.4848484848485
+                "x": -1296.25,
+                "y": -58.25
             }
         },
         "Level Testu.tmx": {
             "scale": 1.1973958333333334,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 238.85167464114832,
-                "y": 309.0039147455415
+                "x": 238.43410178338405,
+                "y": 308.5863418877773
             }
         },
         "Rules/Autotile Rule Set.tmx": {
@@ -66,16 +67,16 @@
             }
         },
         "Rules/Wood Rule Set.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 383.5,
-                "y": 256.5
+                "x": 314,
+                "y": 355.3333333333333
             }
         },
         "Spikes.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 8
+            "scaleInEditor": 2
         },
         "Wood based tiles.tsx": {
             "scaleInDock": 1.5,
@@ -95,7 +96,9 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/DJIIhj",
-    "last.imagePath": "C:/Users/Nathan/Desktop/Jeu crée/platformer-proto/Assets/Textures/Tilemap",
+    "last.imagePath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Textures/Spikes",
+    "last.objectTemplatePath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Tiled Levels/ObjectTemplate",
+    "last.objectTypesPath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Tiled Levels/propertytypes.xml",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
@@ -103,19 +106,20 @@
         "Level 1.tmx",
         "Wood based tiles.tsx",
         "Rules/Wood Rule Set.tmx",
-        "Rules/Autotile Rule Set.tmx"
+        "Rules/Autotile Rule Set.tmx",
+        "Spikes.tsx"
     ],
     "project": "Anima's light levels.tiled-project",
     "recentFiles": [
+        "Spikes.tsx",
         "Rules/Autotile Rule Set.tmx",
         "Rules/Wood Rule Set.tmx",
         "Wood based tiles.tsx",
         "Level 1.tmx",
         "Level Testu.tmx",
+        "mini_deny_tilemap5.tsx",
         "Rules/TileTransition Rule Set.tmx",
         "Deny Phase 1-2 Transition.tsx",
-        "mini_deny_tilemap5.tsx",
-        "Spikes.tsx",
         "Autotile Rule Set.tmx",
         "C:/Users/Yithash/Desktop/DJIIhj/mini_deny_tilemap5.tsx",
         "untitled.tmx"

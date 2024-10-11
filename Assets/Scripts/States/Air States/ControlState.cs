@@ -7,14 +7,10 @@ public class ControlState : BaseState{
 
     float _targetSpeed;
 
-    bool _decelerated;
-
     public override void EnterState()
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
-        
-        _decelerated = false;
         
     }
 
@@ -38,7 +34,7 @@ public class ControlState : BaseState{
 
     public override void QuitState()
     {
-        
+        Deceleration();
     }
 
     public override void CheckSwitchState()
@@ -46,7 +42,6 @@ public class ControlState : BaseState{
         if(_ctx.DivePressed){
             SwitchState(_factory.Dive());
         }else if(_ctx.XInput == 0){
-            Deceleration();
             SwitchState(_factory.Fall());
         }
     }
@@ -69,7 +64,6 @@ public class ControlState : BaseState{
     }
 
     void Deceleration(){
-        _decelerated = true;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
     }
 }

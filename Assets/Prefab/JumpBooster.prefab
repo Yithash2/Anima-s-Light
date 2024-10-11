@@ -137,4 +137,4 @@ MonoBehaviour:
   ActivatedSprite: {fileID: 21300000, guid: bf2641c0020db73468f458284549fbe3, type: 3}
   DesactivatedSprite: {fileID: 21300000, guid: 8ad8e7073b854a94aa461212a102a7ff, type: 3}
   playerTag: Player
-  ResetTime: 1.1
+  ResetTime: 5

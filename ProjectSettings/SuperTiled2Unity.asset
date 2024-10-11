@@ -17,7 +17,7 @@ MonoBehaviour:
   m_AnimationFramerate: 20
   m_DefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_MaterialMatchings: []
-  m_ObjectTypesXml: {fileID: 0}
+  m_ObjectTypesXml: {fileID: 4900000, guid: ae757afb1454d834b8200a88d53c2513, type: 3}
   m_ParseXmlError: 
   m_CollisionGeometryType: 1
   m_LayerColors:
@@ -53,5 +53,10 @@ MonoBehaviour:
   - {r: 1, g: 0.64705884, b: 0, a: 1}
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
-  m_CustomObjectTypes: []
-  m_PrefabReplacements: []
+  m_CustomObjectTypes:
+  - m_Name: JumpBooster
+    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_CustomProperties: []
+  m_PrefabReplacements:
+  - m_TypeName: JumpBooster
+    m_Prefab: {fileID: 5230008336997241329, guid: 1e73f2f851b0422418df66ca2a5b6664, type: 3}

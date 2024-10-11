@@ -25,7 +25,7 @@ public class FinishLine : MonoBehaviour
 
         DataPersistanceManager.Instance.RestartLevel();
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("LevelSelector");
         
     }
 

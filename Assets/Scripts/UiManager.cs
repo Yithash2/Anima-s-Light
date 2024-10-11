@@ -80,7 +80,7 @@ public class UiManager : MonoBehaviour
     }
 
     public void ContinueButton(){
-        SceneManager.LoadScene("LevelSelector _temp");
+        SceneManager.LoadScene("LevelSelector");
     }
 
     public void NewGameButton(){

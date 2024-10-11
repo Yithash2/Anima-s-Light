@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2ce3695457a3e2f419eef61aea90d01b
   - enabled: 1
-    path: Assets/Scenes/LevelSelector _temp.unity
-    guid: 64e335ab9c2650747a3560592a684415
-  - enabled: 1
     path: Assets/Scenes/Tutorial Scene.unity
     guid: db2bf608c36e1794b997421b9a85d6de
   - enabled: 1
@@ -26,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test level.unity
     guid: 7eb02e30a5fd15b468c8eaac00af4afa
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 02107ba6fc6822e47bb0fa67e0b5fbab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6bcf252814def864996a3f2ae80ada65, type: 2}
