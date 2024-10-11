@@ -28,6 +28,8 @@ public class JumpState : BaseState{
     }
 
     public override void UpdateState(){
+         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
+
         if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0)){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
@@ -39,7 +41,6 @@ public class JumpState : BaseState{
 
     public override void QuitState()
     {
-        Debug.Log("I finished");
         _stateTimeCounter = _stateTimer + 1;
     }
 

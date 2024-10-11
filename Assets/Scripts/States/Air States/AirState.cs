@@ -23,7 +23,6 @@ public class AirState : BaseState
 
     public override void EnterState()
     {
-        Debug.Log(this.ToString());
 
         InitialiseSubState();
         

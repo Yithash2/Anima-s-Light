@@ -16,7 +16,6 @@ public class WallJumpState : BaseState
     public override void EnterState()
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
-        Debug.Log("WALL JUMP START ");
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
@@ -35,7 +34,6 @@ public class WallJumpState : BaseState
 
     public override void UpdateState()
     {
-        Debug.Log("WALL JUMP");
         _stateTimeCounter += Time.deltaTime;
 
         CheckSwitchState();

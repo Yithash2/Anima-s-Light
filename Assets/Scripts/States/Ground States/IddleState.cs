@@ -12,6 +12,7 @@ public class IddleState : BaseState
     }
 
     public override void UpdateState(){
+        _ctx.Rb.velocity = Vector2.Lerp(_ctx.Rb.velocity, Vector2.zero, 0.125f);
         CheckSwitchState();
     }
 
@@ -25,7 +26,6 @@ public class IddleState : BaseState
 
         if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.JumpStart());
-            Debug.Log("CHERCHER B");
             }
         else if(_ctx.XInput != 0){
             SwitchState(_factory.Running());

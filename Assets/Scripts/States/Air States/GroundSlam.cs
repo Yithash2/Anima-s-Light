@@ -28,8 +28,6 @@ public class GroundSlamState : BaseState
             _stateTimeCounter = 1;
         }
 
-        Debug.Log("Ground slam Update");
-
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.0125f);
 
 
@@ -41,8 +39,6 @@ public class GroundSlamState : BaseState
     public override void QuitState()
     {
         _stateTimeCounter = 0;
-        
-        Debug.Log("Ground slam stopped");
 
         _ctx.AudioSource.loop = false;
 

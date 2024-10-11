@@ -75,12 +75,10 @@ public class DashState : BaseState{
             if(_ctx.IsGrounded()){
                 if(_ctx.JumpPressed && _ctx.CanJump()){
                     SwitchState(_factory.JumpStart());
-                    Debug.Log("CHERCHER A");
                 }else if(_ctx.XInput != 0){
                     SwitchState(_factory.Running());
                 }else{
-                    //SwitchState(_factory.Iddle()); 
-                    Debug.Log("IM A");
+                    SwitchState(_factory.Iddle()); 
                 }
             }else{
                 if(_ctx.XInput != 0){

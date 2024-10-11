@@ -11,14 +11,10 @@ public class JumpControllerState : BaseState{
 
     public override void EnterState()
     {
-        Debug.Log(_currentSuperState.ToString());
     }
 
     public override void UpdateState(){
 
-        Debug.Log("AZZA");
-
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
@@ -36,9 +32,6 @@ public class JumpControllerState : BaseState{
 
     public override void QuitState()
     {
-        if(_ctx.XInput == 0){
-            Deceleration();
-        }
     }
 
     public override void CheckSwitchState()

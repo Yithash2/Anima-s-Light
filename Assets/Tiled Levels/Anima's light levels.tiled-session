@@ -8,7 +8,8 @@
     "expandedProjectPaths": [
         "Rules",
         ".",
-        "ObjectTemplate"
+        "ObjectTemplate",
+        "Tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -23,6 +24,10 @@
                 "y": 256.11135276207045
             }
         },
+        "Bricks.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 11
+        },
         "C:/Users/Yithash/Desktop/DJIIhj/Deny Phase 1-2 Transition.tsx": {
             "scaleInDock": 1
         },
@@ -36,10 +41,18 @@
         },
         "Level 1.tmx": {
             "scale": 2,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -1296.25,
-                "y": -58.25
+                "x": 2261.5,
+                "y": -309.75
+            }
+        },
+        "Level 2.tmx": {
+            "scale": 0.18719618055555554,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": -1495.7570136795737,
+                "y": 600.9738001391145
             }
         },
         "Level Testu.tmx": {
@@ -51,11 +64,11 @@
             }
         },
         "Rules/Autotile Rule Set.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 639,
-                "y": 255
+                "x": 523.3333333333333,
+                "y": 517
             }
         },
         "Rules/TileTransition Rule Set.tmx": {
@@ -67,11 +80,11 @@
             }
         },
         "Rules/Wood Rule Set.tmx": {
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 314,
-                "y": 355.3333333333333
+                "x": 292,
+                "y": 304.5
             }
         },
         "Spikes.tsx": {
@@ -96,33 +109,33 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/DJIIhj",
-    "last.imagePath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Textures/Spikes",
+    "last.imagePath": "C:/Users/Yithash/Desktop/Game Dev/Projets Unity/Anima-s-Light/Assets/Textures/Tilemap",
     "last.objectTemplatePath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Tiled Levels/ObjectTemplate",
     "last.objectTypesPath": "C:/Users/Yithash/Desktop/Jeu/platformer-proto/Assets/Tiled Levels/propertytypes.xml",
+    "map.fixedSize": false,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
         "Level 1.tmx",
-        "Wood based tiles.tsx",
-        "Rules/Wood Rule Set.tmx",
-        "Rules/Autotile Rule Set.tmx",
-        "Spikes.tsx"
+        "Level 2.tmx",
+        "Bricks.tsx",
+        "Rules/Autotile Rule Set.tmx"
     ],
     "project": "Anima's light levels.tiled-project",
     "recentFiles": [
-        "Spikes.tsx",
         "Rules/Autotile Rule Set.tmx",
-        "Rules/Wood Rule Set.tmx",
-        "Wood based tiles.tsx",
+        "Bricks.tsx",
+        "Level 2.tmx",
         "Level 1.tmx",
+        "Wood based tiles.tsx",
+        "Spikes.tsx",
+        "Rules/Wood Rule Set.tmx",
         "Level Testu.tmx",
         "mini_deny_tilemap5.tsx",
         "Rules/TileTransition Rule Set.tmx",
         "Deny Phase 1-2 Transition.tsx",
-        "Autotile Rule Set.tmx",
-        "C:/Users/Yithash/Desktop/DJIIhj/mini_deny_tilemap5.tsx",
-        "untitled.tmx"
+        "Autotile Rule Set.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

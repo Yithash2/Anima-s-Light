@@ -35,7 +35,6 @@ public class WetState : BaseState
         }else{
             _ctx.DrowningCounter += Time.deltaTime;
             if(_ctx.DrowningCounter < _ctx.DrowningTime*6/10){
-                Debug.Log((_ctx.DrowningCounter+_ctx.DrowningTime*4/10)/_ctx.DrowningTime);
                 _ctx.Bubble.transform.localScale = Vector3.Lerp(new Vector3(3,3,0), new Vector3(1.5f,1.5f,0), (_ctx.DrowningCounter+_ctx.DrowningTime*4/10)/_ctx.DrowningTime);
             }else if(_ctx.DrowningCounter < _ctx.DrowningTime*8/10){
                 _ctx.BubbleAnimator.Play("DangerZone");

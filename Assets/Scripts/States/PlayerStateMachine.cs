@@ -345,7 +345,8 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void CoyoteTimer(){
-        if(_coyoteCounter < CoyoteTime){
+        float _dynamicCoyoteTime = (Mathf.Abs(_rb.velocity.x) > 20)? (Mathf.Sqrt(Mathf.Sign(_rb.velocity.x)*_rb.velocity.x -20)/10+CoyoteTime) : CoyoteTime;
+        if(_coyoteCounter < _dynamicCoyoteTime){
             _coyoteCounter += Time.deltaTime;
             _jumpCount = 0;
         }else{
