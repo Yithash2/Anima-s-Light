@@ -1,3 +1,5 @@
+using System;
+
 public abstract class BaseState
 {
     protected bool _isRootState = false;
@@ -12,6 +14,16 @@ public abstract class BaseState
 
     public float StateTimer {get { return _stateTimer; } protected set { _stateTimer = value; } }
     public float StateTimeCounter {get { return _stateTimeCounter; } protected set { _stateTimeCounter = value; } }
+
+    public string CurrentStates(){
+        string message = this.ToString();
+
+        if(this._currentSubState != null){
+            message += ", " + _currentSubState.CurrentStates();
+        }
+
+        return message;
+    }
 
     public bool CanTurn(BaseState _currentState){
         bool canTurn = true;

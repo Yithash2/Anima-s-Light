@@ -118,7 +118,7 @@ public class DashState : BaseState{
         horizontalJumpForce = ((20) + _ctx.StoredVelocity.x) / totalTimeInAir;
 
         
-        if((_ctx.Rb.velocity.y < 0)){
+        if(_ctx.Rb.velocity.y < 0){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
         }
         

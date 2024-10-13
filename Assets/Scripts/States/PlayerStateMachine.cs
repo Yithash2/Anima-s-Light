@@ -4,6 +4,7 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 
 
@@ -90,6 +91,8 @@ public class PlayerStateMachine : MonoBehaviour
     private float _platformAccelerationY;
 
     private bool _isDead;
+
+    [SerializeField] TextMeshPro StateInfo;
 
     [SerializeField] GameObject _bubble;
     [SerializeField] Animator _bubbleAnimator;
@@ -198,6 +201,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     void FixedUpdate(){
 
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
+        StateInfo.text = _currentState.CurrentStates();
+        #endif
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {

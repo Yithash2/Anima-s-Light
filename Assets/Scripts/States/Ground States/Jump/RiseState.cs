@@ -5,9 +5,6 @@ public class RiseState : BaseState{
     public RiseState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){}
 
-    float _targetSpeed;
-
-    bool _decelerated;
 
     public override void EnterState()
     {

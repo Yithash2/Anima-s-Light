@@ -34,7 +34,7 @@ public class ControlState : BaseState{
 
     public override void QuitState()
     {
-        Deceleration();
+        
     }
 
     public override void CheckSwitchState()
@@ -43,6 +43,7 @@ public class ControlState : BaseState{
             SwitchState(_factory.Dive());
         }else if(_ctx.XInput == 0){
             SwitchState(_factory.Fall());
+            Deceleration();
         }
     }
 

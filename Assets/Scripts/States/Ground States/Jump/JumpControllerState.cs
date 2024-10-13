@@ -58,8 +58,4 @@ public class JumpControllerState : BaseState{
         _ctx.Rb.AddForce(_direction);
     }
 
-    void Deceleration(){
-        _decelerated = true;
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
-    }
 }

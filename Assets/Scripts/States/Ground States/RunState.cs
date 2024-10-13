@@ -8,7 +8,6 @@ public class RunState : BaseState{
 
     public override void EnterState()
     {
-        
     }
 
     public override void UpdateState(){
@@ -37,8 +36,7 @@ public class RunState : BaseState{
         if(_ctx.JumpPressed && _ctx.DivePressed) SwitchState(_factory.Dash());
         else if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.JumpStart());
-            }
-        else if(_ctx.XInput == 0){
+        }else if(_ctx.XInput == 0){
             Deceleration();
             SwitchState(_factory.Iddle());
         }
@@ -63,6 +61,6 @@ public class RunState : BaseState{
     }
 
     void Deceleration(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/1.25f, _ctx.Rb.velocity.y);   
+        //_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/1.25f, _ctx.Rb.velocity.y);   
     }
 }

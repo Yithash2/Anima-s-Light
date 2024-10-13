@@ -28,7 +28,8 @@ public class JumpState : BaseState{
     }
 
     public override void UpdateState(){
-         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
+
+        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
         if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0)){
             _stateTimeCounter = _stateTimer + 1;
@@ -51,11 +52,20 @@ public class JumpState : BaseState{
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
             SwitchState(_factory.WallJump());
         }else if(_stateTimeCounter >= _stateTimer){
-           if(_ctx.XInput == 0){
-                SwitchState(_factory.Iddle());
+            if(_ctx.IsGrounded()){
+                if(_ctx.XInput == 0){
+                    SwitchState(_factory.Iddle());
+                }else{
+                    SwitchState(_factory.Running());
+                }
             }else{
-                SwitchState(_factory.Running());
+                if(_ctx.XInput == 0){
+                    SwitchState(_factory.Fall());
+                }else{
+                    SwitchState(_factory.Controlling());
+                }
             }
+           
         }
         
     }
@@ -102,7 +112,7 @@ public class JumpState : BaseState{
     void HandleJumpEnd(){
         _ctx.IsJumping = false;
         _ctx.JumpReleased = false;
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3f);
     }
 
     

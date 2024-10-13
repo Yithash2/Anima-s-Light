@@ -238,7 +238,7 @@ MonoBehaviour:
   m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
@@ -411,9 +411,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Test Level
       objectReference: {fileID: 0}
+    - target: {fileID: 541709469204681989, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: _name
       value: Test Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584787723621941267, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5725772974066761421, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Enabled
@@ -499,9 +507,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6216572009058257152, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339375532609655249, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Name
       value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -627,9 +647,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Second Demo Level
       objectReference: {fileID: 0}
+    - target: {fileID: 541709469204681989, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: _name
       value: Second Demo Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584787723621941267, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5725772974066761421, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Enabled
@@ -715,9 +743,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6216572009058257152, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339375532609655249, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Name
       value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1387,7 +1427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - LevelName: First Demo Level
-    LevelSceneName: SampleScene
+    LevelSceneName: Level 1
     button: {fileID: 7513288047679540154}
     levelIndex: 0
     TotalDeathCount: 0
@@ -1607,52 +1647,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1213880762}
     m_Modifications:
     - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_Transition
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_SpriteState.m_PressedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1269c83d45dc1af42a4197e0c8836215, type: 3}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_SpriteState.m_DisabledSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4b067eecf35a3d64a9f438f92e7aab89, type: 3}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_SpriteState.m_SelectedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1269c83d45dc1af42a4197e0c8836215, type: 3}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_SpriteState.m_HighlightedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2a5f9ee1832c66246a55a1c3b3ba3e45, type: 3}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1648522017}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevel
+    - target: {fileID: 541709469204681989, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelSelectorManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: First Demo Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: _name
-      value: First Demo Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725772974066761421, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 5584787723621941267, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6061311295368343291, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Pivot.x
@@ -1734,9 +1738,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6216572009058257152, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339375532609655249, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Name
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039626359175634908, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
