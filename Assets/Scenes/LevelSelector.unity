@@ -396,6 +396,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1213880762}
     m_Modifications:
     - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 574767011}
+    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1648522017}
@@ -409,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Test Level
+      value: First Demo Level
       objectReference: {fileID: 0}
     - target: {fileID: 541709469204681989, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Layer
@@ -417,8 +421,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: _name
-      value: Test Level
+      value: First Demo Level
       objectReference: {fileID: 0}
+    - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: _bestTimeText
+      value: 
+      objectReference: {fileID: 7513288047679540155}
+    - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: _deathCounterText
+      value: 
+      objectReference: {fileID: 7513288047679540156}
     - target: {fileID: 5584787723621941267, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -544,6 +556,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &574767011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5725772974066761421, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+  m_PrefabInstance: {fileID: 574767008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &621106192
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +655,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 886142593}
+    - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1648522017}
@@ -645,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408417617048610341, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Second Demo Level
+      value: First Demo Level
       objectReference: {fileID: 0}
     - target: {fileID: 541709469204681989, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Layer
@@ -653,8 +680,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: _name
-      value: Second Demo Level
+      value: First Demo Level
       objectReference: {fileID: 0}
+    - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: _bestTimeText
+      value: 
+      objectReference: {fileID: 7513288047679540155}
+    - target: {fileID: 2226979578339075637, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+      propertyPath: _deathCounterText
+      value: 
+      objectReference: {fileID: 7513288047679540156}
     - target: {fileID: 5584787723621941267, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -778,6 +813,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &886142593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5725772974066761421, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+  m_PrefabInstance: {fileID: 886142590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &910504174
@@ -1432,16 +1478,16 @@ MonoBehaviour:
     levelIndex: 0
     TotalDeathCount: 0
     BestTime: -1
-  - LevelName: Second Demo Level
-    LevelSceneName: level2
+  - LevelName: First Demo Level
+    LevelSceneName: Level 1
     button: {fileID: 886142592}
-    levelIndex: -1
+    levelIndex: 0
     TotalDeathCount: 0
     BestTime: -1
-  - LevelName: Test Level
-    LevelSceneName: Test level
+  - LevelName: First Demo Level
+    LevelSceneName: Level 1
     button: {fileID: 574767010}
-    levelIndex: -1
+    levelIndex: 0
     TotalDeathCount: 0
     BestTime: -1
   LevelInf: {fileID: 6126791961302340345, guid: fa56e5b945e2dbc40996dde82d55ad33, type: 3}
@@ -1768,6 +1814,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7513288047679540155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3914063256437126485, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+  m_PrefabInstance: {fileID: 7513288047679540153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7513288047679540156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 782288773979173855, guid: cc1b71c7dc3c1174b899bce1981bc9f1, type: 3}
+  m_PrefabInstance: {fileID: 7513288047679540153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

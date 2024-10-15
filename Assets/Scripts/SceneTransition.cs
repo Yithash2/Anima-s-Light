@@ -5,18 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] Level level;
-
-    [SerializeField] GameObject LevelInf;
+    [SerializeField] string level;
 
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        Instantiate(LevelInf);
 
-        LevelInfo.Instance.level = level;
-
-        SceneManager.LoadScene(level.LevelSceneName);
+        SceneManager.LoadScene(level);
     }
 }

@@ -43,16 +43,16 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2261.5,
-                "y": -309.75
+                "x": 3583.75,
+                "y": -0.25
             }
         },
         "Level 2.tmx": {
             "scale": 0.18719618055555554,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -1495.7570136795737,
-                "y": 600.9738001391145
+                "x": -2171.518664502667,
+                "y": -125.53674936239281
             }
         },
         "Level Testu.tmx": {
@@ -67,8 +67,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 523.3333333333333,
-                "y": 517
+                "x": 618.6666666666666,
+                "y": 255
             }
         },
         "Rules/TileTransition Rule Set.tmx": {
