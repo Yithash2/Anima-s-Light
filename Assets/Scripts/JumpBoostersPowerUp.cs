@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Lumin;
 
@@ -36,10 +37,13 @@ public class JumpBoostersPowerUp : MonoBehaviour
                 Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y/4f);
                 Player.CoyoteCounter = 0;
                 Player.JumpCount = 0;
-                _isActivated = false;
+
+                _isActivated = false; 
+
             }
         }
     }
+
 
 
     bool PlayerIsAbove(){

@@ -202,7 +202,7 @@ public class PlayerStateMachine : MonoBehaviour
     void FixedUpdate(){
 
         #if DEVELOPMENT_BUILD || UNITY_EDITOR
-        StateInfo.text = _currentState.CurrentStates();
+            StateInfo.text = _currentState.CurrentStates();
         #endif
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
@@ -373,6 +373,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool IsSuffocating(){
         return Physics2D.OverlapCircle(_suffocationCheck.position, _suffocationRadius, GroundLayer);
+    }
+
+    public bool IsTouchingGround(){
+        return Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer);
     }
 
     public bool IsGrounded(){

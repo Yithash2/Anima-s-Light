@@ -16,7 +16,7 @@ public class JumpControllerState : BaseState{
     public override void UpdateState(){
 
 
-        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
+        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + 5;
 
         if(_ctx.XInput != 0){
             if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
