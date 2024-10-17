@@ -4,6 +4,7 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor;
 using TMPro;
 
 
@@ -200,10 +201,6 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void FixedUpdate(){
-
-        #if DEVELOPMENT_BUILD || UNITY_EDITOR
-            StateInfo.text = _currentState.CurrentStates();
-        #endif
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
@@ -431,6 +428,9 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.DrawWireCube(_groundCheck.position, _checkSize);
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(spaceCheck.position, spaceSize);
+
+        if(_currentState != null)
+        Handles.Label(transform.position + new Vector3(-2, 4, 0), _currentState.CurrentStates());
     }
 
 }

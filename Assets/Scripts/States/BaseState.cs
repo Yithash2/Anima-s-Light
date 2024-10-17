@@ -19,7 +19,7 @@ public abstract class BaseState
         string message = this.ToString();
 
         if(this._currentSubState != null){
-            message += ", " + _currentSubState.CurrentStates();
+            message += ", \n" + _currentSubState.CurrentStates();
         }
 
         return message;

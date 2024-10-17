@@ -12,7 +12,9 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     }
     public Transform Spawnpoint;
     public string PlayerTag;
-     public int isActivated = 0;
+    public int isActivated = 0;
+
+    [SerializeField] Animator _animator;
 
     private checkpoint[] checks;
 
@@ -37,14 +39,18 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(isActivated != 2){
-            if(collider.CompareTag(PlayerTag) && isActivated == 0){
+        if(collider.CompareTag(PlayerTag) && isActivated != 2){
+            if( isActivated == 0){
+                _animator.Play("Active");
                 Spawnpoint.SetParent(transform);
                 Spawnpoint.position = transform.position;
                 UpdateCurrentCheckpoint();
                 isActivated = 2;
-            }else if(collider.CompareTag(PlayerTag) && IsPassableMultipleTimes){
+            }else if(IsPassableMultipleTimes){
+                _animator.Play("Active");
                 Spawnpoint.SetParent(transform);
+                UpdateCurrentCheckpoint();
+                isActivated = 2;
             }
 
             DataPersistanceManager.Instance.SaveGame();

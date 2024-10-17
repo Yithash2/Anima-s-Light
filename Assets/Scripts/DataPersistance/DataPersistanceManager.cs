@@ -32,7 +32,7 @@ public class DataPersistanceManager : MonoBehaviour
     }
 
     public void RestartLevel(){
-        _gameData.checkpoints.TPCLear();
+        _gameData.checkpoints.Clear();
         _gameData.currentTimer.Clear();
 
         SetTotalDeathCount();

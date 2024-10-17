@@ -124,8 +124,8 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     public void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
         DataPersistanceManager.Instance.RestartLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
