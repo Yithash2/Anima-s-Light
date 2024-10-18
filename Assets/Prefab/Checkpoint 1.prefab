@@ -97,6 +97,7 @@ MonoBehaviour:
   Spawnpoint: {fileID: 0}
   PlayerTag: Player
   isActivated: 0
+  _animator: {fileID: 4062265717545536872}
 --- !u!212 &2146873622007542213
 SpriteRenderer:
   m_ObjectHideFlags: 0

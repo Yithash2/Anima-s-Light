@@ -8,6 +8,7 @@ public class JumpState : BaseState{
     }
 
     float jumpForce;
+    float normalpitch;
     public override void EnterState()
     {
 
@@ -17,6 +18,8 @@ public class JumpState : BaseState{
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
+        normalpitch = _ctx.AudioSource.pitch;
+        _ctx.AudioSource.pitch = Mathf.Pow(2, Random.Range(0, 8f)/12);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
 
         _ctx.AudioSource.Play();
@@ -43,6 +46,7 @@ public class JumpState : BaseState{
     public override void QuitState()
     {
         _stateTimeCounter = _stateTimer + 1;
+        _ctx.AudioSource.pitch = normalpitch;
     }
 
     public override void CheckSwitchState()

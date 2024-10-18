@@ -4,7 +4,9 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 using TMPro;
 
 
@@ -429,8 +431,10 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(spaceCheck.position, spaceSize);
 
-        if(_currentState != null)
-        Handles.Label(transform.position + new Vector3(-2, 4, 0), _currentState.CurrentStates());
+        #if UNITY_EDITOR
+            if(_currentState != null)
+            Handles.Label(transform.position + new Vector3(-2, 4, 0), _currentState.CurrentStates());
+        #endif
     }
 
 }
