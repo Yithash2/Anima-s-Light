@@ -355,7 +355,7 @@ MonoBehaviour:
   spaceSize: {x: 0.75, y: 0.75}
   SpaceLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 16
   _suffocationCheck: {fileID: 6357250604616642695}
   _suffocationRadius: 0.28
   bufferTime: 0.2
@@ -399,7 +399,7 @@ MonoBehaviour:
   - {x: 0.17633057, y: -0.39796448, z: 0}
   m_ShapePathHash: 248525837
   m_Mesh: {fileID: 0}
-  m_InstanceId: -90878
+  m_InstanceId: 38766
   m_LocalBounds:
     m_Center: {x: 0.023834229, y: -0.1087465, z: 0}
     m_Extent: {x: 0.3164978, y: 0.28921798, z: 0}

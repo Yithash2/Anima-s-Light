@@ -11,9 +11,6 @@ public class JumpState : BaseState{
     float normalpitch;
     public override void EnterState()
     {
-
-        InitialiseSubState();
-
         _stateTimeCounter = 0;
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
@@ -34,7 +31,7 @@ public class JumpState : BaseState{
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
-        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0)){
+        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y <= 0)){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }
@@ -57,22 +54,15 @@ public class JumpState : BaseState{
                 _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
                 SwitchState(_factory.WallJump());
             }
-        }else{
-            if(_ctx.IsGrounded()){
-                if(_ctx.XInput == 0){
-                    SwitchState(_factory.Iddle());
-                }else{
-                    SwitchState(_factory.Running());
-                }
+        }else if(_ctx.IsGrounded()){
+            if(_ctx.XInput == 0){
+                SwitchState(_factory.Iddle());
             }else{
-                if(_ctx.XInput == 0){
-                    SwitchState(_factory.Fall());
-                }else{
-                    SwitchState(_factory.Controlling());
-                }
+                SwitchState(_factory.Running());
             }
-           
         }
+
+        
         
     }
 

@@ -10,7 +10,6 @@ public class GroundState : BaseState{
     
     public override void EnterState()
     {
-        InitialiseSubState();
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
 

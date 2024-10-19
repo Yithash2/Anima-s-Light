@@ -24,7 +24,6 @@ public class AirState : BaseState
     public override void EnterState()
     {
 
-        InitialiseSubState();
         
     }
 

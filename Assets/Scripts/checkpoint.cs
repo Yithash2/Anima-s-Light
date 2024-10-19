@@ -20,6 +20,7 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
     void Start(){
         checks = FindObjectsOfType<checkpoint>();
+        if(isActivated != 0) _animator.Play("Active");
 
         if(isActivated == 2){
             Spawnpoint.SetParent(transform);
@@ -58,10 +59,9 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     }
 
     public void loadData(GameData data){
-        try{
+        if(data.checkpoints.ContainsKey(id)){
             isActivated = data.checkpoints[id];
-        }catch{
-            
+
         }
              
     }

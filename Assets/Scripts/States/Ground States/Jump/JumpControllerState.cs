@@ -7,7 +7,6 @@ public class JumpControllerState : BaseState{
 
     float _targetSpeed;
 
-    bool _decelerated;
 
     public override void EnterState()
     {
@@ -38,6 +37,7 @@ public class JumpControllerState : BaseState{
     {
         if(_ctx.XInput == 0){
             SwitchState(_factory.Rising());
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x /3, _ctx.Rb.velocity.y);
         }
     }
 

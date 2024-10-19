@@ -17,11 +17,7 @@ public class WetState : BaseState
 
     public override void EnterState()
     {
-        
-
-        InitialiseSubState();
-        
-
+    
         _ctx.Rb.drag = 4;
 
         _ctx.Bubble.SetActive(true);
@@ -43,6 +39,8 @@ public class WetState : BaseState
             }
         }
 
+        if(_ctx.JumpPressed) Swim();
+
         _ctx.JumpCount = 0;
         CheckSwitchState();
     }
@@ -63,6 +61,17 @@ public class WetState : BaseState
             if(_ctx.IsGrounded()) SwitchState(_factory.Grounded());
             else SwitchState(_factory.Normal());
         }
+    }
+
+    void Swim(){
+
+        float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
+
+        _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity)  + _ctx.StoredVelocity.y;
+            
+        _ctx.Rb.velocity += new Vector2(0, _ctx.JumpPower);
+        
+        _ctx.JumpPressed = false;
     }
 
     

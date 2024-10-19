@@ -64,13 +64,14 @@ public abstract class BaseState
     }
 
     // Fix to transition properly between states
-    protected void SwitchState(BaseState newState){
-        
-        if (_currentSubState != null && !StateTimerComplete(_currentSubState)){
-            // Block the transition if the timer has not expired
-            return;
+    protected void SwitchState(BaseState newState)
+    {
+        // Block transition if any substate timer hasn't completed
+        if (_currentSubState != null && !StateTimerComplete(_currentSubState))
+        {
+            return;  // Block transition, substate's timer hasn't finished
         }
-        
+
         // Quit current state and all substates properly
         QuitAllSubStates();
         QuitState();
@@ -85,8 +86,11 @@ public abstract class BaseState
             _currentSuperState.SetSubState(newState);
         }
 
-        // Enter new state
+        // Ensure the EnterState method is always called after switching
         newState.EnterState();
+
+        // Re-initialize substate after entering new state (if needed)
+        newState.InitialiseSubState();
     }
 
     // Quit the current substate and all nested substates
@@ -107,13 +111,13 @@ public abstract class BaseState
 
     protected void SetSubState(BaseState newSubState)
     {
-        if (_currentSubState != null)
-        {
-            _currentSubState.QuitState();  // Quit current substate before setting a new one
-        }
-        
+        //_currentSubState?.QuitState();  // Quit current substate before setting a new one
+
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
+
+        // Call EnterState on the new substate to ensure initialization happens
+        //newSubState.EnterState();
     }
 
     protected bool StateTimerComplete(BaseState subState)
