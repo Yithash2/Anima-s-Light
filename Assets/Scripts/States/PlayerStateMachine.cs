@@ -53,13 +53,16 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float bufferTime;
     float _bufferCounter;
     float _wallJumpCounter = 10000;
-
-    float _dashCounter = 10000;
     [SerializeField] float _coyoteTime;
 
     [SerializeField] float _drowningTime = 10;
     float _drowningCounter;
     float _coyoteCounter;
+
+    [SerializeField] float _airDashTime;
+    float _airDashCounter;
+
+    int _numberOfAirDash;
 
     #endregion
 
@@ -101,9 +104,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _bubbleAnimator;
 
     #region Get Sets
+    public int AirDashNumber{get {return _numberOfAirDash;} set{_numberOfAirDash = value;}}
     public float JumpPower {get { return _jumpPower;} set { _jumpPower = value;}}
     public Vector2 Acceleration  {get {return _acceleration;}}
-    public float DashCounter {get{return _dashCounter;} set {_dashCounter = value;}} 
+    public float DashCounter {get{return _airDashCounter;} set {_airDashCounter = value;}} 
     public GameObject Bubble {get {return _bubble;}}
     public Animator BubbleAnimator {get {return _bubbleAnimator;}}
     public float DrowningCounter {get { return _drowningCounter; }set { _drowningCounter = value;}}
@@ -196,9 +200,7 @@ public class PlayerStateMachine : MonoBehaviour
             tag = "Respawn";
             _isDead = true;
         }
-            
-
-        
+    
 
     }
 
@@ -224,7 +226,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _lateVelocity = _rb.velocity;
         
-        
+        _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, 150f);
 
     }
 
@@ -421,6 +423,19 @@ public class PlayerStateMachine : MonoBehaviour
         _playerTransform.localScale = theScale;
     }
 
+    public bool CanDashInAir(){
+        return _numberOfAirDash < 1;
+    }
+
+    public void UpdateDashTimer(){
+        if(_airDashCounter < _airDashTime){
+            _airDashCounter += Time.deltaTime;
+        }else{
+            _numberOfAirDash = 1;
+        }
+
+        Debug.Log(_airDashCounter.ToString() + ","+ _numberOfAirDash.ToString());
+    }
     void OnDrawGizmos(){
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(_suffocationCheck.position,_suffocationRadius);

@@ -49,7 +49,7 @@ public class JumpState : BaseState{
     public override void CheckSwitchState()
     {   
         if(_stateTimeCounter < _stateTimer){
-            if(_ctx.IsWalled() && 6*Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && _ctx.XInput == 0 && !_ctx.JumpReleased){
+            if(_ctx.IsWalled() && 5.5*Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
                 _stateTimeCounter = _stateTimer;
                 _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
                 SwitchState(_factory.WallJump());

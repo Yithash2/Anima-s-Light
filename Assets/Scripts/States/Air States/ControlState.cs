@@ -39,7 +39,10 @@ public class ControlState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.DivePressed){
+        if( _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
+            SwitchState(_factory.Dash());
+            return; 
+        }else if(_ctx.DivePressed){
             SwitchState(_factory.Dive());
         }else if(_ctx.XInput == 0){
             SwitchState(_factory.Fall());

@@ -21,8 +21,6 @@ public class DashState : BaseState{
 
         _canTurn = false;
 
-        _ctx.DashCounter = 0;
-
         _ctx.AudioSource.Play();
 
         HandleJumpStart();
@@ -34,11 +32,14 @@ public class DashState : BaseState{
         _stateTimeCounter += Time.fixedDeltaTime;
 
         if(_stateTimeCounter >= _stateTimer*3/4) _canTurn = true;
-
         
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
         
-        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
+        if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
+        }
+
+
 
         CheckSwitchState();
         
@@ -47,9 +48,7 @@ public class DashState : BaseState{
 
     public override void QuitState()
     {
-
-        _ctx.DashCounter = 1000000000;
-
+        
         _stateTimeCounter = 100f;
         _canTurn = true;
 
@@ -61,14 +60,16 @@ public class DashState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.IsWalled()){
+        if(_ctx.Rb.velocity.x < horizontalJumpForce/3 && _ctx.IsSpaced()){
+            _stateTimeCounter = 100f;
+        }else if(_ctx.IsWalled()){
             if(!_ctx.JumpPressed){
-                _ctx.Rb.velocity = new Vector2(0, horizontalJumpForce/3);
+                _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
+                _ctx.DashCounter = 0;
                 SwitchState(_factory.WallJump());
-            }else{
-                SwitchState(_factory.Rapelling());
             }
-            
+
+            _stateTimeCounter = 100f;
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
         }else if(_stateTimeCounter >= _stateTimer){
@@ -84,10 +85,9 @@ public class DashState : BaseState{
                 if(_ctx.XInput != 0){
                     SwitchState(_factory.Controlling());
                 }else{
-                    SwitchState(_factory.Fall());
+                    SwitchState(_factory.Fall()); 
                 }
             }
-            
         }  
     }
 
@@ -105,6 +105,8 @@ public class DashState : BaseState{
         _ctx.JumpPressed = false;
 
         _ctx.IsDashing = true;
+
+        _ctx.DashCounter = 100000;
 
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
         

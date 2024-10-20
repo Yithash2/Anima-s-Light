@@ -14,8 +14,8 @@ public class GroundState : BaseState{
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
-
-        
+        _ctx.DashCounter = 100 ;
+        _ctx.AirDashNumber = 0;
 
         _ctx.BufferCounter = 0;
 

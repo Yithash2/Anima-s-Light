@@ -361,6 +361,7 @@ MonoBehaviour:
   bufferTime: 0.2
   _coyoteTime: 0.1
   _drowningTime: 10
+  _airDashTime: 0.5
   _platformVelocityX: 0
   _platformCoyoteTime: 0.4
   _platformCoyoteCounter: 0
@@ -399,7 +400,7 @@ MonoBehaviour:
   - {x: 0.17633057, y: -0.39796448, z: 0}
   m_ShapePathHash: 248525837
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38766
+  m_InstanceId: 73776
   m_LocalBounds:
     m_Center: {x: 0.023834229, y: -0.1087465, z: 0}
     m_Extent: {x: 0.3164978, y: 0.28921798, z: 0}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -47,8 +48,12 @@ public class WallJumpState : BaseState
     }
 
     public override void CheckSwitchState()
-    {
-       if(_ctx.IsWalled() && _ctx.JumpPressed){
+    {   
+        /*if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
+            SwitchState(_factory.Dash()); 
+        }*/
+
+        if(_ctx.IsWalled() && _ctx.JumpPressed){
                 SwitchState(_factory.WallJump());
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Rapelling());

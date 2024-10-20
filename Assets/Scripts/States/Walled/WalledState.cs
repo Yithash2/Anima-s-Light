@@ -20,7 +20,7 @@ public class WalledState : BaseState
     {
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
-        //_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.PlatformVelocityY, float.MaxValue));
+         _ctx.UpdateDashTimer();
 
         CheckSwitchState();
     }

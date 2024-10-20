@@ -10,8 +10,11 @@ public class AirState : BaseState
     }
 
     public override void InitialiseSubState()
-    {
-        if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
+    {   
+        if( _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
+            SetSubState(_factory.Dash()); 
+            return;
+        }else if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
             SetSubState(_factory.Dive());
         }else if(_ctx.XInput != 0){
             SetSubState(_factory.Controlling()); 
@@ -35,6 +38,8 @@ public class AirState : BaseState
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
+
+        _ctx.UpdateDashTimer();
 
         CheckSwitchState();
 
