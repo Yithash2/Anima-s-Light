@@ -2,31 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Xml;
 
-public class LevelObject : MonoBehaviour
+public class LevelObject : MonoBehaviour, IDataPersistance
 {
     [SerializeField] TextMeshProUGUI _deathCounterText;
     [SerializeField] TextMeshProUGUI _bestTimeText;
+    [SerializeField] ulong _deathCount;
+    [SerializeField] float _bestTime;
 
     [SerializeField] string _name;
-
-    // Update is called once per frame
-    void Start()
-    {
-        LevelSelectorManager _lvls = LevelSelectorManager.Instance;
-
-        foreach(Level l in _lvls.levels){
-            if(l.LevelName == _name){
-                _deathCounterText.text = "X" + l.TotalDeathCount.ToString();
-                UpdateTimerText(l.BestTime ,_bestTimeText);
-                break;
-            }
-        }
-
-        
-        
-        
-    }
     
     void UpdateTimerText(float CurrentTime, TextMeshProUGUI Text){
         float hours = Mathf.FloorToInt(CurrentTime / 3600F);
@@ -37,5 +22,22 @@ public class LevelObject : MonoBehaviour
         string tempsFormatte = string.Format("{0:00}:{1:00}:{2:00}.{3:000}", hours, minutes, secondes, millisecondes);
 
         Text.text = "Time : " + tempsFormatte;
+    }
+
+    public void loadData(GameData data){
+        try{
+            _deathCounterText.text = 'X' + data.LevelTotalDeathCount[_name].ToString();
+            _deathCount = data.LevelTotalDeathCount[_name];
+            UpdateTimerText(data.LevelBestTime[_name], _bestTimeText);
+            _bestTime = data.LevelBestTime[_name];
+        }catch{
+
+        }
+        
+            
+    }
+
+    public void saveData(GameData data){
+
     }
 }

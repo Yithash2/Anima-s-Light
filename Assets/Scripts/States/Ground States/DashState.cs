@@ -23,6 +23,8 @@ public class DashState : BaseState{
 
         _ctx.AudioSource.Play();
 
+        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
+
         HandleJumpStart();
         
     }
@@ -30,16 +32,27 @@ public class DashState : BaseState{
     public override void UpdateState(){      
 
         _stateTimeCounter += Time.fixedDeltaTime;
-
-        if(_stateTimeCounter >= _stateTimer*3/4) _canTurn = true;
         
+        if(_stateTimeCounter >= _stateTimer/2){
+            if(-Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.Rb.velocity.x) 
+            && _ctx.XInput != 0 
+            && _ctx.Rb.velocity.x!=0){
+                _ctx.Rb.AddForce(new Vector2(5*_ctx.XInput,0));
+                Debug.Log("JEJ0");
+            }
+
+            if(_ctx.IsTouchingGround()){
+                _stateTimeCounter = 100f;
+            }
+
+            if(_stateTimeCounter >= _stateTimer*3/4) _canTurn = true;
+        }
+
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
         
         if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
             _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
         }
-
-
 
         CheckSwitchState();
         

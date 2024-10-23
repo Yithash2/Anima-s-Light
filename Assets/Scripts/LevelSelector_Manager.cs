@@ -101,8 +101,6 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
             data.LevelBestTime.Add(lv.LevelName, lv.BestTime);
 
         }
-
-        TotalDeathCounter.Instance.UpdateDeathCounter();
     }
 
     public void LoadLevel(string levelName){

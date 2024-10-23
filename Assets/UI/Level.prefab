@@ -540,7 +540,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 5725772974066761421}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -591,4 +591,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathCounterText: {fileID: 782288773979173855}
   _bestTimeText: {fileID: 3914063256437126485}
-  _name: First Demo Level
+  _name: 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngineInternal;
 
 public class JumpControllerState : BaseState{
 
@@ -15,7 +16,7 @@ public class JumpControllerState : BaseState{
     public override void UpdateState(){
 
 
-        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + 5;
+        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + (2*Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)));
 
         if(_ctx.XInput != 0){
             if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
@@ -35,7 +36,7 @@ public class JumpControllerState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.XInput == 0){
+        if(_ctx.XInput == 0 || Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x)){
             SwitchState(_factory.Rising());
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x /3, _ctx.Rb.velocity.y);
         }

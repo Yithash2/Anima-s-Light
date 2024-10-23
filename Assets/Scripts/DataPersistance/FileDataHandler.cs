@@ -32,6 +32,7 @@ public class FileDataHandler
 
                 if(useEncryption){
                 dataToLoad = EncryptDecrypt(dataToLoad);
+                Debug.Log(dataToLoad);
             }
 
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
@@ -39,6 +40,7 @@ public class FileDataHandler
                 Debug.LogError("Error occured when trying to load the file" + fullPath + "\n" + e);
             }
         }
+        
         return loadedData;
     }
 

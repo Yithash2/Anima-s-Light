@@ -13,7 +13,6 @@ public class AirState : BaseState
     {   
         if( _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
             SetSubState(_factory.Dash()); 
-            return;
         }else if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
             SetSubState(_factory.Dive());
         }else if(_ctx.XInput != 0){

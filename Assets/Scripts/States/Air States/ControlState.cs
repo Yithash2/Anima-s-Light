@@ -44,7 +44,7 @@ public class ControlState : BaseState{
             return; 
         }else if(_ctx.DivePressed){
             SwitchState(_factory.Dive());
-        }else if(_ctx.XInput == 0){
+        }else if(_ctx.XInput == 0 || Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x)){
             SwitchState(_factory.Fall());
             Deceleration();
         }
