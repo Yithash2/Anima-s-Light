@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLeft: {fileID: 1632785257}
-  _maxRight: {fileID: 0}
+  _maxRight: {fileID: 1136912400}
 --- !u!1 &505606436
 GameObject:
   m_ObjectHideFlags: 0

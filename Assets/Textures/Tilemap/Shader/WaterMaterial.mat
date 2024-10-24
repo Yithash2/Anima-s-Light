@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3037096699698976383
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Space
-  m_Shader: {fileID: -6465566751694194690, guid: bd16f358fbf6ef244b9441e824530665, type: 3}
+  m_Name: WaterMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 1aae8479834a6ea4e88bbb01418d908d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,16 +40,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2DLOD_8d417e79abe44dfaaf6844d8daa61065_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: dd1189a92c0456d459737ce7a598c612, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _mainTex:
-        m_Texture: {fileID: 0}
+    - _Texture_To_Replace:
+        m_Texture: {fileID: 2800000, guid: 20a2b92c8b283014c953b33f32a2e5cd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -53,23 +58,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _distortionScale: 8.52
-    - _distortionSpeed: 0.11
+    - _DistortionScale: 0.5
+    - _DistortionSpeed: 0.5
+    - _ScreenPosi: 1
     m_Colors:
-    - _distortionPower: {r: 0.29, g: 0.35, b: 0, a: 0}
+    - _Color_To_Replace: {r: 0.019607844, g: 0.46274513, b: 0.9960785, a: 1}
+    - _DistortionPower: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 40, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &869542840093846124
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7

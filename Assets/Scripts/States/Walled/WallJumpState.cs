@@ -21,7 +21,7 @@ public class WallJumpState : BaseState
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
-        Debug.Log("WALLJUMP");
+        //Debug.Log("WALLJUMP");
         if(_ctx.Rb.velocity.y > 0){
             _stateTimeCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
         }else{

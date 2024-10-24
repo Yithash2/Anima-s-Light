@@ -69,6 +69,7 @@ public class DataPersistanceManager : MonoBehaviour
         
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
+        SaveGame();
         Time.timeScale = 1f;
     }
 

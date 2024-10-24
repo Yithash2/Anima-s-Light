@@ -36,7 +36,7 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
     }
 
     public void loadData(GameData data){
-
+        
         foreach(KeyValuePair<string, ulong> l in data.LevelTotalDeathCount){
             TotalNumberOfDeath += l.Value;
 
@@ -50,7 +50,15 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
     }
 
     public void saveData(GameData data){
-        data.TotalDeathCount = TotalNumberOfDeath;
+
+        foreach(KeyValuePair<string, ulong> l in data.LevelTotalDeathCount){
+            data.TotalDeathCount += l.Value;
+
+            ulong currentDeathCount;
+            if(data.currentLevelDeathCount.TryGetValue(l.Key, out currentDeathCount)){
+                data.TotalDeathCount += currentDeathCount;
+            }
+        }
         
         UpdateDeathCounter();
 

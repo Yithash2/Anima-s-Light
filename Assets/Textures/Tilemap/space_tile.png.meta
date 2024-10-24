@@ -110,31 +110,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: space_tile_8
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: -4}
-        - {x: 5, y: -4}
-        - {x: 5, y: 8}
-        - {x: -8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ae9574f2b4e3fd459ee67ce77f061e0
-      internalID: -2044956191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: st2u_x0y48-w16h16
       rect:
         serializedVersion: 2
@@ -405,27 +380,6 @@ TextureImporter:
       bones: []
       spriteID: 551fca7674d01de4799682b4513a78ad
       internalID: 1472612064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: st2u_x32y0-w16h16
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48cb2e4dcdd58a54f867414531f5e31b
-      internalID: 670328712
       vertices: []
       indices: 
       edges: []
@@ -973,6 +927,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: st2u_x32y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5151ffdb052e564b93b405edaf811eb
+      internalID: 670328712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -984,7 +959,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      space_tile_8: -2044956191
       st2u_x0y0-w16h16: 998651692
       st2u_x0y112-w16h16: 482309224
       st2u_x0y128-w16h16: 2112621337

@@ -434,7 +434,7 @@ public class PlayerStateMachine : MonoBehaviour
             _numberOfAirDash = 1;
         }
 
-        Debug.Log(_airDashCounter.ToString() + ","+ _numberOfAirDash.ToString());
+        //Debug.Log(_airDashCounter.ToString() + ","+ _numberOfAirDash.ToString());
     }
     void OnDrawGizmos(){
         Gizmos.color = Color.yellow;
