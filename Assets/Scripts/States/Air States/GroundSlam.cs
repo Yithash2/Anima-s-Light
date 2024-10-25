@@ -24,9 +24,7 @@ public class GroundSlamState : BaseState
 
     public override void UpdateState(){
 
-        if(_ctx.IsGrounded()){
-            _stateTimeCounter = 1;
-        }
+        
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.0125f);
 
@@ -50,7 +48,11 @@ public class GroundSlamState : BaseState
     public override void CheckSwitchState()
     {   
         
-        if(_ctx.JumpPressed){
+        if(_ctx.IsGrounded() && _ctx.XInput != 0 && _ctx.JumpPressed){
+            SwitchState(_factory.Dash());
+        }else if(_ctx.IsGrounded()){
+            _stateTimeCounter = 1;
+        }else if(!_ctx.DivePressed){
             _ctx.JumpPressed = false;
             if(_ctx.XInput == 0){
                 SwitchState(_factory.Fall());
@@ -58,6 +60,8 @@ public class GroundSlamState : BaseState
                 SwitchState(_factory.Controlling());
             }
         }
+
+        
 
         
     }

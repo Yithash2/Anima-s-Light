@@ -34,6 +34,9 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Transform _groundCheck;
     [SerializeField] Vector2 _checkSize;
     [SerializeField] LayerMask GroundLayer;
+
+    [SerializeField] Transform _ceilingCheck;
+    [SerializeField] Vector2 _ceilingCheckSize;
     
     [SerializeField] Transform wallCheck;
     [SerializeField] Vector2 wallSize;
@@ -401,6 +404,9 @@ public class PlayerStateMachine : MonoBehaviour
         return Physics2D.OverlapBox(spaceCheck.position, spaceSize, 0, SpaceLayer);
     }
 
+    public bool IsCeilled(){
+        return Physics2D.OverlapBox(_ceilingCheck.position, _ceilingCheckSize, 0, GroundLayer);
+    }
     public bool IsWalled(){
         
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
@@ -445,6 +451,8 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.DrawWireCube(_groundCheck.position, _checkSize);
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(spaceCheck.position, spaceSize);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(_ceilingCheck.position, _ceilingCheckSize);
 
         #if UNITY_EDITOR
             if(_currentState != null)

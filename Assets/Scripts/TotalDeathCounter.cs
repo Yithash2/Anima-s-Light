@@ -36,32 +36,25 @@ public class TotalDeathCounter : MonoBehaviour, IDataPersistance
     }
 
     public void loadData(GameData data){
-        
-        foreach(KeyValuePair<string, ulong> l in data.LevelTotalDeathCount){
-            TotalNumberOfDeath += l.Value;
+                  
 
-            ulong currentDeathCount;
-            if(data.currentLevelDeathCount.TryGetValue(l.Key, out currentDeathCount)){
-                TotalNumberOfDeath += currentDeathCount;
-            }
-        }
+        TotalNumberOfDeath = data.TotalDeathCount;
+        
 
         UpdateDeathCounter();
     }
 
-    public void saveData(GameData data){
-
-        foreach(KeyValuePair<string, ulong> l in data.LevelTotalDeathCount){
-            data.TotalDeathCount += l.Value;
-
-            ulong currentDeathCount;
-            if(data.currentLevelDeathCount.TryGetValue(l.Key, out currentDeathCount)){
-                data.TotalDeathCount += currentDeathCount;
-            }
+    public void saveData(GameData data)
+    {
+        ulong currentTotal = 0;
+        foreach (ulong deathCount in data.LevelTotalDeathCount.Values)
+        {
+            currentTotal += deathCount;
         }
         
+        data.TotalDeathCount = currentTotal; // Set, not add to, the total death count
+        TotalNumberOfDeath = currentTotal;   // Update the displayed value
+        
         UpdateDeathCounter();
-
-
     }
 }

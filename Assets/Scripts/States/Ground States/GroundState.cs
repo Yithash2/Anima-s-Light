@@ -48,7 +48,7 @@ public class GroundState : BaseState{
 
     public override void InitialiseSubState()
     {   
-        bool dashCondition = _ctx.IsTouchingGround() ? _ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0 : _ctx.JumpPressed && _ctx.XInput != 0;
+        bool dashCondition = _ctx.JumpPressed && _ctx.DivePressed && _ctx.XInput != 0;
         
         if(dashCondition){
             SetSubState(_factory.Dash());

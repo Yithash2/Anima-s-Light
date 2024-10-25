@@ -5,27 +5,31 @@ public class RunState : BaseState{
     :base (currentContext, stateFactory){}
 
     float _targetSpeed;
+    private int _previousXInput;
 
     public override void EnterState()
     {
+        _previousXInput = (int)Mathf.Sign(_ctx.XInput);
     }
 
     public override void UpdateState(){
+        
 
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
-
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
+        if (HasChangedDirection())
+        {
+            Deceleration();
+            
+        }
+        else if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
             Run();
         }else{
             Acceleration();
         }
 
-
-
-        
-        
-
         CheckSwitchState();
+
+        _previousXInput = (int)Mathf.Sign(_ctx.XInput);
     }
 
     public override void QuitState()
@@ -39,7 +43,7 @@ public class RunState : BaseState{
             SwitchState(_factory.Dash());
         }else if(_ctx.JumpPressed && _ctx.CanJump()){
             SwitchState(_factory.JumpStart());
-        }else if(_ctx.XInput == 0 ){
+        }else if(_ctx.XInput == 0){
             Deceleration();
             SwitchState(_factory.Iddle());
         }
@@ -65,5 +69,10 @@ public class RunState : BaseState{
 
     void Deceleration(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/1.25f, _ctx.Rb.velocity.y);   
+    }
+
+    private bool HasChangedDirection()
+    {
+        return _ctx.XInput != 0 && Mathf.Sign(_ctx.XInput) != _previousXInput;
     }
 }

@@ -11,6 +11,7 @@ public class DashState : BaseState{
     float horizontalJumpForce;
     public override void EnterState()
     {
+        Debug.Log(_currentSuperState);
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0]; 
@@ -38,12 +39,9 @@ public class DashState : BaseState{
             && _ctx.XInput != 0 
             && _ctx.Rb.velocity.x!=0){
                 _ctx.Rb.AddForce(new Vector2(5*_ctx.XInput,0));
-                Debug.Log("JEJ0");
             }
 
-            if(_ctx.IsTouchingGround()){
-                _stateTimeCounter = 100f;
-            }
+            
 
             if(_stateTimeCounter >= _stateTimer*3/4) _canTurn = true;
         }
@@ -54,7 +52,17 @@ public class DashState : BaseState{
             _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
         }
 
+        if(_ctx.IsTouchingGround()){
+            _stateTimeCounter = 100f;
+        }
+
+        if(_ctx.IsCeilled()){
+            _ctx.Rb.velocity += new Vector2(0, -_ctx.Rb.velocity.y);
+            _stateTimeCounter = _stateTimer*3/4;
+        }
+
         CheckSwitchState();
+
         
         
     }
@@ -66,8 +74,6 @@ public class DashState : BaseState{
         _canTurn = true;
 
         _ctx.IsDashing = false;
-
-        
 
     }
 
@@ -86,7 +92,7 @@ public class DashState : BaseState{
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
         }else if(_stateTimeCounter >= _stateTimer){
-            if(_ctx.IsGrounded()){
+            if(_ctx.IsTouchingGround()){
                 if(_ctx.JumpPressed && _ctx.CanJump()){
                     SwitchState(_factory.JumpStart());
                 }else if(_ctx.XInput != 0){
