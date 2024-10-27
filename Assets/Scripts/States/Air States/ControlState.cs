@@ -23,7 +23,7 @@ public class ControlState : BaseState
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
         bool needsDeceleration = _ctx.XInput != 0 &&
-                                 Mathf.Abs(_ctx.Rb.velocity.x) < 0.5f &&
+                                 Mathf.Abs(_ctx.Rb.velocity.x) > 0.5f &&
                                  (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
                                   Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
 

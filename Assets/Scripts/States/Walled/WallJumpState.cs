@@ -38,6 +38,10 @@ public class WallJumpState : BaseState
     {
         _stateTimeCounter += Time.deltaTime;
 
+        if(_ctx.IsTouchingGround()){
+            _stateTimeCounter = _stateTimer;
+        }
+
         CheckSwitchState();
 
     }
@@ -49,9 +53,6 @@ public class WallJumpState : BaseState
 
     public override void CheckSwitchState()
     {   
-        /*if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
-            SwitchState(_factory.Dash()); 
-        }*/
 
         if(_ctx.IsWalled() && _ctx.JumpPressed){
                 SwitchState(_factory.WallJump());

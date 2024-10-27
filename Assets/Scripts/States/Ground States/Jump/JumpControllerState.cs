@@ -19,12 +19,12 @@ public class JumpControllerState : BaseState{
     public override void UpdateState(){
 
 
-        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + (2*Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)));
+        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + (Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)));
 
         bool needsDeceleration = _ctx.XInput != 0 &&
-                                 Mathf.Abs(_ctx.Rb.velocity.x) < 0.5f &&
-                                 (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
-                                  Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
+                                Mathf.Abs(_ctx.Rb.velocity.x) > 0.5f &&
+                                (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
+                                Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
 
         if (needsDeceleration && !hasDecelerated)
         {

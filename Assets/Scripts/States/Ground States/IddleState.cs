@@ -12,7 +12,7 @@ public class IddleState : BaseState
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = Vector2.Lerp(_ctx.Rb.velocity, Vector2.zero, 0.125f);
+        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.5f), _ctx.Rb.velocity.y);
         CheckSwitchState();
     }
 

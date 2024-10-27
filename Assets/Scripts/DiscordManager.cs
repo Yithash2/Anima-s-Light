@@ -4,55 +4,76 @@ using UnityEngine;
 
 public class DiscordManager : MonoBehaviour
 {
-    Discord.Discord discord;
-    // Start is called before the first frame update
+    private Discord.Discord discord;
+    private bool isDiscordOpen = false;
+
     void Start()
     {
-        discord = new Discord.Discord(1270383527174602752, (ulong)Discord.CreateFlags.Default);
-        ChangeActivity();
+        try
+        {
+            discord = new Discord.Discord(1270383527174602752, (ulong)Discord.CreateFlags.Default);
+            isDiscordOpen = true;
+            ChangeActivity();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning("Discord is not open or could not initialize: " + e.Message);
+            isDiscordOpen = false;
+        }
     }
 
-    void OnDisable() {
-        discord.Dispose();
+    void OnDisable()
+    {
+        if (isDiscordOpen)
+        {
+            discord.Dispose();
+        }
     }
 
-    public void ChangeActivity() {
+    public void ChangeActivity()
+    {
+        if (!isDiscordOpen) return; // Exit if Discord isn't open
+
         var activityManager = discord.GetActivityManager();
-        if(LevelInfo.Instance != null){
-            var activity = new Discord.Activity {
-            
-            State = "Playing" + " " + LevelInfo.Instance.level.LevelName,
-            Assets =
+        if (LevelInfo.Instance != null)
+        {
+            var activity = new Discord.Activity
             {
-                LargeImage = "logo_anima_s_light", // Larger Image Asset Value
-                LargeText = ">:D",
-            }
-            
+                State = "Playing " + LevelInfo.Instance.level.LevelName,
+                Assets =
+                {
+                    LargeImage = "logo_anima_s_light", // Larger Image Asset Value
+                    LargeText = ">:D",
+                }
             };
-            activityManager.UpdateActivity(activity, (res) => {
+            activityManager.UpdateActivity(activity, (res) =>
+            {
                 Debug.Log("Activity updated!");
             });
-        }else{
-           var activity = new Discord.Activity {
-            
-            State = "Main Menu",
-            Assets =
-            {
-                LargeImage = "logo_anima_s_light", // Larger Image Asset Value
-                LargeText = ":D",
-            }
-            
-            };
-            activityManager.UpdateActivity(activity, (res) => {
-                Debug.Log("Activity updated!");
-            }); 
         }
-        
+        else
+        {
+            var activity = new Discord.Activity
+            {
+                State = "Main Menu",
+                Assets =
+                {
+                    LargeImage = "logo_anima_s_light", // Larger Image Asset Value
+                    LargeText = ":D",
+                }
+            };
+            activityManager.UpdateActivity(activity, (res) =>
+            {
+                Debug.Log("Activity updated!");
+            });
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        discord.RunCallbacks();
+        if (isDiscordOpen)
+        {
+            discord.RunCallbacks();
+        }
     }
 }

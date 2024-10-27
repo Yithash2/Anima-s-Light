@@ -6,16 +6,30 @@ public class SwimState : BaseState{
     :base (currentContext, stateFactory){}
 
     float _targetSpeed;
+    float _oldXInput;
+    bool hasDecelerated;
 
     public override void EnterState()
     {
+        _oldXInput = _ctx.XInput;
+        hasDecelerated = false;  // Reset deceleration flag on entering the state
     }
 
     public override void UpdateState(){
 
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
-        if(_ctx.XInput != 0){
+        bool needsDeceleration = _ctx.XInput != 0 &&
+                                 Mathf.Abs(_ctx.Rb.velocity.x) > 0.5f &&
+                                 (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
+                                  Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
+
+        if (needsDeceleration && !hasDecelerated)
+        {
+            Deceleration();
+            hasDecelerated = true;  // Set flag to prevent repeated deceleration
+        }
+        else{
             if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
                 Run();
             }else if(_ctx.XInput != _ctx.PlayerTransform.localScale.x){
@@ -26,6 +40,8 @@ public class SwimState : BaseState{
         }    
         
         CheckSwitchState();
+
+        _oldXInput = _ctx.XInput;
     }
 
     public override void QuitState()

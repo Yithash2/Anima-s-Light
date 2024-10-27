@@ -11,7 +11,7 @@ public class DashState : BaseState{
     float horizontalJumpForce;
     public override void EnterState()
     {
-        Debug.Log(_currentSuperState);
+        //Debug.Log(_currentSuperState);
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0]; 

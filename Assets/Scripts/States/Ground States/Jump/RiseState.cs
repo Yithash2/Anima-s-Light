@@ -12,7 +12,7 @@ public class RiseState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.05f), _ctx.Rb.velocity.y);
+        //_ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.05f), _ctx.Rb.velocity.y);
         CheckSwitchState();
     }
 

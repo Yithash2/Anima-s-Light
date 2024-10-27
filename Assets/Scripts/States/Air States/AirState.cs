@@ -32,7 +32,7 @@ public class AirState : BaseState
     public override void UpdateState()
     { 
 
-        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.125f);
+        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.05f);
 
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 

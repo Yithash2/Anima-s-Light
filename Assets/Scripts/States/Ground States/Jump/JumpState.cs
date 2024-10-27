@@ -47,24 +47,40 @@ public class JumpState : BaseState{
     }
 
     public override void CheckSwitchState()
-    {   
-        if(_stateTimeCounter < _stateTimer){
-            if(_ctx.IsWalled() && 5.5*Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) < Mathf.Abs(_ctx.Rb.velocity.x) && !_ctx.JumpReleased){
-                _stateTimeCounter = _stateTimer;
-                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.JumpPower);
-                SwitchState(_factory.WallJump());
-            }
-        }else if(_ctx.IsGrounded()){
-            if(_ctx.XInput == 0){
-                SwitchState(_factory.Iddle());
-            }else{
-                SwitchState(_factory.Running());
-            }
-        }
+{   
+    // Check for WallJump only if the player is within the timer window
+    if (_stateTimeCounter < _stateTimer)
+    {
+        // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
+        bool canWallJump = _ctx.IsWalled() &&
+                           Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
+                           Mathf.Abs(_ctx.Rb.velocity.x) > 5.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
+                           !_ctx.JumpReleased;                            // Jump button has been released since last jump
+            
 
-        
-        
+        if (canWallJump)
+        {
+            _stateTimeCounter = _stateTimer;  // End current jump
+            float wallJumpPush = Mathf.Abs(_ctx.Rb.velocity.x) - 20 > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.velocity.x) - 15) : _ctx.JumpPower;
+            Debug.Log(wallJumpPush);
+            _ctx.Rb.velocity = new Vector2(0, wallJumpPush);  // Apply WallJump force
+            SwitchState(_factory.WallJump());  // Switch to WallJump state
+        }
     }
+    // Check ground condition to switch to idle or running
+    else if (_ctx.IsGrounded())
+    {
+        if (_ctx.XInput == 0)
+        {
+            SwitchState(_factory.Iddle());
+        }
+        else
+        {
+            SwitchState(_factory.Running());
+        }
+    }
+}
+
 
     public override void InitialiseSubState()
     {
