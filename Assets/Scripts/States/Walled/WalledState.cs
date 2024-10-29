@@ -10,6 +10,8 @@ public class WalledState : BaseState
     public override void EnterState()
     {
 
+        _ctx.JumpCount = 1;
+
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[4].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
         
@@ -20,7 +22,7 @@ public class WalledState : BaseState
     {
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
-         _ctx.UpdateDashTimer();
+        _ctx.UpdateDashTimer();
 
         CheckSwitchState();
     }

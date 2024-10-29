@@ -36,28 +36,49 @@ public class JumpBoostersPowerUp : MonoBehaviour
 
             if (PlayerIsAbove())
             {
-                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 4f);
+                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
                 Player.JumpCount = 0;
                 StartCoroutine(JumpAuthorized());
-                _isActivated = false;
-                resetCounter = 0f; // Reset resetCounter on activation
+                
             }
         }
     }
 
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag(playerTag) && _isActivated)
+        {    
+            if(Player.Rb.velocity.y < 0){
+                _isActivated = false;
+                resetCounter = 0f; // Reset resetCounter on activation
+            }
+            
+        }
+    }
+
+    IEnumerator SpeedFreeze(){
+        float _realTilemScale = 1;
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.3f);
+        Time.timeScale = _realTilemScale;
+    }
+
     IEnumerator JumpAuthorized()
     {
-        Debug.Log("Test");
         t = 0f;
 
         while (t < JumpTime)
         {
-            Debug.Log(t);
             Player.CoyoteCounter = 0;
 
             if (Player.JumpCount != 0)
             {
                 Player.JumpCount = 1;
+                if(Mathf.Abs(Player.Rb.velocity.x) >= 40f){
+                    StartCoroutine(SpeedFreeze());
+                }
+                _isActivated = false;
+                resetCounter = 0f; // Reset resetCounter on activation
                 break; // Exit loop if jump is authorized or player falls
             }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Xml;
+using System;
 
 public class LevelObject : MonoBehaviour, IDataPersistance
 {
@@ -14,12 +15,21 @@ public class LevelObject : MonoBehaviour, IDataPersistance
     [SerializeField] string _name;
     
     void UpdateTimerText(float CurrentTime, TextMeshProUGUI Text){
+        string tempsFormatte;
+
+        if(CurrentTime == 0){
+            tempsFormatte = string.Format("{0:00}:{1:00}:{2:00}.{3:000}", 0, 0, 0, 0);
+
+            Text.text = "Time : " + tempsFormatte;
+            return;
+        }
+
         float hours = Mathf.FloorToInt(CurrentTime / 3600F);
         float minutes = Mathf.FloorToInt((CurrentTime - hours * 3600F) / 60F);
         float secondes = Mathf.FloorToInt(CurrentTime - hours * 3600F - minutes * 60F);
         float millisecondes = Mathf.Floor((CurrentTime - Mathf.Floor(CurrentTime)) * 1000F);
 
-        string tempsFormatte = string.Format("{0:00}:{1:00}:{2:00}.{3:000}", hours, minutes, secondes, millisecondes);
+        tempsFormatte = string.Format("{0:00}:{1:00}:{2:00}.{3:000}", hours, minutes, secondes, millisecondes);
 
         Text.text = "Time : " + tempsFormatte;
     }

@@ -7,10 +7,13 @@ public class JumpState : BaseState{
         _stateTimer = 1;
     }
 
-    float jumpForce;
+    bool hasCeilled;
     float normalpitch;
     public override void EnterState()
     {
+
+        _ctx.HitStop(30f, 0.1f);
+
         _stateTimeCounter = 0;
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
@@ -21,7 +24,15 @@ public class JumpState : BaseState{
 
         _ctx.AudioSource.Play();
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        if(hasCeilled){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            hasCeilled = false;
+        }else{
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        }
+        
+        _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -80, 80), _ctx.Rb.velocity.y);  
+
 
         HandleJumpStart();
         
@@ -31,9 +42,19 @@ public class JumpState : BaseState{
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
-        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y <= 0)){
+        
+
+        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
+        }else{
+            
+            if(_ctx.IsCeilled() && !_ctx.JumpReleased){
+                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y);
+                hasCeilled = true;
+            }else if(_ctx.JumpReleased){
+                hasCeilled = false;
+            }
         }
 
         CheckSwitchState();
@@ -48,9 +69,12 @@ public class JumpState : BaseState{
 
     public override void CheckSwitchState()
 {   
-    // Check for WallJump only if the player is within the timer window
+    
     if (_stateTimeCounter < _stateTimer)
     {
+        if (_ctx.IsGrounded() && hasCeilled && !_ctx.JumpReleased){
+            SwitchState(_factory.JumpStart());
+        }
         // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
         bool canWallJump = _ctx.IsWalled() &&
                            Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
@@ -62,9 +86,12 @@ public class JumpState : BaseState{
         {
             _stateTimeCounter = _stateTimer;  // End current jump
             float wallJumpPush = Mathf.Abs(_ctx.Rb.velocity.x) - 20 > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.velocity.x) - 15) : _ctx.JumpPower;
-            Debug.Log(wallJumpPush);
             _ctx.Rb.velocity = new Vector2(0, wallJumpPush);  // Apply WallJump force
+            _ctx.WallJumpCombo = true;
+            
             SwitchState(_factory.WallJump());  // Switch to WallJump state
+
+            _ctx.HitStop(0, 0.2f);
         }
     }
     // Check ground condition to switch to idle or running

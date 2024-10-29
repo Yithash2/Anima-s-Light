@@ -106,7 +106,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] GameObject _bubble;
     [SerializeField] Animator _bubbleAnimator;
 
+    private bool _wallJumpCombo = false;
+
     #region Get Sets
+    public bool WallJumpCombo {get {return _wallJumpCombo;} set{_wallJumpCombo = value;}}
     public int AirDashNumber{get {return _numberOfAirDash;} set{_numberOfAirDash = value;}}
     public float JumpPower {get { return _jumpPower;} set { _jumpPower = value;}}
     public Vector2 Acceleration  {get {return _acceleration;}}
@@ -207,6 +210,19 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    public void HitStop(float speedRequired, float stopedTime){
+        if(Mathf.Abs(_rb.velocity.x) > speedRequired){
+            StartCoroutine(SpeedFreeze(stopedTime));
+        }
+    }
+
+    IEnumerator SpeedFreeze(float stopedTime){
+        float _realTilemScale = 1;
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(stopedTime);
+        Time.timeScale = _realTilemScale;
+    }
+
     void FixedUpdate(){
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
@@ -229,7 +245,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _lateVelocity = _rb.velocity;
         
-        _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, 150f);
+        //_rb.velocity = Vector2.ClampMagnitude(_rb.velocity, 150f);
 
     }
 

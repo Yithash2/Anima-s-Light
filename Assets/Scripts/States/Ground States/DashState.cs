@@ -10,8 +10,10 @@ public class DashState : BaseState{
 
     float horizontalJumpForce;
     public override void EnterState()
-    {
-        //Debug.Log(_currentSuperState);
+    {   
+        
+        _ctx.HitStop(50f, 0.3f);
+        
 
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
         _ctx.AudioSource.clip = _ctx.AudioClips[0]; 
@@ -85,6 +87,7 @@ public class DashState : BaseState{
             if(!_ctx.JumpPressed){
                 _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
                 _ctx.DashCounter = 0;
+                _ctx.WallJumpCombo = true;
                 SwitchState(_factory.WallJump());
             }
 

@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
 
 public class WallJumpState : BaseState
 {
@@ -13,20 +14,21 @@ public class WallJumpState : BaseState
         _canTurn = false;
 
     }
-
     public override void EnterState()
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
-        _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
         //Debug.Log("WALLJUMP");
         if(_ctx.Rb.velocity.y > 0){
             _stateTimeCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
+            if(!_ctx.WallJumpCombo) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.Rb.velocity.y/2); 
         }else{
             _stateTimeCounter = 0;
         }
+
+        _ctx.WallJumpCombo = false;
 
 
         WallJump();
@@ -55,9 +57,13 @@ public class WallJumpState : BaseState
     {   
 
         if(_ctx.IsWalled() && _ctx.JumpPressed){
-                SwitchState(_factory.WallJump());
+            SwitchState(_factory.WallJump());
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Rapelling());
+        }
+
+        if(_currentSuperState is AirState && _stateTimeCounter >= _stateTimer){
+            _currentSuperState.InitialiseSubState();
         }
         
     }
@@ -80,8 +86,12 @@ public class WallJumpState : BaseState
 
         if(_ctx.Rb.velocity.y <= 0) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
-        _ctx.Rb.velocity = new Vector2((horizontalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x)) * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x) + _ctx.Rb.velocity.y);
+        if(Mathf.Abs(_ctx.Rb.velocity.y) > 30){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x , Mathf.Lerp(_ctx.Rb.velocity.y, Mathf.Sign(_ctx.Rb.velocity.y) * 40, 0.25f));
+        }
 
+        _ctx.Rb.velocity = new Vector2((horizontalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x)) * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x) + _ctx.Rb.velocity.y);
+        Debug.Log(_ctx.Rb.velocity.x);
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();
 
