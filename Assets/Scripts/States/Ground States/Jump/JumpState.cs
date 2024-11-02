@@ -25,13 +25,13 @@ public class JumpState : BaseState{
         _ctx.AudioSource.Play();
 
         if(hasCeilled){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.125f, -_ctx.Rb.velocity.y * 1.5f);
             hasCeilled = false;
         }else{
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
         }
         
-        _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -80, 80), _ctx.Rb.velocity.y);  
+        _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50), _ctx.Rb.velocity.y);  
 
 
         HandleJumpStart();
@@ -50,7 +50,8 @@ public class JumpState : BaseState{
         }else{
             
             if(_ctx.IsCeilled() && !_ctx.JumpReleased){
-                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y);
+                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f);
+                _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50), _ctx.Rb.velocity.y);  
                 hasCeilled = true;
             }else if(_ctx.JumpReleased){
                 hasCeilled = false;

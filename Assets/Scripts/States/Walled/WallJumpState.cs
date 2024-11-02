@@ -20,10 +20,11 @@ public class WallJumpState : BaseState
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
+        if(!_ctx.WallJumpCombo)_ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y/2);
+        
         //Debug.Log("WALLJUMP");
         if(_ctx.Rb.velocity.y > 0){
             _stateTimeCounter = _ctx.PlayerData.WallJumpControlTime *3/4;
-            if(!_ctx.WallJumpCombo) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.Rb.velocity.y/2); 
         }else{
             _stateTimeCounter = 0;
         }
@@ -86,12 +87,7 @@ public class WallJumpState : BaseState
 
         if(_ctx.Rb.velocity.y <= 0) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
-        if(Mathf.Abs(_ctx.Rb.velocity.y) > 30){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x , Mathf.Lerp(_ctx.Rb.velocity.y, Mathf.Sign(_ctx.Rb.velocity.y) * 40, 0.25f));
-        }
-
         _ctx.Rb.velocity = new Vector2((horizontalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x)) * wallJumpDirection , verticalJumpForce + Mathf.Abs(_ctx.Rb.velocity.x) + _ctx.Rb.velocity.y);
-        Debug.Log(_ctx.Rb.velocity.x);
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();
 
