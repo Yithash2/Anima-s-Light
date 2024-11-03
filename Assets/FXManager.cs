@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class FXManager : MonoBehaviour
@@ -18,6 +21,8 @@ public class FXManager : MonoBehaviour
 
     void Start(){
         _speedLineAlpha = _speedLineImage.color.a;
+        _hueShiftMaterial.TryGet(out _hueAdjustments);
+        _hueAdjustments.hueShift.value = 0f;
     }
 
     public void SpeedLines(bool active, Rigidbody2D _rb){
@@ -66,16 +71,16 @@ public class FXManager : MonoBehaviour
 
     public void LerpHue(float lerpValue){
 
+
         lerpValue = Mathf.Clamp(lerpValue, 0, 1);
         
-        float _targetHue = 0.239f;
+        float _targetHue = 95f;
         float _originalHue = 0f;
 
         
         float _hue = Mathf.Lerp(_targetHue,_originalHue, lerpValue);
         
-
-        _hueShiftMaterial.SetFloat("_HueShift", _hue);
+        _hueAdjustments.hueShift.value = _hue;
     }
 
     Vector2 FindClosestVector(Vector2 direction)
@@ -116,5 +121,6 @@ public class FXManager : MonoBehaviour
     [SerializeField] Image _speedLineImage;
     [SerializeField] GameObject _waterTintFX;
 
-    [SerializeField] Material _hueShiftMaterial;
+    [SerializeField] VolumeProfile _hueShiftMaterial;
+    ColorAdjustments _hueAdjustments;
 }

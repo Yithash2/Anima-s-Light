@@ -85,10 +85,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5991344354662176720, guid: b8bc6e6007f867144964db6371eef947, type: 3}
-      propertyPath: m_GridSnapping
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -124,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 955077499269049191}
     - target: {fileID: 2000800739352205166, guid: 3aa7ed9a9104fe143a58c352cbd2bf66, type: 3}
       propertyPath: m_InstanceId
-      value: -433876
+      value: -1922348
       objectReference: {fileID: 0}
     - target: {fileID: 2489568136785853311, guid: 3aa7ed9a9104fe143a58c352cbd2bf66, type: 3}
       propertyPath: m_Name
@@ -134,6 +130,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 8386255692466499874, guid: 3aa7ed9a9104fe143a58c352cbd2bf66, type: 3}
+      propertyPath: m_SortingOrder
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8551025964284116128, guid: 3aa7ed9a9104fe143a58c352cbd2bf66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
