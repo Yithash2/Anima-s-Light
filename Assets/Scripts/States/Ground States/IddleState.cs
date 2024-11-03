@@ -5,14 +5,19 @@ public class IddleState : BaseState
     public IddleState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){}
 
-    
+    float _currentSpeed;
 
     public override void EnterState()
     {
+        _currentSpeed = _ctx.Rb.velocity.x;
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.5f), _ctx.Rb.velocity.y);
+        if(Mathf.Abs(_currentSpeed) <= 10){
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.5f), _ctx.Rb.velocity.y);
+        }else{
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 50/Mathf.Pow(_currentSpeed, 2)), _ctx.Rb.velocity.y);
+        }
         CheckSwitchState();
     }
 

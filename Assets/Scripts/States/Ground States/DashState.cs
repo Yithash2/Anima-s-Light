@@ -12,6 +12,7 @@ public class DashState : BaseState{
     public override void EnterState()
     {   
         
+        
         _ctx.HitStop(50f, 0.3f);
         
 
@@ -75,6 +76,8 @@ public class DashState : BaseState{
         _stateTimeCounter = 100f;
         _canTurn = true;
 
+        
+
         _ctx.IsDashing = false;
 
     }
@@ -87,6 +90,7 @@ public class DashState : BaseState{
             if(!_ctx.JumpPressed){
                 _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
                 _ctx.DashCounter = 0;
+                _ctx.StartWallJumpComboCoroutine(0.5f);
                 _ctx.WallJumpCombo = true;
                 SwitchState(_factory.WallJump());
             }

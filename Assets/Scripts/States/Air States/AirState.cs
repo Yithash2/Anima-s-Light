@@ -34,13 +34,14 @@ public class AirState : BaseState
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.05f);
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
+        
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
         _ctx.UpdateDashTimer();
 
         CheckSwitchState();
+
 
     }
 

@@ -13,6 +13,8 @@ public class WetState : BaseState
     {
         if(_ctx.XInput != 0 || _ctx.JumpPressed) SetSubState(_factory.Swimming());
         else SetSubState(_factory.Sinking());
+
+        _ctx.FxManager.WaterTint(true);
     }
 
     public override void EnterState()
@@ -47,6 +49,7 @@ public class WetState : BaseState
 
     public override void QuitState()
     {
+        _ctx.FxManager.WaterTint(false);
         _ctx.DrowningCounter = 0;
         _ctx.BubbleAnimator.Play("Basic");
         _ctx.BubbleAnimator.speed = 1;

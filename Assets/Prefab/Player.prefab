@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerData: {fileID: 11400000, guid: e91a017f7e7904c4a85dad14b3325be7, type: 2}
+  _motionBlurTwins: {fileID: 2613229427348676502, guid: 741d6900d1df97b4ca1afef0e1374f9d, type: 3}
   _animator: {fileID: 3348651127387589753}
   _animations:
   - {fileID: 7400000, guid: 60efd5650a36f9547a7eb5e7903e14af, type: 2}
@@ -406,6 +407,7 @@ MonoBehaviour:
   StateInfo: {fileID: 2785198165509339014}
   _bubble: {fileID: 1729047553315325012}
   _bubbleAnimator: {fileID: 5582511775411465774}
+  _sprite: {fileID: 7874610399577188666}
   _deadlyTag: Deadly
 --- !u!114 &2000800739352205166
 MonoBehaviour:

@@ -7,9 +7,12 @@ public class RunState : BaseState{
     float _targetSpeed;
     private int _previousXInput;
 
+    float _currentSpeed;
+
     public override void EnterState()
     {
         _previousXInput = (int)Mathf.Sign(_ctx.XInput);
+        _currentSpeed = _ctx.Rb.velocity.x;
     }
 
     public override void UpdateState(){
@@ -58,8 +61,12 @@ public class RunState : BaseState{
     void Run(){
         
         Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
-        
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
+
+        if(Mathf.Abs(_currentSpeed) <= 10){
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.5f * Time.deltaTime), _ctx.Rb.velocity.y);
+        }else{
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 50/Mathf.Pow(_currentSpeed, 2)* Time.deltaTime), _ctx.Rb.velocity.y);
+        }
     }
 
     void Acceleration(){

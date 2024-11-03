@@ -16,6 +16,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerDateScriptableObject PlayerData;
 
+    FXManager _fxManager;
+
+    [SerializeField] GameObject _motionBlurTwins;
+
     [SerializeField] Animator _animator;
     [SerializeField] AnimationClip[] _animations;
     [SerializeField] AudioSource _audioSource;
@@ -107,8 +111,15 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _bubbleAnimator;
 
     private bool _wallJumpCombo = false;
+    private bool _hasWallJumpCombo = false;
+
+    [SerializeField]
+    private SpriteRenderer _sprite;
+
 
     #region Get Sets
+    public FXManager FxManager{get {return _fxManager;}}
+    public bool HasWallJumpCombo{get {return _hasWallJumpCombo;}}
     public bool WallJumpCombo {get {return _wallJumpCombo;} set{_wallJumpCombo = value;}}
     public int AirDashNumber{get {return _numberOfAirDash;} set{_numberOfAirDash = value;}}
     public float JumpPower {get { return _jumpPower;} set { _jumpPower = value;}}
@@ -175,6 +186,9 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState = _states.Normal();
         _currentState.EnterState();
 
+        _fxManager = FXManager.Instance;
+
+        StartCoroutine(SpawnCoroutine());
         
     }
     
@@ -206,6 +220,9 @@ public class PlayerStateMachine : MonoBehaviour
             tag = "Respawn";
             _isDead = true;
         }
+
+        
+        _fxManager.SpeedLines(Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45 , _rb);
     
 
     }
@@ -237,9 +254,41 @@ public class PlayerStateMachine : MonoBehaviour
         }else{
             _currentState.UpdateStates();
         }
- 
-
     }
+    
+    private IEnumerator SpawnCoroutine()
+    {
+        Color _originalColor = _sprite.color;
+        Color spriteColor = _motionBlurTwins.GetComponent<SpriteRenderer>().color;
+        float tLerpColor = 0f;
+        while (true)
+        {
+            if(Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45 ){
+                tLerpColor = 0f;
+                GameObject clone = Instantiate(_motionBlurTwins, transform.position, Quaternion.identity);
+                SpriteRenderer spriteRenderer = clone.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    _fxManager.LerpHue(0);
+                    spriteRenderer.sprite = _sprite.sprite;
+                    _sprite.color = spriteColor;
+                    
+                    
+                }
+                Destroy(clone, 0.1f);
+                yield return new WaitForSeconds(0.005f);
+            }else{
+                if(tLerpColor <= 1 && _sprite.color != _originalColor){
+                    _sprite.color = Color.Lerp(spriteColor, _originalColor, tLerpColor/1f);
+                    _fxManager.LerpHue(tLerpColor*2);
+                    tLerpColor += Time.deltaTime;
+                    yield return null;
+                }
+            }
+            yield return null;
+        }
+    }
+
 
     void LateUpdate(){
 
@@ -353,6 +402,16 @@ public class PlayerStateMachine : MonoBehaviour
         }else{
             _divePressed = false;
         }
+    }
+    
+    public void StartWallJumpComboCoroutine(float time){
+        StartCoroutine(WallJumpComboCoroutine(time));
+    }
+
+    IEnumerator WallJumpComboCoroutine(float time){
+        _hasWallJumpCombo = true;
+        yield return new WaitForSeconds(time);
+        _hasWallJumpCombo = false;
     }
     
     void Inputs(){
