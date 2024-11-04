@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ColorFade : MonoBehaviour
@@ -5,7 +6,9 @@ public class ColorFade : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color initialColor;
     private float fadeDuration = 0.1f;
-    private float timer;
+
+    [SerializeField]
+    Color _targetColor;
 
     private void Start()
     {
@@ -16,18 +19,27 @@ public class ColorFade : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnEnable()
     {
+        StartCoroutine(ChangeColor());
+    }
+
+    private void OnDisable(){
+        spriteRenderer.color = initialColor;
+    }
+
+    IEnumerator ChangeColor(){
         if (spriteRenderer != null)
         {
-            timer += Time.deltaTime;
-            float t = timer / fadeDuration; // Normalize the time
-            spriteRenderer.color = Color.Lerp(initialColor, Color.black, t);
+            float timer = 0;
+            while(spriteRenderer.color != Color.black && gameObject.activeInHierarchy){
+                timer += Time.deltaTime;
+                float t = timer / fadeDuration; // Normalize the time
+                spriteRenderer.color = Color.Lerp(initialColor, _targetColor, t);
+                yield return 0f;
+            }
+            
         }
     }
 
-    public void SetFadeDuration(float duration)
-    {
-        fadeDuration = duration;
-    }
 }

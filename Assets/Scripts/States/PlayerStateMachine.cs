@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Globalization;
+using System.Collections.Generic;
 using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 #if UNITY_EDITOR
@@ -17,6 +16,9 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerDateScriptableObject PlayerData;
 
     FXManager _fxManager;
+
+    [SerializeField]
+    TrailRenderer _trailRenderer;
 
     [SerializeField] GameObject _motionBlurTwins;
 
@@ -187,8 +189,6 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.EnterState();
 
         _fxManager = FXManager.Instance;
-
-        StartCoroutine(SpawnCoroutine());
         
     }
     
@@ -247,6 +247,8 @@ public class PlayerStateMachine : MonoBehaviour
             Flip();
         }
 
+        
+
         StartCoroutine(LateFixedUpdate());
 
         if(tag == "Respawn" && IsDead){
@@ -256,38 +258,10 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
     
-    private IEnumerator SpawnCoroutine()
-    {
-        Color _originalColor = _sprite.color;
-        Color spriteColor = _motionBlurTwins.GetComponent<SpriteRenderer>().color;
-        float tLerpColor = 0f;
-        while (true)
-        {
-            if(Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45 ){
-                tLerpColor = 0f;
-                GameObject clone = Instantiate(_motionBlurTwins, transform.position, Quaternion.identity);
-                SpriteRenderer spriteRenderer = clone.GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
-                {
-                    _fxManager.LerpHue(0);
-                    spriteRenderer.sprite = _sprite.sprite;
-                    _sprite.color = spriteColor;
-                    
-                    
-                }
-                Destroy(clone, 0.1f);
-                yield return new WaitForSeconds(0.005f);
-            }else{
-                if(tLerpColor <= 1 && _sprite.color != _originalColor){
-                    _sprite.color = Color.Lerp(spriteColor, _originalColor, tLerpColor/1f);
-                    _fxManager.LerpHue(tLerpColor*2);
-                    tLerpColor += Time.deltaTime;
-                    yield return null;
-                }
-            }
-            yield return null;
-        }
-    }
+
+
+
+
 
 
     void LateUpdate(){

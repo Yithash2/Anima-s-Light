@@ -9,6 +9,8 @@ public class AirState : BaseState
         _isRootState = true;
     }
 
+    bool _hasCeilled;
+
     public override void InitialiseSubState()
     {   
         if( _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
@@ -34,6 +36,11 @@ public class AirState : BaseState
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.05f);
 
+
+        if(_ctx.IsCeilled() && !_hasCeilled  && _ctx.JumpPressed){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
+            _hasCeilled = true;
+        }
         
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
@@ -47,7 +54,7 @@ public class AirState : BaseState
 
     public override void QuitState()
     {
-
+        _hasCeilled = false;
     }
 
     public override void CheckSwitchState()

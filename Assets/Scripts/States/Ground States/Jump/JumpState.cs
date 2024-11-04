@@ -7,7 +7,7 @@ public class JumpState : BaseState{
         _stateTimer = 1;
     }
 
-    bool hasCeilled;
+    bool _hasCeilled;
     float normalpitch;
     public override void EnterState()
     {
@@ -24,10 +24,10 @@ public class JumpState : BaseState{
 
         _ctx.AudioSource.Play();
 
-        if(hasCeilled){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.125f, -_ctx.Rb.velocity.y * 1.5f);
-            hasCeilled = false;
-            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50), _ctx.Rb.velocity.y);  
+        if(_hasCeilled){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _hasCeilled = false;
+            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);   
         }else{
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
         }
@@ -45,17 +45,17 @@ public class JumpState : BaseState{
 
         
 
-        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !hasCeilled){
+        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }else{
             
-            if(_ctx.IsCeilled() && !_ctx.JumpReleased){
-                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f);
-                _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50), _ctx.Rb.velocity.y);  
-                hasCeilled = true;
-            }else if(_ctx.JumpReleased){
-                hasCeilled = false;
+            if(_ctx.IsCeilled() && !_ctx.JumpReleased && !_hasCeilled){
+                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 3, -_ctx.Rb.velocity.y* 1.5f); 
+                _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);  
+                _hasCeilled = true;
+            }else if(_ctx.JumpReleased  && _hasCeilled){
+                _hasCeilled = false;
             }
         }
 
@@ -67,13 +67,14 @@ public class JumpState : BaseState{
     {
         _stateTimeCounter = _stateTimer + 1;
         _ctx.AudioSource.pitch = normalpitch;
+        _hasCeilled = false;
     }
 
     public override void CheckSwitchState(){   
         
         if (_stateTimeCounter < _stateTimer)
         {
-            if (_ctx.IsGrounded() && hasCeilled && !_ctx.JumpReleased){
+            if (_ctx.IsGrounded() && _hasCeilled){
                 SwitchState(_factory.JumpStart());
             }
             // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity

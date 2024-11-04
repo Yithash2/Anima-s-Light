@@ -12,8 +12,9 @@ public class WallJumpState : BaseState
     :base (currentContext, stateFactory){
         _stateTimer = _ctx.PlayerData.WallJumpControlTime;
         _canTurn = false;
-
     }
+
+    bool _hasCeilled;
     public override void EnterState()
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[3].name);
@@ -46,6 +47,12 @@ public class WallJumpState : BaseState
             _stateTimeCounter = _stateTimer;
         }
 
+        if(_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
+            _stateTimeCounter = _stateTimer;
+            _hasCeilled = true;
+        }
+
         CheckSwitchState();
 
     }
@@ -53,6 +60,7 @@ public class WallJumpState : BaseState
     public override void QuitState()
     {
         _stateTimeCounter = _stateTimer;
+        _hasCeilled = false;
     }
 
     public override void CheckSwitchState()

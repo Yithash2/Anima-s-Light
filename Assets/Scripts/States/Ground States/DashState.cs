@@ -8,6 +8,8 @@ public class DashState : BaseState{
         _canTurn = false;
     }
 
+    bool _hasCeilled;
+
     float horizontalJumpForce;
     public override void EnterState()
     {   
@@ -29,6 +31,12 @@ public class DashState : BaseState{
 
         _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
 
+        if(_hasCeilled){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _hasCeilled = false;
+            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -150, 150),_ctx.Rb.velocity.y);   
+        }
+
         HandleJumpStart();
         
     }
@@ -43,10 +51,14 @@ public class DashState : BaseState{
             && _ctx.Rb.velocity.x!=0){
                 _ctx.Rb.AddForce(new Vector2(5*_ctx.XInput,0));
             }
-
             
 
             if(_stateTimeCounter >= _stateTimer*3/4) _canTurn = true;
+        }
+
+        if(_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
+            _hasCeilled = true;
         }
 
         _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
@@ -57,11 +69,6 @@ public class DashState : BaseState{
 
         if(_ctx.IsTouchingGround()){
             _stateTimeCounter = 100f;
-        }
-
-        if(_ctx.IsCeilled()){
-            _ctx.Rb.velocity += new Vector2(0, -_ctx.Rb.velocity.y);
-            _stateTimeCounter = _stateTimer*3/4;
         }
 
         CheckSwitchState();
@@ -76,7 +83,7 @@ public class DashState : BaseState{
         _stateTimeCounter = 100f;
         _canTurn = true;
 
-        
+        _hasCeilled = false;
 
         _ctx.IsDashing = false;
 
