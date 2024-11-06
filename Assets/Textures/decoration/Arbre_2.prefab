@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 290960353
+  m_SortingLayer: 1
   m_SortingOrder: -12
   m_Sprite: {fileID: -879740977, guid: 4504a8e63c018604e9dd6fdd386facc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -189,8 +189,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 290960353
+  m_SortingLayer: 1
   m_SortingOrder: -10
   m_Sprite: {fileID: -625163061, guid: d8f6f74d5396d4a42b7c49dfb34ce3cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -243,7 +243,7 @@ MonoBehaviour:
   - {x: -2.1021786, y: 0.10060501, z: 0}
   m_ShapePathHash: -1419756757
   m_Mesh: {fileID: 0}
-  m_InstanceId: 99962
+  m_InstanceId: 46430
   m_LocalBounds:
     m_Center: {x: -0.6993537, y: 3.9735684, z: 0}
     m_Extent: {x: 5.9725966, y: 4.0079713, z: 0}
@@ -255,26 +255,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009187086007730889}
     m_Modifications:
-    - target: {fileID: 4667316122367087173, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 12.266607
-      objectReference: {fileID: 0}
-    - target: {fileID: 4667316122367087173, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 4.0460052
-      objectReference: {fileID: 0}
-    - target: {fileID: 4667316122367087173, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
-      propertyPath: ShapeModule.m_Position.x
-      value: -1.0849209
-      objectReference: {fileID: 0}
-    - target: {fileID: 4667316122367087173, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
-      propertyPath: ShapeModule.m_Position.y
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 4667316122367087173, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
-      propertyPath: ShapeModule.m_Position.z
-      value: -0.00000014901161
-      objectReference: {fileID: 0}
     - target: {fileID: 6007472190764095525, guid: 87b40f0c4ebcb504c91563b17947c0b0, type: 3}
       propertyPath: m_Name
       value: Particle System
