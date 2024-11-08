@@ -52,5 +52,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "Anima-s-Light.sln"
+    "dotnet.defaultSolution": "platformer-proto.sln"
 }

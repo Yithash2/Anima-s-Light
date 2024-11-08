@@ -14,19 +14,20 @@ public class Dialogue : MonoBehaviour
     [ContextMenu("StartDialog")]
     public void StartDialog(){
         _lineIndex = 0;
-        DialogueManager.Instance.UpdateDialog(lines[_lineIndex].text);
+        DialogueManager.Instance.UpdateDialog(lines[_lineIndex].text, lines[_lineIndex]._lineTime);
+        DialogueManager.Instance.ShowDialogBoc(true);
     }
     [ContextMenu("NextLine")]
     public void NextLine(){
-        if(_lineIndex < lines.Length){
+        if(_lineIndex < lines.Length - 1){
             _lineIndex ++;
-            DialogueManager.Instance.UpdateDialog(lines[_lineIndex].text);
+            DialogueManager.Instance.UpdateDialog(lines[_lineIndex].text, lines[_lineIndex]._lineTime);
             }
         else EndDialog(); 
     }
 
     public void EndDialog(){
-
+        DialogueManager.Instance.ShowDialogBoc(false);
     }
 }
 
@@ -36,3 +37,4 @@ public struct Line{
     public string text;
     public float _lineTime;
 }
+
