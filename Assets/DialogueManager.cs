@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,12 +12,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     GameObject _dialogBox;
 
+    [SerializeField]
+    Image _characterIcon;
+
     private Queue _queue = new Queue();
+    
+
+    [HideInInspector]
+    public Dialogue CurrentDialogue;
     public static DialogueManager Instance {get; protected set;}
     void Awake()
     {
         if(Instance != null){
-            Debug.Log("Found more then one TotalDeathCounter, and destoyed it");
+            Debug.Log("Found more then one DialogueManager, and destoyed it");
             Destroy(this.gameObject);
             return;
         }
@@ -26,7 +35,8 @@ public class DialogueManager : MonoBehaviour
         _dialogBox.SetActive(false);
     }
 
-    public void UpdateDialog(string text, float lineSpeed){
+    public void UpdateDialog(string text, float lineSpeed, Sprite caraIcon){
+        _characterIcon.sprite = caraIcon;
         char[] letters = text.ToCharArray();
         foreach(char c in letters){
             _queue.Enqueue(c);
@@ -46,6 +56,12 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowDialogBoc(bool condition){
         _dialogBox.SetActive(condition);
+    }
+
+    public void Next(InputAction.CallbackContext ctx){
+        if(ctx.started && _queue.Count == 0){
+            if(CurrentDialogue!=null) CurrentDialogue.NextLine();
+        }
     }
 
     

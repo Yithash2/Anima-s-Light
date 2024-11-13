@@ -133,7 +133,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
 
         LevelInfo.Instance.level = lv;
 
-        SceneManager.LoadScene(lv.LevelSceneName);
+        SceneTransition.Instance.TransitionScene(lv.LevelSceneName);
     }
 
     /*void ClearCurrentLevelIndex(){

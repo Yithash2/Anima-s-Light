@@ -107,7 +107,8 @@ public class PauseMenuManager : MonoBehaviour
         LevelInfo.Instance.SetLevelDeath = false;
         DataPersistanceManager.Instance.SaveGame();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("LevelSelector");
+        StartCoroutine(ClosePanel());
+        SceneTransition.Instance.TransitionScene("LevelSelector");
     }
 
     public void Quit(){
@@ -126,6 +127,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Restart(){
         Time.timeScale = 1f;
         DataPersistanceManager.Instance.RestartLevel();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(ClosePanel());
+        SceneTransition.Instance.TransitionScene(SceneManager.GetActiveScene().name);
     }
 }

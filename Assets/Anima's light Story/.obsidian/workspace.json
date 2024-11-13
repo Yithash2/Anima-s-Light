@@ -12,15 +12,56 @@
             "id": "ed756f66c4aef573",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Deny arc/LP-DENY.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
-              }
+                "file": "Characters/Ether.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ether"
+            }
+          },
+          {
+            "id": "eacccd1e3335734b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Characters/Onyx.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Onyx"
+            }
+          },
+          {
+            "id": "7309e995036a01a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Characters/Solveig.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Solveig"
+            }
+          },
+          {
+            "id": "59a67c9de4b5e253",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Characters/Ether.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ether"
             }
           },
           {
@@ -32,7 +73,9 @@
                 "file": "Deny arc/DENY.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "DENY"
             }
           },
           {
@@ -47,7 +90,9 @@
                   "y": 177,
                   "zoom": -1
                 }
-              }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "LP-DENY"
             }
           },
           {
@@ -59,7 +104,9 @@
                 "file": "Anger arc/ANGER.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "ANGER"
             }
           },
           {
@@ -74,7 +121,9 @@
                   "y": 0,
                   "zoom": 0
                 }
-              }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "LP-DENY"
             }
           },
           {
@@ -86,11 +135,13 @@
                 "file": "Bargaining arc/BARGAINING.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "BARGAINING"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       },
       {
         "id": "15e368c858f3a022",
@@ -105,11 +156,13 @@
               "state": {
                 "file": "Deny arc/LP-DENY.canvas",
                 "viewState": {
-                  "x": -240,
-                  "y": -150,
+                  "x": -394.41509433962267,
+                  "y": 988.1886792452834,
                   "zoom": -1.3164736647952546
                 }
-              }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "LP-DENY"
             }
           }
         ]
@@ -132,7 +185,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -147,7 +202,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -155,7 +212,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -178,7 +237,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Deny arc/LP-DENY.canvas",
+                "file": "Characters/Ether.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -186,7 +245,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Ether"
             }
           },
           {
@@ -195,10 +256,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Deny arc/LP-DENY.canvas",
+                "file": "Characters/Ether.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Ether"
             }
           },
           {
@@ -209,7 +272,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -218,8 +283,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Deny arc/LP-DENY.canvas"
-              }
+                "file": "Characters/Ether.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Ether"
             }
           },
           {
@@ -231,7 +298,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ]
@@ -252,10 +321,15 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "734a10ba6ca060d4",
+  "active": "59a67c9de4b5e253",
   "lastOpenFiles": [
-    "Deny arc/DENY.md",
+    "Characters/Onyx.md",
+    "Characters/Terra.md",
+    "Characters/Solveig.md",
+    "Characters/Ether.md",
     "Deny arc/LP-DENY.canvas",
+    "Characters",
+    "Deny arc/DENY.md",
     "Depression arc",
     "Acceptance arc",
     "Bargaining arc",

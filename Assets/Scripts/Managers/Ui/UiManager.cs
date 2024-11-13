@@ -80,17 +80,17 @@ public class UiManager : MonoBehaviour
     }
 
     public void ContinueButton(){
-        SceneManager.LoadScene("LevelSelector");
+        SceneTransition.Instance.TransitionScene("LevelSelector");
     }
 
     public void NewGameButton(){
         DataPersistanceManager.Instance.NewGame();
-        SceneManager.LoadScene("Tutorial Scene");
+        SceneTransition.Instance.TransitionScene("Tutorial Scene");
     }
 
     public void MenuPauseButton(){
         _dataPersistance.SaveGame();
-        SceneManager.LoadScene("LevelMenu");
+        SceneTransition.Instance.TransitionScene("LevelMenu");
     }
 
     public void QuitButton(){

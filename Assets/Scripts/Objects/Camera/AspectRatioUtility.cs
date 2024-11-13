@@ -2,44 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
+[RequireComponent(typeof(Camera))]
 public class AspectRatioUtility : MonoBehaviour
 {
-
-    void Update(){
+    private void OnValidate()
+    {
         Adjust();
     }
 
-    public void Adjust(){
+    void Start()
+    {
+        Adjust();
+    }
 
+    void Update()
+    {
+        Adjust();
+    }
+
+    public void Adjust()
+    {
         float targetAspect = 16.0f / 9.0f;
-
         float windowAspect = (float)Screen.width / (float)Screen.height;
-
         float scaleHeight = windowAspect / targetAspect;
 
         Camera camera = GetComponent<Camera>();
 
-        if(scaleHeight < 1.0f){
-
+        if (scaleHeight < 1.0f)
+        {
             Rect rect = camera.rect;
-
             rect.width = 1.0f;
             rect.height = scaleHeight;
             rect.x = 0;
             rect.y = (1.0f - scaleHeight) / 2.0f;
-
             camera.rect = rect;
-        }else{
-
+        }
+        else
+        {
             float scaleWidth = 1.0f / scaleHeight;
-
             Rect rect = camera.rect;
-
             rect.width = scaleWidth;
             rect.height = 1.0f;
             rect.x = (1.0f - scaleWidth) / 2.0f;
             rect.y = 0;
-
             camera.rect = rect;
         }
     }
