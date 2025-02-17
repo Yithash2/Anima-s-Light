@@ -52,6 +52,20 @@ public class DialogueManager : MonoBehaviour
             _dialogText.text += _queue.Dequeue();
             yield return new WaitForSeconds(lineSpeed/charNum);
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        Debug.Log(CurrentDialogue.IsAutomaticDialogue);
+        if (CurrentDialogue.IsAutomaticDialogue)
+        {
+            while(_queue.Count != 0)
+            {
+                yield return 0;
+            }
+            NextLine();
+
+
+        }
     }
 
     public void ShowDialogBoc(bool condition){
@@ -59,10 +73,13 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void Next(InputAction.CallbackContext ctx){
-        if(ctx.started && _queue.Count == 0){
-            if(CurrentDialogue!=null) CurrentDialogue.NextLine();
+        if(ctx.started){
+            if(CurrentDialogue!=null && _queue.Count == 0) NextLine();
         }
     }
 
-    
+    public void NextLine()
+    {
+        CurrentDialogue.NextLine();
+    }
 }

@@ -104,11 +104,9 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     public void MenuButton(){
-        LevelInfo.Instance.SetLevelDeath = false;
-        DataPersistanceManager.Instance.SaveGame();
         Time.timeScale = 1f;
         StartCoroutine(ClosePanel());
-        SceneTransition.Instance.TransitionScene("LevelSelector");
+        SceneTransition.Instance.TransitionScene("MainMenu");
     }
 
     public void Quit(){

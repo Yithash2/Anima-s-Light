@@ -97,8 +97,8 @@ public class UiManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void MenuButton(){
-        //TODO : main menu
+    public void GoToTutorial(){
+        SceneTransition.Instance.TransitionScene("Tutorial Scene");
     }
 
 }
