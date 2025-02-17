@@ -11,7 +11,6 @@ public class CloneTrail : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Rigidbody2D _rb;
     private FXManager _fxManager; 
-    [SerializeField] private TrailRenderer _trailRenderer; 
 
     void Start()
     {
@@ -46,7 +45,6 @@ public class CloneTrail : MonoBehaviour
 
             // Manage effects
             _fxManager.LerpHue(0);
-            _trailRenderer.time = 0.1f;
 
             // Destroy the clone after 0.1 seconds
             Destroy(clone, 0.1f);
@@ -66,7 +64,6 @@ public class CloneTrail : MonoBehaviour
                 lerpColorTimer += Time.deltaTime;
                 _sprite.color = Color.Lerp(targetColor, originalColor, lerpColorTimer);
                 _fxManager.LerpHue(Mathf.Clamp01(lerpColorTimer * 2));
-                _trailRenderer.time = 0f;
             }
         }
     }

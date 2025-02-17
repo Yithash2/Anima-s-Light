@@ -6,6 +6,8 @@ public class GroundSlamState : BaseState
         _stateTimer = 1;
     }
 
+    float initialVelocity;
+
     public override void EnterState()
     {
         
@@ -18,6 +20,14 @@ public class GroundSlamState : BaseState
         _ctx.AudioSource.Play();
 
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GroundSlamMult;
+
+        if(Mathf.Abs(_ctx.Rb.velocity.x) < 40){
+            initialVelocity = _ctx.Rb.velocity.x * 2f;
+        }else if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
+            initialVelocity = _ctx.Rb.velocity.x * 0.75f;
+        }else{
+            initialVelocity = _ctx.Rb.velocity.x;
+        }
 
 
     }
@@ -36,13 +46,11 @@ public class GroundSlamState : BaseState
 
     public override void QuitState()
     {
+        if(Mathf.Sign(_ctx.XInput) == Mathf.Sign(initialVelocity) && _ctx.XInput != 0)_ctx.Rb.velocity = new Vector2(initialVelocity, _ctx.Rb.velocity.y/2);
+
         _stateTimeCounter = 0;
 
         _ctx.AudioSource.loop = false;
-
-        _ctx.AudioSource.clip = _ctx.AudioClips[2];
-
-        _ctx.AudioSource.Play();
     }
 
     public override void CheckSwitchState()
@@ -52,8 +60,19 @@ public class GroundSlamState : BaseState
             SwitchState(_factory.Dash());
         }else if(_ctx.IsGrounded()){
             _stateTimeCounter = 1;
+
+            if(_ctx.XInput == 0){
+                SwitchState(_factory.Iddle());
+            }else{
+                SwitchState(_factory.Running());
+            }
+
+            _ctx.AudioSource.loop = false;
+
+            _ctx.AudioSource.clip = _ctx.AudioClips[2];
+
+            _ctx.AudioSource.Play();
         }else if(!_ctx.DivePressed){
-            _ctx.JumpPressed = false;
             if(_ctx.XInput == 0){
                 SwitchState(_factory.Fall());
             }else{

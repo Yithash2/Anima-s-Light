@@ -32,7 +32,6 @@ public class JumpState : BaseState{
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
         }
         
-        
 
 
         HandleJumpStart();
@@ -133,18 +132,12 @@ public class JumpState : BaseState{
         
         float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
 
-        if(_ctx.StoredVelocity.y >= 0){
-            _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity)  + _ctx.StoredVelocity.y;
-        }else if(_ctx.PlatformVelocityY != 0){
-            float a = _ctx.StoredVelocity.y * Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
-            _ctx.JumpPower = Mathf.Sqrt((_ctx.PlayerData.InitalJumpHeight - a) * -2 * gravity) - Mathf.Sqrt(Mathf.Abs(a) * -2 * gravity);
-        }else{
-            _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
-        }
+        
+        _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
 
-
-            
         _ctx.Rb.velocity += new Vector2(0, _ctx.JumpPower);
+
+        //Un saut complet du joueur fait 14.1550993002wu de distance , et 6wu de haut sans élant
         
         
         _ctx.JumpPressed = false;

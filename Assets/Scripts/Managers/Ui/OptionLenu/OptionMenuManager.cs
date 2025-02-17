@@ -43,7 +43,7 @@ public class OptionMenuManager : MonoBehaviour
     [SerializeField] Button _backButton;
 
 
-    public void Start(){
+    public void Awake(){
         _eventSystem = EventSystem.current;
 
         SearchForTab(tabs[0].TabName);

@@ -65,6 +65,18 @@
             }
           },
           {
+            "id": "adc61aa16c31c546",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.7"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.7"
+            }
+          },
+          {
             "id": "5d88b2e1947a148d",
             "type": "leaf",
             "state": {
@@ -141,7 +153,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       },
       {
         "id": "15e368c858f3a022",
@@ -321,7 +333,7 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "59a67c9de4b5e253",
+  "active": "adc61aa16c31c546",
   "lastOpenFiles": [
     "Characters/Onyx.md",
     "Characters/Terra.md",

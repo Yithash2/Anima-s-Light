@@ -17,10 +17,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     FXManager _fxManager;
 
-    [SerializeField]
-    TrailRenderer _trailRenderer;
-
-    [SerializeField] GameObject _motionBlurTwins;
+    [SerializeField] ParticleSystem _speedlines;
 
     [SerializeField] Animator _animator;
     [SerializeField] AnimationClip[] _animations;
@@ -117,6 +114,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer _sprite;
+
+    public bool CanSuffocate = true;
 
 
     #region Get Sets
@@ -221,8 +220,8 @@ public class PlayerStateMachine : MonoBehaviour
             _isDead = true;
         }
 
-        
-        _fxManager.SpeedLines(Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45 , _rb);
+        var emission = _speedlines.emission;
+        emission.enabled = Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45;
     
 
     }
@@ -425,7 +424,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public bool IsSuffocating(){
-        return Physics2D.OverlapCircle(_suffocationCheck.position, _suffocationRadius, GroundLayer);
+        return Physics2D.OverlapCircle(_suffocationCheck.position, _suffocationRadius, GroundLayer) && CanSuffocate;
     }
 
     public bool IsTouchingGround(){

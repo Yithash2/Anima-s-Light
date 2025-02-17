@@ -10,27 +10,30 @@ public class MovingPlatforms : MonoBehaviour
     [SerializeField] float platformSpeed;
     [SerializeField] int _currentTargetPoint = 0;
     private bool isOnReturn;
-    [SerializeField] Rigidbody2D RB;
+    [SerializeField, Range(0, 1)]
+    float _friction;
+    
+    [SerializeField]
+    SpriteRenderer _sprite;
 
-    float _waitCounter;
+    private Vector2 _direction;
 
-    public GameObject Player;
 
-    [SerializeField] bool _allowPlayerXDisplacement;
-    [SerializeField] bool _allowPlayerYDisplacement;
     [SerializeField] bool isLooping;
 
-    void Update()
+    void FixedUpdate()
     {
 
-        if(Vector3.Distance(transform.position, pointsToReach[_currentTargetPoint].transform.position) <= 0.5 + Mathf.Sqrt(platformSpeed * Time.deltaTime) && !IsWaiting){
-            RB.velocity = Vector2.zero;
+        if (Vector3.Distance(transform.position, pointsToReach[_currentTargetPoint].transform.position) <= 0.5f + Mathf.Sqrt(platformSpeed * Time.deltaTime) && !IsWaiting)
+        {
             StartCoroutine(WaitForSeconds());
-            
-        }else if(!IsWaiting){
-            Vector3 direction = pointsToReach[_currentTargetPoint].transform.position - transform.position;
-            RB.velocity = direction.normalized * platformSpeed;
         }
+        else if (!IsWaiting)
+        {
+            _direction = pointsToReach[_currentTargetPoint].transform.position - transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, pointsToReach[_currentTargetPoint].transform.position, platformSpeed * Time.fixedDeltaTime);
+        }
+
             
     }
 
@@ -63,77 +66,52 @@ public class MovingPlatforms : MonoBehaviour
         
     }
 
-    IEnumerator WaitForSeconds(){
+    IEnumerator WaitForSeconds()
+    {
         IsWaiting = true;
+        StartCoroutine(MomentumStorage()); // Start the momentum storage coroutine
         yield return new WaitForSeconds(pointsToReach[_currentTargetPoint].WaitTime);
         _currentTargetPoint = GetcurrentIndex(_currentTargetPoint);
         IsWaiting = false;
-        
     }
 
+    IEnumerator MomentumStorage()
+    {
+        _sprite.color = Color.cyan;  // Change color to indicate waiting
+        yield return new WaitForSeconds(0.2f); // Wait for 0.2 seconds
+        _sprite.color = Color.white; // Reset the color
+        _direction = Vector2.zero;   // Reset the direction
+    }
+
+
     void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
-            PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
-            Player.transform.SetParent(transform);
-            if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
-        }
+        collision.transform.parent.parent = transform;
+
     }
 
     void OnCollisionStay2D(Collision2D collision){
 
-        if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
-            PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
-            if(_allowPlayerXDisplacement)PSM.PlatformVelocityX = RB.velocity.x;
-            if(_allowPlayerYDisplacement)PSM.PlatformVelocityY = RB.velocity.y;
-        }
     }
 
     void OnCollisionExit2D(Collision2D collision){
-        if(collision.gameObject.GetComponent<PlayerStateMachine>() != null && (_allowPlayerXDisplacement || _allowPlayerYDisplacement)){
-            PlayerStateMachine PSM = collision.gameObject.GetComponent<PlayerStateMachine>();
-            Player.transform.SetParent(null);
-            if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
-        }
 
+            collision.transform.parent.parent = null;
+            if (collision.gameObject.CompareTag("Player")){
+                PlayerStateMachine PSM = PlayerStateMachine.Instance;
+                if(IsDashing(PSM) ||IsJumping(PSM)){
+                    if(_direction.normalized.y > 0)PSM.Rb.velocity += _direction.normalized * platformSpeed * _friction;
+                    else if(_direction.normalized.x != 0 && !PSM.IsWallJumping) PSM.Rb.velocity += new Vector2(_direction.normalized.x - 1, 0) * platformSpeed * _friction;
+                }
+            }
+          
     }
 
-    void OnTriggerEnter2D(Collider2D collider){
-        Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
-        if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
-
-            if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
-                Player.transform.SetParent(transform);
-                PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
-                if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = true;
-            }
-
-        }
+    bool IsDashing(PlayerStateMachine PSM){
+        return PSM.IsDashing;
     }
 
-    void OnTriggerStay2D(Collider2D collider){
-        Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
-        if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
-
-            if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
-                PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
-                if(_allowPlayerXDisplacement)PSM.PlatformVelocityX = RB.velocity.x;
-                if(_allowPlayerYDisplacement)PSM.PlatformVelocityY = RB.velocity.y;
-            }
-
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collider){
-        Rigidbody2D playerRb = collider.gameObject.GetComponent<Rigidbody2D>();
-        if(playerRb != null && playerRb.bodyType != RigidbodyType2D.Static){ 
-
-            if(collider.gameObject.GetComponent<PlayerStateMachine>() != null){
-                Player.transform.SetParent(null);
-                PlayerStateMachine PSM = collider.gameObject.GetComponent<PlayerStateMachine>();
-                if(_allowPlayerXDisplacement || _allowPlayerYDisplacement)PSM.IsOnMovingPlatform = false;
-            }
-
-        }
+    bool IsJumping(PlayerStateMachine PSM){
+        return PSM.JumpPressed || PSM.IsJumping || PSM.IsWallJumping;
     }
 
     void OnDrawGizmos(){

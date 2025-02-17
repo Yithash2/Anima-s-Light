@@ -4,7 +4,7 @@ public class DashState : BaseState{
     
     public DashState(PlayerStateMachine currentContext, StateFactory stateFactory)
     :base (currentContext, stateFactory){
-        _stateTimer = 0.6f;
+        _stateTimer = 0.613f;
         _canTurn = false;
     }
 
@@ -58,6 +58,7 @@ public class DashState : BaseState{
 
         if(_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
+            _ctx.HitStop(0f, 0.2f);
             _hasCeilled = true;
         }
 
@@ -105,6 +106,8 @@ public class DashState : BaseState{
             _stateTimeCounter = 100f;
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
+        }else if(_ctx.DivePressed && _stateTimeCounter >= _stateTimer *95/100){
+            SwitchState(_factory.Dive());
         }else if(_stateTimeCounter >= _stateTimer){
             if(_ctx.IsTouchingGround()){
                 if(_ctx.JumpPressed && _ctx.CanJump()){

@@ -36,16 +36,11 @@ public class WallJumpState : BaseState
 
         WallJump();
 
-        
     }
 
     public override void UpdateState()
     {
         _stateTimeCounter += Time.deltaTime;
-
-        if(_ctx.IsTouchingGround()){
-            _stateTimeCounter = _stateTimer;
-        }
 
         if(_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
@@ -70,6 +65,8 @@ public class WallJumpState : BaseState
             SwitchState(_factory.WallJump());
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Rapelling());
+        }else if(_ctx.IsTouchingGround()){
+            SwitchState(_factory.Grounded());
         }
 
         if(_currentSuperState is AirState && _stateTimeCounter >= _stateTimer){

@@ -269,7 +269,7 @@ Canvas:
   m_GameObject: {fileID: 8940712684138379327}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -280,8 +280,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1478260405
+  m_SortingOrder: 212
   m_TargetDisplay: 0
 --- !u!114 &6433894548958503397
 MonoBehaviour:
@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd78053255cc0bd459c31c82214a26c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedLineFX: {fileID: 5505049014334414276}
   _speedLineImage: {fileID: 7887942635446048158}
   _waterTintFX: {fileID: 8385367325487586944}
   _hueShiftMaterial: {fileID: 11400000, guid: 7e4324657238bfd43ae170d04721b542, type: 2}
