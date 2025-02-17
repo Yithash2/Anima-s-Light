@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class checkpoint : MonoBehaviour, IDataPersistance
+public class checkpoint : MonoBehaviour
 {
     public bool IsPassableMultipleTimes;
     public string id;
@@ -20,14 +20,14 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
     void Start(){
         checks = FindObjectsOfType<checkpoint>();
-        if(isActivated != 0) _animator.Play("Active");
+        /*if(isActivated != 0) _animator.Play("Active");
 
         if(isActivated == 2){
             Spawnpoint.SetParent(transform);
             Spawnpoint.position = transform.position;
             Transform Player = GameObject.Find("Player").transform;
             Player.position = transform.position;
-        }
+        }*/
     }
 
     void UpdateCurrentCheckpoint(){
@@ -54,16 +54,14 @@ public class checkpoint : MonoBehaviour, IDataPersistance
                 isActivated = 2;
             }
 
-            DataPersistanceManager.Instance.SaveGame();
+            //DataPersistanceManager.Instance.SaveGame();
         }
     }
 
-    public void loadData(GameData data){
+    /*public void loadData(GameData data){
         if(data.checkpoints.ContainsKey(id)){
             isActivated = data.checkpoints[id];
-
-        }
-             
+        }       
     }
 
     public void saveData(GameData data){
@@ -74,5 +72,5 @@ public class checkpoint : MonoBehaviour, IDataPersistance
         data.checkpoints.Add(id, isActivated);
         
         
-    }
+    }*/
 }

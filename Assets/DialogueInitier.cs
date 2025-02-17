@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class DialogueInitier : MonoBehaviour
 {
-    // Start is called before the first frame update
+    bool _hasBeenUsed;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_hasBeenUsed) return;
+
         GetComponent<Dialogue>().NextLine();
+        _hasBeenUsed = true;
     }
 }

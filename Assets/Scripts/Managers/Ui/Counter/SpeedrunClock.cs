@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SpeedrunClock : MonoBehaviour, IDataPersistance
+public class SpeedrunClock : MonoBehaviour
 {
     public static SpeedrunClock Instance { get; private set; }
     public float CurrentTime = 0;
@@ -48,7 +48,7 @@ public class SpeedrunClock : MonoBehaviour, IDataPersistance
         _chronoMeterText.text = tempsFormatte;
     }
 
-    public void loadData(GameData data){
+    /*public void loadData(GameData data){
         if(data.currentTimer != null){
             data.currentTimer.TryGetValue(LevelInfo.Instance.level.LevelName, out CurrentTime );
         }
@@ -58,5 +58,5 @@ public class SpeedrunClock : MonoBehaviour, IDataPersistance
         data.currentTimer.Clear();
         data.currentTimer = new SerializeDictionary<string, float>();
         data.currentTimer.Add(LevelInfo.Instance.level.LevelName, CurrentTime);
-    }
+    }*/
 }

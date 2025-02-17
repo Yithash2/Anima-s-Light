@@ -124,7 +124,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void Restart(){
         Time.timeScale = 1f;
-        DataPersistanceManager.Instance.RestartLevel();
+        //DataPersistanceManager.Instance.RestartLevel();
         StartCoroutine(ClosePanel());
         SceneTransition.Instance.TransitionScene(SceneManager.GetActiveScene().name);
     }
