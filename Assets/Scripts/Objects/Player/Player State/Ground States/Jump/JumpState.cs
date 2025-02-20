@@ -122,7 +122,6 @@ public class JumpState : BaseState{
 
     void HandleJumpStart(){
 
-        _ctx.JumpReleased = false;
         _ctx.BufferCounter = 0;
         _ctx.JumpCount ++;
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
@@ -145,7 +144,6 @@ public class JumpState : BaseState{
 
     void HandleJumpEnd(){
         _ctx.IsJumping = false;
-        _ctx.JumpReleased = false;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/1.5f);
     }
 

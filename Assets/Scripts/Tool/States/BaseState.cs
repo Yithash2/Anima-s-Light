@@ -64,7 +64,7 @@ public abstract class BaseState
     }
 
     // Fix to transition properly between states
-    protected void SwitchState(BaseState newState)
+    public void SwitchState(BaseState newState)
     {
         // Block transition if any substate timer hasn't completed
         if (_currentSubState != null && !StateTimerComplete(_currentSubState))

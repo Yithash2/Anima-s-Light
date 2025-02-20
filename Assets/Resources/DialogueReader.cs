@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField]
     Dialog[] _dialogues;
     public int CurrentDialogue;
+    public Line CurrentLine { get { return _dialogues[CurrentDialogue].CurrentLine; } }
     public bool IsAutomaticDialogue { get { return _dialogues[CurrentDialogue].AutomaticNextLine; } }
 
     [ContextMenu("NextLine")]
@@ -20,7 +21,7 @@ public class Dialogue : MonoBehaviour
                 EndDialog();
                 return;
             }else{
-                DialogueManager.Instance.UpdateDialog(_dialogues[CurrentDialogue].CurrentLine, _dialogues[CurrentDialogue].CurrentLineTime, _dialogues[CurrentDialogue].CurrentIcon);
+                DialogueManager.Instance.UpdateDialog(_dialogues[CurrentDialogue].CurrentLineText, _dialogues[CurrentDialogue].CurrentLineTime, _dialogues[CurrentDialogue].CurrentIcon);
                 _dialogues[CurrentDialogue].LineIndex ++;
                 DialogueManager.Instance.ShowDialogBoc(true);
             }
@@ -40,7 +41,12 @@ public struct Dialog{
     public int LineIndex;
     public bool AutomaticNextLine;
 
-    public string CurrentLine {get {
+    public Line CurrentLine { get
+        {
+            return LineIndex < lines.Length ? lines[LineIndex] : lines[0];
+        } }
+
+    public string CurrentLineText {get {
         return LineIndex < lines.Length ? lines[LineIndex].text : null;}}
 
     public float CurrentLineTime {
@@ -61,6 +67,7 @@ public struct Line{
     [TextArea]
     public string text;
     public float _lineTime;
+    public float LineWaitTime;
     public bool IsKnown;
     public Character character;
     

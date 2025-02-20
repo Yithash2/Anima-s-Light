@@ -19,7 +19,8 @@ public class WetState : BaseState
 
     public override void EnterState()
     {
-        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
+        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
+        if (!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
         _ctx.Rb.drag = 4;
 
         _ctx.Bubble.SetActive(true);
@@ -41,7 +42,8 @@ public class WetState : BaseState
             }
         }
 
-        if(_ctx.JumpPressed) Swim();
+        if (_ctx.JumpPressed) PressSwim();
+        if(!_ctx.JumpReleased) Swim();
 
         _ctx.JumpCount = 0;
         CheckSwitchState();
@@ -67,15 +69,40 @@ public class WetState : BaseState
     }
 
     void Swim(){
+            
+        if(_ctx.Rb.velocity.y >= _ctx.PlayerData.MaxSpeed)
+        {
+            SwimNormaly();
+        }
+        else
+        {
+            AccelerateSwim();
+        }
+    }
 
+    void AccelerateSwim()
+    {
+        
+        Vector2 _direction = Vector2.up * (_ctx.PlayerData.MaxSpeed / _ctx.AccelerationTime);
+        _ctx.Rb.AddForce(_direction);
+
+    }
+
+    void SwimNormaly()
+    {
+        _ctx.Rb.velocity = Vector2.Lerp(_ctx.Rb.velocity, new Vector2(_ctx.Rb.velocity.x, _ctx.PlayerData.MaxSpeed), 0.00002f * Time.deltaTime);
+    }
+
+    void PressSwim()
+    {
         float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
 
-        _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity)  + _ctx.StoredVelocity.y;
-            
+        _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity) + _ctx.StoredVelocity.y;
+
         _ctx.Rb.velocity += new Vector2(0, _ctx.JumpPower);
-        
+
         _ctx.JumpPressed = false;
     }
 
-    
+
 }

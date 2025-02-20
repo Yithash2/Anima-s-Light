@@ -53,9 +53,8 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(lineSpeed/charNum);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(CurrentDialogue.CurrentLine.LineWaitTime);
 
-        Debug.Log(CurrentDialogue.IsAutomaticDialogue);
         if (CurrentDialogue.IsAutomaticDialogue)
         {
             while(_queue.Count != 0)

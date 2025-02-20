@@ -41,7 +41,6 @@ public class JumpEndState : BaseState{
 
     void HandleJumpEnd(){
         _ctx.IsJumping = false;
-        _ctx.JumpReleased = false;
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/3);
     }
 

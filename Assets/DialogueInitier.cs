@@ -5,11 +5,17 @@ using UnityEngine;
 public class DialogueInitier : MonoBehaviour
 {
     bool _hasBeenUsed;
+
+    [SerializeField] Dialogue ThisDialog;
+
+    [SerializeField] bool _deleteAfter;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_hasBeenUsed) return;
 
-        GetComponent<Dialogue>().NextLine();
+        ThisDialog.NextLine();
         _hasBeenUsed = true;
+
+        if (_deleteAfter) Destroy(gameObject);
     }
 }

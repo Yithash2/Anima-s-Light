@@ -192,6 +192,8 @@ public class PlayerStateMachine : MonoBehaviour
     }
     
     void Update(){
+        if (IsDead) return;
+
         if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
             if(_jumpCount < 1){
                 CoyoteTimer();
@@ -281,8 +283,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Respawn(){
         Rb.velocity = new Vector2(0, 0);
-        if(!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
-            _animator.Play("Death");
+        _bufferCounter = bufferTime;
+        _jumpPressed = false;
+        if (!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
+            _animator.Play("Death");        
             _camera.CamAnimator.Play("Cam zoom");
             _camera.verticalShift = 0;
             
@@ -294,6 +298,7 @@ public class PlayerStateMachine : MonoBehaviour
             _animator.Play("Respawn");
             _camera.CamAnimator.Play("Cam dezoom");
             tag = "Player";
+            _currentState.SwitchState(_states.Grounded());
             _isDead = false;
         }
         
@@ -354,16 +359,18 @@ public class PlayerStateMachine : MonoBehaviour
         
     }
 
-    public void Jump(InputAction.CallbackContext ctx){
-        if(ctx.started){
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
             _bufferCounter = 0;
             _jumpPressed = true;
         }
-        
-        if(!ctx.performed){
-            _jumpReleased = true;
-        }
+
+        _jumpReleased = ctx.canceled;
+
     }
+
 
     public void Move(InputAction.CallbackContext ctx){
         _xInput = ctx.ReadValue<float>();
