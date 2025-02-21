@@ -58,6 +58,7 @@ public class PlayerStateMachine : MonoBehaviour
     [Header ("Timers")]
     [SerializeField] float bufferTime;
     float _bufferCounter;
+    float _releaseBufferCounter;
     float _wallJumpCounter = 10000;
     [SerializeField] float _coyoteTime;
 
@@ -82,6 +83,7 @@ public class PlayerStateMachine : MonoBehaviour
     //Inputs
     bool _jumpPressed;
     bool _jumpReleased;
+    bool _jumpReleasedR;
 
     bool _isJumping;
     bool _isDashing;
@@ -146,7 +148,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Animator Animator {get {return _animator;}}
     public AnimationClip[] Animations {get {return _animations;}}
     public float XInput {get {return _xInput;}}
-    public bool JumpReleased {get {return _jumpReleased;} set{ _jumpReleased = value;}}
+    public bool JumpReleased {get {return _jumpReleasedR;}}
     public Rigidbody2D Rb {get {return _rb;}set {_rb = value;}}
     public float GravityScale {get {return _gravityScale;}}
     public bool IsJumping {get {return _isJumping;} set{_isJumping = value;}}
@@ -160,6 +162,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform PlayerTransform {get {return _playerTransform;}}
     public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
     public bool IsDead {get {return _isDead;} set {_isDead = value;}}
+    public bool JumppReleasedT { get { return _jumpReleased; } }
 
     Transform _playerTransform;
 
@@ -367,7 +370,12 @@ public class PlayerStateMachine : MonoBehaviour
             _jumpPressed = true;
         }
 
-        _jumpReleased = ctx.canceled;
+        if (ctx.canceled)
+        {
+            _jumpReleased = true;
+        }
+
+        _jumpReleasedR = ctx.canceled;
 
     }
 
@@ -395,15 +403,25 @@ public class PlayerStateMachine : MonoBehaviour
     }
     
     void Inputs(){
-
-        
-
         if(_jumpPressed && !IsGrounded() && !IsWalled()){
             if(_bufferCounter < bufferTime){
                 _bufferCounter += Time.deltaTime;
             }else{
                 _bufferCounter = 0;
                 _jumpPressed = false;
+            }
+        }
+
+        if (_jumpReleased)
+        {
+            if(_releaseBufferCounter < PlayerData.ReleaseCoyoteTimer)
+            {
+                _releaseBufferCounter += Time.deltaTime;
+            }
+            else
+            {
+                _releaseBufferCounter = 0;
+                _jumpReleased = false;
             }
         }
 

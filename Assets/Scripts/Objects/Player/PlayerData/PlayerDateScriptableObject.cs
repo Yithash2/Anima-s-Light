@@ -40,6 +40,8 @@ public class PlayerDateScriptableObject : ScriptableObject
     public float AirAccelTime {get {return _airAcceleration;}}
     public float MaxSpeed {get {return _maxSpeed;}}
     public float LinearDrag {get {return _linearDrag;}}
+
+    [field:SerializeField]public float ReleaseCoyoteTimer { get; private set; }
     #endregion
 
 }
