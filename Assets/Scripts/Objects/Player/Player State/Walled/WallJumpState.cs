@@ -48,6 +48,16 @@ public class WallJumpState : BaseState
             _hasCeilled = true;
         }
 
+        if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
+        {
+            _stateTimeCounter = 100f;
+        }
+
+        if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
+        {
+            _stateTimeCounter = _stateTimer;
+        }
+
         CheckSwitchState();
 
     }
@@ -65,8 +75,6 @@ public class WallJumpState : BaseState
             SwitchState(_factory.WallJump());
         }else if(_ctx.IsWalled()){
             SwitchState(_factory.Rapelling());
-        }else if(_ctx.IsTouchingGround()){
-            SwitchState(_factory.Grounded());
         }
 
         if(_currentSuperState is AirState && _stateTimeCounter >= _stateTimer){

@@ -42,6 +42,7 @@ public class GroundSlamState : BaseState
         _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 2 - _ctx.PlatformVelocityY), 0));  
 
         CheckSwitchState();
+
     }
 
     public override void QuitState()
@@ -50,20 +51,43 @@ public class GroundSlamState : BaseState
 
         _stateTimeCounter = 0;
 
+        _ctx.Rb.gravityScale = _ctx.GravityScale;
+
         _ctx.AudioSource.loop = false;
     }
 
     public override void CheckSwitchState()
-    {   
-        
-        if(_ctx.IsGrounded() && _ctx.XInput != 0 && _ctx.JumpPressed){
+    {
+
+        if (_ctx.IsGrounded() && _ctx.XInput != 0 && _ctx.JumpPressed)
+        {
             SwitchState(_factory.Dash());
-        }else if(_ctx.IsGrounded()){
+            return;
+        }
+
+        if (_ctx.IsGrounded())
+        {
             _stateTimeCounter = 1;
 
-            if(_ctx.XInput == 0){
+            if (_ctx.IsSpaced())
+            {
+                if (_ctx.XInput == 0)
+                {
+                    SwitchState(_factory.Sinking());
+                }
+                else
+                {
+                    SwitchState(_factory.Swimming());
+                }
+                return;
+            }
+
+            if (_ctx.XInput == 0)
+            {
                 SwitchState(_factory.Iddle());
-            }else{
+            }
+            else
+            {
                 SwitchState(_factory.Running());
             }
 
@@ -72,17 +96,36 @@ public class GroundSlamState : BaseState
             _ctx.AudioSource.clip = _ctx.AudioClips[2];
 
             _ctx.AudioSource.Play();
-        }else if(!_ctx.DivePressed){
-            if(_ctx.XInput == 0){
+
+            return;
+        }
+        
+        if (_ctx.IsSpaced() && !_ctx.DivePressed) {
+            _stateTimeCounter = 1;
+            if (_ctx.XInput == 0)
+            {
+                SwitchState(_factory.Sinking());
+            }
+            else
+            {
+                SwitchState(_factory.Swimming());
+            }
+            return;
+        }
+        
+        if (!_ctx.DivePressed)
+        {
+            _stateTimeCounter = 1;
+            if (_ctx.XInput == 0)
+            {
                 SwitchState(_factory.Fall());
-            }else{
+            }
+            else
+            {
                 SwitchState(_factory.Controlling());
             }
-        }
-
-        
-
-        
+            return;
+        }  
     }
     
     public override void InitialiseSubState(){}

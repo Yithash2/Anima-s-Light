@@ -59,7 +59,13 @@ public class JumpState : BaseState{
         }
 
         CheckSwitchState();
-        
+
+        if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
+        {
+            _stateTimeCounter = 100f;
+        }
+
+
     }
 
     public override void QuitState()
