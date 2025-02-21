@@ -9,8 +9,11 @@ public class JumpState : BaseState{
 
     bool _hasCeilled;
     float normalpitch;
+
+    float _releasedTime;
     public override void EnterState()
     {
+        _releasedTime = 0;
 
         _ctx.HitStop(30f, 0.1f);
 
@@ -42,9 +45,9 @@ public class JumpState : BaseState{
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
-        
+        CheckSwitchState();
 
-        if(_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
+        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }else{
@@ -57,14 +60,6 @@ public class JumpState : BaseState{
                 _hasCeilled = false;
             }
         }
-
-        CheckSwitchState();
-
-        if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
-        {
-            _stateTimeCounter = 100f;
-        }
-
 
     }
 
@@ -82,11 +77,13 @@ public class JumpState : BaseState{
             if (_ctx.IsGrounded() && _hasCeilled){
                 SwitchState(_factory.JumpStart());
             }
+
+            Debug.Log(_ctx.JumppReleasedT);
             // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
             bool canWallJump = _ctx.IsWalled() &&
                             Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
                             Mathf.Abs(_ctx.Rb.velocity.x) > 5.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
-                            !_ctx.JumpReleased;                            // Jump button has been released since last jump
+                            _ctx.JumppReleasedT;                            // Jump button has been released since last jump
                 
 
             if (canWallJump)

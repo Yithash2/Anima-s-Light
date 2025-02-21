@@ -22,12 +22,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3178748224218533029, guid: 19ed9dc633e99984fb6cb6f40fda9c72, type: 3}
       propertyPath: _dialogues.Array.data[0].lines.Array.data[0].text
-      value: DU SAVOIR INTERDIT VOUS A ETE OCTRUI
+      value: FORBIDDEN KNOWLEDGE HAS BEEN BESTOWED ONTO YOU
       objectReference: {fileID: 0}
     - target: {fileID: 3178748224218533029, guid: 19ed9dc633e99984fb6cb6f40fda9c72, type: 3}
       propertyPath: _dialogues.Array.data[0].lines.Array.data[1].text
-      value: PENDANT LA FIN DE LA MONTE DE VOTRE SAUT TOUCHER UN MUR POUR FAIRE UN
-        MEGA WALLJUMP
+      value: WHILE JUMPING, BEFORE REACHING THE PEAK OF YOUR ASCENT, TOUCH A WALL
+        AND CONTINUE TO HOLD JUMP TO UNLEASH A POWERFUL WALL JUMP.
       objectReference: {fileID: 0}
     - target: {fileID: 3178748224218533029, guid: 19ed9dc633e99984fb6cb6f40fda9c72, type: 3}
       propertyPath: _dialogues.Array.data[0].lines.Array.data[0]._lineTime
