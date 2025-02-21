@@ -78,11 +78,11 @@ public class JumpState : BaseState{
                 SwitchState(_factory.JumpStart());
             }
 
-            Debug.Log(_ctx.JumppReleasedT);
+            //Debug.Log(_ctx.JumppReleasedT);
             // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
             bool canWallJump = _ctx.IsWalled() &&
                             Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
-                            Mathf.Abs(_ctx.Rb.velocity.x) > 5.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
+                            Mathf.Abs(_ctx.Rb.velocity.x) > 2.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
                             _ctx.JumppReleasedT;                            // Jump button has been released since last jump
                 
 
