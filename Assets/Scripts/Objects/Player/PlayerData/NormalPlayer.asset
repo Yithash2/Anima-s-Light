@@ -24,4 +24,4 @@ MonoBehaviour:
   _airAcceleration: 0.2
   _maxSpeed: 15
   _linearDrag: 0
-  <ReleaseCoyoteTimer>k__BackingField: 0.8
+  <ReleaseCoyoteTimer>k__BackingField: 0.5

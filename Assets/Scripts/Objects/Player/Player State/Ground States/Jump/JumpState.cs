@@ -47,13 +47,13 @@ public class JumpState : BaseState{
 
         CheckSwitchState();
 
-        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
+        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased) && !_hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }else{
             
             if(_ctx.IsCeilled() && !_ctx.JumpReleased && !_hasCeilled){
-                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 3, -_ctx.Rb.velocity.y* 1.5f); 
+                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
                 _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);  
                 _hasCeilled = true;
             }else if(_ctx.JumpReleased  && _hasCeilled){
@@ -82,8 +82,8 @@ public class JumpState : BaseState{
             // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
             bool canWallJump = _ctx.IsWalled() &&
                             Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
-                            Mathf.Abs(_ctx.Rb.velocity.x) > 2.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
-                            _ctx.JumppReleasedT;                            // Jump button has been released since last jump
+                            Mathf.Abs(_ctx.Rb.velocity.x) > 4.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
+                            _ctx.DivePressed;                            // Jump button has been released since last jump
                 
 
             if (canWallJump)
