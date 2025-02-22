@@ -107,7 +107,7 @@ public class DashState : BaseState{
             _stateTimeCounter = 100f;
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
-        }else if(_ctx.DivePressed && _stateTimeCounter >= _stateTimer *95/100){
+        }else if(_ctx.DivePressed && _stateTimeCounter >= _stateTimer *95/100 && !_ctx.IsTouchingGround()){
             SwitchState(_factory.Dive());
         }else if(_stateTimeCounter >= _stateTimer){
             if(_ctx.IsTouchingGround()){

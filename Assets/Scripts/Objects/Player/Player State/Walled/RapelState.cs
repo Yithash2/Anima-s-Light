@@ -20,16 +20,6 @@ public class RapelState : BaseState{
 
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
-        /*if(_ctx.XInput != 0){
-            if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
-                Run();
-            }else if(_ctx.XInput != _ctx.PlayerTransform.localScale.x){
-                Acceleration();
-            }else{
-                Deceleration();
-            }
-        }*/
-
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.PlatformVelocityY, float.MaxValue));
 
         

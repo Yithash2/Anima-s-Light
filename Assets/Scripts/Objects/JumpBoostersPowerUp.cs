@@ -33,14 +33,9 @@ public class JumpBoostersPowerUp : MonoBehaviour
         if (collider.CompareTag(playerTag) && _isActivated)
         {
             Player.BufferCounter = 0;
-
-            if (PlayerIsAbove())
-            {
                 Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
                 Player.JumpCount = 0;
                 StartCoroutine(JumpAuthorized());
-                
-            }
         }
     }
 
@@ -90,10 +85,6 @@ public class JumpBoostersPowerUp : MonoBehaviour
         Player.CoyoteCounter = 1f; // Set to a suitable value after the jump ends
     }
 
-    bool PlayerIsAbove()
-    {
-        return Player.transform.position.y > transform.position.y;
-    }
 
     void Update()
     {

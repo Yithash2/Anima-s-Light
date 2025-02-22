@@ -10,7 +10,10 @@ public class GroundState : BaseState{
     
     public override void EnterState()
     {
-        if(_currentSubState != null)
+
+        _ctx.IsWallJumping = false;
+
+        if (_currentSubState != null)
         _currentSubState.CheckSwitchState();
 
 

@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 3178748224218533029, guid: 19ed9dc633e99984fb6cb6f40fda9c72, type: 3}
       propertyPath: _dialogues.Array.data[0].lines.Array.data[1].text
       value: WHILE JUMPING, BEFORE REACHING THE PEAK OF YOUR ASCENT, TOUCH A WALL
-        AND RELEASE JUMP TO UNLEASH A POWERFUL WALL JUMP.
+        AND PRESS DIVE TO UNLEASH A POWERFUL WALL JUMP.
       objectReference: {fileID: 0}
     - target: {fileID: 3178748224218533029, guid: 19ed9dc633e99984fb6cb6f40fda9c72, type: 3}
       propertyPath: _dialogues.Array.data[0].lines.Array.data[2].text

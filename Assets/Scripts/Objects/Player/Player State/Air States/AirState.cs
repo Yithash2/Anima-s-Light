@@ -63,7 +63,7 @@ public class AirState : BaseState
             SwitchState(_factory.Wet());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.IsWalled()){
+        }else if(_ctx.IsWalled() && (_ctx.IsWallJumping || (_ctx.XInput != 0 && -Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.transform.localScale.x)))){
             SwitchState(_factory.Walled());
         }
     }
