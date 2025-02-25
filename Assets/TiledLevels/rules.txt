@@ -2,3 +2,5 @@
 ./Rules/TileTransition Rule Set.tmx
 ./Rules/Wood Rule Set.tmx
 ./Rules/Water Rule Set.tmx
+./Rules/Rule Set Gothic Castle.tmx
+./Rules/Gothic Pillars Rule Set.tmx
