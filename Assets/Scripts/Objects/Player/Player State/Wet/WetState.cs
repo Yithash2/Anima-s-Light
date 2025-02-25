@@ -21,6 +21,7 @@ public class WetState : BaseState
     {
 
         _ctx.IsWallJumping = false;
+        _ctx.IsJumping = false;
 
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
         if (!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
@@ -66,7 +67,8 @@ public class WetState : BaseState
     public override void CheckSwitchState()
     {
         if(!_ctx.IsSpaced()){
-            if(_ctx.IsGrounded()) SwitchState(_factory.Grounded());
+            if (_ctx.IsGrounded()) SwitchState(_factory.Grounded());
+            else if (_ctx.IsWalled()) SwitchState(_factory.Walled());
             else SwitchState(_factory.Normal());
         }
     }

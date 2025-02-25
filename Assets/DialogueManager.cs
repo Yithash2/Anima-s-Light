@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     Image _characterIcon;
 
     private Queue _queue = new Queue();
+
+    public bool CanTalk = true;
     
 
     [HideInInspector]
@@ -42,29 +44,23 @@ public class DialogueManager : MonoBehaviour
             _queue.Enqueue(c);
         }
 
+        _queue.Enqueue("0");
+
         StartCoroutine(ShowText(lineSpeed, _queue.Count));
         
     }
 
     IEnumerator ShowText(float lineSpeed, int charNum){
         _dialogText.text = "";
-        while(_queue.Count != 0){
+        while(_queue.Count != 1){
             _dialogText.text += _queue.Dequeue();
             yield return new WaitForSeconds(lineSpeed/charNum);
         }
+        CurrentDialogue.CurrentLine.Events?.Invoke();
+        CurrentDialogue.CurrentLineIndex++;
 
-        yield return new WaitForSeconds(CurrentDialogue.CurrentLine.LineWaitTime);
+        _queue.Dequeue();
 
-        if (CurrentDialogue.IsAutomaticDialogue)
-        {
-            while(_queue.Count != 0)
-            {
-                yield return 0;
-            }
-            NextLine();
-
-
-        }
     }
 
     public void ShowDialogBoc(bool condition){
@@ -72,7 +68,9 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void Next(InputAction.CallbackContext ctx){
-        if(ctx.started){
+        if (!CanTalk) return;
+
+        if (ctx.started){
             if(CurrentDialogue!=null && _queue.Count == 0) NextLine();
         }
     }
@@ -81,4 +79,11 @@ public class DialogueManager : MonoBehaviour
     {
         CurrentDialogue.NextLine();
     }
+
+    public void ChangeContinueDialogue(bool value)
+    {
+        CanTalk = value;
+    }
+
+
 }

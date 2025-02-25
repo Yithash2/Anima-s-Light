@@ -97,8 +97,8 @@ public class UiManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void GoToTutorial(){
-        SceneTransition.Instance.TransitionScene("Tutorial Scene");
+    public void GoToTutorial(string value){
+        SceneTransition.Instance.TransitionScene(value);
     }
 
 }

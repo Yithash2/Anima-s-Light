@@ -165,6 +165,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool JumppReleasedT { get { return _jumpReleased; } }
 
     Transform _playerTransform;
+    public bool UpdateStates { get; private set; } = true;
 
     public string _deadlyTag;
     #endregion
@@ -179,6 +180,11 @@ public class PlayerStateMachine : MonoBehaviour
         }
         Instance = this;
 
+    }
+
+    public void ChangeUpdateState(bool value)
+    {
+        UpdateStates = value;   
     }
 
     void Start(){
@@ -259,6 +265,7 @@ public class PlayerStateMachine : MonoBehaviour
             Respawn();
         }else{
             _currentState.UpdateStates();
+
         }
     }
     
@@ -364,6 +371,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
+        if (!UpdateStates) {
+            _bufferCounter = 0f;
+            _jumpPressed = false;
+            _jumpReleased = false;
+            return; 
+           }
+
         if (ctx.started)
         {
             _bufferCounter = 0;
@@ -381,11 +395,21 @@ public class PlayerStateMachine : MonoBehaviour
 
 
     public void Move(InputAction.CallbackContext ctx){
+        if (!UpdateStates){
+            _xInput = 0;
+            return; 
+        }
         _xInput = ctx.ReadValue<float>();
     }
 
     public void Dive(InputAction.CallbackContext ctx){
-        if(ctx.performed){
+        if (!UpdateStates)
+        {
+            _divePressed = false;
+            return;
+        }
+
+        if (ctx.performed){
             _divePressed = true;
         }else{
             _divePressed = false;

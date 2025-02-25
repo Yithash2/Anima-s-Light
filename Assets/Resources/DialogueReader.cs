@@ -3,26 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
 
     [SerializeField]
-    Dialog[] _dialogues;
-    public int CurrentDialogue;
-    public Line CurrentLine { get { return _dialogues[CurrentDialogue].CurrentLine; } }
-    public bool IsAutomaticDialogue { get { return _dialogues[CurrentDialogue].AutomaticNextLine; } }
+    Line[] _dialogues;
+    public int CurrentLineIndex;
+    public Line CurrentLine { get { return _dialogues[CurrentLineIndex]; } }
 
     [ContextMenu("NextLine")]
     public void NextLine(){
         if(DialogueManager.Instance.CurrentDialogue == null || DialogueManager.Instance.CurrentDialogue == this){
             DialogueManager.Instance.CurrentDialogue = this;
-            if(_dialogues[CurrentDialogue].CurrentLineTime == -1){
+            if(CurrentLineIndex >= _dialogues.Length)
+            {
                 EndDialog();
                 return;
             }else{
-                DialogueManager.Instance.UpdateDialog(_dialogues[CurrentDialogue].CurrentLineText, _dialogues[CurrentDialogue].CurrentLineTime, _dialogues[CurrentDialogue].CurrentIcon);
-                _dialogues[CurrentDialogue].LineIndex ++;
+                DialogueManager.Instance.UpdateDialog(_dialogues[CurrentLineIndex].text, _dialogues[CurrentLineIndex].LineTime, _dialogues[CurrentLineIndex].Icon);
                 DialogueManager.Instance.ShowDialogBoc(true);
             }
         }
@@ -30,46 +30,23 @@ public class Dialogue : MonoBehaviour
 
     public void EndDialog(){
         DialogueManager.Instance.CurrentDialogue = null;
-        _dialogues[CurrentDialogue].LineIndex = 0;
+        CurrentLineIndex = 0;
         DialogueManager.Instance.ShowDialogBoc(false);
     }
-}
-
-[Serializable]
-public struct Dialog{
-    [SerializeField]Line[] lines;
-    public int LineIndex;
-    public bool AutomaticNextLine;
-
-    public Line CurrentLine { get
-        {
-            return LineIndex < lines.Length ? lines[LineIndex] : lines[0];
-        } }
-
-    public string CurrentLineText {get {
-        return LineIndex < lines.Length ? lines[LineIndex].text : null;}}
-
-    public float CurrentLineTime {
-        get{
-            return LineIndex < lines.Length  ? lines[LineIndex]._lineTime : -1;}
-    }
-    public Sprite CurrentIcon {get {
-        if(LineIndex < lines.Length)
-        return lines[LineIndex].IsKnown ? lines[LineIndex].character.Icon : lines[LineIndex].character.SilhouetedIcon;
-        else return null;
-    }}
-
-    
 }
 
 [Serializable]
 public struct Line{
     [TextArea]
     public string text;
-    public float _lineTime;
-    public float LineWaitTime;
+    public float LineTime;
     public bool IsKnown;
-    public Character character;
+
+    [SerializeField] private Character character;
+
+    public Sprite Icon { get { return IsKnown ? character.Icon : character.SilhouetedIcon; } }
+
+    public UnityEvent Events;
     
 }
 

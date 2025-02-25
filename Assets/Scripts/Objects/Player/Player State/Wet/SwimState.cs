@@ -12,6 +12,7 @@ public class SwimState : BaseState{
     public override void EnterState()
     {
         _oldXInput = _ctx.XInput;
+
         hasDecelerated = false;  // Reset deceleration flag on entering the state
     }
 

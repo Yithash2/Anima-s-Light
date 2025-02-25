@@ -33,9 +33,10 @@ public class JumpBoostersPowerUp : MonoBehaviour
         if (collider.CompareTag(playerTag) && _isActivated)
         {
             Player.BufferCounter = 0;
-                Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
-                Player.JumpCount = 0;
-                StartCoroutine(JumpAuthorized());
+            if (Player.Rb.velocity.y < 0) Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
+            Player.JumpCount = 0;
+            StartCoroutine(JumpAuthorized());
+
         }
     }
 

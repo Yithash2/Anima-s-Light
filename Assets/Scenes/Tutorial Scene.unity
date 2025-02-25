@@ -155,56 +155,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogues:
-  - lines:
-    - text: Hello ...
-      _lineTime: 2
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: I'm what you call "God"
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: Even though its a bit more complicated then that
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: You're dead.
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: But before you go to the afterlife, you'll have to go through a lot of
-        challenges
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: 'And when you''re finished .. '
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: I'll grant you a wish
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: Now go.
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    - text: Dive by using 'S' or 'B' on controller
-      _lineTime: 1
-      LineWaitTime: 0
-      IsKnown: 0
-      character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
-    LineIndex: 0
-    AutomaticNextLine: 0
-  CurrentDialogue: 0
+  - text: Hello ...
+    LineTime: 3
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'm what you call "God"
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Even though its a bit more complicated then that
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: You're dead.
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: But before you go to the afterlife, you'll have to go through a lot of
+      challenges
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: And when you're finished ..
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'll grant you a wish
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Now ..
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Dive by using 'S' or 'B' on controller
+    LineTime: 1
+    IsKnown: 0
+    character: {fileID: 11400000, guid: cbf06e4614e8cd64698e2f9f43ffc3f3, type: 2}
+    Events:
+      m_PersistentCalls:
+        m_Calls: []
+  CurrentLineIndex: 0
 --- !u!4 &127418900
 Transform:
   m_ObjectHideFlags: 0
@@ -6140,7 +6155,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8290975116896066071, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
   m_PrefabInstance: {fileID: 2424750139297014513}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1429866976
+--- !u!43 &1438497764
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class checkpoint : MonoBehaviour
+public class checkpoint : MonoBehaviour, IDataPersistance
 {
     public bool IsPassableMultipleTimes;
     public string id;
@@ -11,7 +11,6 @@ public class checkpoint : MonoBehaviour
         id = System.Guid.NewGuid().ToString();
     }
     public Transform Spawnpoint;
-    public string PlayerTag;
     public int isActivated = 0;
 
     [SerializeField] Animator _animator;
@@ -20,14 +19,14 @@ public class checkpoint : MonoBehaviour
 
     void Start(){
         checks = FindObjectsOfType<checkpoint>();
-        /*if(isActivated != 0) _animator.Play("Active");
+        if(isActivated != 0 && _animator != null) _animator.Play("Active");
 
         if(isActivated == 2){
             Spawnpoint.SetParent(transform);
             Spawnpoint.position = transform.position;
             Transform Player = GameObject.Find("Player").transform;
             Player.position = transform.position;
-        }*/
+        }
     }
 
     void UpdateCurrentCheckpoint(){
@@ -40,25 +39,23 @@ public class checkpoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag(PlayerTag) && isActivated != 2){
-            if( isActivated == 0){
+        if(collider.CompareTag("Player") && isActivated != 2){
+            if( isActivated == 0 || IsPassableMultipleTimes)
+            {
+                if(_animator != null)
                 _animator.Play("Active");
+
                 Spawnpoint.SetParent(transform);
                 Spawnpoint.position = transform.position;
                 UpdateCurrentCheckpoint();
                 isActivated = 2;
-            }else if(IsPassableMultipleTimes){
-                _animator.Play("Active");
-                Spawnpoint.SetParent(transform);
-                UpdateCurrentCheckpoint();
-                isActivated = 2;
             }
 
-            //DataPersistanceManager.Instance.SaveGame();
+            DataPersistanceManager.Instance.SaveGame();
         }
     }
 
-    /*public void loadData(GameData data){
+    public void loadData(GameData data){
         if(data.checkpoints.ContainsKey(id)){
             isActivated = data.checkpoints[id];
         }       
@@ -72,5 +69,5 @@ public class checkpoint : MonoBehaviour
         data.checkpoints.Add(id, isActivated);
         
         
-    }*/
+    }
 }

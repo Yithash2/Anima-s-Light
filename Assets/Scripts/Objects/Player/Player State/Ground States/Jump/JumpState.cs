@@ -47,7 +47,7 @@ public class JumpState : BaseState{
 
         CheckSwitchState();
 
-        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased) && !_hasCeilled){
+        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }else{
@@ -67,6 +67,7 @@ public class JumpState : BaseState{
     {
         _stateTimeCounter = _stateTimer + 1;
         _ctx.AudioSource.pitch = normalpitch;
+        _ctx.IsJumping = false;
         _hasCeilled = false;
     }
 

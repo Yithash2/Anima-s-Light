@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DeathCounter : MonoBehaviour
+public class DeathCounter : MonoBehaviour, IDataPersistance
 {
     public ulong DeathCount;
 
@@ -31,7 +31,7 @@ public class DeathCounter : MonoBehaviour
     public void AddToDeathCount(){
         DeathCount += 1;
 
-        //LevelInfo.Instance.level.TotalDeathCount += 1;
+        LevelInfo.Instance.level.TotalDeathCount += 1;
 
         UpdateDeathCount();
     }
@@ -41,7 +41,7 @@ public class DeathCounter : MonoBehaviour
     }
 
 
-    /*public void loadData(GameData data){
+    public void loadData(GameData data){
             if(data.currentLevelDeathCount != null){
                 data.currentLevelDeathCount.TryGetValue(LevelInfo.Instance.level.LevelName, out DeathCount);
             }
@@ -54,5 +54,5 @@ public class DeathCounter : MonoBehaviour
         data.currentLevelDeathCount.Clear();
         data.currentLevelDeathCount = new SerializeDictionary<string, ulong>();
         data.currentLevelDeathCount.Add(LevelInfo.Instance.level.LevelName, DeathCount);
-    }*/
+    }
 }

@@ -10,6 +10,7 @@ public class GroundState : BaseState{
     
     public override void EnterState()
     {
+        _ctx.IsJumping = false;
 
         _ctx.IsWallJumping = false;
 

@@ -1047,6 +1047,7 @@ MonoBehaviour:
   _dialogText: {fileID: 1272413756164930718}
   _dialogBox: {fileID: 5738867056279749120}
   _characterIcon: {fileID: 4155723178600418174}
+  CanTalk: 1
   CurrentDialogue: {fileID: 0}
 --- !u!1 &5738867056279749120
 GameObject:
@@ -2835,7 +2836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8963753592035833213, guid: 7ed48eac168d1a14aafcae57d8af96a7, type: 3}
       propertyPath: m_text
-      value: LS Left/LS Right
+      value: LS/Left/LS/Right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
