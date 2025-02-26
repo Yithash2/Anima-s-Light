@@ -11,21 +11,23 @@ public class FinishLine : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         LevelInfo.Instance.UnlockLevel = unlockableLevelID;
-        LevelInfo.Instance.level.levelIndex = 2;
+        LevelInfo.Instance.LevelFinished = true;
 
-        if(LevelInfo.Instance.level.BestTime > 0){
-            if(SpeedrunClock.Instance.CurrentTime < LevelInfo.Instance.level.BestTime){
-                LevelInfo.Instance.level.BestTime = SpeedrunClock.Instance.CurrentTime;
+        if(LevelInfo.Instance.BestTime > 0){
+            if(SpeedrunClock.Instance.CurrentTime < LevelInfo.Instance.BestTime){
+                LevelInfo.Instance.BestTime = SpeedrunClock.Instance.CurrentTime;
             }
         }else{
-            LevelInfo.Instance.level.BestTime = SpeedrunClock.Instance.CurrentTime;
+            LevelInfo.Instance.BestTime = SpeedrunClock.Instance.CurrentTime;
         }
         
         
 
         DataPersistanceManager.Instance.RestartLevel();
 
-        SceneTransition.Instance.TransitionScene("LevelSelector");
+        DataPersistanceManager.Instance.SaveGame();
+
+        SceneTransition.Instance.TransitionScene("NewLevelSelector Test");
         
     }
 

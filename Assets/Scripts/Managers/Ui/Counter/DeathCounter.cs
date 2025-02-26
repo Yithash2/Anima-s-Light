@@ -5,7 +5,6 @@ using TMPro;
 
 public class DeathCounter : MonoBehaviour, IDataPersistance
 {
-    public ulong DeathCount;
 
     [SerializeField] GameObject DeathCounterUI;
     [SerializeField] TextMeshProUGUI DeathCounterText;
@@ -28,31 +27,21 @@ public class DeathCounter : MonoBehaviour, IDataPersistance
         }
     }
 
-    public void AddToDeathCount(){
-        DeathCount += 1;
-
-        LevelInfo.Instance.level.TotalDeathCount += 1;
+    public void AddToDeathCount() {
+        LevelInfo.Instance.TotalNbrDeath += 1;
 
         UpdateDeathCount();
     }
 
     void UpdateDeathCount(){
-        DeathCounterText.text = DeathCount.ToString() + "x";
+        DeathCounterText.text = LevelInfo.Instance.TotalNbrDeath.ToString() + "x";
     }
 
 
     public void loadData(GameData data){
-            if(data.currentLevelDeathCount != null){
-                data.currentLevelDeathCount.TryGetValue(LevelInfo.Instance.level.LevelName, out DeathCount);
-            }
-
-            LevelInfo.Instance.level.TotalDeathCount += DeathCount;
-            UpdateDeathCount();
+        UpdateDeathCount();
     }
 
     public void saveData(GameData data){
-        data.currentLevelDeathCount.Clear();
-        data.currentLevelDeathCount = new SerializeDictionary<string, ulong>();
-        data.currentLevelDeathCount.Add(LevelInfo.Instance.level.LevelName, DeathCount);
     }
 }

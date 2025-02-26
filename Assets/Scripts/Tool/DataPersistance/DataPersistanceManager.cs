@@ -31,6 +31,13 @@ public class DataPersistanceManager : MonoBehaviour
         _levelRestart = false;
     }
 
+    public void RestartLvlIfNotcurrent(string Name)
+    {
+        if (_gameData.currentLevelDeathCount.ContainsKey(Name)) return;
+
+        RestartLevel();
+    }
+
     public void RestartLevel(){
         _gameData.checkpoints.Clear();
         _gameData.currentTimer.Clear();
@@ -69,7 +76,6 @@ public class DataPersistanceManager : MonoBehaviour
         
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
-        SaveGame();
         Time.timeScale = 1f;
     }
 

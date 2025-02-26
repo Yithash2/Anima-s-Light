@@ -80,7 +80,7 @@ public class UiManager : MonoBehaviour
     }
 
     public void ContinueButton(){
-        SceneTransition.Instance.TransitionScene("LevelSelector");
+        SceneTransition.Instance.TransitionScene("NewLevelSelector Test");
     }
 
     public void NewGameButton(){

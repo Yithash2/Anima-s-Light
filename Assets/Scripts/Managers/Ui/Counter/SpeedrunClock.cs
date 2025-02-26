@@ -50,13 +50,15 @@ public class SpeedrunClock : MonoBehaviour, IDataPersistance
 
     public void loadData(GameData data){
         if(data.currentTimer != null){
-            data.currentTimer.TryGetValue(LevelInfo.Instance.level.LevelName, out CurrentTime );
+            data.currentTimer.TryGetValue(LevelInfo.Instance.Level.Name, out CurrentTime );
         }
     }
 
     public void saveData(GameData data){
         data.currentTimer.Clear();
-        data.currentTimer = new SerializeDictionary<string, float>();
-        data.currentTimer.Add(LevelInfo.Instance.level.LevelName, CurrentTime);
+        data.currentTimer = new SerializeDictionary<string, float>
+        {
+            { LevelInfo.Instance.Level.Name, CurrentTime }
+        };
     }
 }

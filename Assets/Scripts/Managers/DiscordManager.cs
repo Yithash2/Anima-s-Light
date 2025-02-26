@@ -9,16 +9,40 @@ public class DiscordManager : MonoBehaviour
 
     void Start()
     {
+        // Try to initialize Discord only if it's already running
+        if (DiscordIsRunning())
+        {
+            try
+            {
+                discord = new Discord.Discord(1270383527174602752, (ulong)Discord.CreateFlags.Default);
+                isDiscordOpen = true;
+                ChangeActivity();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning("Error initializing Discord: " + e.Message);
+                isDiscordOpen = false;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Discord is not running. Skipping Discord initialization.");
+            isDiscordOpen = false;
+        }
+    }
+
+    // Check if Discord is running before initializing
+    private bool DiscordIsRunning()
+    {
+        // Use the Discord API to check if Discord is running
         try
         {
-            discord = new Discord.Discord(1270383527174602752, (ulong)Discord.CreateFlags.Default);
-            isDiscordOpen = true;
-            ChangeActivity();
+            var discordProcess = System.Diagnostics.Process.GetProcessesByName("Discord");
+            return discordProcess.Length > 0;
         }
-        catch (System.Exception e)
+        catch
         {
-            Debug.LogWarning("Discord is not open or could not initialize: " + e.Message);
-            isDiscordOpen = false;
+            return false;
         }
     }
 
@@ -35,11 +59,12 @@ public class DiscordManager : MonoBehaviour
         if (!isDiscordOpen) return; // Exit if Discord isn't open
 
         var activityManager = discord.GetActivityManager();
+
         if (LevelInfo.Instance != null)
         {
             var activity = new Discord.Activity
             {
-                State = "Playing " + LevelInfo.Instance.level.LevelName,
+                State = "Playing " + LevelInfo.Instance.Level.Name,
                 Assets =
                 {
                     LargeImage = "logo_anima_s_light", // Larger Image Asset Value
@@ -48,7 +73,14 @@ public class DiscordManager : MonoBehaviour
             };
             activityManager.UpdateActivity(activity, (res) =>
             {
-                Debug.Log("Activity updated!");
+                if (res != Discord.Result.Ok)
+                {
+                    Debug.LogWarning("Failed to update Discord activity.");
+                }
+                else
+                {
+                    Debug.Log("Activity updated!");
+                }
             });
         }
         else
@@ -64,7 +96,14 @@ public class DiscordManager : MonoBehaviour
             };
             activityManager.UpdateActivity(activity, (res) =>
             {
-                Debug.Log("Activity updated!");
+                if (res != Discord.Result.Ok)
+                {
+                    Debug.LogWarning("Failed to update Discord activity.");
+                }
+                else
+                {
+                    Debug.Log("Activity updated!");
+                }
             });
         }
     }

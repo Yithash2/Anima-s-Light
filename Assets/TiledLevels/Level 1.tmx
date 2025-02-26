@@ -6,7 +6,7 @@
  <tileset firstgid="330" source="Deny Phase 1-2 Transition.tsx"/>
  <tileset firstgid="396" source="Spikes.tsx"/>
  <tileset firstgid="405" source="Liane.tsx"/>
- <tileset firstgid="407" source="Rules/Gothic Castle.tsx"/>
+ <tileset firstgid="407" source="Gothic Castle.tsx"/>
  <layer id="1" name="prototype" width="30" height="20" opacity="0.9">
   <properties>
    <property name="unity:ignore" value="True"/>

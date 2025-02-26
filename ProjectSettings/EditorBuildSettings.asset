@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level 2.unity
     guid: 2ac2175a3f1a64247b7f81b226c28f88
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 7eb02e30a5fd15b468c8eaac00af4afa
   - enabled: 0
@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1_2.unity
     guid: 3fc9eccd83cf0664ebfd074da2263192
+  - enabled: 1
+    path: Assets/Scenes/NewLevelSelector Test.unity
+    guid: 307e5b47b3e08574ca92f7a48f84f12d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6bcf252814def864996a3f2ae80ada65, type: 2}
