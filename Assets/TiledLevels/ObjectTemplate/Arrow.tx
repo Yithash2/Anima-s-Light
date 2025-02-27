@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../Utilitaries.tsx"/>
- <object type="Arrow" gid="3" width="16" height="16"/>
+ <tileset firstgid="1" source="../Biggest Utilitaries.tsx"/>
+ <object name="Arrow" type="Arrow" gid="2" width="64" height="64"/>
 </template>

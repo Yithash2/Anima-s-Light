@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="30">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="52">
  <properties>
   <property name="unity:ignore" value="True"/>
  </properties>
  <tileset firstgid="1" source="Level Selector Tile.tsx"/>
  <tileset firstgid="2" source="mini_deny_tilemap5.tsx"/>
  <tileset firstgid="274" source="Utilitaries.tsx"/>
+ <tileset firstgid="278" source="Biggest Utilitaries.tsx"/>
+ <tileset firstgid="280" source="32px Utitaries.tsx"/>
  <layer id="2" name="prototype" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -167,12 +169,8 @@
   </data>
  </layer>
  <objectgroup id="5" name="Objects">
-  <object id="25" template="ObjectTemplate/Arrow.tx" x="592" y="64"/>
-  <object id="26" template="ObjectTemplate/JumpBooster.tx" x="592" y="48"/>
-  <object id="29" template="ObjectTemplate/Checkpoint.tx" type="checkpoint" x="896" y="16">
-   <properties>
-    <property name="IsPassableMultipleTimes" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="36" template="ObjectTemplate/Checkpoint.tx" type="checkpoint" x="856" y="16"/>
+  <object id="37" template="ObjectTemplate/Arrow.tx" type="Arrow" x="646.627" y="88" rotation="315"/>
+  <object id="50" template="ObjectTemplate/Jump Booster.tx" type="JumpBooster" x="608" y="60" rotation="45"/>
  </objectgroup>
 </map>
