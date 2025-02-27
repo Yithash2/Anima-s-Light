@@ -32,6 +32,36 @@
             ]
         },
         {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 6,
+            "members": [
+                {
+                    "name": "Id",
+                    "type": "string",
+                    "value": "-1"
+                },
+                {
+                    "name": "IsPassableMultipleTimes",
+                    "type": "bool",
+                    "value": false
+                }
+            ],
+            "name": "checkpoint",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
             "color": "#ffffffff",
             "drawFill": true,
             "id": 2,
@@ -77,6 +107,45 @@
             "members": [
             ],
             "name": "JumpBooster",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ff0055ff",
+            "drawFill": true,
+            "id": 4,
+            "members": [
+                {
+                    "name": "Height",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Speed",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Width",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "X",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Y",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "MovingWater",
             "type": "class",
             "useAs": [
                 "property",

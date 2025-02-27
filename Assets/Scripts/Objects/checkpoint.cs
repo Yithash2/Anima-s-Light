@@ -1,11 +1,10 @@
-using Newtonsoft.Json;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class checkpoint : MonoBehaviour, IDataPersistance
 {
     public bool IsPassableMultipleTimes;
     public string id;
+    public string Id {set {CreateNewId(); } }
     [ContextMenu("create new id")]
     void CreateNewId(){
         id = System.Guid.NewGuid().ToString();
@@ -69,5 +68,10 @@ public class checkpoint : MonoBehaviour, IDataPersistance
         data.checkpoints.Add(id, isActivated);
         
         
+    }
+
+    private void OnValidate()
+    {
+        Spawnpoint = GameObject.Find("RespawnPoint").transform;
     }
 }

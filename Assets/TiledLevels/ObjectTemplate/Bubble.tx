@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="Bubble" type="MovingWater" width="1" height="1">
+  <properties>
+   <property name="Height" type="float" value="124"/>
+   <property name="Speed" type="float" value="11"/>
+   <property name="Width" type="float" value="80"/>
+   <property name="X" type="float" value="2"/>
+   <property name="Y" type="float" value="-2"/>
+  </properties>
+ </object>
+</template>
