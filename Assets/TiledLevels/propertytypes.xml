@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
- <objecttype name="Arrow" color="#ff55ff"/>
- <objecttype name="checkpoint" color="#a0a0a4">
+ <objecttype name="Arrow" color="#ffffff"/>
+ <objecttype name="checkpoint" color="#00aa00">
   <property name="Id" type="string" default="-1"/>
   <property name="IsPassableMultipleTimes" type="bool" default="false"/>
  </objecttype>
- <objecttype name="CustomLight" color="#ffffff">
+ <objecttype name="CustomLight" color="#ffff00">
   <property name="Color" type="color" default="#ffffffff"/>
   <property name="FallofStr" type="float" default="0.5"/>
   <property name="InnerRad" type="float" default="0"/>
   <property name="Intensity" type="float" default="1"/>
   <property name="OuterRad" type="float" default="1"/>
  </objecttype>
- <objecttype name="JumpBooster" color="#a0a0a4"/>
+ <objecttype name="FellesShadow" color="#ffffff">
+  <property name="IsFlipped" type="bool" default="false"/>
+  <property name="Range" type="float" default="5"/>
+ </objecttype>
+ <objecttype name="JumpBooster" color="#00ff00"/>
  <objecttype name="MovingWater" color="#0055ff">
   <property name="Height" type="float" default="0"/>
   <property name="Speed" type="float" default="0"/>

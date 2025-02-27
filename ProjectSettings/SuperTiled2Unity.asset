@@ -55,10 +55,10 @@ MonoBehaviour:
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes:
   - m_Name: Arrow
-    m_Color: {r: 1, g: 0.33333334, b: 1, a: 1}
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
     m_CustomProperties: []
   - m_Name: checkpoint
-    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_Color: {r: 0, g: 0.6666667, b: 0, a: 1}
     m_CustomProperties:
     - m_Name: Id
       m_Type: string
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Type: bool
       m_Value: false
   - m_Name: CustomLight
-    m_Color: {r: 1, g: 1, b: 1, a: 1}
+    m_Color: {r: 1, g: 1, b: 0, a: 1}
     m_CustomProperties:
     - m_Name: Color
       m_Type: color
@@ -84,8 +84,14 @@ MonoBehaviour:
     - m_Name: OuterRad
       m_Type: float
       m_Value: 1
+  - m_Name: FellesShadow
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+    m_CustomProperties:
+    - m_Name: Range
+      m_Type: float
+      m_Value: 5
   - m_Name: JumpBooster
-    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_Color: {r: 0, g: 1, b: 0, a: 1}
     m_CustomProperties: []
   - m_Name: MovingWater
     m_Color: {r: 0, g: 0.33333334, b: 1, a: 1}
@@ -116,3 +122,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 1958544575817510659, guid: aabee3bae1be4434e99847c68219ab0c, type: 3}
   - m_TypeName: checkpoint
     m_Prefab: {fileID: 2727033422664636564, guid: 84666e092c31bf949b500d87df08898e, type: 3}
+  - m_TypeName: FellesShadow
+    m_Prefab: {fileID: 7597833322715655242, guid: e33c9233d0f387246ac7eaaa61f28376, type: 3}

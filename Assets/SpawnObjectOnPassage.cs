@@ -8,6 +8,8 @@ public class SpawnObjectOnPassage : MonoBehaviour
 
     [SerializeField] GameObject ObjectSpawned;
 
+    [SerializeField] Vector2 _ofset;
+
     private void OnValidate()
     {
         _sensor = GetComponent<DetectPlayerPassage>();
@@ -25,6 +27,6 @@ public class SpawnObjectOnPassage : MonoBehaviour
 
     private void SpawnObject()
     {
-        Instantiate(ObjectSpawned, transform.position, Quaternion.identity);
+        Instantiate(ObjectSpawned, transform.position + (Vector3)_ofset, Quaternion.identity);
     }
 }

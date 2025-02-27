@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="8" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="9" nextobjectid="55">
  <tileset firstgid="1" source="mini_deny_tilemap5.tsx"/>
  <tileset firstgid="273" source="Spikes.tsx"/>
  <tileset firstgid="282" source="Deny Phase 1-2 Transition.tsx"/>
@@ -9,6 +9,8 @@
  <tileset firstgid="455" source="Bricks.tsx"/>
  <tileset firstgid="464" source="Wood based tiles.tsx"/>
  <tileset firstgid="512" source="Liane.tsx"/>
+ <tileset firstgid="514" source="32px Utitaries.tsx"/>
+ <tileset firstgid="516" source="Utilitaries.tsx"/>
  <layer id="1" name="prototype" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -6179,6 +6181,33 @@
 </chunk>
   </data>
  </layer>
+ <objectgroup id="8" name="Objects">
+  <object id="23" template="ObjectTemplate/Jump Booster.tx" type="JumpBooster" x="2308" y="-1740"/>
+  <object id="32" template="ObjectTemplate/Jump Booster.tx" x="3528" y="-3024"/>
+  <object id="33" template="ObjectTemplate/Jump Booster.tx" x="3528" y="-3200"/>
+  <object id="35" template="ObjectTemplate/Jump Booster.tx" x="3528" y="-3088"/>
+  <object id="36" template="ObjectTemplate/Jump Booster.tx" x="3528" y="-3152"/>
+  <object id="37" template="ObjectTemplate/Jump Booster.tx" x="2504" y="-1744"/>
+  <object id="38" template="ObjectTemplate/Jump Booster.tx" x="2668" y="-1744"/>
+  <object id="39" template="ObjectTemplate/Jump Booster.tx" x="2176" y="-1344"/>
+  <object id="40" template="ObjectTemplate/Jump Booster.tx" x="2272" y="-1344"/>
+  <object id="41" template="ObjectTemplate/Jump Booster.tx" x="2368" y="-1344"/>
+  <object id="42" template="ObjectTemplate/Jump Booster.tx" x="2464" y="-1344"/>
+  <object id="43" template="ObjectTemplate/Jump Booster.tx" x="2560" y="-1344"/>
+  <object id="44" template="ObjectTemplate/Jump Booster.tx" x="3488" y="-3392"/>
+  <object id="45" template="ObjectTemplate/Jump Booster.tx" x="3344" y="-3296"/>
+  <object id="47" template="ObjectTemplate/Felle's Shadow.tx" type="FellesShadow" x="-1012" y="-2272"/>
+  <object id="48" template="ObjectTemplate/Felle's Shadow.tx" x="-836" y="-2272"/>
+  <object id="49" template="ObjectTemplate/Felle's Shadow.tx" x="-704" y="-2272"/>
+  <object id="50" template="ObjectTemplate/Felle's Shadow.tx" gid="2147484165" x="1808" y="-1696">
+   <properties>
+    <property name="IsFlipped" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="51" template="ObjectTemplate/Felle's Shadow.tx" x="2976" y="-624"/>
+  <object id="52" template="ObjectTemplate/Felle's Shadow.tx" x="3976" y="-2680"/>
+  <object id="54" template="ObjectTemplate/Felle's Shadow.tx" x="3584" y="-3776"/>
+ </objectgroup>
  <layer id="5" name="eau" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -12040,6 +12069,24 @@
 0,0,0,0,0,0,0,0,0,0,358,359,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,276,0,0,0,0
 </chunk>
+   <chunk x="208" y="-224" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,355,355,355,355,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
    <chunk x="32" y="-208" width="16" height="16">
 394,395,359,0,361,399,400,0,0,0,0,0,0,0,0,0,
 394,395,359,0,361,399,400,0,0,0,0,0,0,0,0,0,
@@ -12076,24 +12123,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </chunk>
-   <chunk x="208" y="-208" width="16" height="16">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0
-</chunk>
    <chunk x="32" y="-192" width="16" height="16">
 0,0,276,0,278,0,0,0,0,0,0,0,0,0,0,0,
 0,0,276,0,278,0,0,0,0,0,0,0,0,0,0,0,
@@ -12110,24 +12139,6 @@
 0,0,276,0,278,0,0,0,0,0,0,0,0,0,0,0,
 0,0,276,0,278,0,0,0,0,0,0,0,0,0,0,0,
 0,0,276,0,278,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</chunk>
-   <chunk x="208" y="-192" width="16" height="16">
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,359,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,361,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </chunk>
    <chunk x="176" y="-176" width="16" height="16">

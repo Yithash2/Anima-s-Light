@@ -12,7 +12,7 @@
     ],
     "propertyTypes": [
         {
-            "color": "#ffff55ff",
+            "color": "#ffffffff",
             "drawFill": true,
             "id": 3,
             "members": [
@@ -32,7 +32,7 @@
             ]
         },
         {
-            "color": "#ffa0a0a4",
+            "color": "#ff00aa00",
             "drawFill": true,
             "id": 6,
             "members": [
@@ -62,7 +62,7 @@
             ]
         },
         {
-            "color": "#ffffffff",
+            "color": "#ffffff00",
             "drawFill": true,
             "id": 2,
             "members": [
@@ -101,7 +101,31 @@
             ]
         },
         {
-            "color": "#ffa0a0a4",
+            "color": "#ffffffff",
+            "drawFill": true,
+            "id": 7,
+            "members": [
+                {
+                    "name": "IsFlipped",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "Range",
+                    "type": "float",
+                    "value": 5
+                }
+            ],
+            "name": "FellesShadow",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ff00ff00",
             "drawFill": true,
             "id": 1,
             "members": [
