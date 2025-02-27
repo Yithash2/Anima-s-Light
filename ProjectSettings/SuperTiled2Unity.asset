@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultPixelsPerUnit: 16
   m_DefaultEdgesPerEllipse: 32
   m_AnimationFramerate: 20
-  m_DefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_DefaultMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_MaterialMatchings: []
   m_ObjectTypesXml: {fileID: 4900000, guid: ae757afb1454d834b8200a88d53c2513, type: 3}
   m_ParseXmlError: 
@@ -54,9 +54,34 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes:
+  - m_Name: Arrow
+    m_Color: {r: 1, g: 0.33333334, b: 1, a: 1}
+    m_CustomProperties: []
+  - m_Name: CustomLight
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+    m_CustomProperties:
+    - m_Name: Color
+      m_Type: color
+      m_Value: '#ffffffff'
+    - m_Name: FallofStr
+      m_Type: float
+      m_Value: 0.5
+    - m_Name: InnerRad
+      m_Type: float
+      m_Value: 0
+    - m_Name: Intensity
+      m_Type: float
+      m_Value: 1
+    - m_Name: OuterRad
+      m_Type: float
+      m_Value: 1
   - m_Name: JumpBooster
     m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
     m_CustomProperties: []
   m_PrefabReplacements:
   - m_TypeName: JumpBooster
     m_Prefab: {fileID: 5230008336997241329, guid: 1e73f2f851b0422418df66ca2a5b6664, type: 3}
+  - m_TypeName: CustomLight
+    m_Prefab: {fileID: 6121176136582357376, guid: a38be05f595a50d418ad5ea8943a0dde, type: 3}
+  - m_TypeName: Arrow
+    m_Prefab: {fileID: 6987539432335736506, guid: e5020499964068a4181b69ed4635cc05, type: 3}

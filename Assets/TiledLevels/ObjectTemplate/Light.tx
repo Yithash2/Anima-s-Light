@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../Utilitaries.tsx"/>
+ <object type="CustomLight" gid="1" width="16" height="16">
+  <properties>
+   <property name="Color" type="color" value="#ffff0000"/>
+   <property name="Intensity" type="float" value="5"/>
+  </properties>
+ </object>
+</template>

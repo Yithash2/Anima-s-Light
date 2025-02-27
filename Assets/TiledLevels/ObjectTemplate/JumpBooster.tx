@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <object name="JumpBooster" type="JumpBooster">
-  <point/>
- </object>
+ <tileset firstgid="1" source="../Utilitaries.tsx"/>
+ <object type="JumpBooster" gid="2" width="16" height="16"/>
 </template>

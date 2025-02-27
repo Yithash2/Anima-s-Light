@@ -6,13 +6,17 @@ using System.Xml;
 using System;
 using Levels;
 using SuperTiled2Unity;
+using System.Data;
+using UnityEngine.InputSystem;
 
 public class LevelObject : MonoBehaviour, IDataPersistance
 {
     [SerializeField] SpriteRenderer _spr;
 
-    [SerializeField] TextMeshProUGUI _deathCounterText;
-    [SerializeField] TextMeshProUGUI _bestTimeText;
+    [SerializeField] Animator _panel;
+    [SerializeField] TextMeshPro _deathCounterText;
+    [SerializeField] TextMeshPro _bestTimeText;
+    [SerializeField] TextMeshPro _levelNameText;
     [SerializeField] ulong _deathCount;
     [SerializeField] float _bestTime;
 
@@ -57,10 +61,24 @@ public class LevelObject : MonoBehaviour, IDataPersistance
     {
         if (_levelIndex == -1) return;
 
-        LevelSelectorManager.Instance.LoadLevel(Level);
+        _panel.Play("Open");
     }
 
-    void UpdateTimerText(float CurrentTime, TextMeshProUGUI Text){
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (LevelSelectorManager.Instance.EnterLevel) LevelSelectorManager.Instance.LoadLevel(Level);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_levelIndex == -1) return;
+
+        _panel.Play("Close");
+    }
+
+    
+
+    void UpdateTimerText(float CurrentTime, TextMeshPro Text){
         string tempsFormatte;
 
         if(CurrentTime == 0){
@@ -87,10 +105,10 @@ public class LevelObject : MonoBehaviour, IDataPersistance
         }
         else
         {
-            //_deathCounterText.text = 'X' + data.LevelTotalDeathCount[Name].ToString();
             _deathCount = data.LevelTotalDeathCount[Name];
-            //UpdateTimerText(data.LevelBestTime[Name], _bestTimeText);
             _bestTime = data.LevelBestTime[Name];
+            _deathCounterText.text = 'X' + _deathCount.ToString();
+            UpdateTimerText(_bestTime, _bestTimeText);
             ChangeLevelIndex( data.Levels[Name]);
         }
 
@@ -147,6 +165,12 @@ public class LevelObject : MonoBehaviour, IDataPersistance
     private void OnValidate()
     {
         _spr = GetComponent<SpriteRenderer>();
+
+        _levelNameText.text = Name;
+
+        ChangeSprite(_levelIndex);
+
+
     }
 
     private void OnEnable()

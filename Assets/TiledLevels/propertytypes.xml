@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
+ <objecttype name="Arrow" color="#ff55ff"/>
+ <objecttype name="CustomLight" color="#ffffff">
+  <property name="Color" type="color" default="#ffffffff"/>
+  <property name="FallofStr" type="float" default="0.5"/>
+  <property name="InnerRad" type="float" default="0"/>
+  <property name="Intensity" type="float" default="1"/>
+  <property name="OuterRad" type="float" default="1"/>
+ </objecttype>
  <objecttype name="JumpBooster" color="#a0a0a4"/>
 </objecttypes>

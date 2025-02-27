@@ -12,5 +12,29 @@
             "object",
             "project"
         ]
+    },
+    {
+        "color": "#ffffffff",
+        "drawFill": true,
+        "id": 2,
+        "members": [
+            {
+                "name": "Color",
+                "type": "color",
+                "value": "#ffffffff"
+            },
+            {
+                "name": "Radius",
+                "type": "float",
+                "value": 0
+            }
+        ],
+        "name": "Light",
+        "type": "class",
+        "useAs": [
+            "property",
+            "object",
+            "project"
+        ]
     }
 ]

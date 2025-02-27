@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="4" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="5" nextobjectid="14">
+ <properties>
+  <property name="unity:ignore" value="True"/>
+ </properties>
  <tileset firstgid="1" source="Level Selector Tile.tsx"/>
  <tileset firstgid="2" source="mini_deny_tilemap5.tsx"/>
+ <tileset firstgid="274" source="Utilitaries.tsx"/>
  <layer id="2" name="prototype" width="30" height="20">
+  <properties>
+   <property name="unity:ignore" value="True"/>
+  </properties>
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -158,4 +165,17 @@
 </chunk>
   </data>
  </layer>
+ <objectgroup id="4" name="Calque d'Objets 1">
+  <object id="7" template="ObjectTemplate/Light.tx" x="548" y="8"/>
+  <object id="8" template="ObjectTemplate/JumpBooster.tx" x="632" y="32"/>
+  <object id="11" template="ObjectTemplate/Light.tx" x="596" y="40">
+   <properties>
+    <property name="InnerRad" type="float" value="1"/>
+    <property name="Intensity" type="float" value="1"/>
+    <property name="OuterRad" type="float" value="7"/>
+   </properties>
+  </object>
+  <object id="12" template="ObjectTemplate/JumpBooster.tx" type="JumpBooster" x="620" y="-4"/>
+  <object id="13" type="Arrow" gid="276" x="580" y="63.3137" width="16" height="16" rotation="315"/>
+ </objectgroup>
 </map>

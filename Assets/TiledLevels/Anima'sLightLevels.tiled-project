@@ -12,6 +12,65 @@
     ],
     "propertyTypes": [
         {
+            "color": "#ffff55ff",
+            "drawFill": true,
+            "id": 3,
+            "members": [
+            ],
+            "name": "Arrow",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffffffff",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "Color",
+                    "type": "color",
+                    "value": "#ffffffff"
+                },
+                {
+                    "name": "FallofStr",
+                    "type": "float",
+                    "value": 0.5
+                },
+                {
+                    "name": "InnerRad",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Intensity",
+                    "type": "float",
+                    "value": 1
+                },
+                {
+                    "name": "OuterRad",
+                    "type": "float",
+                    "value": 1
+                }
+            ],
+            "name": "CustomLight",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
             "color": "#ffa0a0a4",
             "drawFill": true,
             "id": 1,
