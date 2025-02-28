@@ -75,6 +75,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        InputsManager.Instance.Jump.started += Next;
+    }
+
+    private void OnDisable()
+    {
+        InputsManager.Instance.Jump.started -= Next;
+    }
+
     public void NextLine()
     {
         CurrentDialogue.NextLine();

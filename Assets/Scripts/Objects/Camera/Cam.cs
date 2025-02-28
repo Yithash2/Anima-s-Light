@@ -7,7 +7,7 @@ public class cam : MonoBehaviour
 {
     #region Input
     GameObject player;
-    [SerializeField] Vector3 ofset;
+    [field: SerializeField] public Vector3 ofset { get; private set; }
     [SerializeField] float smooth_speed = 0.125f;
 
     [SerializeField] float moveShiftMultX;
@@ -23,6 +23,8 @@ public class cam : MonoBehaviour
 
     float intialOfsetY;
     #endregion
+
+    [field: SerializeField] public GameObject Background { get; private set; }
 
     void Start(){
         player = PlayerStateMachine.Instance.gameObject;

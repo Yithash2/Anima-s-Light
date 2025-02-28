@@ -14,14 +14,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistance
 {
     public GameObject LevelInf;
 
-    public bool EnterLevel { get; private set; }
-
     public Action<string> OnClearCurrentLevel;
-
-    public void Down(InputAction.CallbackContext ctx)
-    {
-        EnterLevel = ctx.performed;
-    }
 
     public static LevelSelectorManager Instance {get; private set;} 
     void Awake(){

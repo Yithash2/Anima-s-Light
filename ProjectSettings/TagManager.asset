@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Deadly
   - MovingPlatform
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX

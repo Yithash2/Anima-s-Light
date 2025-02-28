@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -77,6 +78,21 @@ public class PauseMenuManager : MonoBehaviour
     public void Resume(){
         StartCoroutine(ClosePanel());
     }
+
+    void OnEnable()
+    {
+        InputsManager.Instance.Echap.started += Echap;
+        InputsManager.Instance.Echap.performed += Echap;
+        InputsManager.Instance.Echap.canceled += Echap;
+    }
+
+    void OnDisable()
+    {
+        InputsManager.Instance.Echap.started -= Echap;
+        InputsManager.Instance.Echap.performed -= Echap;
+        InputsManager.Instance.Echap.canceled -= Echap;
+    }
+
 
     IEnumerator ClosePanel(){
         yield return new WaitUntil(() => IsAnimating(_pausePanelOpen.name));

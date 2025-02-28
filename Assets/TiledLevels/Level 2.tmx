@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="44" nextobjectid="32">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="45" nextobjectid="33">
  <tileset firstgid="1" source="mini_deny_tilemap5.tsx"/>
  <tileset firstgid="273" source="Deny Phase 1-2 Transition.tsx"/>
  <tileset firstgid="339" source="Wood based tiles.tsx"/>
  <tileset firstgid="387" source="Spikes.tsx"/>
  <tileset firstgid="396" source="Water_Tiles.tsx"/>
  <tileset firstgid="429" source="Liane.tsx"/>
+ <tileset firstgid="431" source="32px Utitaries.tsx"/>
  <layer id="1" name="prototype" width="30" height="20" opacity="0.44">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -2101,6 +2102,9 @@
 </chunk>
   </data>
  </layer>
+ <objectgroup id="44" name="Calque d'Objets 1">
+  <object id="32" template="ObjectTemplate/Jump Booster.tx" x="-4122.67" y="-121.333"/>
+ </objectgroup>
  <layer id="42" name="eau" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>

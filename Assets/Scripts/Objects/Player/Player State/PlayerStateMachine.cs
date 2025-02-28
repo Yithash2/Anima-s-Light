@@ -316,6 +316,36 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        InputsManager.Instance.Jump.started += Jump;
+        InputsManager.Instance.Jump.performed += Jump;
+        InputsManager.Instance.Jump.canceled += Jump;
+
+        InputsManager.Instance.Dive.started += Dive;
+        InputsManager.Instance.Dive.performed += Dive;
+        InputsManager.Instance.Dive.canceled += Dive;
+
+        InputsManager.Instance.XInput.started += Move;
+        InputsManager.Instance.XInput.performed += Move;
+        InputsManager.Instance.XInput.canceled += Move;
+    }
+
+    private void OnDisable()
+    {
+        InputsManager.Instance.Jump.started -= Jump;
+        InputsManager.Instance.Jump.performed -= Jump;
+        InputsManager.Instance.Jump.canceled -= Jump;
+
+        InputsManager.Instance.Dive.started -= Dive;
+        InputsManager.Instance.Dive.performed -= Dive;
+        InputsManager.Instance.Dive.canceled -= Dive;
+
+        InputsManager.Instance.XInput.started -= Move;
+        InputsManager.Instance.XInput.performed -= Move;
+        InputsManager.Instance.XInput.canceled -= Move;
+    }
+
     public bool IsAnimating(string animationName){
         if(_animator.GetCurrentAnimatorStateInfo(0).IsName(animationName)){
             return true;

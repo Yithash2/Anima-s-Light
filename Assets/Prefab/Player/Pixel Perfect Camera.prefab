@@ -229,12 +229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c5899c9be740a43aaf7cbbd482bb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ofset: {x: 0, y: 0, z: -10}
+  <ofset>k__BackingField: {x: 0, y: 0, z: 0}
   smooth_speed: 0.125
   moveShiftMultX: 0
   moveShiftMultY: 0
   animator: {fileID: 6897061408692098921}
   verticalShift: 0
+  <Background>k__BackingField: {fileID: 0}
 --- !u!81 &9176444637299887421
 AudioListener:
   m_ObjectHideFlags: 0

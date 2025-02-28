@@ -87,6 +87,9 @@ MonoBehaviour:
   - m_Name: FellesShadow
     m_Color: {r: 1, g: 1, b: 1, a: 1}
     m_CustomProperties:
+    - m_Name: IsFlipped
+      m_Type: bool
+      m_Value: false
     - m_Name: Range
       m_Type: float
       m_Value: 5
@@ -111,6 +114,12 @@ MonoBehaviour:
     - m_Name: Y
       m_Type: float
       m_Value: 0
+  - m_Name: Teleporter
+    m_Color: {r: 0, g: 0.33333334, b: 1, a: 1}
+    m_CustomProperties:
+    - m_Name: Location
+      m_Type: object
+      m_Value: 0
   m_PrefabReplacements:
   - m_TypeName: Arrow
     m_Prefab: {fileID: 6987539432335736506, guid: e5020499964068a4181b69ed4635cc05, type: 3}
@@ -124,3 +133,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 2727033422664636564, guid: 84666e092c31bf949b500d87df08898e, type: 3}
   - m_TypeName: FellesShadow
     m_Prefab: {fileID: 7597833322715655242, guid: e33c9233d0f387246ac7eaaa61f28376, type: 3}
+  - m_TypeName: Teleporter
+    m_Prefab: {fileID: 6731154480760583804, guid: aa9b57ae8455b2748a31e4fdf16fea70, type: 3}

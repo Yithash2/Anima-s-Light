@@ -176,6 +176,25 @@
                 "object",
                 "project"
             ]
+        },
+        {
+            "color": "#ff0055ff",
+            "drawFill": true,
+            "id": 9,
+            "members": [
+                {
+                    "name": "Location",
+                    "type": "object",
+                    "value": 0
+                }
+            ],
+            "name": "Teleporter",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
         }
     ]
 }
