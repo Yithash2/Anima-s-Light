@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="56">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="89">
  <properties>
   <property name="unity:ignore" value="True"/>
  </properties>
@@ -8,6 +8,9 @@
  <tileset firstgid="274" source="Utilitaries.tsx"/>
  <tileset firstgid="278" source="Biggest Utilitaries.tsx"/>
  <tileset firstgid="280" source="32px Utitaries.tsx"/>
+ <tileset firstgid="282" source="Bushes.tsx"/>
+ <tileset firstgid="286" source="Tree.tsx"/>
+ <tileset firstgid="287" source="Mushroom.tsx"/>
  <layer id="2" name="prototype" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -87,6 +90,54 @@
 </chunk>
   </data>
  </layer>
+ <objectgroup id="5" name="Objects">
+  <object id="36" template="ObjectTemplate/Checkpoint.tx" type="checkpoint" x="856" y="16">
+   <properties>
+    <property name="IsPassableMultipleTimes" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="37" template="ObjectTemplate/Arrow.tx" type="Arrow" x="646.627" y="88" rotation="315"/>
+  <object id="50" template="ObjectTemplate/Jump Booster.tx" type="JumpBooster" x="608" y="60" rotation="45"/>
+  <object id="52" template="ObjectTemplate/Checkpoint.tx" x="32" y="112">
+   <properties>
+    <property name="IsPassableMultipleTimes" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="54" template="ObjectTemplate/Teleporter.tx" type="Teleporter" x="960" y="0">
+   <properties>
+    <property name="Location" type="object" value="55"/>
+   </properties>
+  </object>
+  <object id="55" template="ObjectTemplate/Teleporter.tx" x="96" y="96">
+   <properties>
+    <property name="Location" type="object" value="54"/>
+   </properties>
+  </object>
+  <object id="56" template="ObjectTemplate/Decoration/Bush - 2.tx" type="Bush - 2" x="312" y="168"/>
+  <object id="57" template="ObjectTemplate/Decoration/Bush - 1.tx" type="Bush - 1" x="496" y="144"/>
+  <object id="59" template="ObjectTemplate/Decoration/Bush - 3.tx" type="Bush - 3" x="656" y="56"/>
+  <object id="80" template="ObjectTemplate/Decoration/RandomTree.tx" type="RandomTree" x="-100" y="112"/>
+  <object id="82" template="ObjectTemplate/Decoration/RandomTree.tx" x="284" y="116"/>
+  <object id="85" template="ObjectTemplate/Decoration/RandomTree.tx" x="64" y="112"/>
+  <object id="86" template="ObjectTemplate/Decoration/RandomMushroom.tx" type="RandomMushroom" x="804" y="16">
+   <properties>
+    <property name="RandomSize" type="bool" value="true"/>
+    <property name="Size" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="87" template="ObjectTemplate/Decoration/RandomMushroom.tx" type="RandomMushroom" x="684" y="20">
+   <properties>
+    <property name="RandomSize" type="bool" value="true"/>
+    <property name="Size" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="88" template="ObjectTemplate/Decoration/RandomMushroom.tx" type="RandomMushroom" x="748" y="16">
+   <properties>
+    <property name="RandomSize" type="bool" value="true"/>
+    <property name="Size" type="float" value="20"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer id="3" name="ground" width="30" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Floor"/>
@@ -168,28 +219,4 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="5" name="Objects">
-  <object id="36" template="ObjectTemplate/Checkpoint.tx" type="checkpoint" x="856" y="16">
-   <properties>
-    <property name="IsPassableMultipleTimes" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="37" template="ObjectTemplate/Arrow.tx" type="Arrow" x="646.627" y="88" rotation="315"/>
-  <object id="50" template="ObjectTemplate/Jump Booster.tx" type="JumpBooster" x="608" y="60" rotation="45"/>
-  <object id="52" template="ObjectTemplate/Checkpoint.tx" x="32" y="112">
-   <properties>
-    <property name="IsPassableMultipleTimes" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="54" template="ObjectTemplate/Teleporter.tx" type="Teleporter" x="960" y="0">
-   <properties>
-    <property name="Location" type="object" value="55"/>
-   </properties>
-  </object>
-  <object id="55" template="ObjectTemplate/Teleporter.tx" x="96" y="96">
-   <properties>
-    <property name="Location" type="object" value="54"/>
-   </properties>
-  </object>
- </objectgroup>
 </map>

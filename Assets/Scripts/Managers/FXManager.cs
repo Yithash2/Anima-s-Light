@@ -17,6 +17,13 @@ public class FXManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+    }
+
+    private void Update()
+    {
+        _doHueShift = PlayerPrefs.GetInt("DoHueShift") == 1;
+
     }
 
     void Start(){
@@ -31,6 +38,7 @@ public class FXManager : MonoBehaviour
 
     public void LerpHue(float lerpValue){
 
+        if (!_doHueShift) return;
 
         lerpValue = Mathf.Clamp(lerpValue, 0, 1);
         
@@ -43,6 +51,7 @@ public class FXManager : MonoBehaviour
         _hueAdjustments.hueShift.value = _hue;
     }
 
+    bool _doHueShift = true;
     [SerializeField] Image _speedLineImage;
     [SerializeField] GameObject _waterTintFX;
 

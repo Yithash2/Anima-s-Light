@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../../Mushroom.tsx"/>
+ <object name="Mushroom" type="RandomMushroom" gid="1" width="128" height="128">
+  <properties>
+   <property name="MushroomIndex" type="int" value="-1"/>
+   <property name="Size" type="float" value="0"/>
+  </properties>
+ </object>
+</template>

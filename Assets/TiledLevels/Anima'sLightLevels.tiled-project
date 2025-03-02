@@ -20,15 +20,47 @@
             "name": "Arrow",
             "type": "class",
             "useAs": [
-                "property",
-                "map",
-                "layer",
                 "object",
-                "tile",
-                "tileset",
-                "wangcolor",
-                "wangset",
-                "project"
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff00aa00",
+            "drawFill": true,
+            "id": 11,
+            "members": [
+            ],
+            "name": "Bush - 1",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff00aa00",
+            "drawFill": true,
+            "id": 12,
+            "members": [
+            ],
+            "name": "Bush - 2",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff00aa00",
+            "drawFill": true,
+            "id": 13,
+            "members": [
+            ],
+            "name": "Bush - 3",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
             ]
         },
         {
@@ -50,15 +82,8 @@
             "name": "checkpoint",
             "type": "class",
             "useAs": [
-                "property",
-                "map",
-                "layer",
                 "object",
-                "tile",
-                "tileset",
-                "wangcolor",
-                "wangset",
-                "project"
+                "tile"
             ]
         },
         {
@@ -95,9 +120,8 @@
             "name": "CustomLight",
             "type": "class",
             "useAs": [
-                "property",
                 "object",
-                "project"
+                "tile"
             ]
         },
         {
@@ -119,9 +143,8 @@
             "name": "FellesShadow",
             "type": "class",
             "useAs": [
-                "property",
                 "object",
-                "project"
+                "tile"
             ]
         },
         {
@@ -133,9 +156,8 @@
             "name": "JumpBooster",
             "type": "class",
             "useAs": [
-                "property",
                 "object",
-                "project"
+                "tile"
             ]
         },
         {
@@ -172,9 +194,55 @@
             "name": "MovingWater",
             "type": "class",
             "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff482400",
+            "drawFill": true,
+            "id": 17,
+            "members": [
+                {
+                    "name": "HouseIndex",
+                    "type": "int",
+                    "value": -1
+                }
+            ],
+            "name": "RandomHouse",
+            "type": "class",
+            "useAs": [
                 "property",
                 "object",
                 "project"
+            ]
+        },
+        {
+            "color": "#ffff0000",
+            "drawFill": true,
+            "id": 16,
+            "members": [
+                {
+                    "name": "MushroomIndex",
+                    "type": "int",
+                    "value": -1
+                },
+                {
+                    "name": "RandomSize",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "Size",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "RandomMushroom",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
             ]
         },
         {
@@ -191,9 +259,26 @@
             "name": "Teleporter",
             "type": "class",
             "useAs": [
-                "property",
                 "object",
-                "project"
+                "tile"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 14,
+            "members": [
+                {
+                    "name": "TreeIndex",
+                    "type": "int",
+                    "value": -1
+                }
+            ],
+            "name": "RandomTree",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
             ]
         }
     ]

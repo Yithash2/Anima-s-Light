@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="9" nextobjectid="55">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="10" nextobjectid="61">
  <tileset firstgid="1" source="mini_deny_tilemap5.tsx"/>
  <tileset firstgid="273" source="Spikes.tsx"/>
  <tileset firstgid="282" source="Deny Phase 1-2 Transition.tsx"/>
@@ -11,6 +11,7 @@
  <tileset firstgid="512" source="Liane.tsx"/>
  <tileset firstgid="514" source="32px Utitaries.tsx"/>
  <tileset firstgid="516" source="Utilitaries.tsx"/>
+ <tileset firstgid="520" source="LogCabin.tsx"/>
  <layer id="1" name="prototype" width="30" height="20">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -6181,6 +6182,13 @@
 </chunk>
   </data>
  </layer>
+ <objectgroup id="9" name="Decoration">
+  <object id="60" type="RandomHouse" gid="520" x="-328" y="0" width="256" height="256">
+   <properties>
+    <property name="HouseIndex" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="8" name="Objects">
   <object id="23" template="ObjectTemplate/Jump Booster.tx" type="JumpBooster" x="2308" y="-1740"/>
   <object id="32" template="ObjectTemplate/Jump Booster.tx" x="3528" y="-3024"/>
@@ -6204,9 +6212,19 @@
     <property name="IsFlipped" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="51" template="ObjectTemplate/Felle's Shadow.tx" x="2976" y="-624"/>
   <object id="52" template="ObjectTemplate/Felle's Shadow.tx" x="3976" y="-2680"/>
   <object id="54" template="ObjectTemplate/Felle's Shadow.tx" x="3584" y="-3776"/>
+  <object id="55" template="ObjectTemplate/Felle's Shadow.tx" x="2976" y="-624"/>
+  <object id="57" template="ObjectTemplate/Teleporter.tx" x="-172.313" y="0">
+   <properties>
+    <property name="Location" type="object" value="59"/>
+   </properties>
+  </object>
+  <object id="59" template="ObjectTemplate/Teleporter.tx" x="3744" y="-2640">
+   <properties>
+    <property name="Location" type="object" value="57"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="5" name="eau" width="30" height="20">
   <properties>

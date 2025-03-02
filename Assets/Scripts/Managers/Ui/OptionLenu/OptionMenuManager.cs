@@ -39,6 +39,7 @@ public class OptionMenuManager : MonoBehaviour
     [SerializeField] GameObject _speedrunTimeGO;
     [SerializeField] Toggle _showDeathCountToggle;
     [SerializeField] GameObject _deathCountGO;
+    [SerializeField] Toggle _hueShift;
     
     [SerializeField] Button _backButton;
 
@@ -58,8 +59,12 @@ public class OptionMenuManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("Winner") == 1) _showDeathCountToggle.isOn = true;
         else _showDeathCountToggle.isOn = false;
-            
-        
+
+        if (PlayerPrefs.GetInt("DoHueShift") == 1) _hueShift.isOn = true;
+        else _hueShift.isOn = false;
+
+
+
     }
     public void KeyboardControls(){
         if(!_keyboardControlPanel.activeInHierarchy){
@@ -71,6 +76,12 @@ public class OptionMenuManager : MonoBehaviour
             _keyboardControlPanel.SetActive(false);
             _eventSystem.SetSelectedGameObject(_keyboardControlButton);
         }
+    }
+
+    public void SeizureToggle(bool toggle)
+    {
+        int i = toggle ? 1 : 0;
+        PlayerPrefs.SetInt("DoHueShift", i);
     }
 
     public void ControllerControls(){

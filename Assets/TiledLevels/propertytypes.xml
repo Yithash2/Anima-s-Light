@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
  <objecttype name="Arrow" color="#ffffff"/>
+ <objecttype name="Bush - 1" color="#00aa00"/>
+ <objecttype name="Bush - 2" color="#00aa00"/>
+ <objecttype name="Bush - 3" color="#00aa00"/>
  <objecttype name="checkpoint" color="#00aa00">
   <property name="Id" type="string" default="-1"/>
   <property name="IsPassableMultipleTimes" type="bool" default="false"/>
@@ -24,7 +27,18 @@
   <property name="X" type="float" default="0"/>
   <property name="Y" type="float" default="0"/>
  </objecttype>
+ <objecttype name="RandomHouse" color="#482400">
+  <property name="HouseIndex" type="int" default="-1"/>
+ </objecttype>
+ <objecttype name="RandomMushroom" color="#ff0000">
+  <property name="MushroomIndex" type="int" default="-1"/>
+  <property name="RandomSize" type="bool" default="false"/>
+  <property name="Size" type="float" default="0"/>
+ </objecttype>
  <objecttype name="Teleporter" color="#0055ff">
   <property name="Location" type="object" default="0"/>
+ </objecttype>
+ <objecttype name="RandomTree" color="#a0a0a4">
+  <property name="TreeIndex" type="int" default="-1"/>
  </objecttype>
 </objecttypes>
