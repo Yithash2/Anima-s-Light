@@ -65,14 +65,22 @@ public class ControlState : BaseState
             SwitchState(_factory.Dash());
             return;
         }
-        else if (_ctx.DivePressed)
+        if (_ctx.DivePressed)
         {
             SwitchState(_factory.Dive());
+            return;
         }
-        else if (_ctx.XInput == 0)
+        if (_ctx.XInput == 0)
         {
             SwitchState(_factory.Fall());
             Deceleration();
+            return;
+        }
+
+        if (_currentSuperState is WalledState)
+        {
+            _currentSuperState.InitialiseSubState();
+            return;
         }
     }
 

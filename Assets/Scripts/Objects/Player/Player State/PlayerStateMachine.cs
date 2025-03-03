@@ -197,7 +197,19 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.EnterState();
 
         _fxManager = FXManager.Instance;
-        
+
+        InputsManager.Instance.Jump.started += Jump;
+        InputsManager.Instance.Jump.performed += Jump;
+        InputsManager.Instance.Jump.canceled += Jump;
+
+        InputsManager.Instance.Dive.started += Dive;
+        InputsManager.Instance.Dive.performed += Dive;
+        InputsManager.Instance.Dive.canceled += Dive;
+
+        InputsManager.Instance.XInput.started += Move;
+        InputsManager.Instance.XInput.performed += Move;
+        InputsManager.Instance.XInput.canceled += Move;
+
     }
     
     void Update(){
@@ -298,8 +310,8 @@ public class PlayerStateMachine : MonoBehaviour
         if (!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
             _animator.Play("Death");        
             _camera.CamAnimator.Play("Cam zoom");
-            _camera.verticalShift = 0;
-            
+            _camera.ResetVerticalShift();
+            _camera.ResetPostion();
         }
         
         if(IsAnimating("Death End")){
@@ -318,17 +330,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void OnEnable()
     {
-        InputsManager.Instance.Jump.started += Jump;
-        InputsManager.Instance.Jump.performed += Jump;
-        InputsManager.Instance.Jump.canceled += Jump;
-
-        InputsManager.Instance.Dive.started += Dive;
-        InputsManager.Instance.Dive.performed += Dive;
-        InputsManager.Instance.Dive.canceled += Dive;
-
-        InputsManager.Instance.XInput.started += Move;
-        InputsManager.Instance.XInput.performed += Move;
-        InputsManager.Instance.XInput.canceled += Move;
+        
     }
 
     private void OnDisable()

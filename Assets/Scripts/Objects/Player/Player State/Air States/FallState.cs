@@ -9,12 +9,14 @@ public class FallState : BaseState{
     {
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
             _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
+        _ctx._camera.ResetPostion();
     }
 
     public override void UpdateState(){
         _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 
         _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.05f), _ctx.Rb.velocity.y);
+
         CheckSwitchState();
     }
 
@@ -33,6 +35,8 @@ public class FallState : BaseState{
         }else if(_ctx.XInput != 0){
             SwitchState(_factory.Controlling());
         }
+
+        
     }
 
     public override void InitialiseSubState()

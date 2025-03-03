@@ -94,7 +94,9 @@ public class JumpState : BaseState{
                 _ctx.Rb.velocity = new Vector2(0, wallJumpPush);  // Apply WallJump force
                 _ctx.StartWallJumpComboCoroutine(1);
                 _ctx.WallJumpCombo = true;
-                
+
+                _ctx._camera.ResetVerticalShift();
+                _ctx._camera.ResetPostion();
                 SwitchState(_factory.WallJump());  // Switch to WallJump state
 
                 _ctx.HitStop(0, 0.2f);

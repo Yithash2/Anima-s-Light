@@ -34,6 +34,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     void Start(){
+        InputsManager.Instance.Jump.started += Next;
+
         _dialogBox.SetActive(false);
     }
 
@@ -77,7 +79,6 @@ public class DialogueManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputsManager.Instance.Jump.started += Next;
     }
 
     private void OnDisable()

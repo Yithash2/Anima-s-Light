@@ -159,7 +159,7 @@ MonoBehaviour:
   - m_TypeName: Arrow
     m_Prefab: {fileID: 6987539432335736506, guid: e5020499964068a4181b69ed4635cc05, type: 3}
   - m_TypeName: checkpoint
-    m_Prefab: {fileID: -2253911629886400664, guid: 587984f7e48736941ad02e551c7d08f1, type: 3}
+    m_Prefab: {fileID: 2727033422664636564, guid: 84666e092c31bf949b500d87df08898e, type: 3}
   - m_TypeName: CustomLight
     m_Prefab: {fileID: 6121176136582357376, guid: a38be05f595a50d418ad5ea8943a0dde, type: 3}
   - m_TypeName: FellesShadow

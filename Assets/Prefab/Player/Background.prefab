@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.4, y: 0.4}
-  _offset: {x: 0, y: 1.5}
+  parallaxFactor: {x: 0.8, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &2305475549339129259
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.8, y: 0.6}
-  _offset: {x: 0, y: 3}
+  parallaxFactor: {x: 0.5, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &2592695147802820433
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2592695147802820433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -319,7 +319,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -338,8 +338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 1, y: 0.6}
-  _offset: {x: 0, y: 3}
+  parallaxFactor: {x: 0.3, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &4487633642352070769
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 1, y: 1}
-  _offset: {x: 0, y: 1.5}
+  parallaxFactor: {x: 1, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &4511675715444405980
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -538,8 +538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.3, y: 0.4}
-  _offset: {x: 0, y: 1.5}
+  parallaxFactor: {x: 0.8, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &5405649572711963353
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -638,8 +638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.6, y: 0.4}
-  _offset: {x: 0, y: 2}
+  parallaxFactor: {x: 0.6, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &5415147545309597350
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +719,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -738,8 +738,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.1, y: 0.25}
-  _offset: {x: 0, y: 1}
+  parallaxFactor: {x: 0.9, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &5589061774799876080
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +819,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -838,8 +838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 1, y: 0.4}
-  _offset: {x: 0, y: 2}
+  parallaxFactor: {x: 0.6, y: 0.9}
+  _offset: {x: 0, y: 5}
 --- !u!1 &5947440997992615999
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 120, y: 40}
+  m_Size: {x: 1920, y: 40}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -938,5 +938,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: {fileID: 0}
-  parallaxFactor: {x: 0.7, y: 0.4}
-  _offset: {x: 0, y: 2}
+  parallaxFactor: {x: 0.5, y: 0.9}
+  _offset: {x: 0, y: 5}

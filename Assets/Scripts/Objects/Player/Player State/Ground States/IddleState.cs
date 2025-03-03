@@ -7,9 +7,11 @@ public class IddleState : BaseState
 
     float _currentSpeed;
 
+
     public override void EnterState()
     {
         _currentSpeed = _ctx.Rb.velocity.x;
+        _ctx._camera.ResetPostion();
     }
 
     public override void UpdateState(){
@@ -18,7 +20,8 @@ public class IddleState : BaseState
         }else{
             _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 50/Mathf.Pow(_currentSpeed, 2)), _ctx.Rb.velocity.y);
         }
-        CheckSwitchState();
+
+            CheckSwitchState();
     }
 
     public override void QuitState()

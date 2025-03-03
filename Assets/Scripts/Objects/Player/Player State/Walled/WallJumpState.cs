@@ -50,11 +50,6 @@ public class WallJumpState : BaseState
 
         if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
         {
-            _stateTimeCounter = 100f;
-        }
-
-        if (_ctx.IsSpaced() || _ctx.IsTouchingGround())
-        {
             _stateTimeCounter = _stateTimer;
         }
 
@@ -79,7 +74,15 @@ public class WallJumpState : BaseState
 
         if(_currentSuperState is AirState && _stateTimeCounter >= _stateTimer){
             _currentSuperState.InitialiseSubState();
+            return;
         }
+
+        if(_currentSuperState is GroundState && _stateTimeCounter >= _stateTimer)
+        {
+            _currentSuperState.InitialiseSubState();
+            return;
+        }
+
         
     }
 

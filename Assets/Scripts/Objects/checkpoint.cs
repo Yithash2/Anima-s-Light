@@ -22,9 +22,9 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
         if(isActivated == 2){
             Spawnpoint.SetParent(transform);
-            Spawnpoint.position = transform.position;
-            Transform Player = GameObject.Find("Player").transform;
-            Player.position = transform.position;
+            Spawnpoint.position = transform.position + Vector3.up;
+            Transform Player = GameObject.Find("Player").transform.parent;
+            Player.position = transform.position + Vector3.up;
         }
     }
 
