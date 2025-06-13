@@ -7,6 +7,9 @@ public class WalledState : BaseState
         _isRootState = true;
     }
 
+    float _directionTimer = 0.15f;
+    float _directionTime = 0;
+
     public override void EnterState()
     {
 
@@ -24,12 +27,15 @@ public class WalledState : BaseState
 
         _ctx.UpdateDashTimer();
 
-        CheckSwitchState();
+        if (_ctx.XInput == 0) _directionTime += Time.deltaTime;
+        else _directionTime = 0;
+
+            CheckSwitchState();
     }
 
     public override void QuitState()
     {
-
+        _directionTime = 0;
     }
 
     public override void CheckSwitchState()
@@ -40,7 +46,8 @@ public class WalledState : BaseState
             SwitchState(_factory.Grounded());
             _ctx.AudioSource.clip = _ctx.AudioClips[3];
             _ctx.AudioSource.Play();
-        }else if(!_ctx.IsWalled()){
+        }else if(!_ctx.IsWalled() || NoInput())
+        {
             SwitchState(_factory.Normal());
         }
     }
@@ -52,5 +59,11 @@ public class WalledState : BaseState
         } else{
             SetSubState(_factory.Rapelling());
         }
+    }
+
+    bool NoInput()
+    {
+        Debug.Log(_directionTimer < _directionTime);
+        return _directionTime >= _directionTimer;
     }
 }

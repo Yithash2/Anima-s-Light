@@ -69,7 +69,10 @@ public class WetState : BaseState
         if(!_ctx.IsSpaced()){
             if (_ctx.IsGrounded()) SwitchState(_factory.Grounded());
             else if (_ctx.IsWalled()) SwitchState(_factory.Walled());
-            else SwitchState(_factory.Normal());
+            else{
+                _ctx.HitStop(40, 0.15f);
+                SwitchState(_factory.Normal()); 
+            }
         }
     }
 

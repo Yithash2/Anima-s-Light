@@ -95,7 +95,6 @@ public class JumpState : BaseState{
                 _ctx.StartWallJumpComboCoroutine(1);
                 _ctx.WallJumpCombo = true;
 
-                _ctx._camera.ResetVerticalShift();
                 _ctx._camera.ResetPostion();
                 SwitchState(_factory.WallJump());  // Switch to WallJump state
 

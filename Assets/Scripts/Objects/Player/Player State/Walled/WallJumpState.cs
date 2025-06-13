@@ -21,7 +21,8 @@ public class WallJumpState : BaseState
         _ctx.AudioSource.clip = _ctx.AudioClips[0];
         _ctx.AudioSource.Play();
 
-        if(!_ctx.HasWallJumpCombo && Mathf.Abs(_ctx.Rb.velocity.y) > 1)_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.Rb.velocity.y/Mathf.Log10(Mathf.Abs(_ctx.Rb.velocity.y*10)));
+        if(!_ctx.HasWallJumpCombo && Mathf.Abs(_ctx.Rb.velocity.y) > 1)
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, _ctx.Rb.velocity.y/Mathf.Log10(Mathf.Abs(_ctx.Rb.velocity.y*10)));
         else if(_ctx.HasWallJumpCombo)_ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x * 1.5f, _ctx.Rb.velocity.y);
         
         //Debug.Log("WALLJUMP");
@@ -104,8 +105,12 @@ public class WallJumpState : BaseState
 
         if(_ctx.Rb.velocity.y <= 0) _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
 
+        horizontalJumpForce = _ctx.XInput == 0 ? horizontalJumpForce : Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.transform.localScale.x) ? horizontalJumpForce - (_ctx.PlayerData.MaxSpeed/2) : horizontalJumpForce + (_ctx.PlayerData.MaxSpeed / 4);
+
     // Update the rigidbody's velocity for wall jumping
-        _ctx.Rb.velocity = new Vector2((horizontalJumpForce - Mathf.Abs(_ctx.Rb.velocity.x/10)) * wallJumpDirection, verticalJumpForce + _ctx.Rb.velocity.y + Mathf.Abs(_ctx.Rb.velocity.x/10));
+        _ctx.Rb.velocity = 
+            new Vector2((horizontalJumpForce - Mathf.Abs(_ctx.Rb.velocity.x/10)) * wallJumpDirection, 
+            verticalJumpForce + _ctx.Rb.velocity.y + Mathf.Abs(_ctx.Rb.velocity.x/10));
 
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
         _ctx.Flip();

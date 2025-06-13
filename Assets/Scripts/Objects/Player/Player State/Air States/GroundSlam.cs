@@ -10,7 +10,7 @@ public class GroundSlamState : BaseState
 
     public override void EnterState()
     {
-        
+        _ctx._camera.IsDiving = true;
         if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[5].name);
 
         _ctx.AudioSource.clip = _ctx.AudioClips[1];
@@ -29,14 +29,12 @@ public class GroundSlamState : BaseState
             initialVelocity = _ctx.Rb.velocity.x;
         }
 
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, -_ctx.PlayerData.ClampedVelocity/2);
 
     }
 
     public override void UpdateState(){
 
-        
-
-        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -6, 0.0125f);
 
 
         _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 2 - _ctx.PlatformVelocityY), 0));  
@@ -50,6 +48,8 @@ public class GroundSlamState : BaseState
         if(Mathf.Sign(_ctx.XInput) == Mathf.Sign(initialVelocity) && _ctx.XInput != 0)_ctx.Rb.velocity = new Vector2(initialVelocity, _ctx.Rb.velocity.y/2);
 
         _stateTimeCounter = 0;
+
+        _ctx._camera.IsDiving = false;
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 

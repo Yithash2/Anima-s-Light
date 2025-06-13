@@ -5,23 +5,25 @@ using UnityEngine;
 public class cam : MonoBehaviour
 {
     #region Input
-    GameObject player;
+    PlayerStateMachine player;
     [field: SerializeField] public Vector3 offset { get; private set; }
     [SerializeField] float smoothSpeed = 0.125f;  // Smooth speed for transition
-    [SerializeField] float moveShiftMultX;
-    [SerializeField] float moveShiftMultY;
+    [SerializeField] float sideOffset;
     [SerializeField] Animator animator;
 
+    float _playerSide;
     public Animator CamAnimator { get { return animator; } }
 
-    public float verticalShift;
+    float _smoothSpeed;
+
 
     [SerializeField] bool _isLerping;
 
-    float initialOffsetY;
-    #endregion
+    public bool IsFalling = false;
 
-    [field: SerializeField] public GameObject Background { get; private set; }
+    public bool IsDiving = false;
+
+    #endregion
 
     // Camera boundaries in screen space (0 to 1 for normalized coordinates)
     [SerializeField] float leftBound = 0.2f;   // Left boundary (as a fraction of screen width)
@@ -32,8 +34,9 @@ public class cam : MonoBehaviour
 
     void Start()
     {
-        player = PlayerStateMachine.Instance.gameObject;
-        initialOffsetY = offset.y;
+        _smoothSpeed = smoothSpeed;
+        player = PlayerStateMachine.Instance;
+        _playerSide = -player.transform.localScale.x;
     }
 
     void FixedUpdate()
@@ -42,8 +45,8 @@ public class cam : MonoBehaviour
         // Determine the desired position (based on player position and the offset)
         Vector3 desiredPosition = player.transform.position + offset;
 
-        // Get the screen position of the player
-        Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(desiredPosition);
+        // Get the screen position of the player (without offset for bounds calculation)
+        Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(player.transform.position);
 
         // Get the screen dimensions
         float screenWidth = Screen.width;
@@ -59,7 +62,7 @@ public class cam : MonoBehaviour
         // Smoothly follow the player and check if lerping should be active
         if (isPlayerOutsideScreen || _isLerping)
         {
-            // Lerp the camera position to the player's position (smooth transition)
+            // Lerp the camera position to the desired position (smooth transition)
             Vector3 targetPosition = new Vector3(desiredPosition.x, transform.position.y, desiredPosition.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
 
@@ -69,7 +72,7 @@ public class cam : MonoBehaviour
             float innerLeftBoundPx = _innerLeftBound * screenWidth;
             float innerRightBoundPx = _innerRightBound * screenWidth;
 
-            Debug.Log($"{playerScreenPosition.x} - {innerLeftBoundPx} : {playerScreenPosition.x} - {innerRightBoundPx}");
+            // Stop lerping once the player is within the middle horizontal bounds
             if (playerScreenPosition.x >= innerLeftBoundPx && playerScreenPosition.x <= innerRightBoundPx)
             {
                 _isLerping = false;  // Stop lerping once the player is within the middle horizontal bounds
@@ -78,18 +81,31 @@ public class cam : MonoBehaviour
         #endregion
 
         // Always smoothly follow the player's vertical position
-        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, desiredPosition.y, smoothSpeed), transform.position.z);
+        if (!IsFalling)
+        {
+            _smoothSpeed = smoothSpeed;
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, desiredPosition.y, smoothSpeed), transform.position.z);
+        }
+        else
+        {
+            _smoothSpeed = Mathf.Lerp(_smoothSpeed, 1, 8 * Time.deltaTime);
+            //Debug.Log(_smoothSpeed);
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, desiredPosition.y, _smoothSpeed), transform.position.z);
+        }
+            
 
-        offset = Vector3.Lerp(offset, new Vector3(offset.x, verticalShift, offset.z), smoothSpeed);
+        // Handle diving logic
+        if (IsDiving)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -10), 3 * Time.deltaTime);
+        }
     }
+
+
 
     public void ResetPostion()
     {
         _isLerping = true;
     }
 
-    public void ResetVerticalShift()
-    {
-        offset = new Vector3(offset.x, 0, offset.z);
-    }
 }

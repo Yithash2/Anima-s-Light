@@ -41,11 +41,8 @@ public class DashState : BaseState{
         
     }
 
-    public override void UpdateState(){      
-
+    public override void UpdateState(){
         _stateTimeCounter += Time.fixedDeltaTime;
-
-        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
 
         if (_stateTimeCounter >= _stateTimer/2){
             if(-Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.Rb.velocity.x) 
@@ -93,10 +90,8 @@ public class DashState : BaseState{
 
     public override void CheckSwitchState()
     {
-        if(_ctx.Rb.velocity.x < horizontalJumpForce/3 && _ctx.IsSpaced()){
-            _stateTimeCounter = 100f;
-        }else if(_ctx.IsWalled()){
-            if(!_ctx.JumpPressed){
+        if(_ctx.IsWalled()){
+            if(!_ctx.JumpReleased){
                 _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
                 _ctx.DashCounter = 0;
                 _ctx.StartWallJumpComboCoroutine(0.5f);

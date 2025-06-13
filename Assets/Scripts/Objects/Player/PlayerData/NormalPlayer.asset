@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalPlayer
   m_EditorClassIdentifier: 
   initalJumpHeight: 6
-  wallJumpHeight: 4
+  wallJumpHeight: 5
   wallJumpLength: 8
   gravityMult: 2
   groundSlamMult: 6

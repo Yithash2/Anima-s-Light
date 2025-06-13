@@ -74,6 +74,7 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     {
         if(Spawnpoint == null)
         {
+            if(GameObject.FindGameObjectsWithTag("RespawnPoint").Length > 0)
         Spawnpoint = GameObject.FindGameObjectsWithTag("RespawnPoint")[0].transform;
 
         }

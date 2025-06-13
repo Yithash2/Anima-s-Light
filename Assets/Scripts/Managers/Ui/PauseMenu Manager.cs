@@ -30,6 +30,9 @@ public class PauseMenuManager : MonoBehaviour
     void Start()
     {
         _eventSystem = EventSystem.current;
+        InputsManager.Instance.Echap.started += Echap;
+        InputsManager.Instance.Echap.performed += Echap;
+        InputsManager.Instance.Echap.canceled += Echap;
     }
 
     // Update is called once per frame
@@ -77,13 +80,6 @@ public class PauseMenuManager : MonoBehaviour
 
     public void Resume(){
         StartCoroutine(ClosePanel());
-    }
-
-    void OnEnable()
-    {
-        InputsManager.Instance.Echap.started += Echap;
-        InputsManager.Instance.Echap.performed += Echap;
-        InputsManager.Instance.Echap.canceled += Echap;
     }
 
     void OnDisable()

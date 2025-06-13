@@ -27,6 +27,9 @@
   <property name="X" type="float" default="0"/>
   <property name="Y" type="float" default="0"/>
  </objecttype>
+ <objecttype name="OneWayPlatform" color="#aa5500">
+  <property name="IsPassable" type="bool" default="false"/>
+ </objecttype>
  <objecttype name="RandomHouse" color="#482400">
   <property name="HouseIndex" type="int" default="-1"/>
  </objecttype>
@@ -35,10 +38,10 @@
   <property name="RandomSize" type="bool" default="false"/>
   <property name="Size" type="float" default="0"/>
  </objecttype>
- <objecttype name="Teleporter" color="#0055ff">
-  <property name="Location" type="object" default="0"/>
- </objecttype>
  <objecttype name="RandomTree" color="#a0a0a4">
   <property name="TreeIndex" type="int" default="-1"/>
+ </objecttype>
+ <objecttype name="Teleporter" color="#0055ff">
+  <property name="Location" type="object" default="0"/>
  </objecttype>
 </objecttypes>

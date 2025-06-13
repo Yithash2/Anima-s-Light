@@ -123,6 +123,12 @@ MonoBehaviour:
     - m_Name: Y
       m_Type: float
       m_Value: 0
+  - m_Name: OneWayPlatform
+    m_Color: {r: 0.6666667, g: 0.33333334, b: 0, a: 1}
+    m_CustomProperties:
+    - m_Name: IsPassable
+      m_Type: bool
+      m_Value: false
   - m_Name: RandomHouse
     m_Color: {r: 0.28235295, g: 0.14117648, b: 0, a: 1}
     m_CustomProperties:
@@ -141,18 +147,18 @@ MonoBehaviour:
     - m_Name: Size
       m_Type: float
       m_Value: 0
-  - m_Name: Teleporter
-    m_Color: {r: 0, g: 0.33333334, b: 1, a: 1}
-    m_CustomProperties:
-    - m_Name: Location
-      m_Type: object
-      m_Value: 0
   - m_Name: RandomTree
     m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
     m_CustomProperties:
     - m_Name: TreeIndex
       m_Type: int
       m_Value: -1
+  - m_Name: Teleporter
+    m_Color: {r: 0, g: 0.33333334, b: 1, a: 1}
+    m_CustomProperties:
+    - m_Name: Location
+      m_Type: object
+      m_Value: 0
   m_PrefabReplacements:
   - m_TypeName: JumpBooster
     m_Prefab: {fileID: 5230008336997241329, guid: 1e73f2f851b0422418df66ca2a5b6664, type: 3}
@@ -180,3 +186,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 5073120416503155770, guid: 434c74f3b0ed029489a408f676ba3dcc, type: 3}
   - m_TypeName: RandomHouse
     m_Prefab: {fileID: 5285938922163676953, guid: aeb1cbef3dc43954586f6108ffec328b, type: 3}
+  - m_TypeName: OneWayPlatform
+    m_Prefab: {fileID: 280355811924090651, guid: 1be5efdcb0938d34ca414dd6bc4b7c94, type: 3}

@@ -29,7 +29,6 @@ public class GroundState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, 5, 0.125f);
 
         _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime ,_ctx.PlayerData.GroundAccelTime, 0.2f);
 

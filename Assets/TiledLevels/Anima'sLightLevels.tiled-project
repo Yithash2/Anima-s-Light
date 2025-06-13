@@ -199,6 +199,31 @@
             ]
         },
         {
+            "color": "#ffaa5500",
+            "drawFill": true,
+            "id": 18,
+            "members": [
+                {
+                    "name": "IsPassable",
+                    "type": "bool",
+                    "value": false
+                }
+            ],
+            "name": "OneWayPlatform",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
             "color": "#ff482400",
             "drawFill": true,
             "id": 17,
@@ -246,24 +271,6 @@
             ]
         },
         {
-            "color": "#ff0055ff",
-            "drawFill": true,
-            "id": 9,
-            "members": [
-                {
-                    "name": "Location",
-                    "type": "object",
-                    "value": 0
-                }
-            ],
-            "name": "Teleporter",
-            "type": "class",
-            "useAs": [
-                "object",
-                "tile"
-            ]
-        },
-        {
             "color": "#ffa0a0a4",
             "drawFill": true,
             "id": 14,
@@ -275,6 +282,24 @@
                 }
             ],
             "name": "RandomTree",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff0055ff",
+            "drawFill": true,
+            "id": 9,
+            "members": [
+                {
+                    "name": "Location",
+                    "type": "object",
+                    "value": 0
+                }
+            ],
+            "name": "Teleporter",
             "type": "class",
             "useAs": [
                 "object",

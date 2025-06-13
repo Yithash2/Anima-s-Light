@@ -78,14 +78,14 @@ public class MovingPlatforms : MonoBehaviour
     IEnumerator MomentumStorage()
     {
         _sprite.color = Color.cyan;  // Change color to indicate waiting
-        yield return new WaitForSeconds(0.2f); // Wait for 0.2 seconds
+        yield return new WaitForSeconds(1f); // Wait for 0.2 seconds
         _sprite.color = Color.white; // Reset the color
         _direction = Vector2.zero;   // Reset the direction
     }
 
 
     void OnCollisionEnter2D(Collision2D collision){
-        collision.transform.parent.parent = transform;
+        if(_friction != 0)collision.transform.parent.parent = transform;
 
     }
 
@@ -94,6 +94,7 @@ public class MovingPlatforms : MonoBehaviour
     }
 
     void OnCollisionExit2D(Collision2D collision){
+        if (_friction == 0) return;
 
             collision.transform.parent.parent = null;
             if (collision.gameObject.CompareTag("Player")){

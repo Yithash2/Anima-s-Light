@@ -15,6 +15,8 @@ public class OneWayPlatform : MonoBehaviour
 
     [SerializeField] bool _isPassable = true;
 
+    public bool IsPassable { set { _isPassable = value; } }
+
     void Start()
     {
         player = PlayerStateMachine.Instance;

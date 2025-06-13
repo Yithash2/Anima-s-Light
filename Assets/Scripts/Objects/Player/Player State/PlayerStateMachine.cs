@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
+
 #if UNITY_EDITOR
     using UnityEditor;
 #endif
@@ -79,6 +81,10 @@ public class PlayerStateMachine : MonoBehaviour
     private float _accelerationTime;
     [SerializeField, Range(0.01f, 1)] private float _airDrag;
 
+    [SerializeField] GameObject _speedLines;
+
+    [SerializeField] GameObject _explosion;
+
     public cam _camera;
     //Inputs
     bool _jumpPressed;
@@ -119,6 +125,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool CanSuffocate = true;
 
+    [SerializeField] private Transform _autostepBottomCheck;
+    [SerializeField] private Transform _autostepBottomAirCheck;
+    [SerializeField] private Transform _autostepTopCheck;
+    [SerializeField] private Transform _autostepTopAirCheck;
+
+    private Transform _currenTopAutostepCheck;
+    private Transform _currentBottomAutostepCheck;
 
     #region Get Sets
     public FXManager FxManager{get {return _fxManager;}}
@@ -160,14 +173,23 @@ public class PlayerStateMachine : MonoBehaviour
     public float CoyoteCounter {get {return _coyoteCounter;} set {_coyoteCounter = value;}}
     public BaseState CurrentState {get {return _currentState;} set { _currentState = value;}}
     public Transform PlayerTransform {get {return _playerTransform;}}
-    public float YCamOffcet {get {return _camera.verticalShift;} set{_camera.verticalShift = value;}}
     public bool IsDead {get {return _isDead;} set {_isDead = value;}}
     public bool JumppReleasedT { get { return _jumpReleased; } }
+
+    public int NumberOfTimeStopped { get; private set; }
+    [SerializeField] private float _timeStopCooldownTimer = 5;
+    private float _timeStoperCooldownCounter = 0;
 
     Transform _playerTransform;
     public bool UpdateStates { get; private set; } = true;
 
     public string _deadlyTag;
+
+    private void OnValidate()
+    {
+        _currenTopAutostepCheck = _autostepTopCheck;
+        _currentBottomAutostepCheck = _autostepBottomCheck;
+    }
     #endregion
 
     public static PlayerStateMachine Instance {get; private set;}
@@ -225,6 +247,13 @@ public class PlayerStateMachine : MonoBehaviour
             _jumpCount = 0;
         }
 
+        if (CanAutoStep() && _xInput != 0 && (_isDashing || _rb.velocity.y < 5))
+        {
+            AutoStep();
+            _rb.velocity = new Vector2(Mathf.Sign(_xInput) * 10, _rb.velocity.y);
+        }
+
+
         //if(_rb.velocity.y < 0 && _isJumping) _isJumping = false;
 
         Inputs();
@@ -245,19 +274,28 @@ public class PlayerStateMachine : MonoBehaviour
 
         var emission = _speedlines.emission;
         emission.enabled = Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45;
-    
 
+        if (_timeStoperCooldownCounter < _timeStopCooldownTimer) _timeStoperCooldownCounter += Time.fixedUnscaledDeltaTime;
+        else if(NumberOfTimeStopped != 0)
+        {
+            NumberOfTimeStopped--;
+            _timeStoperCooldownCounter = 0;
+        }
     }
 
     public void HitStop(float speedRequired, float stopedTime){
-        if(Mathf.Abs(_rb.velocity.x) > speedRequired){
+        if(Mathf.Abs(_rb.velocity.magnitude) > speedRequired){
+            Instantiate(_explosion, transform.position, Quaternion.identity);
             StartCoroutine(SpeedFreeze(stopedTime));
+            NumberOfTimeStopped = NumberOfTimeStopped >= 5 ? 5 : NumberOfTimeStopped+1;
+            _timeStoperCooldownCounter = 0;
         }
     }
 
     IEnumerator SpeedFreeze(float stopedTime){
         float _realTilemScale = 1;
-        Time.timeScale = 0;
+        Time.timeScale = 0.55f - (0.1f * NumberOfTimeStopped);
+        Debug.Log(Time.timeScale);
         yield return new WaitForSecondsRealtime(stopedTime);
         Time.timeScale = _realTilemScale;
     }
@@ -310,7 +348,6 @@ public class PlayerStateMachine : MonoBehaviour
         if (!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
             _animator.Play("Death");        
             _camera.CamAnimator.Play("Cam zoom");
-            _camera.ResetVerticalShift();
             _camera.ResetPostion();
         }
         
@@ -536,9 +573,15 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsCeilled(){
         return Physics2D.OverlapBox(_ceilingCheck.position, _ceilingCheckSize, 0, GroundLayer);
     }
-    public bool IsWalled(){
+    /*public bool IsWalled(){
         
         return Physics2D.OverlapBox(wallCheck.position, wallSize, 0, wallLayer);
+    }*/
+
+    public bool IsWalled()
+    {
+
+        return Physics2D.OverlapCircle(_autostepBottomCheck.position, 0.1f, GroundLayer) && Physics2D.OverlapCircle(_autostepTopAirCheck.position, 0.1f, GroundLayer);
     }
 
     public bool CanMove(){
@@ -571,11 +614,26 @@ public class PlayerStateMachine : MonoBehaviour
 
         //Debug.Log(_airDashCounter.ToString() + ","+ _numberOfAirDash.ToString());
     }
+
+    public bool CanAutoStep()
+    {
+        _currentBottomAutostepCheck = IsGrounded() || IsDashing ? _autostepBottomCheck : _autostepBottomAirCheck; 
+        _currenTopAutostepCheck = IsGrounded() || IsDashing ? _autostepTopCheck : _autostepTopAirCheck;
+        return Physics2D.OverlapCircle(_currentBottomAutostepCheck.position, 0.1f, GroundLayer) && !Physics2D.OverlapCircle(_currenTopAutostepCheck.position, 0.1f);
+    }
+
+    public void AutoStep()
+    {
+        transform.position = new Vector3(transform.position.x, _currenTopAutostepCheck.position.y, transform.position.z);
+    }
+
+
+
+
+
     void OnDrawGizmos(){
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(_suffocationCheck.position,_suffocationRadius);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(wallCheck.position, wallSize);
+        Gizmos.DrawWireSphere(_suffocationCheck.position,_suffocationRadius);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(_groundCheck.position, _checkSize);
         Gizmos.color = Color.black;
@@ -583,8 +641,16 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(_ceilingCheck.position, _ceilingCheckSize);
 
-        #if UNITY_EDITOR
-            if(_currentState != null)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_currentBottomAutostepCheck.position, 0.1f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(_currenTopAutostepCheck.position, 0.1f);
+
+
+
+
+#if UNITY_EDITOR
+        if (_currentState != null)
             Handles.Label(transform.position + new Vector3(-2, 4, 0), _currentState.CurrentStates());
         #endif
     }

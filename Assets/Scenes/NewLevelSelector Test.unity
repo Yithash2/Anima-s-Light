@@ -205,6 +205,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 955077499269049191, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
+      propertyPath: sideOffset
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 955077499269049191, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
+      propertyPath: _innerLeftBound
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 955077499269049191, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
+      propertyPath: _innerRightBound
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 955077499269049191, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
+      propertyPath: <offset>k__BackingField.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1168957512571582378, guid: d3de4b21fe0fe4141b5f676060715685, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
       value: 2

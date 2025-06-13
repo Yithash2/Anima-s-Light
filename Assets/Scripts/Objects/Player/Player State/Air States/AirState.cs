@@ -27,15 +27,12 @@ public class AirState : BaseState
 
     public override void EnterState()
     {
-
-        
+        _ctx._camera.IsFalling = true;
+        _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
     }
 
     public override void UpdateState()
     { 
-
-        _ctx.YCamOffcet = Mathf.Lerp(_ctx.YCamOffcet, -3, 0.05f);
-
 
         if(_ctx.IsCeilled() && !_hasCeilled  && _ctx.JumpPressed){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
@@ -55,6 +52,8 @@ public class AirState : BaseState
     public override void QuitState()
     {
         _hasCeilled = false;
+        _ctx._camera.IsFalling = false;
+        _ctx.Rb.gravityScale = _ctx.GravityScale;
     }
 
     public override void CheckSwitchState()
@@ -63,7 +62,7 @@ public class AirState : BaseState
             SwitchState(_factory.Wet());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.IsWalled() && (_ctx.IsWallJumping || ((_ctx.XInput != 0 || _ctx.Rb.velocity.x != 0 || _ctx.Rb.velocity.y < 0) && -Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.Rb.velocity.x)))){
+        }else if(_ctx.IsWalled() && (_ctx.IsWallJumping || (_ctx.XInput != 0))){
             SwitchState(_factory.Walled());
         }
     }
