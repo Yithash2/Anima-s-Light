@@ -184,7 +184,7 @@ TextureImporter:
       name: st2u_x0y32-w16h16
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 16
         height: 16
@@ -706,27 +706,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: st2u_x32y32-w16h16
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d367ffe5cb8924947b10540aa17ef90f
-      internalID: 2067882180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: st2u_x80y48-w16h16
       rect:
         serializedVersion: 2
@@ -768,6 +747,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: st2u_x32y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b6130445a74584398dac37768ffbe6
+      internalID: 1773893978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -793,7 +793,7 @@ TextureImporter:
       st2u_x16y48-w16h16: 180642204
       st2u_x32y0-w16h16: 1571339484
       st2u_x32y16-w16h16: -1538975599
-      st2u_x32y32-w16h16: 2067882180
+      st2u_x32y32-w16h16: 1773893978
       st2u_x32y48-w16h16: 643832973
       st2u_x48y0-w16h16: 1709312446
       st2u_x48y16-w16h16: 274804042

@@ -1,0 +1,143 @@
+using UnityEngine;
+using System.Collections;
+using Unity.VisualScripting;
+public class CDashState : BaseState{
+    
+    public CDashState(PlayerStateMachine currentContext, StateFactory stateFactory)
+    :base (currentContext, stateFactory){
+        _stateTimer = 0.5f;
+    }
+
+    bool _hasCeilled;
+
+    float horizontalJumpForce;
+    public override void EnterState()
+    {   
+        
+        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[2].name);
+        _ctx.AudioSource.clip = _ctx.AudioClips[0];
+
+        _stateTimeCounter = 0f;
+
+        _ctx.DrowningCounter += _ctx.DrowningCounter / 10f;
+
+        _ctx.AudioSource.Play();
+        _ctx.Rb.drag = 0f;
+
+        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
+
+        if(_hasCeilled){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _hasCeilled = false;
+            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -150, 150),_ctx.Rb.velocity.y);   
+        }
+
+        HandleJumpStart();
+        
+    }
+
+    public override void UpdateState(){
+        _stateTimeCounter += Time.fixedDeltaTime;
+        
+        if (_ctx.IsTouchingGround())
+        {
+            _stateTimeCounter = 100f;
+        }
+
+        CheckSwitchState();
+
+
+        if (_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
+            _ctx.HitStop(0f, 0.2f);
+            _hasCeilled = true;
+        }
+
+        _ctx.Rb.drag = Mathf.Lerp(0, 4, StateTimeCounter / StateTimer);
+        
+        if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
+            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
+        }
+
+        if(_ctx.DrowningCounter >= _ctx.DrowningTime)
+        {
+            _stateTimeCounter = _stateTimer;
+        }
+    }
+
+    public override void QuitState()
+    {
+
+        _stateTimeCounter = 100f;
+
+        _hasCeilled = false;
+
+        _ctx.IsDashing = false;
+
+    }
+
+    public override void CheckSwitchState()
+    {
+        if(_ctx.IsWalled() && !_ctx.IsSpaced()){
+            if(!_ctx.JumpReleased){
+                _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
+                _ctx.DashCounter = 0;
+                _ctx.StartWallJumpComboCoroutine(0.5f);
+                _ctx.WallJumpCombo = true;
+                SwitchState(_factory.WallJump());
+            }
+
+            _stateTimeCounter = 100f;
+        }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
+                SwitchState(_factory.SeaDash());
+        }else if(_stateTimeCounter >= _stateTimer){
+            if (!_ctx.JumpReleased || _ctx.XInput != 0 || _ctx.DivePressed){
+                SwitchState(_factory.Swimming());
+                return;
+            }
+            SwitchState(_factory.Sinking());
+        }
+    }
+
+    public override void InitialiseSubState()
+    {
+
+    }
+
+    void HandleJumpStart(){
+
+        if(_ctx.StoredVelocity.y < 0){
+            _ctx.StoredVelocity = Vector2.zero;
+        }
+
+        _ctx.JumpPressed = false;
+
+        _ctx.IsDashing = true;
+
+        _ctx.DashCounter = 100000;
+
+        _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
+        
+        _ctx.BufferCounter = 0;
+       
+        float gravity = Physics2D.gravity.y * _ctx.Rb.gravityScale;
+
+        float verticalJumpForce = Mathf.Sqrt((3 + _ctx.StoredVelocity.y) * -2 * gravity);
+        float timeToPeak = verticalJumpForce / Mathf.Abs(gravity);
+        float totalTimeInAir = 2 * timeToPeak;
+        horizontalJumpForce = ((20) + _ctx.StoredVelocity.x) / totalTimeInAir;
+
+        
+        if(_ctx.Rb.velocity.y < 0){
+            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        }
+        
+
+        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * _ctx.XInput , verticalJumpForce);
+
+    }
+
+
+
+
+}

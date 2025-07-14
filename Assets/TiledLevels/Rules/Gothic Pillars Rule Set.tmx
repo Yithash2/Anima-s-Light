@@ -125,6 +125,12 @@
   </data>
  </layer>
  <layer id="3" name="output_ground" width="30" height="20" visible="0">
+  <properties>
+   <property name="unity:SortingLayer" value="Floor"/>
+   <property name="unity:SortingOrder" type="int" value="20"/>
+   <property name="unity:ignore" value="Collision"/>
+   <property name="unity:layer" value="Ground"/>
+  </properties>
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

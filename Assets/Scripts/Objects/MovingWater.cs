@@ -20,6 +20,7 @@ public class MovingWater : MonoBehaviour
     public float Height { set {
             Vector2 Size = new Vector2(_collider.size.x, value/16);
             _collider.size = Size;
+            transform.position -= new Vector3(0, value / 16f / 2f);
         } }
 
     public float Width
@@ -28,6 +29,7 @@ public class MovingWater : MonoBehaviour
         {
             Vector2 Size = new Vector2(value/16, _collider.size.y);
             _collider.size = Size;
+            transform.position += new Vector3(value / 16f / 2f, 0);
         }
     }
 
@@ -40,10 +42,9 @@ public class MovingWater : MonoBehaviour
         shape.position = _collider.offset;
 
         var vel = _particleSystem.velocityOverLifetime;
-        Vector3 dir = _direction.normalized * _speed;
-        vel.x = -Mathf.Pow(1f/2f,(dir.x-355.49841f)/58) + 70;
-        vel.y = -Mathf.Pow(1f/2f,(dir.y-355.49841f)/58) + 70;
-        vel.orbitalYMultiplier = 0;
+        Vector3 dir = _direction.normalized * (-Mathf.Exp(2.3f-_speed/10f) + 10);
+        vel.x = dir.x;
+        vel.y = dir.y;
         vel.orbitalXMultiplier = 0;
 
         var em = _particleSystem.emission;
@@ -55,6 +56,40 @@ public class MovingWater : MonoBehaviour
             vel.orbitalYMultiplier = -0.2f;
             vel.orbitalXMultiplier = -0.2f;
 
+        }
+
+        var trigger = _particleSystem.trigger;
+
+        // Helper: Add collider if not already present
+        void AddColliderIfNotExists(Component col)
+        {
+            if (col == null) return;
+
+            bool alreadyAdded = false;
+            for (int i = 0; i < trigger.colliderCount; i++)
+            {
+                if (trigger.GetCollider(i) == col)
+                {
+                    alreadyAdded = true;
+                    break;
+                }
+            }
+
+            if (!alreadyAdded)
+            {
+                trigger.AddCollider(col);
+            }
+        }
+
+        // Add this object's own collider
+        AddColliderIfNotExists(_collider);
+
+        // Add Water object's CompositeCollider2D
+        var compCollObj = GameObject.Find("Water");
+        if (compCollObj != null)
+        {
+            var compColl = compCollObj.GetComponent<CompositeCollider2D>();
+            AddColliderIfNotExists(compColl);
         }
 
         _direction.Normalize();

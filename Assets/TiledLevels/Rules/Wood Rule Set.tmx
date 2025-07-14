@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="3" nextobjectid="1">
  <tileset firstgid="1" source="../Wood based tiles.tsx"/>
  <tileset firstgid="49" source=":/automap-tiles.tsx"/>
  <layer id="1" name="input_prototype" width="30" height="20" opacity="0.4">
@@ -101,6 +101,8 @@
  </layer>
  <layer id="2" name="output_ground" width="30" height="20">
   <properties>
+   <property name="unity:SortingLayer" value="Floor"/>
+   <property name="unity:SortingOrder" type="int" value="20"/>
    <property name="unity:ignore" value="Collision"/>
    <property name="unity:layer" value="Ground"/>
   </properties>

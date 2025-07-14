@@ -11,9 +11,11 @@ public class DashState : BaseState{
     bool _hasCeilled;
 
     float horizontalJumpForce;
+
+    float xCoord;
     public override void EnterState()
-    {   
-        
+    {
+        xCoord = _ctx.transform.position.x;
         
         _ctx.HitStop(50f, 0.3f);
         
@@ -85,6 +87,8 @@ public class DashState : BaseState{
         _hasCeilled = false;
 
         _ctx.IsDashing = false;
+
+        Debug.Log($"You Bashed : {Mathf.Abs(xCoord - _ctx.transform.position.x)} Unit");
 
     }
 

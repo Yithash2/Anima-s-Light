@@ -31,6 +31,7 @@ public class StateFactory
             _states["wet"] = new WetState(_context, this);
             _states["swim"] = new SwimState(_context, this);
             _states["sink"] = new SinkState(_context, this);
+            _states["cDash"] = new CDashState(_context, this);
         #endregion
 
         #region Air States
@@ -105,6 +106,11 @@ public class StateFactory
         public BaseState Sinking(){
             return _states["sink"];
         }
+
+        public BaseState SeaDash()
+    {
+        return _states["cDash"];
+    }
     #endregion
 
     #region Air States

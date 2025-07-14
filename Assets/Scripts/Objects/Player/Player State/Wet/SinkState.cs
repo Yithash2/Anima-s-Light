@@ -24,7 +24,14 @@ public class SinkState : BaseState
 
     public override void CheckSwitchState()
     {
-        if(_ctx.XInput != 0 || _ctx.JumpPressed) SwitchState(_factory.Swimming());
+        if (_ctx.DivePressed && _ctx.XInput != 0 && _ctx.JumpPressed && _ctx.IsTouchingGround())
+        {
+            SwitchState(_factory.SeaDash());
+        }
+        else if (_ctx.XInput != 0 || !_ctx.JumpReleased || _ctx.DivePressed) { 
+            
+            SwitchState(_factory.Swimming()); 
+        }
         
     }
 

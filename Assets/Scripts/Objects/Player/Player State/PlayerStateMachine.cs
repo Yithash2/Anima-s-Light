@@ -474,6 +474,7 @@ public class PlayerStateMachine : MonoBehaviour
     public void Dive(InputAction.CallbackContext ctx){
         if (!UpdateStates)
         {
+            Debug.LogWarning("Dive in unenabled");
             _divePressed = false;
             return;
         }

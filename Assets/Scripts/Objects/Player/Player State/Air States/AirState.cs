@@ -27,6 +27,7 @@ public class AirState : BaseState
 
     public override void EnterState()
     {
+        if (!_ctx.IsAnimating("Respawn"))  _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx._camera.IsFalling = true;
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
     }

@@ -7,7 +7,7 @@ public class WalledState : BaseState
         _isRootState = true;
     }
 
-    float _directionTimer = 0.15f;
+    float _directionTimer = 0.3f;
     float _directionTime = 0;
 
     public override void EnterState()
@@ -63,7 +63,6 @@ public class WalledState : BaseState
 
     bool NoInput()
     {
-        Debug.Log(_directionTimer < _directionTime);
         return _directionTime >= _directionTimer;
     }
 }
