@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="4" nextobjectid="1">
- <tileset firstgid="1" source="../Temple Walls and Roof.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/Temple Walls and Roof.tsx"/>
  <tileset firstgid="33" source=":/automap-tiles.tsx"/>
- <tileset firstgid="38" source="../mini_deny_tilemap5.tsx"/>
+ <tileset firstgid="38" source="../Tilesets/mini_deny_tilemap5.tsx"/>
  <tileset firstgid="310" source="../Tilesets/Temple_Pillar.tsx"/>
- <tileset firstgid="374" source="../Bricks.tsx"/>
+ <tileset firstgid="374" source="../Tilesets/Bricks.tsx"/>
  <layer id="1" name="input_prototype" width="30" height="20">
   <data encoding="csv">
    <chunk x="-16" y="0" width="16" height="16">

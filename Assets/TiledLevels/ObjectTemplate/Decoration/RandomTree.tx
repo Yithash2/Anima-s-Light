@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../../Tree.tsx"/>
+ <tileset firstgid="1" source="../../Tilesets/Tree.tsx"/>
  <object type="RandomTree" gid="1" width="512" height="512">
   <properties>
    <property name="TreeIndex" type="int" value="-1"/>

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Level 1
-  <SceneName>k__BackingField: Level 1_2
+  <SceneName>k__BackingField: Level 1
   <ActivateSprite>k__BackingField: {fileID: 1349037421, guid: 47af60b891a38224c800c51ed58ec0ed, type: 3}
   <SpriteDesabledSprite>k__BackingField: {fileID: 1096717019, guid: 47af60b891a38224c800c51ed58ec0ed, type: 3}
   <WonSprite>k__BackingField: {fileID: 78588279, guid: 47af60b891a38224c800c51ed58ec0ed, type: 3}

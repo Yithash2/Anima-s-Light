@@ -42,7 +42,6 @@ public class DialogManager : MonoBehaviour
         _currentDialog = diag;
         _lineIndex = 0;
         NextLine();
-        Debug.Log("fjjfjfv");
     }
 
     [ContextMenu("NL")]

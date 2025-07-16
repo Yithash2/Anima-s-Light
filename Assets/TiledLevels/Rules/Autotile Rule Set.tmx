@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="13" nextobjectid="1">
- <tileset firstgid="1" source="../Deny Phase 1-2 Transition.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/Deny Phase 1-2 Transition.tsx"/>
  <tileset firstgid="67" source=":/automap-tiles.tsx"/>
- <tileset firstgid="72" source="../mini_deny_tilemap5.tsx"/>
- <tileset firstgid="344" source="../Bricks.tsx"/>
+ <tileset firstgid="72" source="../Tilesets/mini_deny_tilemap5.tsx"/>
+ <tileset firstgid="344" source="../Tilesets/Bricks.tsx"/>
  <layer id="10" name="input_prototype" width="30" height="20" offsetx="0" offsety="-2">
   <properties>
    <property name="AutoEmpty" type="bool" value="true"/>

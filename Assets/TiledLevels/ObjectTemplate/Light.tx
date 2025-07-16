@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../Utilitaries.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/Utilitaries.tsx"/>
  <object type="CustomLight" gid="1" width="16" height="16">
   <properties>
-   <property name="Color" type="color" value="#ffff0000"/>
+   <property name="Color" type="color" value="#ff00ff00"/>
+   <property name="FallofStr" type="float" value="0.2"/>
+   <property name="InnerRad" type="float" value="1"/>
    <property name="Intensity" type="float" value="5"/>
+   <property name="OuterRad" type="float" value="10"/>
   </properties>
  </object>
 </template>

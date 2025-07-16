@@ -150,6 +150,9 @@ MonoBehaviour:
   - m_Name: RandomTree
     m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
     m_CustomProperties:
+    - m_Name: InFront
+      m_Type: bool
+      m_Value: false
     - m_Name: TreeIndex
       m_Type: int
       m_Value: -1
@@ -160,31 +163,31 @@ MonoBehaviour:
       m_Type: object
       m_Value: 0
   m_PrefabReplacements:
-  - m_TypeName: JumpBooster
-    m_Prefab: {fileID: 5230008336997241329, guid: 1e73f2f851b0422418df66ca2a5b6664, type: 3}
   - m_TypeName: Arrow
     m_Prefab: {fileID: 6987539432335736506, guid: e5020499964068a4181b69ed4635cc05, type: 3}
-  - m_TypeName: checkpoint
-    m_Prefab: {fileID: 2727033422664636564, guid: 84666e092c31bf949b500d87df08898e, type: 3}
-  - m_TypeName: CustomLight
-    m_Prefab: {fileID: 6121176136582357376, guid: a38be05f595a50d418ad5ea8943a0dde, type: 3}
-  - m_TypeName: FellesShadow
-    m_Prefab: {fileID: 7597833322715655242, guid: e33c9233d0f387246ac7eaaa61f28376, type: 3}
-  - m_TypeName: MovingWater
-    m_Prefab: {fileID: 1958544575817510659, guid: aabee3bae1be4434e99847c68219ab0c, type: 3}
-  - m_TypeName: Teleporter
-    m_Prefab: {fileID: 6731154480760583804, guid: aa9b57ae8455b2748a31e4fdf16fea70, type: 3}
   - m_TypeName: Bush - 1
     m_Prefab: {fileID: 9066446299820394247, guid: 430bd1c907bb7d143b1b37f48944df04, type: 3}
   - m_TypeName: Bush - 2
     m_Prefab: {fileID: 6582096940039306535, guid: 47a1c75db3ceef94f8eb22e289163737, type: 3}
   - m_TypeName: Bush - 3
     m_Prefab: {fileID: 8373551771353648313, guid: 2c9b7d6d8de1f3d4cba83631679bbfbc, type: 3}
-  - m_TypeName: RandomTree
-    m_Prefab: {fileID: 3566788423056928129, guid: 6e66bb18ca54b1e49b6e68c9a032c425, type: 3}
-  - m_TypeName: RandomMushroom
-    m_Prefab: {fileID: 5073120416503155770, guid: 434c74f3b0ed029489a408f676ba3dcc, type: 3}
-  - m_TypeName: RandomHouse
-    m_Prefab: {fileID: 5285938922163676953, guid: aeb1cbef3dc43954586f6108ffec328b, type: 3}
+  - m_TypeName: checkpoint
+    m_Prefab: {fileID: 2727033422664636564, guid: 84666e092c31bf949b500d87df08898e, type: 3}
+  - m_TypeName: CustomLight
+    m_Prefab: {fileID: 6121176136582357376, guid: a38be05f595a50d418ad5ea8943a0dde, type: 3}
+  - m_TypeName: FellesShadow
+    m_Prefab: {fileID: 7597833322715655242, guid: e33c9233d0f387246ac7eaaa61f28376, type: 3}
+  - m_TypeName: JumpBooster
+    m_Prefab: {fileID: 5230008336997241329, guid: 1e73f2f851b0422418df66ca2a5b6664, type: 3}
+  - m_TypeName: MovingWater
+    m_Prefab: {fileID: 1958544575817510659, guid: aabee3bae1be4434e99847c68219ab0c, type: 3}
   - m_TypeName: OneWayPlatform
     m_Prefab: {fileID: 280355811924090651, guid: 1be5efdcb0938d34ca414dd6bc4b7c94, type: 3}
+  - m_TypeName: RandomHouse
+    m_Prefab: {fileID: 5285938922163676953, guid: aeb1cbef3dc43954586f6108ffec328b, type: 3}
+  - m_TypeName: RandomMushroom
+    m_Prefab: {fileID: 5073120416503155770, guid: 434c74f3b0ed029489a408f676ba3dcc, type: 3}
+  - m_TypeName: Teleporter
+    m_Prefab: {fileID: 6731154480760583804, guid: aa9b57ae8455b2748a31e4fdf16fea70, type: 3}
+  - m_TypeName: RandomTree
+    m_Prefab: {fileID: 3566788423056928129, guid: 6e66bb18ca54b1e49b6e68c9a032c425, type: 3}

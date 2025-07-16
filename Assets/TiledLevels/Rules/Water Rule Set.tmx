@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="9" nextobjectid="1">
- <tileset firstgid="1" source="../Water_Tiles.tsx"/>
- <tileset firstgid="34" source="../Wood based tiles.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/Water_Tiles.tsx"/>
+ <tileset firstgid="34" source="../Tilesets/Wood based tiles.tsx"/>
  <tileset firstgid="82" source=":/automap-tiles.tsx"/>
- <tileset firstgid="87" source="../mini_deny_tilemap5.tsx"/>
+ <tileset firstgid="87" source="../Tilesets/mini_deny_tilemap5.tsx"/>
  <layer id="5" name="input_eau" width="30" height="20">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">

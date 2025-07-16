@@ -108,4 +108,11 @@ public class cam : MonoBehaviour
         _isLerping = true;
     }
 
+    public void ChangeOffset( float y)
+    {
+        if (offset.y == y) return;
+
+        offset = new Vector3(offset.x, y, offset.z);
+    }
+
 }

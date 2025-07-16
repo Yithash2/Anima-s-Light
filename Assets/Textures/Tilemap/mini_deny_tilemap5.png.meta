@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c30243f5c1eaa9c468b19a7275df164c
+guid: a14fac9e909ad04429d381d142994be7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -50,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -93,3045 +93,5717 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mini_deny_tilemap5_0
+      name: st2u_x0y256-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afbd242f4ff9ef5489140a18b27e2fb0
-      internalID: 735637813
+      spriteID: e54bfb8349d0a274cb36981c3a1ba553
+      internalID: 463912253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_1
+      name: st2u_x16y256-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1da65ca6df3eec04382509252f9b5ef4
-      internalID: 730771445
+      spriteID: 56c106fad850f20449d8113b6b6bf8aa
+      internalID: -1483615682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_2
+      name: st2u_x32y256-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d69c394f0faee44428f2b9d09c7df006
-      internalID: 2018811954
+      spriteID: 622f9f7038dc9794fb6680f1ebcab257
+      internalID: 970710656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_3
+      name: st2u_x48y256-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66eef9dae01f3c34e9857156e0593608
-      internalID: -1117628632
+      spriteID: 846f1ece5c77f9a408dfabc448f0d690
+      internalID: -2062569999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_4
+      name: st2u_x64y256-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99613f51cbfda9346b9e2a0dc8aebf95
-      internalID: -503075717
+      spriteID: 2e09e17b4362cdb47ba7fb986c531ff1
+      internalID: 824935179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_5
+      name: st2u_x80y256-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb443df4b9b425649a20c7f4edb76170
-      internalID: 576754862
+      spriteID: 9140ea89b62abeb42946b47bf96d1b0d
+      internalID: -2127077141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_6
+      name: st2u_x96y256-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3c7613c9f1bb9c4dbc7e8ef63cd551a
-      internalID: 1117838496
+      spriteID: 663641e8daee129428abca4498f307d6
+      internalID: 662478952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_7
+      name: st2u_x112y256-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa500a63339da9d48a4080d1991518d1
-      internalID: 302505921
+      spriteID: 5b14e981c8d32654aa53adcabaaeff50
+      internalID: 828390588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_8
+      name: st2u_x128y256-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 256
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d422e45b46904a419dd9bb7dcf9d0eb
-      internalID: -1358297369
+      spriteID: 6a12b3f464c7cf94c8c6096d2d7fa55b
+      internalID: 657192806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_9
+      name: st2u_x144y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554664180993b804f9bdc5f2ff298794
+      internalID: 605683413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d12df4a9954204184d0a695daa3778
+      internalID: -837446129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223077bc1976d984586f344fad2dc5ae
+      internalID: -686699528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e534180378488488b2673c8b52b55c
+      internalID: -1661972794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf00e4d93080744eb0a17ea53dd37aa
+      internalID: 1911488148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d41486b46807b4892a6d324af8626a
+      internalID: 1784685427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y256-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 256
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3724746dac85b448bac6457187770a
+      internalID: -310390256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y240-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df0488e09e47ddd419149fb3cfa996cf
-      internalID: -158935663
+      spriteID: 0fbaeb097d611fb4cb1ec81b767ce04f
+      internalID: -1822193604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_10
+      name: st2u_x16y240-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 305aee4660f1bb443ad334193532e646
-      internalID: 1539543269
+      spriteID: 7d1e533f173614942bf5bec2555aa68a
+      internalID: 1951105077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_11
+      name: st2u_x32y240-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6eea2528caa20e24ba8bff9f1d557324
-      internalID: -678013780
+      spriteID: 833a7b6930e39cd4bb2a7c585c546060
+      internalID: 2146978321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_12
+      name: st2u_x48y240-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51dbc455f62dc0f4b9db74e2eda82f5c
-      internalID: 1333413895
+      spriteID: 942ae3a460b723940885ff16cf99c13c
+      internalID: -1719870249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_13
+      name: st2u_x64y240-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e682fd4fa7552c40a173fc6f79b2ad0
-      internalID: -1861316745
+      spriteID: 57b98ead932a6ad489290e42318460b8
+      internalID: 1028437347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_14
+      name: st2u_x80y240-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a98e428dc4e4d041850b4669ba28388
-      internalID: -1165305545
+      spriteID: c76ca45a7a500614e837e42f0618c8fb
+      internalID: 731153805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_15
+      name: st2u_x96y240-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94447ea6056c97b43bffb5e1029868dd
-      internalID: 1137249994
+      spriteID: c7d7cc359fe1d7d4e9781fe99724bf73
+      internalID: -990253414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_16
+      name: st2u_x112y240-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 573863a855c4d494caaa094b5c94dfda
-      internalID: -556741923
+      spriteID: 481023fdb112cd64792c6223a44c18f8
+      internalID: -1486069970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_17
+      name: st2u_x128y240-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4117a6237968194094982edf25e5bd9
-      internalID: -1412654859
+      spriteID: 4029dbcc03c4f2445829f3b55302fbd7
+      internalID: 1911730760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_18
+      name: st2u_x144y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade39fe340538b54f9e4b3603fee85e1
+      internalID: -1141331970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7cbd4bab1310844ba51512baa14c4f
+      internalID: 779465999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aa07b463a3d58240a49d84b801e3b62
+      internalID: 1067210426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7231ede2b9a519c4bb2f0bfa398dd14e
+      internalID: -611945204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 681be641159774345b7613c0572a33e2
+      internalID: -605497189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 503147109f7c1534690c4b1e4854cff5
+      internalID: -1340542350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y240-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6473f3440457a434d84a3f8cb2110127
+      internalID: -571109612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y224-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 756d794d7229bfc42aeb36aef6cc466f
-      internalID: 1732800905
+      spriteID: 99335f4718facb143a8daf68e358ee4d
+      internalID: -1963208235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_19
+      name: st2u_x16y224-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c589d496c8d5e2b4e94be6079457c251
-      internalID: 192266607
+      spriteID: 9279f85009055f248ae48358e472bc7b
+      internalID: -373667173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_20
+      name: st2u_x32y224-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c647ef6f3a8e51b45937ac4d49e281dc
-      internalID: -2062070502
+      spriteID: 09960f41034fbf340917e1fa7e76c5b2
+      internalID: -1959925417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_21
+      name: st2u_x48y224-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 352f35d72efba1d4c943a1a8f76faef2
-      internalID: -1510227690
+      spriteID: f268c80c2081ec745a5b0d95f8e1120f
+      internalID: -1179552729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_22
+      name: st2u_x64y224-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29a6625a2f65bf940960969feebd2f2f
-      internalID: 1451405030
+      spriteID: 85ea78e354b4467498bd92bbc25b2459
+      internalID: -193852932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_23
+      name: st2u_x80y224-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec171d3d358e9c34db40a1a621f78953
-      internalID: -2090908354
+      spriteID: 03812978e3a3fd042acdd535182e8c4b
+      internalID: -636748603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_24
+      name: st2u_x96y224-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5057c19b7223c024b84d03ea99abae98
-      internalID: 1162492408
+      spriteID: 620c17c51a2bb63498f94e5b0df41347
+      internalID: 1489987410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_25
+      name: st2u_x112y224-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6f16ac36e31f645a8e4aba33cd3f1d
-      internalID: -1677389094
+      spriteID: 84458c41d25ea6a49a68e21ea7ac1181
+      internalID: 960545714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_26
+      name: st2u_x128y224-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0af65c18e2a26c94b900d0ca99c9881d
-      internalID: -1184255152
+      spriteID: bc49869a7713b344ab8e7c85f7f55d0a
+      internalID: -2076141307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_27
+      name: st2u_x144y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee11b96cae472554caafa4c777f742ae
+      internalID: 430887319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b1a3092f9c013e41a922ec597859e57
+      internalID: 1074104434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a47b62635019f408bd7cb4b445a1c3
+      internalID: 1481762887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1af587e48e87a94eb9e9f04ba505ea7
+      internalID: -1410567664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057d82dd730e6374b86c3d6e814bd6ec
+      internalID: 1182737704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9974bb290711b2848880c1f464fabe54
+      internalID: 1698602659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y224-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 224
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c1d212fd97cf14f8202a13cbf1a9ae
+      internalID: -1063886582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y208-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cef5861c7977584db8fe0ac933f0dbd
-      internalID: -1722340669
+      spriteID: 4508ccf9776ca1e42862303ccbccd62d
+      internalID: 123094189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_28
+      name: st2u_x16y208-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3bc9d5b8a9ff99438cb4d7c2e86fdc0
-      internalID: 1786896462
+      spriteID: 6560d2ad81b8428428a629327baaff5b
+      internalID: 1168106027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_29
+      name: st2u_x32y208-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb9348f4a7108e14a9695b090dc78a6c
-      internalID: -1104475836
+      spriteID: c3197204f2d989e48b9cfbb88a04197c
+      internalID: 180052955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_30
+      name: st2u_x48y208-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ec9e87a68b06084d9444bc842b1e539
-      internalID: 756164486
+      spriteID: 937a7f8da04f9e843afdd72b5bc75160
+      internalID: 263496245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_31
+      name: st2u_x64y208-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd613346bbbd4624f9b35df82bfa9eb4
-      internalID: -578862595
+      spriteID: 2fdb457310080814d91b35b40954e2e3
+      internalID: 170619706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_32
+      name: st2u_x80y208-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8192faaf00b5448ab887548320197f
-      internalID: -109015379
+      spriteID: 7e3ea30aa031aa948869317d858566ff
+      internalID: -619026391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_33
+      name: st2u_x96y208-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df2af4b7c0ae8ac4daf51173ff74891b
-      internalID: -616971341
+      spriteID: aae4280db4f189740bbf9891a9f1fdcb
+      internalID: 2067694779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_34
+      name: st2u_x112y208-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16c9eba1c346161489c807039d88e479
-      internalID: -453277160
+      spriteID: b01f61d9ca92efc4e8d6780768039cef
+      internalID: -1084345421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_35
+      name: st2u_x128y208-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 208
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e44404263f059e04d84836f62e52d9da
-      internalID: 666436926
+      spriteID: 7a41edd23baf11149b5639e5309c1815
+      internalID: -316724898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_36
+      name: st2u_x144y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d563061d9911449957c22836161a11
+      internalID: 997612618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69463f1c25c5ca843b05d40a15e60e19
+      internalID: 37642482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59678436e463cad4a96643a80d734c25
+      internalID: 585745509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e796494631c0c9419608bf0e392a91c
+      internalID: -1142192579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0881cb8f161f771469cd6a4d3e443f6a
+      internalID: 1696325980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0aa3491a85f62f4c95953079788e1bd
+      internalID: -446135523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y208-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 208
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0abeebe2f2eab47aa229fd6be37b76
+      internalID: 344312685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y192-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1158d3952c6108542acf9b954d52e393
-      internalID: 1799436073
+      spriteID: cdbdfd50d2bb5d343adb36859d316eb7
+      internalID: 381009807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_37
+      name: st2u_x16y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a237d491080d68b49b1a7a2f4f02f9e6
+      internalID: 1902560723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x32y192-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2562726cd23233a479863682de24675b
-      internalID: 1246822193
+      spriteID: 41dc8c4c21ac5a945a9488fc8355d37f
+      internalID: 801474503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_38
+      name: st2u_x48y192-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca74550d42a685047939cb0268d55e15
-      internalID: 472841317
+      spriteID: b97106ad48d9e9041a36cc998b7c6a8a
+      internalID: -1587806818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_39
+      name: st2u_x64y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fca6ba4b351cd14ca1d645b7ddeb328
+      internalID: -618657736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x80y192-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df71c9fa1c20c044fb677b6ef4ffc97f
-      internalID: 61075348
+      spriteID: 3a13b08d03f8b994ba523b1b797e1703
+      internalID: -366372937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_40
+      name: st2u_x96y192-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75d714ab383cc5c48bdb4ebc5e62fe54
-      internalID: -2374955
+      spriteID: f05ca62574cce0f4a9721f84987b9e03
+      internalID: -1077567137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_41
+      name: st2u_x112y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930b009d414ad1d4ca56112211b73e63
+      internalID: 1325149644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x128y192-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 192
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8f2d3a3144f3341989487f8e8a774c
-      internalID: -1141800543
+      spriteID: caf7a5a53ce46314f976fc4f89c83f5d
+      internalID: 701120484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_42
+      name: st2u_x144y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827a9b40484d1a443abcc44bf38fb12d
+      internalID: -1387805428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3c39302223d6b4885c235b282d9858
+      internalID: -1551543595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d53d7e4e968674b8050367874d2fcf
+      internalID: -1474957596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4211f52c6ac7584491739b22afe0a29
+      internalID: -1584762509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b5a1cec256653e458603654d9abb296
+      internalID: -1485072444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4362e03c0ca04a4ab2669b713b50820
+      internalID: -593615122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y192-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1a25a54be366443a12ba0a6d1f4ff7
+      internalID: 1990391751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y176-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 488fbc791b433464ca693dee4ede69ff
-      internalID: 2046712813
+      spriteID: 7715f9678b41b6e439d8ce739e1b1f89
+      internalID: -699328419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_43
+      name: st2u_x16y176-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ca55695bd8caaf41b2bacd4f342d2d3
-      internalID: -1786223083
+      spriteID: df5592bdf56397f4689259425a06a0b3
+      internalID: 1283233677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_44
+      name: st2u_x32y176-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7de933448e80f9a4a812b0b30194b7bd
-      internalID: 343708249
+      spriteID: 52775ffe696e8dd4e9bf960dd7a5af6c
+      internalID: -662332564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_45
+      name: st2u_x48y176-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 559df1a6097d3784088bf81ee896e024
-      internalID: 1978553319
+      spriteID: 027076cb9b32d4a499ca4809ae3bc3fd
+      internalID: -1936663482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_46
+      name: st2u_x64y176-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d777782c7c5333b4196e138335d37cc1
-      internalID: 1474980344
+      spriteID: 051f97675706cd34882e9bf0f6bc73cd
+      internalID: 274984442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_47
+      name: st2u_x80y176-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 720c1b3cde7760b429875ae09a6df31c
-      internalID: 242189109
+      spriteID: b0dc1f7425e974545ba3abf387cf870f
+      internalID: 80946020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_48
+      name: st2u_x96y176-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52dcd2b624be5ec45b5f3b0c094608e0
-      internalID: -1362519590
+      spriteID: f7befc582c1930c4a8060a3581c53a77
+      internalID: -301038189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_49
+      name: st2u_x112y176-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56a3bb863adf6b949af4d25765df6d8c
-      internalID: 1978620865
+      spriteID: 5da813750d03e6747b9c8a7b7048dd59
+      internalID: -1972675211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_50
+      name: st2u_x128y176-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 176
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfa1f197b27a7974ba059562364324ad
-      internalID: 2054854144
+      spriteID: 404d07675c2bbb241b4a889b206753bf
+      internalID: 659870110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_51
+      name: st2u_x144y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198249845b0c45040b0ba51df59c167c
+      internalID: 144149703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1552e59f1bb2a3b43b777763ba42a36e
+      internalID: 156439400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e38fc78d07f32941a192d93e7540cf0
+      internalID: 2077127021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44e68a531556df4ebcfcd661b8f4e68
+      internalID: 2044953122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be42e03c687a4c34dbcd751b15730c1e
+      internalID: 306727065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc5d61e9359190409c869b8ff5c86c0
+      internalID: -1270694754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y176-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 176
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc97f531ff6728f429a5fd96ef7fb738
+      internalID: -529880273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y160-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6703c2a81e7e5244eae7080e3903ac6c
-      internalID: 669842570
+      spriteID: 12fcd0a0138a4a54380578418d5b008b
+      internalID: -325883269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_52
+      name: st2u_x16y160-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c2db31012ed6fb448e2f33a5b454d98
-      internalID: -995488284
+      spriteID: 43c0a8fceb1530c4f8ab10f89a8c274d
+      internalID: 1674665232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_53
+      name: st2u_x32y160-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abd24c86e7183d643a9d74be9ca38580
-      internalID: 789623418
+      spriteID: fb82cec15f4987b40a6021e0ba0e7218
+      internalID: 1259010685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_54
+      name: st2u_x48y160-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34e370eb741d6764aa79f3ebc3155f43
-      internalID: 1948236862
+      spriteID: 6ce5d6742cee7414493dba8bc63312b9
+      internalID: 1085401412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_55
+      name: st2u_x64y160-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0574c2c48779520479b230ed313d6a15
-      internalID: -533624640
+      spriteID: 0bd2849039308eb48a5a79e7f338c435
+      internalID: 523009500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_56
+      name: st2u_x80y160-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f8531aef4504534c8ff5152711948fc
-      internalID: 1845912089
+      spriteID: 345c71a32e21ea34fb1afd1f5451088b
+      internalID: 336588323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_57
+      name: st2u_x96y160-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6c3fbd62ef735741815f6e318ab098a
-      internalID: 412686601
+      spriteID: f1bd6f576ebbf444b90c5f7a085fe601
+      internalID: -1333542174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_58
+      name: st2u_x112y160-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04f46461fc4e0554f8a91da62fa9fc34
-      internalID: -813374418
+      spriteID: 7b1dde9d8338207438d7c5cd6558d128
+      internalID: 390758674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_59
+      name: st2u_x128y160-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 160
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcb7a026c13f9e843ae122d65ec2a088
-      internalID: -1328907167
+      spriteID: 0971db36c6c021c4ebcfa46dcab991da
+      internalID: -613751642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_60
+      name: st2u_x144y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9038650aa12747549b8cb22e011254d5
+      internalID: 370635074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969d9251ef0158b42be6efe5af58e873
+      internalID: 1351923203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75da07189614dc642944bfdc9787fc91
+      internalID: 1246982929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac28e795a4353245aa3f440dffebd17
+      internalID: 2080360492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d617c6e8dd47641b446522e87d2a76
+      internalID: -782626725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be13c28ad37d92a4c9a082a8f70be0ba
+      internalID: -1100853951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y160-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 160
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef5f87a293cba3e41b7572758a9b3ba2
+      internalID: 193510994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y144-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3767a3950aac394093c3f09a7ea3081
-      internalID: -1894330661
+      spriteID: c0104d03e7918974fb0531bfb48ad328
+      internalID: 414963146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_61
+      name: st2u_x16y144-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 787cd41d59db6cc48aba9ebf156299e8
-      internalID: -94550761
+      spriteID: bd9fb2f5600c7714cb9be280edf73314
+      internalID: -424267269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_62
+      name: st2u_x32y144-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20696588415fd174895845f93b2879dc
-      internalID: 1540485605
+      spriteID: ab089befa398db046868bac4e3a7adf8
+      internalID: -1336042648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_63
+      name: st2u_x48y144-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1447159d4bcbb3348b175bb17e1c99ff
-      internalID: 2020279070
+      spriteID: 79d83a859f75f4847b068af7957408e6
+      internalID: 1962178208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_64
+      name: st2u_x64y144-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fed4a77fb2c69144fa952e15e30e21d7
-      internalID: 2027913765
+      spriteID: bc5364591e55f9747a08a38530976a9d
+      internalID: -929396802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_65
+      name: st2u_x80y144-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 634a965b7667dd249b0d85475398063b
-      internalID: -1903362247
+      spriteID: 60d9faf7ed10cf2419a3fc779679ea1b
+      internalID: -2052743132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_66
+      name: st2u_x96y144-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca1b9ce80c3eaf4fba69c737b33bdf4
-      internalID: -838294201
+      spriteID: 877c9d88e18a2c84fa7fadbbc5291cf6
+      internalID: -891551823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_67
+      name: st2u_x112y144-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232f7d172e4a41f41a455f0433986338
-      internalID: -697176986
+      spriteID: 160cd0cdf5308554fa11283c896ac49f
+      internalID: 288938745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_68
+      name: st2u_x128y144-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14591bd6e00f6a649ac44f1d36118d48
-      internalID: -1566009579
+      spriteID: f1877915d24ef0c41b83b34ae8d74640
+      internalID: 1450361765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_69
+      name: st2u_x144y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ee5c96b43704c428e0ab5f6fc750f0
+      internalID: 1073547208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142dfffa5762a4f4aba4725a8525cb23
+      internalID: 1779880738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de68ece31cc30b14c8a056b28337cbca
+      internalID: 1844365036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50102d84bf49aa14d887b16423b61b0f
+      internalID: -681534783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca397fb06942a64295eb76972e40e2d
+      internalID: 1971534006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db795de509dde9488f9ff6fdd43caf0
+      internalID: 1611465415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y144-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 144
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d01599ad92cfc4d93e80f58600517c
+      internalID: 1704463940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y128-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac2381663619bb944b197df95291a46c
-      internalID: 1577734240
+      spriteID: aff6f842092868d43b98935d46dc7248
+      internalID: -1146300527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_70
+      name: st2u_x16y128-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8cff84f7c820054f8b43db29cc1f0d0
-      internalID: 1490416050
+      spriteID: 32ef9c6a3119e264396a72571e1692f2
+      internalID: 650614666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_71
+      name: st2u_x32y128-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 170147f00ce40164e80580feed9d925b
-      internalID: -55031883
+      spriteID: 389fe8573a0eff04caeed3e6ad6a1a29
+      internalID: 1107577314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_72
+      name: st2u_x48y128-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fe63c181db12794b8002cb16ee99f76
-      internalID: -1311271699
+      spriteID: 25d6d1e55046c254ab556b9f720bede2
+      internalID: -1193650398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_73
+      name: st2u_x64y128-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5258552cffdb8ff4f814abd9dcf512eb
-      internalID: -366498120
+      spriteID: 60878a8e19770d94e92f33b4d11adbda
+      internalID: 1248844148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_74
+      name: st2u_x80y128-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45758ddc0f82661439be42fcab46e7d5
-      internalID: -1804298639
+      spriteID: cce3efabd36ad6949952bec5a633608b
+      internalID: 989064718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_75
+      name: st2u_x96y128-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 554125cf8cbf4754fb75fb4074a1dde7
-      internalID: -1087044491
+      spriteID: 40363e52c67b2c540aa782845c88cf78
+      internalID: 1941030461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_76
+      name: st2u_x112y128-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e4a18528241ab04d8e28b74ae0b2bf1
-      internalID: -554110602
+      spriteID: f154885bd87d90b4daf88542ac49eb48
+      internalID: -1172909595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_77
+      name: st2u_x128y128-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 128
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22b6823b41680c24db4369b9d18bd536
-      internalID: 151982066
+      spriteID: 66ff7bed15eabb342978e798ee4a6f63
+      internalID: 1823924867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_78
+      name: st2u_x144y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9cf0aa9f3672c4d95a7fb3716d0b2e
+      internalID: -1833718192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6595d51fbb41cb64cbda8ef9974658c0
+      internalID: 1563984640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546e7da540b8f874f9c042679cacfd8a
+      internalID: -390029297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a16cae07d7e1084a981d67b0bcc6dfa
+      internalID: -1348330382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5c714f8c00d5645b8e6f636756d68b
+      internalID: 1722544941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cbb6f5889d10a34383e151a477d8d63
+      internalID: 1176905251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y128-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 128
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7077a77ef2576e54791a985103f5bae1
+      internalID: 173435111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y112-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff4ff157c6a940244a9923655ad5ed8a
-      internalID: 105295470
+      spriteID: acb2b8d8828ce6a429f429ce644d7933
+      internalID: -1965467786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_79
+      name: st2u_x16y112-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47c6acc4f76ab8d4096e90baa0861107
-      internalID: -1190526967
+      spriteID: 6676bda88b198974b93bcf3ae7c178cf
+      internalID: -420097345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_80
+      name: st2u_x32y112-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c5f4cdf537cdd74c98a9bb6720b0b19
-      internalID: 2121910347
+      spriteID: ca581ed091acc4441b2b6d8056afd6f0
+      internalID: -681060235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_81
+      name: st2u_x48y112-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edee074d54497314b827cb6b1c16352d
-      internalID: -2048173571
+      spriteID: 908a37c43c2852b42aac2cfc701177fe
+      internalID: 1676205675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_82
+      name: st2u_x64y112-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7c49befc9899164081e52498107e113
-      internalID: -566217784
+      spriteID: 4fedf3ee14f2d6b4b9be1afbd506ca4f
+      internalID: 1024503535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_83
+      name: st2u_x80y112-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8c7b9117749f764cb39a72ea13c6395
-      internalID: -1073679065
+      spriteID: 011cf3408b9fb0546bbceb0d48774c2c
+      internalID: 1879269474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_84
+      name: st2u_x96y112-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5db6a56644c8d31459358d730fd4cf67
-      internalID: 1437724100
+      spriteID: d1f4eebae1b1233438b4075305334410
+      internalID: -224241400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_85
+      name: st2u_x112y112-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60115e4a764a47c47a045ab4fbf7c312
-      internalID: -14209739
+      spriteID: 2cbe717c007abf64ba900b804a1e0f5e
+      internalID: -584456127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_86
+      name: st2u_x128y112-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 112
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad73c7e10b042c24bb2f8a1173f3fb57
-      internalID: -473994950
+      spriteID: a1219bf03e16dcb459db53315f9980ad
+      internalID: 1916056125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_87
+      name: st2u_x144y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c2d0f3718f1204b80977eb6e3f3254
+      internalID: 761605197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a889da2486307db4dae2a186e6244e61
+      internalID: 1157204589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9769fef22fced5b47a31d9013859be7f
+      internalID: -1467163553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844b0e4d075a6d047ba576c3eaa83fb6
+      internalID: 550851117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ba1771040ac2943a83857749030668
+      internalID: -1351540892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c838a02c232294f9fc4e7418910bc5
+      internalID: -1131650219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y112-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 112
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f951b455549dcea45b2fc644e2d739f9
+      internalID: -1002122815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y96-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 122d917b28f807149b7301036a44e778
-      internalID: -2127606604
+      spriteID: 75f62343f3cf6cf48bf5530fa9c17478
+      internalID: 413815510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_88
+      name: st2u_x16y96-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efa0f7496b1125f4883af7533fca1101
-      internalID: 551508043
+      spriteID: 0c39c89191ebc374cb963fdf68ad363d
+      internalID: -1311911453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_89
+      name: st2u_x32y96-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92ee85fe3ecf7c648a2f702693de7c5a
-      internalID: 279971687
+      spriteID: 0643309d27e4f1049976e388e2264e7f
+      internalID: -1010126343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_90
+      name: st2u_x48y96-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 816acd7ce0b7abc4c8fef70bd299cce4
-      internalID: -575002457
+      spriteID: 04e8c3a1515a1e5449aa6b469c6c98e9
+      internalID: 2068056776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_91
+      name: st2u_x64y96-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43aa9c47bfe03164483e5372efb034d6
-      internalID: -155921771
+      spriteID: be3738fdd70e6ea48b61dc2842c9dedd
+      internalID: 2023423758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_92
+      name: st2u_x80y96-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81f33e9fcfea5246845cb4c040a6dc5
-      internalID: -797778232
+      spriteID: acd129ebe35e66e46a419c853e7a5de2
+      internalID: -76957183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_93
+      name: st2u_x96y96-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 999eea9ccfcfb144da519296176519e3
-      internalID: 1459018457
+      spriteID: 8dbf339dd65c2ee4fbbabdf92193de50
+      internalID: 427677892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_94
+      name: st2u_x112y96-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b752ecc770388064c9e65a4a5f413441
-      internalID: 754318849
+      spriteID: a712625297892e849a663c5f27491bc7
+      internalID: -560379684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_95
+      name: st2u_x128y96-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 96
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4a895b61f82d144296ecdf088c333aa
-      internalID: 1616837577
+      spriteID: 63b89f28def48394e84aa2acee2933c4
+      internalID: 637072267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_96
+      name: st2u_x144y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336b33a418ff6b24a9724a4e5f47d763
+      internalID: 1695704001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6cce29543b7d249acb740ee589b96e
+      internalID: -1631290597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 096f1dbfb950a27449e4b5347ba88f0f
+      internalID: 104387496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b89d2f6e14f6004d9cc855f4670b12a
+      internalID: -1035512853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2177edacfe577264ebd061aa276eeb95
+      internalID: -455131775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81522ca26e34d864fa9aab1f50155b63
+      internalID: 721176656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y96-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be2fcb0339431cd48997e00e0ea5f087
+      internalID: -789848668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y80-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 998eb75f18f03884293eb3484b205edb
-      internalID: 616168090
+      spriteID: 645f4f395f1c37b4a97dd90def860968
+      internalID: 2134276767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_97
+      name: st2u_x16y80-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96574e257f65d364d9987e0cca0aedc7
-      internalID: 1902012631
+      spriteID: 2f5bec3f5f407f949851b9a356fd540f
+      internalID: 1833599511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_98
+      name: st2u_x32y80-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7293232214582564692c3b11d6dbce7d
-      internalID: 591299449
+      spriteID: b94a733aa0bcce645b5eace0b59262af
+      internalID: 1240288079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_99
+      name: st2u_x48y80-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a801eeba1eeebc447aeea5c548b124f6
-      internalID: 1509604772
+      spriteID: a561e97e06066c249a177cf425977df1
+      internalID: 900653141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_100
+      name: st2u_x64y80-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd4776c9a193f38469b9358e79799e25
-      internalID: 1292956112
+      spriteID: 4eb865532743aa54f936d7bcf5350c1d
+      internalID: -1023698526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_101
+      name: st2u_x80y80-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab9fde82ccc1d3446a4832ffad1dc38e
-      internalID: -1274891558
+      spriteID: 80cc91ebd4bd13142956ae4e9fbc22af
+      internalID: 1965023790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_102
+      name: st2u_x96y80-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8650bc839f9eb04c95d4d0c5a444b74
-      internalID: 1084929660
+      spriteID: 963c1e397967aa548869c53841a96912
+      internalID: -50081090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_103
+      name: st2u_x112y80-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e8f685b2c65aee4980d8384d56e71c4
-      internalID: 324703058
+      spriteID: 631a5466667ac5e43bc39530fcc353c4
+      internalID: 1192679808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_104
+      name: st2u_x128y80-w16h16
       rect:
         serializedVersion: 2
         x: 128
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 787abba3b0116024a8b8a4e9065e5efd
-      internalID: 2006020530
+      spriteID: 9e71cbc3c5f6aaf45bc82ef4e7e1bbec
+      internalID: 149798206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_105
+      name: st2u_x144y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c32b07baa9d3245943b98dc43a83cf
+      internalID: 51280448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c136ced588bc7de4b84414d765ec870e
+      internalID: 851199045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e339f627c9dc7e748b00a4532e5b94c4
+      internalID: 1651521184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37fc0eb82b9cd849bdaad800666118b
+      internalID: -924174513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7159f01762f03a64da5186d929b4871d
+      internalID: 740469158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0dc34efe64c2443a2b4402c8742abd
+      internalID: 2073858977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y80-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08183fe721f48f24a910a2a7f2fe0ab7
+      internalID: 574461983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y64-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdc6e22fc90da594ea11aff5ff3dff18
-      internalID: 1502644234
+      spriteID: 3b869a0a40520a54bbeaad0137821898
+      internalID: -1372164433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_106
+      name: st2u_x16y64-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d444d8e575b44f94daf1006cbb8c6609
-      internalID: -519855564
+      spriteID: 0c8fafc334a87e74a9598468d1033db8
+      internalID: -691480572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_107
+      name: st2u_x32y64-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f9da45c0355ebb49ae3aa9ff3e81e93
-      internalID: -55855701
+      spriteID: 14abe0585c5e2be4c99e13b5c583886b
+      internalID: 1240237112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_108
+      name: st2u_x48y64-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7bf8caff7fc93048abcb7925b9af771
-      internalID: -1520094020
+      spriteID: 0f5704be23c34824bb1f9f5849319eb2
+      internalID: -1876259527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_109
+      name: st2u_x64y64-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b680dc5820a708418bcf9aa35912054
-      internalID: 1558120103
+      spriteID: f8efd5e90b239944d98ab72d8d3d5cfa
+      internalID: 2118715290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_110
+      name: st2u_x80y64-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c555d3bb4fca7254ea9da8ac08d2f1c6
-      internalID: -509528994
+      spriteID: 77ccbc6f540f5fb4bbb47850ddfc1e0d
+      internalID: -787662284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_111
+      name: st2u_x96y64-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5c5dfd8220a8674b81b66dadbc9bb2a
-      internalID: -29074430
+      spriteID: aa918928e6e55cb44b99fd9a86ebbac1
+      internalID: 904832160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_112
+      name: st2u_x112y64-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 64
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da121bdf027d2d14e9142876fe664641
-      internalID: 1238433696
+      spriteID: 223df8f29c4ff8b4c9036713a9ce6b4e
+      internalID: 236603221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_113
+      name: st2u_x128y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0123bbd94e7aafe468242040fb4c97b8
+      internalID: 126693125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x144y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5837734f99be0b84f959ca641af2d89b
+      internalID: -1780673766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eecc60c00a3ac14b82a4ffe03ba7abd
+      internalID: -947742473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7342edb5d546894ea6fc3b44a1fc06e
+      internalID: 376027339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0443c708589f64fbc9a6f0a1cede20
+      internalID: -1426919833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b236e1442f146498c2ed6e39a383e8
+      internalID: -1955966043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e941b75137a6e64f9f7832a022966d6
+      internalID: 1698698322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y64-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374b9d72994c4da4cbd482f887a51901
+      internalID: 1790187322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y48-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cba95a5480067e4fabef5660b4e11ae
-      internalID: 1465847194
+      spriteID: c3c860c6302172d4daa51a624ff42523
+      internalID: 1379488482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_114
+      name: st2u_x16y48-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aa9dae0b0641f24dbb6f8ac007cb207
-      internalID: -2079042761
+      spriteID: 350e202c75d049a47a00660d205e15e0
+      internalID: -391107175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_115
+      name: st2u_x32y48-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa367895bda65d24aa2d5a2c1d74f4c3
-      internalID: 112832923
+      spriteID: 1d2e4b49c4485d541b672bf0039f634c
+      internalID: 346025996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_116
+      name: st2u_x48y48-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a583cd8d85e9c094c9402c91dde0fd17
-      internalID: 784398491
+      spriteID: 216c6f94a7a94de48b82cf0d83725b56
+      internalID: 123144944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_117
+      name: st2u_x64y48-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 761c0be8406f59045846da0f81eb3cfe
-      internalID: 1958354470
+      spriteID: 4910ea7cd38804e458b98f8d24fabaa9
+      internalID: -1916580702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_118
+      name: st2u_x80y48-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 553ee5556f425a142a53534c4d3767a3
-      internalID: 1867233361
+      spriteID: cd8e9b370bf2dc34987386ffed216059
+      internalID: -395744641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_119
+      name: st2u_x96y48-w16h16
       rect:
         serializedVersion: 2
         x: 96
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d7f6afc960e3a64b909da9f0836cdbc
-      internalID: 166798886
+      spriteID: fa7daec25649a9b449f999eb7073ced4
+      internalID: -517610219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_120
+      name: st2u_x112y48-w16h16
       rect:
         serializedVersion: 2
         x: 112
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9f680090b8cb0944a2226fec22b354c
-      internalID: -177524949
+      spriteID: 6f577685e0f0e2f4e948fc2ad3e68e12
+      internalID: 1607050091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_121
+      name: st2u_x128y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78de8f0b40c55f74f9bcc656fe5ed85e
+      internalID: -1535788109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x144y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12261a25148f824428ccd2f92774c077
+      internalID: 599026324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc8232280e78604cbded2544e6f314e
+      internalID: -113803397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad9bcb776b7f204cbf62c574d6f878b
+      internalID: -1151109948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496d14b2c02620c4a9ebe33129531761
+      internalID: 1696057432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd02da35ae79914e85bfe74fc154a43
+      internalID: -798778144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d9cc0bc4561244a99ee6a83e055dba
+      internalID: 1195486166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y48-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 48
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92061bd307c1f85499539e16233a3ce9
+      internalID: -524061846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y32-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 589479738d8c87d40b349ed0ea105680
-      internalID: 1599663967
+      spriteID: 79d147a2baf87c5438001bd749d00af0
+      internalID: 1947292467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_122
+      name: st2u_x16y32-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a89d0428dabf1c40885445666e0de1c
-      internalID: -1776884153
+      spriteID: 0595cc70384929d4a9333317a2302f65
+      internalID: -908146909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_123
+      name: st2u_x32y32-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11eefedf58d7a1b4ba31fa5f594802b0
-      internalID: 757813282
+      spriteID: 42f06e35ca760774bbebf2dc2e6de194
+      internalID: 600634149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_124
+      name: st2u_x48y32-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15dec51226d6ad94a8eb53f3cb53ecd1
-      internalID: 1384072089
+      spriteID: 8d44d2933180f004da0f941a568c9519
+      internalID: 42744511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_125
+      name: st2u_x64y32-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c973feda6c977034eb67a81fd491f38e
-      internalID: 1657769121
+      spriteID: fb7cfb43a476e2c47b62e3cff41062c5
+      internalID: -1074744923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_126
+      name: st2u_x80y32-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68dc7b625728b7843ae6859785621b82
-      internalID: -2027273740
+      spriteID: 78fd2be92e9c67b4386e2eb8ab1028bd
+      internalID: 1756097172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_127
+      name: st2u_x96y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d825c009611d9f4590c3bfdf818ed75
+      internalID: -317842086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x112y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353ce127f4ca6874b8408b1d1d300aad
+      internalID: -201986138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x128y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841b2eebdc12c684e93c71114db91f80
+      internalID: -1877969817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x144y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f59dc24b0e0404087f5d205dedbd37
+      internalID: -259106656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c808b5b6df681494185303b0674e23e3
+      internalID: -94102262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16e20b3432d7ba4ea49d084d48876a7
+      internalID: -37270503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523185780d7be92499c0161d6647a3cb
+      internalID: 1596406514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0101d5453d603e14388b89bdb8cd37d3
+      internalID: -2022593185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da8d0a0eaa07c04ebd6869e9e594b95
+      internalID: -1474052484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y32-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7806da5e0ca34d14380952ade56b2053
+      internalID: 291786354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y16-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c88fb796c181824f8ad840765fa7954
-      internalID: 746257691
+      spriteID: 417a32ed780ee3b40957c9b8676dfafc
+      internalID: -572631619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_128
+      name: st2u_x16y16-w16h16
       rect:
         serializedVersion: 2
         x: 16
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62974379adf9a7843985135a2c0eb61b
-      internalID: 609000841
+      spriteID: 2f8720cc157da4c41a0dbdf961a2b0aa
+      internalID: 1299917424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_129
+      name: st2u_x32y16-w16h16
       rect:
         serializedVersion: 2
         x: 32
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b738067c18e0b954ebca81db3adcc77a
-      internalID: 452116251
+      spriteID: 8e474385224a8954d9b439b3de1be173
+      internalID: -511057122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_130
+      name: st2u_x48y16-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff8324f30b97b4459cb2376cfcb279e
-      internalID: 858320293
+      spriteID: da49f8dd878c9b34996b52724ea09ace
+      internalID: -1742338320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_131
+      name: st2u_x64y16-w16h16
       rect:
         serializedVersion: 2
         x: 64
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a9a736880f76504581f60817960201e
-      internalID: -1950172327
+      spriteID: e6204999ca59add4dbe614a8eefab020
+      internalID: -822305427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_132
+      name: st2u_x80y16-w16h16
       rect:
         serializedVersion: 2
         x: 80
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 756010fd61488f74fa0c9c5aebdbb0c0
-      internalID: 563103936
+      spriteID: f7939d48958e2b149b8315f2e408dcbd
+      internalID: -1962859119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_133
+      name: st2u_x96y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef763c2fe10d89489fff9630eceba42
+      internalID: 1988677781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x112y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58b5be03c838c0448ab60a5574c3600
+      internalID: 300526795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x128y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6a051f76ff8894399c705905d05c2b
+      internalID: -1197355340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x144y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31469d2a5699c114f91b9407884e303b
+      internalID: -1457357831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd04340321a537d42814499cd7d9bdef
+      internalID: -68885122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a85c5aeb16c8194aaa02ab169f836c6
+      internalID: 1559037714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98703c29ae4b9934eb0cd5c4c5aa1d03
+      internalID: 2076540053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cee1e8b5d3078742a7f8acbd614f292
+      internalID: 1751678519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2cac42b3147c9e4fbdf43f25cbf8114
+      internalID: -164181620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y16-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb93bc6fddd19a94398cbdb4a12fcd60
+      internalID: -613271002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x0y0-w16h16
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91230e45844f6ac45933350638b59404
-      internalID: 162360719
+      spriteID: 0679a78adf4a31d418b3d1cd814ce786
+      internalID: 931524096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini_deny_tilemap5_134
+      name: st2u_x16y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50bbab4f3c1c97d45b8e3700ed76294e
+      internalID: 482110141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x32y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb5b3f5166f0814580fb87bf9c792ba
+      internalID: 1227287526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x48y0-w16h16
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a99ca24d70d7c214cb99126af04a4e62
-      internalID: 250200198
+      spriteID: b963699823e5e2b46a2892a86b40f41c
+      internalID: 2051812053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x64y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f14956a00782a4b91afbfca278fc35
+      internalID: 1215518075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x80y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cd607bd8ab4934ba50a276c1a517f4
+      internalID: 403429678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x96y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b2da8fae809b345bacf6f7f0e83af1
+      internalID: 1629499161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x112y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6da4cca7e0c174488bc235644f10ae
+      internalID: -380559131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x128y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69faaeb8c0caef4daf89c927bd49009
+      internalID: 940083544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x144y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83225573f0260854091a066236960b17
+      internalID: -1312052644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x160y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b9faa2f47b8a741b896da9c76d341a
+      internalID: -768928745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x176y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfe139b1ac51d442abe2cbd59387f50
+      internalID: 84058657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x192y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367a5ff00f6dfe2458e75fd2edc8dc99
+      internalID: 1978867048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x208y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb308bdc39ecd64f9611b646fa9e261
+      internalID: -856155327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x224y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56df740a53e157b4a9c8a5cbcde90a46
+      internalID: 269269082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: st2u_x240y0-w16h16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66443db86105004fb6f05ab2622ac24
+      internalID: 344332114
       vertices: []
       indices: 
       edges: []
@@ -3139,7 +5811,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 240662a96b4cc2a4d91babd66979b1fe
     internalID: 0
     vertices: []
     indices: 
@@ -3147,141 +5819,278 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mini_deny_tilemap5_0: 735637813
-      mini_deny_tilemap5_1: 730771445
-      mini_deny_tilemap5_10: 1539543269
-      mini_deny_tilemap5_100: 1292956112
-      mini_deny_tilemap5_101: -1274891558
-      mini_deny_tilemap5_102: 1084929660
-      mini_deny_tilemap5_103: 324703058
-      mini_deny_tilemap5_104: 2006020530
-      mini_deny_tilemap5_105: 1502644234
-      mini_deny_tilemap5_106: -519855564
-      mini_deny_tilemap5_107: -55855701
-      mini_deny_tilemap5_108: -1520094020
-      mini_deny_tilemap5_109: 1558120103
-      mini_deny_tilemap5_11: -678013780
-      mini_deny_tilemap5_110: -509528994
-      mini_deny_tilemap5_111: -29074430
-      mini_deny_tilemap5_112: 1238433696
-      mini_deny_tilemap5_113: 1465847194
-      mini_deny_tilemap5_114: -2079042761
-      mini_deny_tilemap5_115: 112832923
-      mini_deny_tilemap5_116: 784398491
-      mini_deny_tilemap5_117: 1958354470
-      mini_deny_tilemap5_118: 1867233361
-      mini_deny_tilemap5_119: 166798886
-      mini_deny_tilemap5_12: 1333413895
-      mini_deny_tilemap5_120: -177524949
-      mini_deny_tilemap5_121: 1599663967
-      mini_deny_tilemap5_122: -1776884153
-      mini_deny_tilemap5_123: 757813282
-      mini_deny_tilemap5_124: 1384072089
-      mini_deny_tilemap5_125: 1657769121
-      mini_deny_tilemap5_126: -2027273740
-      mini_deny_tilemap5_127: 746257691
-      mini_deny_tilemap5_128: 609000841
-      mini_deny_tilemap5_129: 452116251
-      mini_deny_tilemap5_13: -1861316745
-      mini_deny_tilemap5_130: 858320293
-      mini_deny_tilemap5_131: -1950172327
-      mini_deny_tilemap5_132: 563103936
-      mini_deny_tilemap5_133: 162360719
-      mini_deny_tilemap5_134: 250200198
-      mini_deny_tilemap5_14: -1165305545
-      mini_deny_tilemap5_15: 1137249994
-      mini_deny_tilemap5_16: -556741923
-      mini_deny_tilemap5_17: -1412654859
-      mini_deny_tilemap5_18: 1732800905
-      mini_deny_tilemap5_19: 192266607
-      mini_deny_tilemap5_2: 2018811954
-      mini_deny_tilemap5_20: -2062070502
-      mini_deny_tilemap5_21: -1510227690
-      mini_deny_tilemap5_22: 1451405030
-      mini_deny_tilemap5_23: -2090908354
-      mini_deny_tilemap5_24: 1162492408
-      mini_deny_tilemap5_25: -1677389094
-      mini_deny_tilemap5_26: -1184255152
-      mini_deny_tilemap5_27: -1722340669
-      mini_deny_tilemap5_28: 1786896462
-      mini_deny_tilemap5_29: -1104475836
-      mini_deny_tilemap5_3: -1117628632
-      mini_deny_tilemap5_30: 756164486
-      mini_deny_tilemap5_31: -578862595
-      mini_deny_tilemap5_32: -109015379
-      mini_deny_tilemap5_33: -616971341
-      mini_deny_tilemap5_34: -453277160
-      mini_deny_tilemap5_35: 666436926
-      mini_deny_tilemap5_36: 1799436073
-      mini_deny_tilemap5_37: 1246822193
-      mini_deny_tilemap5_38: 472841317
-      mini_deny_tilemap5_39: 61075348
-      mini_deny_tilemap5_4: -503075717
-      mini_deny_tilemap5_40: -2374955
-      mini_deny_tilemap5_41: -1141800543
-      mini_deny_tilemap5_42: 2046712813
-      mini_deny_tilemap5_43: -1786223083
-      mini_deny_tilemap5_44: 343708249
-      mini_deny_tilemap5_45: 1978553319
-      mini_deny_tilemap5_46: 1474980344
-      mini_deny_tilemap5_47: 242189109
-      mini_deny_tilemap5_48: -1362519590
-      mini_deny_tilemap5_49: 1978620865
-      mini_deny_tilemap5_5: 576754862
-      mini_deny_tilemap5_50: 2054854144
-      mini_deny_tilemap5_51: 669842570
-      mini_deny_tilemap5_52: -995488284
-      mini_deny_tilemap5_53: 789623418
-      mini_deny_tilemap5_54: 1948236862
-      mini_deny_tilemap5_55: -533624640
-      mini_deny_tilemap5_56: 1845912089
-      mini_deny_tilemap5_57: 412686601
-      mini_deny_tilemap5_58: -813374418
-      mini_deny_tilemap5_59: -1328907167
-      mini_deny_tilemap5_6: 1117838496
-      mini_deny_tilemap5_60: -1894330661
-      mini_deny_tilemap5_61: -94550761
-      mini_deny_tilemap5_62: 1540485605
-      mini_deny_tilemap5_63: 2020279070
-      mini_deny_tilemap5_64: 2027913765
-      mini_deny_tilemap5_65: -1903362247
-      mini_deny_tilemap5_66: -838294201
-      mini_deny_tilemap5_67: -697176986
-      mini_deny_tilemap5_68: -1566009579
-      mini_deny_tilemap5_69: 1577734240
-      mini_deny_tilemap5_7: 302505921
-      mini_deny_tilemap5_70: 1490416050
-      mini_deny_tilemap5_71: -55031883
-      mini_deny_tilemap5_72: -1311271699
-      mini_deny_tilemap5_73: -366498120
-      mini_deny_tilemap5_74: -1804298639
-      mini_deny_tilemap5_75: -1087044491
-      mini_deny_tilemap5_76: -554110602
-      mini_deny_tilemap5_77: 151982066
-      mini_deny_tilemap5_78: 105295470
-      mini_deny_tilemap5_79: -1190526967
-      mini_deny_tilemap5_8: -1358297369
-      mini_deny_tilemap5_80: 2121910347
-      mini_deny_tilemap5_81: -2048173571
-      mini_deny_tilemap5_82: -566217784
-      mini_deny_tilemap5_83: -1073679065
-      mini_deny_tilemap5_84: 1437724100
-      mini_deny_tilemap5_85: -14209739
-      mini_deny_tilemap5_86: -473994950
-      mini_deny_tilemap5_87: -2127606604
-      mini_deny_tilemap5_88: 551508043
-      mini_deny_tilemap5_89: 279971687
-      mini_deny_tilemap5_9: -158935663
-      mini_deny_tilemap5_90: -575002457
-      mini_deny_tilemap5_91: -155921771
-      mini_deny_tilemap5_92: -797778232
-      mini_deny_tilemap5_93: 1459018457
-      mini_deny_tilemap5_94: 754318849
-      mini_deny_tilemap5_95: 1616837577
-      mini_deny_tilemap5_96: 616168090
-      mini_deny_tilemap5_97: 1902012631
-      mini_deny_tilemap5_98: 591299449
-      mini_deny_tilemap5_99: 1509604772
+      st2u_x0y0-w16h16: 931524096
+      st2u_x0y112-w16h16: -1965467786
+      st2u_x0y128-w16h16: -1146300527
+      st2u_x0y144-w16h16: 414963146
+      st2u_x0y16-w16h16: -572631619
+      st2u_x0y160-w16h16: -325883269
+      st2u_x0y176-w16h16: -699328419
+      st2u_x0y192-w16h16: 381009807
+      st2u_x0y208-w16h16: 123094189
+      st2u_x0y224-w16h16: -1963208235
+      st2u_x0y240-w16h16: -1822193604
+      st2u_x0y256-w16h16: 463912253
+      st2u_x0y32-w16h16: 1947292467
+      st2u_x0y48-w16h16: 1379488482
+      st2u_x0y64-w16h16: -1372164433
+      st2u_x0y80-w16h16: 2134276767
+      st2u_x0y96-w16h16: 413815510
+      st2u_x112y0-w16h16: -380559131
+      st2u_x112y112-w16h16: -584456127
+      st2u_x112y128-w16h16: -1172909595
+      st2u_x112y144-w16h16: 288938745
+      st2u_x112y16-w16h16: 300526795
+      st2u_x112y160-w16h16: 390758674
+      st2u_x112y176-w16h16: -1972675211
+      st2u_x112y192-w16h16: 1325149644
+      st2u_x112y208-w16h16: -1084345421
+      st2u_x112y224-w16h16: 960545714
+      st2u_x112y240-w16h16: -1486069970
+      st2u_x112y256-w16h16: 828390588
+      st2u_x112y32-w16h16: -201986138
+      st2u_x112y48-w16h16: 1607050091
+      st2u_x112y64-w16h16: 236603221
+      st2u_x112y80-w16h16: 1192679808
+      st2u_x112y96-w16h16: -560379684
+      st2u_x128y0-w16h16: 940083544
+      st2u_x128y112-w16h16: 1916056125
+      st2u_x128y128-w16h16: 1823924867
+      st2u_x128y144-w16h16: 1450361765
+      st2u_x128y16-w16h16: -1197355340
+      st2u_x128y160-w16h16: -613751642
+      st2u_x128y176-w16h16: 659870110
+      st2u_x128y192-w16h16: 701120484
+      st2u_x128y208-w16h16: -316724898
+      st2u_x128y224-w16h16: -2076141307
+      st2u_x128y240-w16h16: 1911730760
+      st2u_x128y256-w16h16: 657192806
+      st2u_x128y32-w16h16: -1877969817
+      st2u_x128y48-w16h16: -1535788109
+      st2u_x128y64-w16h16: 126693125
+      st2u_x128y80-w16h16: 149798206
+      st2u_x128y96-w16h16: 637072267
+      st2u_x144y0-w16h16: -1312052644
+      st2u_x144y112-w16h16: 761605197
+      st2u_x144y128-w16h16: -1833718192
+      st2u_x144y144-w16h16: 1073547208
+      st2u_x144y16-w16h16: -1457357831
+      st2u_x144y160-w16h16: 370635074
+      st2u_x144y176-w16h16: 144149703
+      st2u_x144y192-w16h16: -1387805428
+      st2u_x144y208-w16h16: 997612618
+      st2u_x144y224-w16h16: 430887319
+      st2u_x144y240-w16h16: -1141331970
+      st2u_x144y256-w16h16: 605683413
+      st2u_x144y32-w16h16: -259106656
+      st2u_x144y48-w16h16: 599026324
+      st2u_x144y64-w16h16: -1780673766
+      st2u_x144y80-w16h16: 51280448
+      st2u_x144y96-w16h16: 1695704001
+      st2u_x160y0-w16h16: -768928745
+      st2u_x160y112-w16h16: 1157204589
+      st2u_x160y128-w16h16: 1563984640
+      st2u_x160y144-w16h16: 1779880738
+      st2u_x160y16-w16h16: -68885122
+      st2u_x160y160-w16h16: 1351923203
+      st2u_x160y176-w16h16: 156439400
+      st2u_x160y192-w16h16: -1551543595
+      st2u_x160y208-w16h16: 37642482
+      st2u_x160y224-w16h16: 1074104434
+      st2u_x160y240-w16h16: 779465999
+      st2u_x160y256-w16h16: -837446129
+      st2u_x160y32-w16h16: -94102262
+      st2u_x160y48-w16h16: -113803397
+      st2u_x160y64-w16h16: -947742473
+      st2u_x160y80-w16h16: 851199045
+      st2u_x160y96-w16h16: -1631290597
+      st2u_x16y0-w16h16: 482110141
+      st2u_x16y112-w16h16: -420097345
+      st2u_x16y128-w16h16: 650614666
+      st2u_x16y144-w16h16: -424267269
+      st2u_x16y16-w16h16: 1299917424
+      st2u_x16y160-w16h16: 1674665232
+      st2u_x16y176-w16h16: 1283233677
+      st2u_x16y192-w16h16: 1902560723
+      st2u_x16y208-w16h16: 1168106027
+      st2u_x16y224-w16h16: -373667173
+      st2u_x16y240-w16h16: 1951105077
+      st2u_x16y256-w16h16: -1483615682
+      st2u_x16y32-w16h16: -908146909
+      st2u_x16y48-w16h16: -391107175
+      st2u_x16y64-w16h16: -691480572
+      st2u_x16y80-w16h16: 1833599511
+      st2u_x16y96-w16h16: -1311911453
+      st2u_x176y0-w16h16: 84058657
+      st2u_x176y112-w16h16: -1467163553
+      st2u_x176y128-w16h16: -390029297
+      st2u_x176y144-w16h16: 1844365036
+      st2u_x176y16-w16h16: 1559037714
+      st2u_x176y160-w16h16: 1246982929
+      st2u_x176y176-w16h16: 2077127021
+      st2u_x176y192-w16h16: -1474957596
+      st2u_x176y208-w16h16: 585745509
+      st2u_x176y224-w16h16: 1481762887
+      st2u_x176y240-w16h16: 1067210426
+      st2u_x176y256-w16h16: -686699528
+      st2u_x176y32-w16h16: -37270503
+      st2u_x176y48-w16h16: -1151109948
+      st2u_x176y64-w16h16: 376027339
+      st2u_x176y80-w16h16: 1651521184
+      st2u_x176y96-w16h16: 104387496
+      st2u_x192y0-w16h16: 1978867048
+      st2u_x192y112-w16h16: 550851117
+      st2u_x192y128-w16h16: -1348330382
+      st2u_x192y144-w16h16: -681534783
+      st2u_x192y16-w16h16: 2076540053
+      st2u_x192y160-w16h16: 2080360492
+      st2u_x192y176-w16h16: 2044953122
+      st2u_x192y192-w16h16: -1584762509
+      st2u_x192y208-w16h16: -1142192579
+      st2u_x192y224-w16h16: -1410567664
+      st2u_x192y240-w16h16: -611945204
+      st2u_x192y256-w16h16: -1661972794
+      st2u_x192y32-w16h16: 1596406514
+      st2u_x192y48-w16h16: 1696057432
+      st2u_x192y64-w16h16: -1426919833
+      st2u_x192y80-w16h16: -924174513
+      st2u_x192y96-w16h16: -1035512853
+      st2u_x208y0-w16h16: -856155327
+      st2u_x208y112-w16h16: -1351540892
+      st2u_x208y128-w16h16: 1722544941
+      st2u_x208y144-w16h16: 1971534006
+      st2u_x208y16-w16h16: 1751678519
+      st2u_x208y160-w16h16: -782626725
+      st2u_x208y176-w16h16: 306727065
+      st2u_x208y192-w16h16: -1485072444
+      st2u_x208y208-w16h16: 1696325980
+      st2u_x208y224-w16h16: 1182737704
+      st2u_x208y240-w16h16: -605497189
+      st2u_x208y256-w16h16: 1911488148
+      st2u_x208y32-w16h16: -2022593185
+      st2u_x208y48-w16h16: -798778144
+      st2u_x208y64-w16h16: -1955966043
+      st2u_x208y80-w16h16: 740469158
+      st2u_x208y96-w16h16: -455131775
+      st2u_x224y0-w16h16: 269269082
+      st2u_x224y112-w16h16: -1131650219
+      st2u_x224y128-w16h16: 1176905251
+      st2u_x224y144-w16h16: 1611465415
+      st2u_x224y16-w16h16: -164181620
+      st2u_x224y160-w16h16: -1100853951
+      st2u_x224y176-w16h16: -1270694754
+      st2u_x224y192-w16h16: -593615122
+      st2u_x224y208-w16h16: -446135523
+      st2u_x224y224-w16h16: 1698602659
+      st2u_x224y240-w16h16: -1340542350
+      st2u_x224y256-w16h16: 1784685427
+      st2u_x224y32-w16h16: -1474052484
+      st2u_x224y48-w16h16: 1195486166
+      st2u_x224y64-w16h16: 1698698322
+      st2u_x224y80-w16h16: 2073858977
+      st2u_x224y96-w16h16: 721176656
+      st2u_x240y0-w16h16: 344332114
+      st2u_x240y112-w16h16: -1002122815
+      st2u_x240y128-w16h16: 173435111
+      st2u_x240y144-w16h16: 1704463940
+      st2u_x240y16-w16h16: -613271002
+      st2u_x240y160-w16h16: 193510994
+      st2u_x240y176-w16h16: -529880273
+      st2u_x240y192-w16h16: 1990391751
+      st2u_x240y208-w16h16: 344312685
+      st2u_x240y224-w16h16: -1063886582
+      st2u_x240y240-w16h16: -571109612
+      st2u_x240y256-w16h16: -310390256
+      st2u_x240y32-w16h16: 291786354
+      st2u_x240y48-w16h16: -524061846
+      st2u_x240y64-w16h16: 1790187322
+      st2u_x240y80-w16h16: 574461983
+      st2u_x240y96-w16h16: -789848668
+      st2u_x32y0-w16h16: 1227287526
+      st2u_x32y112-w16h16: -681060235
+      st2u_x32y128-w16h16: 1107577314
+      st2u_x32y144-w16h16: -1336042648
+      st2u_x32y16-w16h16: -511057122
+      st2u_x32y160-w16h16: 1259010685
+      st2u_x32y176-w16h16: -662332564
+      st2u_x32y192-w16h16: 801474503
+      st2u_x32y208-w16h16: 180052955
+      st2u_x32y224-w16h16: -1959925417
+      st2u_x32y240-w16h16: 2146978321
+      st2u_x32y256-w16h16: 970710656
+      st2u_x32y32-w16h16: 600634149
+      st2u_x32y48-w16h16: 346025996
+      st2u_x32y64-w16h16: 1240237112
+      st2u_x32y80-w16h16: 1240288079
+      st2u_x32y96-w16h16: -1010126343
+      st2u_x48y0-w16h16: 2051812053
+      st2u_x48y112-w16h16: 1676205675
+      st2u_x48y128-w16h16: -1193650398
+      st2u_x48y144-w16h16: 1962178208
+      st2u_x48y16-w16h16: -1742338320
+      st2u_x48y160-w16h16: 1085401412
+      st2u_x48y176-w16h16: -1936663482
+      st2u_x48y192-w16h16: -1587806818
+      st2u_x48y208-w16h16: 263496245
+      st2u_x48y224-w16h16: -1179552729
+      st2u_x48y240-w16h16: -1719870249
+      st2u_x48y256-w16h16: -2062569999
+      st2u_x48y32-w16h16: 42744511
+      st2u_x48y48-w16h16: 123144944
+      st2u_x48y64-w16h16: -1876259527
+      st2u_x48y80-w16h16: 900653141
+      st2u_x48y96-w16h16: 2068056776
+      st2u_x64y0-w16h16: 1215518075
+      st2u_x64y112-w16h16: 1024503535
+      st2u_x64y128-w16h16: 1248844148
+      st2u_x64y144-w16h16: -929396802
+      st2u_x64y16-w16h16: -822305427
+      st2u_x64y160-w16h16: 523009500
+      st2u_x64y176-w16h16: 274984442
+      st2u_x64y192-w16h16: -618657736
+      st2u_x64y208-w16h16: 170619706
+      st2u_x64y224-w16h16: -193852932
+      st2u_x64y240-w16h16: 1028437347
+      st2u_x64y256-w16h16: 824935179
+      st2u_x64y32-w16h16: -1074744923
+      st2u_x64y48-w16h16: -1916580702
+      st2u_x64y64-w16h16: 2118715290
+      st2u_x64y80-w16h16: -1023698526
+      st2u_x64y96-w16h16: 2023423758
+      st2u_x80y0-w16h16: 403429678
+      st2u_x80y112-w16h16: 1879269474
+      st2u_x80y128-w16h16: 989064718
+      st2u_x80y144-w16h16: -2052743132
+      st2u_x80y16-w16h16: -1962859119
+      st2u_x80y160-w16h16: 336588323
+      st2u_x80y176-w16h16: 80946020
+      st2u_x80y192-w16h16: -366372937
+      st2u_x80y208-w16h16: -619026391
+      st2u_x80y224-w16h16: -636748603
+      st2u_x80y240-w16h16: 731153805
+      st2u_x80y256-w16h16: -2127077141
+      st2u_x80y32-w16h16: 1756097172
+      st2u_x80y48-w16h16: -395744641
+      st2u_x80y64-w16h16: -787662284
+      st2u_x80y80-w16h16: 1965023790
+      st2u_x80y96-w16h16: -76957183
+      st2u_x96y0-w16h16: 1629499161
+      st2u_x96y112-w16h16: -224241400
+      st2u_x96y128-w16h16: 1941030461
+      st2u_x96y144-w16h16: -891551823
+      st2u_x96y16-w16h16: 1988677781
+      st2u_x96y160-w16h16: -1333542174
+      st2u_x96y176-w16h16: -301038189
+      st2u_x96y192-w16h16: -1077567137
+      st2u_x96y208-w16h16: 2067694779
+      st2u_x96y224-w16h16: 1489987410
+      st2u_x96y240-w16h16: -990253414
+      st2u_x96y256-w16h16: 662478952
+      st2u_x96y32-w16h16: -317842086
+      st2u_x96y48-w16h16: -517610219
+      st2u_x96y64-w16h16: 904832160
+      st2u_x96y80-w16h16: -50081090
+      st2u_x96y96-w16h16: 427677892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

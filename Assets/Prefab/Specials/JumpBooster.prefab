@@ -51,7 +51,7 @@ MonoBehaviour:
   ActivatedSprite: {fileID: -266737230, guid: bf2641c0020db73468f458284549fbe3, type: 3}
   DesactivatedSprite: {fileID: 21300000, guid: 8ad8e7073b854a94aa461212a102a7ff, type: 3}
   playerTag: Player
-  JumpTime: 0.5
+  JumpTime: 0.2
   ResetTime: 1.25
 --- !u!114 &9095095471829629500
 MonoBehaviour:

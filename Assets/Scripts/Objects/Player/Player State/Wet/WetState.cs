@@ -9,6 +9,8 @@ public class WetState : BaseState
         _isRootState = true;
     }
 
+    private float _baseOffset;
+
     public override void InitialiseSubState()
     {
         if (_ctx.DivePressed && _ctx.XInput != 0 && _ctx.JumpPressed && _ctx.IsTouchingGround()) SetSubState(_factory.SeaDash());
@@ -20,6 +22,7 @@ public class WetState : BaseState
 
     public override void EnterState()
     {
+        _baseOffset = _ctx._camera.offset.y;
 
         _ctx.IsWallJumping = false;
         _ctx.IsJumping = false;
@@ -31,6 +34,7 @@ public class WetState : BaseState
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
         _ctx.Bubble.SetActive(true);
+
     }
 
     public override void UpdateState()
@@ -50,20 +54,24 @@ public class WetState : BaseState
         }
 
         
-
+        
+        if(_ctx.IsTouchingGround()) _ctx._camera.ChangeOffset(_baseOffset);
+        else _ctx._camera.ChangeOffset(0);
         _ctx.JumpCount = 0;
         CheckSwitchState();
     }
 
     public override void QuitState()
     {
+
         _ctx.FxManager.WaterTint(false);
         _ctx.DrowningCounter = 0;
         _ctx.BubbleAnimator.Play("Basic");
         _ctx.BubbleAnimator.speed = 1;
         _ctx.Bubble.SetActive(false);
         _ctx.Rb.drag = 0;
-        
+        _ctx._camera.ChangeOffset(_baseOffset);
+
     }
 
     public override void CheckSwitchState()

@@ -30,14 +30,16 @@ public class InputsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Actions = new PlayersActions();
-    }
 
-    private void OnEnable()
-    {
         Jump = Actions.Player.Jump;
         Dive = Actions.Player.Dive;
         XInput = Actions.Player.Move;
         Echap = Actions.Player.Echap;
+    }
+
+    private void OnEnable()
+    {
+        
         ActivateActions();
     }
 

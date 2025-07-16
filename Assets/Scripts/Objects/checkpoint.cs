@@ -3,8 +3,8 @@ using UnityEngine;
 public class checkpoint : MonoBehaviour, IDataPersistance
 {
     public bool IsPassableMultipleTimes;
-    public string id;
-    public string Id {set {if(id == null)CreateNewId(); } }
+    public string id = "";
+
     [ContextMenu("create new id")]
     void CreateNewId(){
         id = System.Guid.NewGuid().ToString();
@@ -78,5 +78,11 @@ public class checkpoint : MonoBehaviour, IDataPersistance
         Spawnpoint = GameObject.FindGameObjectsWithTag("RespawnPoint")[0].transform;
 
         }
+
+        if(id == "")
+        {
+            CreateNewId();
+        }
     }
+
 }

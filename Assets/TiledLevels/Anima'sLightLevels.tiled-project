@@ -5,8 +5,7 @@
     "compatibilityVersion": 1100,
     "extensionsPath": "extensions",
     "folders": [
-        ".",
-        "Tilesets"
+        "."
     ],
     "properties": [
     ],
@@ -275,6 +274,11 @@
             "drawFill": true,
             "id": 14,
             "members": [
+                {
+                    "name": "InFront",
+                    "type": "bool",
+                    "value": false
+                },
                 {
                     "name": "TreeIndex",
                     "type": "int",
