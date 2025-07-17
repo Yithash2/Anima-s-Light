@@ -43,6 +43,8 @@
   <property name="TreeIndex" type="int" default="-1"/>
  </objecttype>
  <objecttype name="Teleporter" color="#0055ff">
+  <property name="Height" type="float" default="0"/>
   <property name="Location" type="object" default="0"/>
+  <property name="Width" type="float" default="0"/>
  </objecttype>
 </objecttypes>

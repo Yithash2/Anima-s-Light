@@ -9,7 +9,7 @@ using SuperTiled2Unity;
 using System.Data;
 using UnityEngine.InputSystem;
 
-public class LevelObject : MonoBehaviour, IDataPersistance
+public class LevelObject : Interactable, IDataPersistance
 {
     [SerializeField] SpriteRenderer _spr;
 
@@ -22,19 +22,14 @@ public class LevelObject : MonoBehaviour, IDataPersistance
 
     [SerializeField]private int _levelIndex;
 
-    bool _isSubscribed = false;
-    bool _isEntering = false;
-
-    PlayerStateMachine Player;
-
     [field : SerializeField] public LevelScriptableObj Level { get; private set; }
 
     public string Name { get { return Level.Name; } }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         LevelSelectorManager.Instance.OnClearCurrentLevel += ClearCurentIndex;
-        Player = PlayerStateMachine.Instance;
     }
 
     public void ChangeLevelIndex(int new_LevelIndex)
@@ -65,15 +60,8 @@ public class LevelObject : MonoBehaviour, IDataPersistance
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_levelIndex == -1) return;
-
+        Manager.Subscribe(this);
         _panel.Play("Open");
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (_levelIndex == -1) return;
-
-        if (_isEntering) LevelSelectorManager.Instance.LoadLevel(Level);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -81,41 +69,7 @@ public class LevelObject : MonoBehaviour, IDataPersistance
         if (_levelIndex == -1) return;
 
         _panel.Play("Close");
-    }
-
-    private void Update()
-    {
-        if (Vector2.Distance(Player.transform.position, transform.position) < 10 && !_isSubscribed)
-        {
-            Debug.Log("Subscribed");
-            InputsManager.Instance.Dive.started += Enter;
-            InputsManager.Instance.Dive.canceled += Enter;
-            _isSubscribed = true;
-        }
-        else if (Vector2.Distance(Player.transform.position, transform.position) > 20 && _isSubscribed)
-        {
-            Debug.Log("UnSubscribed");
-            _isSubscribed = false;
-
-            InputsManager.Instance.Dive.started -= Enter;
-            InputsManager.Instance.Dive.canceled -= Enter;
-        }
-    }
-
-    void Enter(InputAction.CallbackContext ctx)
-    {
-        // Set _isEntering to true when the input starts
-        if (ctx.started)
-        {
-            _isEntering = ctx.started;
-            return;
-        }
-
-        // Reset _isEntering once the teleportation action is performed (this can be done if necessary)
-        if (!ctx.performed)
-        {
-            _isEntering = false;
-        }
+        if (subscribed) Manager.Unsubscribe(this);
     }
 
     void UpdateTimerText(float CurrentTime, TextMeshPro Text){
@@ -151,10 +105,18 @@ public class LevelObject : MonoBehaviour, IDataPersistance
             UpdateTimerText(_bestTime, _bestTimeText);
             ChangeLevelIndex( data.Levels[Name]);
         }
+            
+    }
 
-            
+    public override void OnInteractionStart()
+    {
+        LevelSelectorManager.Instance.LoadLevel(Level);
+        Manager.StopInteraction();
+    }
+
+    public override void OnInteractionEnd()
+    {
         
-            
     }
 
     public void saveData(GameData data){
@@ -215,10 +177,5 @@ public class LevelObject : MonoBehaviour, IDataPersistance
 
     private void OnEnable()
     {
-    }
-
-    private void OnDisable()
-    {
-        LevelSelectorManager.Instance.OnClearCurrentLevel -= ClearCurentIndex;
     }
 }

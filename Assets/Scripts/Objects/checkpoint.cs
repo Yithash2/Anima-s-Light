@@ -5,6 +5,8 @@ public class checkpoint : MonoBehaviour, IDataPersistance
     public bool IsPassableMultipleTimes;
     public string id = "";
 
+    public string Id { set { id ??= System.Guid.NewGuid().ToString(); } }
+
     [ContextMenu("create new id")]
     void CreateNewId(){
         id = System.Guid.NewGuid().ToString();
@@ -79,10 +81,10 @@ public class checkpoint : MonoBehaviour, IDataPersistance
 
         }
 
-        if(id == "")
+        /* if(id == "")
         {
             CreateNewId();
-        }
+        }*/
     }
 
 }

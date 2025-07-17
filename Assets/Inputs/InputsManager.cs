@@ -31,20 +31,24 @@ public class InputsManager : MonoBehaviour
 
         Actions = new PlayersActions();
 
-        Jump = Actions.Player.Jump;
-        Dive = Actions.Player.Dive;
-        XInput = Actions.Player.Move;
-        Echap = Actions.Player.Echap;
+        
     }
 
     private void OnEnable()
     {
-        
+        Jump ??= Actions.Player.Jump;
+        Dive ??= Actions.Player.Dive;
+        XInput ??= Actions.Player.Move;
+        Echap ??= Actions.Player.Echap;
         ActivateActions();
     }
 
     private void OnDisable()
     {
+        Jump ??= Actions.Player.Jump;
+        Dive ??= Actions.Player.Dive;
+        XInput ??= Actions.Player.Move;
+        Echap ??= Actions.Player.Echap;
         DeactivateActions();
     }
 
@@ -69,5 +73,12 @@ public class InputsManager : MonoBehaviour
         XInput.Disable();
         Echap.Disable();
         OnActionDeactive?.Invoke();
+    }
+    
+    public void Subscribe(InputAction action, Action<InputAction.CallbackContext> callback)
+    {
+        action.started += callback;
+        action.performed += callback;
+        action.canceled += callback;
     }
 }

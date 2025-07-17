@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace Dialogue
 {
-    public abstract class DialogInteractions : MonoBehaviour
+    public abstract class DialogInteractions : Interactable
     {
-        public abstract void OnDialogueEnd();
-        public abstract void OnDialogueStart();
+        public override bool CanBeSelected => true;
 
         protected bool _isInDialogue = false;
         protected bool _canInteract = true;

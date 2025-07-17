@@ -33,11 +33,8 @@ public class DialogManager : MonoBehaviour
         GUIListenerImage.sprite = chara.CharacterSprite;
     }
 
-    public void StartDialog(Dialog diag, DialogInteractions Interaction)
+    public void StartDialog(Dialog diag)
     {
-        _currentInteraction = Interaction;
-        _currentInteraction.OnDialogueStart();
-
         _dialogueElements.SetActive(true);
         _currentDialog = diag;
         _lineIndex = 0;
@@ -126,12 +123,9 @@ public class DialogManager : MonoBehaviour
     {
         _dialogueElements.SetActive(false);
         _currentDialog = null;
+        InteractableManager.Instance.StopInteraction();
         _lineIndex = 0;
         GUIText.text = "";
-
-        _currentInteraction.OnDialogueEnd();
-
-        _currentInteraction = null;
     }
 
     private void Update()
@@ -147,8 +141,6 @@ public class DialogManager : MonoBehaviour
     [SerializeField] Image GUISpeakerImage;
     [SerializeField] Image GUIListenerImage;
     [SerializeField] TextMeshProUGUI GUIText;
-
-    private DialogInteractions _currentInteraction;
 
     private bool _isSpelling = false;
     private Dialog _currentDialog = null;

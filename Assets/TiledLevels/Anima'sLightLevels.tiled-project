@@ -298,8 +298,18 @@
             "id": 9,
             "members": [
                 {
+                    "name": "Height",
+                    "type": "float",
+                    "value": 0
+                },
+                {
                     "name": "Location",
                     "type": "object",
+                    "value": 0
+                },
+                {
+                    "name": "Width",
+                    "type": "float",
                     "value": 0
                 }
             ],
