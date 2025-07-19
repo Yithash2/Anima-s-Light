@@ -53,7 +53,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     <SceneEvent>k__BackingField: 0
-  - <Text>k__BackingField: TES DANS UN ENDROIT
+  - <Text>k__BackingField: T'ES DANS UN ENDROIT...
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     <SceneEvent>k__BackingField: 0
-  - <Text>k__BackingField: EN COUR DE CONSTRUCTION !
+  - <Text>k__BackingField: EN COURS DE CONSTRUCTION !
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     <SceneEvent>k__BackingField: 0
-  - <Text>k__BackingField: DEGAGE
+  - <Text>k__BackingField: DEGAGE !
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0

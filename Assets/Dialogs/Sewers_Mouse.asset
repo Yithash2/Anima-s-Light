@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Lines>k__BackingField:
   - <Text>k__BackingField: (Vous voyez une souris entrain de tourner autour d'un
-      fromage, innaccessible pour elle)
+      fromage, inaccessible pour elle)
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <SpeakerExpression>k__BackingField: 4
@@ -54,8 +54,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     <SceneEvent>k__BackingField: 2
-  - <Text>k__BackingField: "(Vous \xE8tes devenu                                            
-      fromage"
+  - <Text>k__BackingField: "(Vous \xEAtes devenu un                                            
+      fromage)"
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <SpeakerExpression>k__BackingField: 4

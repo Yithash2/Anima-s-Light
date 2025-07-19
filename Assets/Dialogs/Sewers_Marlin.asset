@@ -19,46 +19,78 @@ MonoBehaviour:
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
-  - <Text>k__BackingField: MEC
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: MEC...
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
-  - <Text>k__BackingField: "Toi aussi t'es entrains d'explorer les \xE9gout sans
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: "Toi aussi t'es en train d'explorer les \xE9gouts sans
       aucun but ?"
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
   - <Text>k__BackingField: . . .
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
   - <Text>k__BackingField: Waaaaaaaa - moi aussi c'est dingue
     <Speed>k__BackingField: 0
     <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
-  - <Text>k__BackingField: Aussi, t'as pas un join a fumer ? J'ai plus rien ..
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: Aussi, t'as pas un joint a fumer ? J'ai plus rien ..
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <SpeakerExpression>k__BackingField: 4
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
   - <Text>k__BackingField: . . .
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <SpeakerExpression>k__BackingField: 4
     <Listener>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <ListenerExpression>k__BackingField: 4
-  - <Text>k__BackingField: Waaaaa l'mec trop aigrie c'est d'inguueee
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: 'Waaaaa l''mec trop aigrie c''est dinguueee '
     <Speed>k__BackingField: 1
     <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
