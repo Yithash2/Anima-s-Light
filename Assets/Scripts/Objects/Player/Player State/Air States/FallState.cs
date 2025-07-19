@@ -7,7 +7,7 @@ public class FallState : BaseState{
 
     public override void EnterState()
     {
-        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
+        if(!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[1].name);
             _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
         _ctx._camera.ResetPostion();
     }

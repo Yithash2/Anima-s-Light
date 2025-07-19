@@ -1214,6 +1214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2353174924056489094}
   - component: {fileID: 9054797105292134883}
+  - component: {fileID: 2082524521711419368}
   m_Layer: 5
   m_Name: DialogManager
   m_TagString: Untagged
@@ -1258,7 +1259,19 @@ MonoBehaviour:
   GUISpeakerImage: {fileID: 4155723178600418174}
   GUIListenerImage: {fileID: 1211276572902856412}
   GUIText: {fileID: 1272413756164930718}
-  temp_diag: {fileID: 11400000, guid: 319add9a460d8374489d12f599cc35e8, type: 2}
+  _eventDispatcher: {fileID: 2082524521711419368}
+--- !u!114 &2082524521711419368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692562043754742049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae080e560e774dd9977cc3efb1b5aada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5738867056279749120
 GameObject:
   m_ObjectHideFlags: 0

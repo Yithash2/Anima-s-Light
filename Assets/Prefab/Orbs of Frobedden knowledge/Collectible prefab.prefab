@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5171047989866304088}
   - component: {fileID: 5718255395391231908}
-  - component: {fileID: 1502549207460780058}
   - component: {fileID: 486816818786052975}
-  - component: {fileID: 490721495000096020}
   m_Layer: 0
   m_Name: Collectible
   m_TagString: Untagged
@@ -87,41 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1502549207460780058
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6149768399621261475}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!114 &486816818786052975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,20 +135,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &490721495000096020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6149768399621261475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c8206ba98f88c94686567783def0011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisDialog: {fileID: 3178748224218533029}
-  _deleteAfter: 1
 --- !u!1 &8996127765692827846
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +145,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6963874619832048907}
   - component: {fileID: 3911352729481635043}
-  - component: {fileID: 3178748224218533029}
+  - component: {fileID: 389453498556226687}
+  - component: {fileID: 4087333418973123310}
   m_Layer: 0
   m_Name: Collectible prefab
   m_TagString: Untagged
@@ -241,7 +191,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3178748224218533029
+--- !u!114 &389453498556226687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,8 +200,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 8996127765692827846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523c2b9ef4b661e4aa8dfe8bfe3af26f, type: 3}
+  m_Script: {fileID: 11500000, guid: 563f152c8e315de42b353ce2a71bf41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogues: []
-  CurrentDialogue: 0
+  subscribed: 0
+  _canRestartDialogue: 0
+  _dialog: {fileID: 0}
+  destroyAtTheEnd: 1
+  objectToDestroy: {fileID: 6149768399621261475}
+--- !u!58 &4087333418973123310
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996127765692827846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.34

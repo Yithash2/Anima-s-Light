@@ -12,10 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fb3e62b4d0d3743b6e76ab7bbff428, type: 3}
   m_Name: Merlin
   m_EditorClassIdentifier: 
+  expressionSprites:
+  - Images:
+    - {fileID: 21300000, guid: 5d88d751b4fe8d541bca97d58f2f1ec9, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 5d88d751b4fe8d541bca97d58f2f1ec9, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 5d88d751b4fe8d541bca97d58f2f1ec9, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 3638e21675e151e41b32456d2b522cad, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 246d0f653235bd44cbfe8e54d3747a83, type: 3}
+    FramesPerSecond: 4
+    loop: 1
   <CharacterName>k__BackingField: Merlin
-  _expressionSprite:
-  - {fileID: 21300000, guid: 246d0f653235bd44cbfe8e54d3747a83, type: 3}
-  - {fileID: 21300000, guid: 3638e21675e151e41b32456d2b522cad, type: 3}
-  - {fileID: 21300000, guid: 246d0f653235bd44cbfe8e54d3747a83, type: 3}
-  - {fileID: 21300000, guid: 246d0f653235bd44cbfe8e54d3747a83, type: 3}
-  - {fileID: 21300000, guid: 246d0f653235bd44cbfe8e54d3747a83, type: 3}

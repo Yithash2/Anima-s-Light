@@ -28,7 +28,7 @@ public class WetState : BaseState
         _ctx.IsJumping = false;
 
         _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
-        if (!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
+        if (!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[0].name);
         _ctx.Rb.drag = 4;
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
@@ -41,14 +41,18 @@ public class WetState : BaseState
     {  
         if(_ctx.DrowningCounter >= _ctx.DrowningTime && !_ctx.IsDead){
             _ctx.tag = "Respawn";
+            AudioPlayer.Instance.MusicSpeed = 1;
             _ctx.IsDead = true;
         }else{
             _ctx.DrowningCounter += Time.deltaTime;
-            if(_ctx.DrowningCounter < _ctx.DrowningTime*6/10){
+            if(_ctx.DrowningCounter < _ctx.DrowningTime*5/10){
                 _ctx.Bubble.transform.localScale = Vector3.Lerp(new Vector3(3,3,0), new Vector3(1.5f,1.5f,0), (_ctx.DrowningCounter+_ctx.DrowningTime*4/10)/_ctx.DrowningTime);
-            }else if(_ctx.DrowningCounter < _ctx.DrowningTime*8/10){
+            }else if(_ctx.DrowningCounter < _ctx.DrowningTime*7/10){
                 _ctx.BubbleAnimator.Play("DangerZone");
-            }else if(_ctx.DrowningCounter >= _ctx.DrowningCounter*8/10){
+                AudioPlayer.Instance.MusicSpeed = 1.3f;
+            }else if(_ctx.DrowningCounter >= _ctx.DrowningCounter*9/10)
+            {
+                AudioPlayer.Instance.MusicSpeed = 1.8f;
                 _ctx.BubbleAnimator.speed = Mathf.Lerp(1,3, (_ctx.DrowningCounter + _ctx.DrowningCounter*2/10)/_ctx.DrowningTime*8/10);
             }
         }
@@ -63,7 +67,7 @@ public class WetState : BaseState
 
     public override void QuitState()
     {
-
+        AudioPlayer.Instance.MusicSpeed = 1;
         _ctx.FxManager.WaterTint(false);
         _ctx.DrowningCounter = 0;
         _ctx.BubbleAnimator.Play("Basic");

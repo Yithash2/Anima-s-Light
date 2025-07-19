@@ -18,7 +18,7 @@ public class GroundState : BaseState{
         _currentSubState.CheckSwitchState();
 
 
-        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[0].name);
+        if(!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[0].name);
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
         _ctx.DashCounter = 100 ;

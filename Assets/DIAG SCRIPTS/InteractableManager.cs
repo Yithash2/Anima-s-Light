@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class InteractableManager : MonoBehaviour
     {
@@ -89,54 +90,44 @@ public class InteractableManager : MonoBehaviour
 
         private void Update()
         {
-            if(transform.position != _latePosition)
-            MoveCursor();
-        }
-        
-        private Interactable _currentSelected;
-        private Vector3 _selectedPosition;
-        private bool _cursorMoving = false;
-        // ReSharper disable Unity.PerformanceAnalysis
-        private void MoveCursor()
-        {
             if (_sortedPool.IsEmpty())
             {
                 interactHint.transform.position = transform.position + Vector3.up * 2f;
                 interactHint.transform.parent = gameObject.transform;
                 return;
             }
+            MoveCursor();
+        }
+        
+        private Interactable _currentSelected;
+        private Vector3 _selectedPosition;
+        private bool _cursorMoving = false;
+        
+        private void MoveCursor()
+        {
             
             interactHint.transform.parent = null;
             
             var curr = _sortedPool.Get(this);
             
-            _currentSelected ??= curr;
-
+            _currentSelected = curr;
+            
             if (!_currentSelected.CanBeSelected)
             {
                 _selectedPosition = transform.position + Vector3.up * 2f;
-                if(!_cursorMoving) StartCoroutine(LerpCursorPosition());
             }
+            else
+            {
+                var displacement = Vector3.up * ((_currentSelected.GetComponent<SpriteRenderer>().size.y / 2) + 2);
+                _selectedPosition = curr.CanBeSelected ? curr.transform.position + displacement : (transform.position + Vector3.up * 2f);
+            }
+
+            interactHint.transform.position = Vector3.Lerp(interactHint.transform.position, _selectedPosition, 0.3f);
+
             
-            if(curr == _currentSelected) return;
             
-            _currentSelected = curr;
-            var displacement = Vector3.up * ((_currentSelected.GetComponent<SpriteRenderer>().size.y / 2) + 2);
-            _selectedPosition = curr.CanBeSelected ? curr.transform.position + displacement : (transform.position + Vector3.up * 2f);
-            if (!_cursorMoving) StartCoroutine(LerpCursorPosition());
         }
 
-        private IEnumerator LerpCursorPosition()
-        {
-            
-            _cursorMoving = true;
-            while (interactHint.transform.position != _selectedPosition)
-            {
-                interactHint.transform.position = Vector3.Lerp(interactHint.transform.position, _selectedPosition, 0.3f);
-                yield return null;
-            }
-            _cursorMoving = false;
-        }
 
         private Vector3 _latePosition;
 

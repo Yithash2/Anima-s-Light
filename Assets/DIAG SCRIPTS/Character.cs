@@ -1,51 +1,87 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
+using UnityEngine;
 
 namespace Dialogue
 {
-	[CreateAssetMenu(fileName = "Character", menuName = "DIALOG/Character")]
-	public class Character : ScriptableObject
-	{
-		public Sprite CharacterSprite { get {return _expressionSprite[(int)_expression];}}
+    [CreateAssetMenu(fileName = "Character", menuName = "DIALOG/Character")]
+    public class Character : ScriptableObject
+    {
+        [SerializeField] private AnimatedImages[] expressionSprites = new AnimatedImages[5];
         [field: SerializeField] public string CharacterName { get; private set; }
 
-        [SerializeField] private Sprite[] _expressionSprite = new Sprite[5];
-
         private Expression _expression;
+        public event Action ImageChanged;
 
-        public void ChangeExpression(int i)
+        public Sprite CharacterSprite => expressionSprites[(int)_expression].CurrentSprite();
+
+        public void ChangeExpression(int index)
         {
-            if (i >= 5 || i < 0) return;
-
-            _expression = (Expression)i;
+            if (index < 0 || index >= expressionSprites.Length) return;
+            _expression = (Expression)index;
+            expressionSprites[index].Reset();
+            expressionSprites[index].ImageChanged += () => ImageChanged?.Invoke();
+            ImageChanged?.Invoke();
         }
 
-        // override object.Equals
-        public bool Equals(Character obj)
+        public void UpdateAnimation(float deltaTime)
         {
+            expressionSprites[(int)_expression].UpdateAnimation(deltaTime);
+        }
 
-            if (obj == null || GetType() != obj.GetType())
+        public override bool Equals(object obj)
+        {
+            return obj is Character c && c.CharacterName == CharacterName;
+        }
+
+        public override int GetHashCode() => CharacterName.GetHashCode();
+    }
+
+    public enum Expression { Neutral, Enjoyed, Angry, Smug, Afraid }
+
+    [Serializable]
+    public class AnimatedImages
+    {
+        public Sprite[] Images;
+        public int FramesPerSecond = 4;
+        [SerializeField] private bool loop = true;
+
+        private float _elapsedTime;
+        private int _currentIndex;
+
+        public event Action ImageChanged;
+
+        public void UpdateAnimation(float deltaTime)
+        {
+            if (Images == null || Images.Length == 0 || FramesPerSecond <= 0) return;
+
+            // Single image case: nothing to animate
+            if (Images.Length == 1)
             {
-                return false;
+                _currentIndex = 0;
+                return;
             }
 
-            return obj.CharacterName == this.CharacterName;
-        }
+            if (!loop && _currentIndex >= Images.Length - 1) return;
 
-        // override object.GetHashCode
-        public override int GetHashCode()
+            _elapsedTime += deltaTime;
+            float frameDuration = 1f / FramesPerSecond;
+
+            if (_elapsedTime >= frameDuration)
+            {
+                _elapsedTime -= frameDuration;
+                _currentIndex = (_currentIndex + 1) % Images.Length;
+                ImageChanged?.Invoke();
+            }
+        }
+        
+        
+
+        public Sprite CurrentSprite() => (Images != null && Images.Length > 0) ? Images[Mathf.Clamp(_currentIndex, 0, Images.Length - 1)] : null;
+
+        public void Reset()
         {
-            return HashCode.Combine(CharacterName, CharacterSprite);
+            _elapsedTime = 0f;
+            _currentIndex = 0;
         }
-	}
-
-    public enum Expression
-    {
-        Neutral = 0,
-        Enjoyed = 1,
-        Angry = 2,
-        Smug = 3,
-        Afraid = 4
     }
 }

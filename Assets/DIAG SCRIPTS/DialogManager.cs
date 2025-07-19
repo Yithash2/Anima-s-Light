@@ -1,6 +1,5 @@
 using Dialogue;
 using System.Collections;
-using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,146 +7,140 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager Instance { get; private set; }
+
+    [SerializeField] private GameObject _dialogueElements;
+    [SerializeField] private TextMeshProUGUI GUINameText;
+    [SerializeField] private Image GUISpeakerImage;
+    [SerializeField] private Image GUIListenerImage;
+    [SerializeField] private TextMeshProUGUI GUIText;
+    
+    [SerializeField] private LineEventDispatcher _eventDispatcher;
+
+    private Dialog _currentDialog;
+    private bool _isSpelling;
+
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
+    }
+
+    public void StartDialog(Dialog dialog)
+    {
+        if (dialog == null || dialog.Lines == null || dialog.Lines.Length == 0)
         {
-            Destroy(gameObject);
+            Debug.LogError("Dialog is null or has no lines.");
+            return;
         }
-        Instance = this;
-    }
 
-    public void SetSpeaker(Character chara)
-    {
-        GUINameText.text = chara.CharacterName;
-        GUISpeakerImage.sprite = chara.CharacterSprite;
-    }
-
-    public void SetExpression(Character chara, int i)
-    {
-        chara.ChangeExpression(i);
-    }
-
-    public void SetListener(Character chara)
-    {
-        GUIListenerImage.sprite = chara.CharacterSprite;
-    }
-
-    public void StartDialog(Dialog diag)
-    {
         _dialogueElements.SetActive(true);
-        _currentDialog = diag;
-        _lineIndex = 0;
+        _currentDialog = dialog;
+
+        _currentDialog.ChangeSpriteListener += SetListener;
+        _currentDialog.ChangeSpriteSpeaker += SetSpeaker;
+        _currentDialog.EndDialog += EndDialog;
+
+        _currentDialog.Start();
+
+        SetListener();
+        SetSpeaker();
+
+
         NextLine();
     }
-
-    [ContextMenu("NL")]
-    public void CheckIfInterupted()
+    
+    private void SubscribeToCharacterImageChanges()
     {
-        if (_isSpelling)
-        {
-            _isSpelling = false;
-        }
+        _currentDialog.CurrentLine.Speaker.ImageChanged += SetSpeaker;
+        _currentDialog.CurrentLine.Listener.ImageChanged += SetListener;
+    }
+    
+    private void UnSubscribeToCharacterImageChanges()
+    {
+        _currentDialog.PreviousLine.Speaker.ImageChanged -= SetSpeaker;
+        _currentDialog.PreviousLine.Listener.ImageChanged -= SetListener;
+    }
+
+    public void CheckIfInterrupted()
+    {
+        if (_isSpelling) _isSpelling = false;
         else
         {
+            _currentDialog.NextLine();
             NextLine();
         }
     }
 
     private void NextLine()
     {
-        if (!_currentDialog) return;
-
-        if (_lineIndex >= _currentDialog.Lines.Length)
-        {
-            EndDialog();
-            return;
-        }
-
-        _isSpelling = true;
-
-
-        GUIText.text = "";
-
-        if (_lineIndex == 0)
-        {
-            SetExpression(_currentLine.Speaker, (int)_currentLine.SpeakerExpression);
-            SetSpeaker(_currentLine.Speaker);
-            SetExpression(_currentLine.Listener, (int)_currentLine.ListenerExpression);
-            SetListener(_currentLine.Listener);
-        }
-        else
-        {
-            if (_currentLine.ListenerExpression != _prevLine.ListenerExpression)
-                SetExpression(_currentLine.Listener, (int)_currentLine.ListenerExpression);
-
-            if (_currentLine.SpeakerExpression != _prevLine.SpeakerExpression)
-                SetExpression(_currentLine.Speaker, (int)_currentLine.SpeakerExpression);
-
-            if (!_currentLine.Speaker.Equals(_prevLine.Speaker))
-                SetSpeaker(_currentLine.Speaker);
-
-            if (!_currentLine.Listener.Equals(_prevLine.Listener))
-                SetListener(_currentLine.Listener);
-            
-            
-        }
+        if (_currentDialog == null) return;
         
+        
+        if(_currentDialog.LineIndex != 0) UnSubscribeToCharacterImageChanges();
+        SubscribeToCharacterImageChanges();
+        
+        _isSpelling = true;
+        GUIText.text = "";
+        // Invoke UnityEvent (non-scene)
+        _currentDialog.CurrentLine.Events?.Invoke();
+
+        // Dispatch scene-based event
+        _eventDispatcher?.Dispatch(_currentDialog.CurrentLine.SceneEvent);
         StartCoroutine(SpellText());
     }
 
     private IEnumerator SpellText()
     {
+        var line = _currentDialog.CurrentLine;
+        float timePerChar = line.Speed / line.Text.Length;
 
-        float t4char = _currentLine.speed / _currentLine.text.Length;
-
-        foreach(char c in _currentLine.text)
+        foreach (char c in line.Text)
         {
             GUIText.text += c;
-
             if (!_isSpelling)
             {
-                GUIText.text = _currentLine.text;
+                GUIText.text = line.Text;
                 break;
             }
-
-            yield return new WaitForSeconds(t4char);
+            yield return new WaitForSeconds(timePerChar);
         }
+        
 
-        _lineIndex++;
         _isSpelling = false;
+    }
 
+
+    private void SetSpeaker()
+    {
+        GUINameText.text = _currentDialog.CurrentLine.Speaker.CharacterName;
+        GUISpeakerImage.sprite = _currentDialog.CurrentLine.Speaker.CharacterSprite;
+    }
+
+    private void SetListener()
+    {
+        GUIListenerImage.sprite = _currentDialog.CurrentLine.Listener.CharacterSprite;
     }
 
     private void EndDialog()
     {
         _dialogueElements.SetActive(false);
+
+        _currentDialog.ChangeSpriteListener -= SetListener;
+        _currentDialog.ChangeSpriteSpeaker -= SetSpeaker;
+        _currentDialog.EndDialog -= EndDialog;
         _currentDialog = null;
-        InteractableManager.Instance.StopInteraction();
-        _lineIndex = 0;
+
         GUIText.text = "";
+        InteractableManager.Instance.StopInteraction();
     }
 
     private void Update()
     {
+        if (_currentDialog == null) return;
+
+        _currentDialog.UpdateAnimation(Time.deltaTime);
+
         if (InputsManager.Instance.Jump.triggered)
-        {
-            CheckIfInterupted();
-        }
+            CheckIfInterrupted();
     }
-
-    [SerializeField] GameObject _dialogueElements;
-    [SerializeField] TextMeshProUGUI GUINameText;
-    [SerializeField] Image GUISpeakerImage;
-    [SerializeField] Image GUIListenerImage;
-    [SerializeField] TextMeshProUGUI GUIText;
-
-    private bool _isSpelling = false;
-    private Dialog _currentDialog = null;
-    private Line _currentLine { get { return _currentDialog.Lines[_lineIndex]; } }
-    private Line _prevLine { get { return _currentDialog.Lines[_lineIndex - 1]; } }
-
-    private int _lineIndex = 0;
-
-    [SerializeField] Dialog temp_diag;
 }

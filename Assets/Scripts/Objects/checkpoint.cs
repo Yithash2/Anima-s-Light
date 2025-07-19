@@ -3,7 +3,7 @@ using UnityEngine;
 public class checkpoint : MonoBehaviour, IDataPersistance
 {
     public bool IsPassableMultipleTimes;
-    public string id = "";
+    [SerializeField] private string id = "";
 
     public string Id { set { id ??= System.Guid.NewGuid().ToString(); } }
 

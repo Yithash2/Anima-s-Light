@@ -132,7 +132,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private Transform _currenTopAutostepCheck;
     private Transform _currentBottomAutostepCheck;
-
+    
+    private BoxCollider2D _boxCollider;
+    
     #region Get Sets
     public FXManager FxManager{get {return _fxManager;}}
     public bool HasWallJumpCombo{get {return _hasWallJumpCombo;}}
@@ -189,6 +191,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         _currenTopAutostepCheck = _autostepTopCheck;
         _currentBottomAutostepCheck = _autostepBottomCheck;
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
     #endregion
 
@@ -267,9 +270,9 @@ public class PlayerStateMachine : MonoBehaviour
 
         }
 
-        if(IsSuffocating() && !_isDead){
-            tag = "Respawn";
-            _isDead = true;
+        if(IsSuffocating() && !_isDead)
+        {
+            Die();
         }
 
         var emission = _speedlines.emission;
@@ -281,6 +284,12 @@ public class PlayerStateMachine : MonoBehaviour
             NumberOfTimeStopped--;
             _timeStoperCooldownCounter = 0;
         }
+    }
+
+    public void Die()
+    {
+        tag = "Respawn";
+        _isDead = true;
     }
 
     public void HitStop(float speedRequired, float stopedTime){
@@ -295,9 +304,13 @@ public class PlayerStateMachine : MonoBehaviour
     IEnumerator SpeedFreeze(float stopedTime){
         float _realTilemScale = 1;
         Time.timeScale = 0.55f - (0.1f * NumberOfTimeStopped);
-        Debug.Log(Time.timeScale);
-        yield return new WaitForSecondsRealtime(stopedTime);
+        for (float t = 0; t <= stopedTime; t += Time.deltaTime)
+        {
+            AudioPlayer.Instance.MusicSpeed = Mathf.Lerp(AudioPlayer.Instance.MusicSpeed, 0.65f ,0.125f);
+            yield return 0;
+        }
         Time.timeScale = _realTilemScale;
+        AudioPlayer.Instance.MusicSpeed = 1f;
     }
 
     void FixedUpdate(){
@@ -333,36 +346,70 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
+    /*void OnCollisionEnter2D(Collision2D collision){
 
-        if(collision.gameObject.CompareTag(_deadlyTag) && !_isDead){
-            tag = "Respawn";
-            _isDead = true;
+        if(collision.gameObject.CompareTag(_deadlyTag) && !_isDead )
+        {
+            Die();
         }
-    }
+    }*/
 
     void Respawn(){
         Rb.velocity = new Vector2(0, 0);
         _bufferCounter = bufferTime;
         _jumpPressed = false;
-        if (!IsAnimating("Death") && !IsAnimating("Death End") && !IsAnimating("Respawn")){
-            _animator.Play("Death");        
-            _camera.CamAnimator.Play("Cam zoom");
-            _camera.ResetPostion();
-        }
-        
-        if(IsAnimating("Death End")){
-            DeathCounter.Instance.AddToDeathCount();
-            transform.position = respawnPoint.position;
-            _animator.Play("Respawn");
-            _camera.CamAnimator.Play("Cam dezoom");
-            tag = "Player";
-            _currentState.SwitchState(_states.Grounded());
-            _isDead = false;
-        }
-        
-        
 
+        if (_animator.enabled)
+        {
+            if (!IsAnimating("Death", _animator) && !IsAnimating("Death End", _animator) && !IsAnimating("Respawn", _animator)){
+                _animator.Play("Death");        
+                _camera.CamAnimator.Play("Cam zoom");
+                _camera.ResetPostion();
+            }
+        
+            if(IsAnimating("Death End", _animator)){
+                DeathCounter.Instance.AddToDeathCount();
+                Teleport(respawnPoint);
+                _animator.Play("Respawn");
+                _camera.CamAnimator.Play("Cam dezoom");
+                tag = "Player";
+                _currentState.SwitchState(_states.Grounded());
+                _isDead = false;
+            }
+        }
+        else
+        {
+            if (IsAnimating("Cam normal", _camera.CamAnimator))
+            {
+                _camera.CamAnimator.Play("Cam zoom");
+                _camera.ResetPostion();
+            }
+
+            if (IsAnimating("Cam zoom ended", _camera.CamAnimator))
+            {
+                DeathCounter.Instance.AddToDeathCount();
+                Teleport(respawnPoint);
+                _animator.Play("Respawn");
+                _camera.CamAnimator.Play("Cam dezoom");
+                tag = "Player";
+                _currentState.SwitchState(_states.Grounded());
+                _isDead = false;
+            }
+
+                
+        }
+
+
+    }
+    
+    public void Teleport(Transform target)
+    {
+        // Calculate the offset of the player relative to the PlayerHolder
+        Vector3 playerOffset = transform.localPosition;
+
+        // Move PlayerHolder to the target location, keeping the player's offset intact
+        Vector3 targetPosition = target.position;
+        transform.parent.position = targetPosition - playerOffset;
     }
 
     private void OnEnable()
@@ -385,8 +432,8 @@ public class PlayerStateMachine : MonoBehaviour
         InputsManager.Instance.XInput.canceled -= Move;
     }
 
-    public bool IsAnimating(string animationName){
-        if(_animator.GetCurrentAnimatorStateInfo(0).IsName(animationName)){
+    public bool IsAnimating(string animationName, Animator animator){
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName(animationName)){
             return true;
         }else{
             return false;
@@ -620,13 +667,50 @@ public class PlayerStateMachine : MonoBehaviour
     {
         _currentBottomAutostepCheck = IsGrounded() || IsDashing ? _autostepBottomCheck : _autostepBottomAirCheck; 
         _currenTopAutostepCheck = IsGrounded() || IsDashing ? _autostepTopCheck : _autostepTopAirCheck;
-        return Physics2D.OverlapCircle(_currentBottomAutostepCheck.position, 0.1f, GroundLayer) && !Physics2D.OverlapCircle(_currenTopAutostepCheck.position, 0.1f);
+
+        var ofset = Vector3.right * (transform.lossyScale.x * 0.3f);
+        
+        bool hasBottomObstacle = Physics2D.OverlapCircle(_currentBottomAutostepCheck.position - ofset, 0.1f, GroundLayer);
+        bool hasRoomOnTop = !Physics2D.OverlapCircle(_currenTopAutostepCheck.position - ofset, 0.1f, GroundLayer);
+        
+        return hasBottomObstacle && hasRoomOnTop;
     }
 
-    public void AutoStep()
+
+    /*public void AutoStep()
     {
         transform.position = new Vector3(transform.position.x, _currenTopAutostepCheck.position.y, transform.position.z);
+    }*/
+    
+    public void AutoStep()
+    {
+        Vector2 stepOrigin = _currenTopAutostepCheck.position - (Vector3.right * (transform.lossyScale.x * 0.3f));
+        Vector2 stepDirection = Vector2.down;
+        float maxStepHeight = _currenTopAutostepCheck.position.y - _currentBottomAutostepCheck.position.y;
+
+        RaycastHit2D stepHit = Physics2D.Raycast(stepOrigin, stepDirection, maxStepHeight, GroundLayer);
+
+        // Draw raycast from bottom to top checker
+        Debug.DrawLine(stepOrigin, stepOrigin + stepDirection * maxStepHeight, Color.cyan, 0.5f);
+
+        if (stepHit)
+        {
+            float newY = stepHit.point.y + 0.1f + _boxCollider.size.y/2 - _boxCollider.offset.y;
+
+            // Draw hit point
+            Debug.DrawRay(stepHit.point, Vector2.right * 0.2f, Color.magenta, 0.5f);
+            Debug.DrawLine(transform.position, new Vector3(transform.position.x, newY, transform.position.z), Color.yellow, 0.5f);
+
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        }
+        else
+        {
+            // No step possible
+            Debug.DrawRay(stepOrigin + stepDirection * maxStepHeight, Vector2.right * 0.2f, Color.gray, 0.5f);
+        }
     }
+
+
 
 
 
@@ -646,6 +730,11 @@ public class PlayerStateMachine : MonoBehaviour
         Gizmos.DrawWireSphere(_currentBottomAutostepCheck.position, 0.1f);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(_currenTopAutostepCheck.position, 0.1f);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(_currentBottomAutostepCheck.position - (Vector3.right * transform.lossyScale.x * 0.3f), 0.1f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(_currenTopAutostepCheck.position - (Vector3.right * transform.lossyScale.x * 0.3f), 0.1f);
 
 
 

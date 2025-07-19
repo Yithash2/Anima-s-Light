@@ -11,7 +11,7 @@ public class ControlState : BaseState
 
     public override void EnterState()
     {
-        if (!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[1].name);
+        if (!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
         _oldXInput = _ctx.XInput;
         hasDecelerated = false;  // Reset deceleration flag on entering the state

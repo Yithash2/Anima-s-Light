@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e2fa95b32a695488592eafeaac9d80, type: 3}
+  m_Name: Sewers_Mouse
+  m_EditorClassIdentifier: 
+  <Lines>k__BackingField:
+  - <Text>k__BackingField: (Vous voyez une souris entrain de tourner autour d'un
+      fromage, innaccessible pour elle)
+    <Speed>k__BackingField: 1
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
+    <SpeakerExpression>k__BackingField: 4
+    <Listener>k__BackingField: {fileID: 11400000, guid: c27a650ed3e245e48a3f52487d249a82, type: 2}
+    <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 1
+  - <Text>k__BackingField: ...
+    <Speed>k__BackingField: 1
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
+    <SpeakerExpression>k__BackingField: 4
+    <Listener>k__BackingField: {fileID: 11400000, guid: c27a650ed3e245e48a3f52487d249a82, type: 2}
+    <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: ...
+    <Speed>k__BackingField: 1
+    <Speaker>k__BackingField: {fileID: 11400000, guid: c27a650ed3e245e48a3f52487d249a82, type: 2}
+    <SpeakerExpression>k__BackingField: 0
+    <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
+    <ListenerExpression>k__BackingField: 3
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: (Vous partagez un peu de fromage avec la souris)
+    <Speed>k__BackingField: 1
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
+    <SpeakerExpression>k__BackingField: 4
+    <Listener>k__BackingField: {fileID: 11400000, guid: c27a650ed3e245e48a3f52487d249a82, type: 2}
+    <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 2
+  - <Text>k__BackingField: "(Vous \xE8tes devenu                                            
+      fromage"
+    <Speed>k__BackingField: 1
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
+    <SpeakerExpression>k__BackingField: 4
+    <Listener>k__BackingField: {fileID: 11400000, guid: c27a650ed3e245e48a3f52487d249a82, type: 2}
+    <ListenerExpression>k__BackingField: 0
+    <Events>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <SceneEvent>k__BackingField: 3

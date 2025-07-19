@@ -50,6 +50,8 @@ public class Teleporter : Interactable
 public struct SortedPool
 {
     private List<Interactable> _values;
+    
+    public int Length {get {return _values.Count; } }
     public void RemoveValue(Interactable value)
     {
         if (_values.Contains(value))

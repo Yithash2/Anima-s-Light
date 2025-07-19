@@ -11,7 +11,7 @@ public class GroundSlamState : BaseState
     public override void EnterState()
     {
         _ctx._camera.IsDiving = true;
-        if(!_ctx.IsAnimating("Respawn")) _ctx.Animator.Play(_ctx.Animations[5].name);
+        if(!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[5].name);
 
         _ctx.AudioSource.clip = _ctx.AudioClips[1];
 

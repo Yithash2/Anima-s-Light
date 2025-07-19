@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fb3e62b4d0d3743b6e76ab7bbff428, type: 3}
+  m_Name: Felle
+  m_EditorClassIdentifier: 
+  expressionSprites:
+  - Images:
+    - {fileID: -562537421, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    - {fileID: -1505218460, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    - {fileID: -1656591685, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    - {fileID: 1155254801, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    - {fileID: -1178955423, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    - {fileID: -1346832449, guid: 8d654a0bef6670543874f1e0ae6eb3b1, type: 3}
+    FramesPerSecond: 8
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 3fbcfb52baa826b47a433dd67ea4c427, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 3fbcfb52baa826b47a433dd67ea4c427, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 3fbcfb52baa826b47a433dd67ea4c427, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  - Images:
+    - {fileID: 21300000, guid: 3fbcfb52baa826b47a433dd67ea4c427, type: 3}
+    FramesPerSecond: 4
+    loop: 1
+  <CharacterName>k__BackingField: ' '

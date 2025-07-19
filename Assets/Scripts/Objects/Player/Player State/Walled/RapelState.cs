@@ -13,6 +13,7 @@ public class RapelState : BaseState{
     {
         _ctx.WallJumpCounter = 0;
         _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
+        
     }
 
     public override void UpdateState(){

@@ -27,7 +27,7 @@ public class AirState : BaseState
 
     public override void EnterState()
     {
-        if (!_ctx.IsAnimating("Respawn"))  _ctx.Animator.Play(_ctx.Animations[1].name);
+        if (!_ctx.IsAnimating("Respawn", _ctx.Animator))  _ctx.Animator.Play(_ctx.Animations[1].name);
         _ctx._camera.IsFalling = true;
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GravityMult;
     }
@@ -63,7 +63,9 @@ public class AirState : BaseState
             SwitchState(_factory.Wet());
         }else if(_ctx.IsGrounded()){
             SwitchState(_factory.Grounded());
-        }else if(_ctx.IsWalled() && (_ctx.IsWallJumping || (_ctx.XInput != 0))){
+        }else if(_ctx.IsWalled() && (_ctx.IsWallJumping || (_ctx.XInput != 0)))
+        {
+            _ctx.IsWallJumping = false;
             SwitchState(_factory.Walled());
         }
     }

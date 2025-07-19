@@ -4,6 +4,7 @@ using SuperTiled2Unity.Editor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using Unity.VisualScripting;
 
 [AutoCustomTmxImporter()]
 public class BetterCollisionLayerImporter : CustomTmxImporter
@@ -61,6 +62,11 @@ public class BetterCollisionLayerImporter : CustomTmxImporter
                 {
                     renderer.material = settings.waterMaterial;
                 }
+            }
+
+            if (customProperties.m_Properties.Any(p => p.m_Name == "unity:tag" && p.m_Value.ToLower() == "deadly"))
+            {
+                layer.AddComponent<Deadly>();
             }
         }
     }
