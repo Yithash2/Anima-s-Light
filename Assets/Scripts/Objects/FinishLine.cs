@@ -34,11 +34,9 @@ public class FinishLine : MonoBehaviour
         }
 
 
-
-        DataPersistanceManager.Instance.RestartLevel();
-
         DataPersistanceManager.Instance.SaveGame();
-
+        DataPersistanceManager.Instance.RestartLevel();
+        
         SceneTransition.Instance.TransitionScene("NewLevelSelector Test");
     }
 

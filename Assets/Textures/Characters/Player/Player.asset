@@ -18,23 +18,23 @@ MonoBehaviour:
     - {fileID: 310620867, guid: 1c900a87444281b4da38445f834d8f0a, type: 3}
     - {fileID: -930181966, guid: 1c900a87444281b4da38445f834d8f0a, type: 3}
     FramesPerSecond: 4
-    loop: 1
+    Loop: 1
   - Images:
     - {fileID: -760945269, guid: cb4fc752a027759479aa10a2a1e3209f, type: 3}
     FramesPerSecond: 4
-    loop: 1
+    Loop: 1
   - Images:
     - {fileID: -1935642889, guid: 6a8a2665c69e1d04caa72cd88fc2da89, type: 3}
     FramesPerSecond: 4
-    loop: 1
+    Loop: 1
   - Images:
     - {fileID: -1334474936, guid: dbdbfdf9e95f72a4d930511269a02f8f, type: 3}
     FramesPerSecond: 4
-    loop: 1
+    Loop: 1
   - Images:
     - {fileID: -1757311773, guid: cb4fc752a027759479aa10a2a1e3209f, type: 3}
     - {fileID: -760945269, guid: cb4fc752a027759479aa10a2a1e3209f, type: 3}
     - {fileID: 1968443089, guid: cb4fc752a027759479aa10a2a1e3209f, type: 3}
     FramesPerSecond: 4
-    loop: 0
+    Loop: 0
   <CharacterName>k__BackingField: Moi
