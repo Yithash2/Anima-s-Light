@@ -189,9 +189,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void OnValidate()
     {
+        _boxCollider = GetComponent<BoxCollider2D>();
+        
+        
         _currenTopAutostepCheck = _autostepTopCheck;
         _currentBottomAutostepCheck = _autostepBottomCheck;
-        _boxCollider = GetComponent<BoxCollider2D>();
     }
     #endregion
 
@@ -216,6 +218,11 @@ public class PlayerStateMachine : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _playerTransform = GetComponent<Transform>();
         _gravityScale = _rb.gravityScale;
+        _boxCollider = GetComponent<BoxCollider2D>();
+        
+        
+        _currenTopAutostepCheck = _autostepTopCheck;
+        _currentBottomAutostepCheck = _autostepBottomCheck;
 
         _states = new StateFactory(this);
         _currentState = _states.Normal();
@@ -684,6 +691,9 @@ public class PlayerStateMachine : MonoBehaviour
     
     public void AutoStep()
     {
+        _currentBottomAutostepCheck = IsGrounded() || IsDashing ? _autostepBottomCheck : _autostepBottomAirCheck; 
+        _currenTopAutostepCheck = IsGrounded() || IsDashing ? _autostepTopCheck : _autostepTopAirCheck;
+        
         Vector2 stepOrigin = _currenTopAutostepCheck.position - (Vector3.right * (transform.lossyScale.x * 0.3f));
         Vector2 stepDirection = Vector2.down;
         float maxStepHeight = _currenTopAutostepCheck.position.y - _currentBottomAutostepCheck.position.y;

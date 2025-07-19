@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,65 +9,58 @@ namespace Dialogue
     public class Dialog : ScriptableObject
     {
         [field: SerializeField] public Line[] Lines { get; private set; }
+    }
+    
+    public class DialogRuntime
+    {
+        private Dialog _data;
+        private int _lineIndex;
 
-        public Line CurrentLine => (LineIndex >= 0 && LineIndex < Lines?.Length) ? Lines[LineIndex] : default;
-        public Line PreviousLine => (LineIndex > 0 && LineIndex - 1 < Lines?.Length) ? Lines[LineIndex - 1] : default;
+        public Line CurrentLine => _data.Lines[_lineIndex];
+        public bool IsFinished => _lineIndex >= _data.Lines.Length;
 
-        public int LineIndex {get;private set;}
+        public Dictionary<Character, CharacterRuntime> CharacterMap { get; private set; }
 
-        public Action EndDialog;
-        public Action ChangeSpriteSpeaker;
-        public Action ChangeSpriteListener;
+        public DialogRuntime(Dialog data)
+        {
+            _data = data;
+            _lineIndex = 0;
+            CharacterMap = new();
+
+            foreach (var line in _data.Lines)
+            {
+                if (!CharacterMap.ContainsKey(line.Speaker))
+                    CharacterMap[line.Speaker] = new CharacterRuntime(line.Speaker);
+                if (!CharacterMap.ContainsKey(line.Listener))
+                    CharacterMap[line.Listener] = new CharacterRuntime(line.Listener);
+            }
+        }
 
         public void Start()
         {
-            LineIndex = 0;
-            CurrentLine.Listener.ChangeExpression((int)CurrentLine.ListenerExpression);
-            CurrentLine.Speaker.ChangeExpression((int)CurrentLine.SpeakerExpression);
+            ApplyExpressions(CurrentLine);
         }
 
         public void NextLine()
         {
-            LineIndex++;
-
-            if (LineIndex >= Lines?.Length)
-            {
-                EndDialog?.Invoke();
-                LineIndex = 0;
-                return;
-            }
-
-            ApplyLineVisuals();
+            _lineIndex++;
+            if (!IsFinished)
+                ApplyExpressions(CurrentLine);
         }
 
-        private void ApplyLineVisuals()
+        private void ApplyExpressions(Line line)
         {
-            if (Lines == null || Lines.Length == 0 || LineIndex >= Lines.Length) return;
-
-            var line = CurrentLine;
-            var prev = (LineIndex > 0) ? PreviousLine : line;
-
-            if (line.ListenerExpression != prev.ListenerExpression)
-                line.Listener.ChangeExpression((int)line.ListenerExpression);
-
-            if (line.SpeakerExpression != prev.SpeakerExpression)
-                line.Speaker.ChangeExpression((int)line.SpeakerExpression);
-
-            if (!line.Speaker.Equals(prev.Speaker))
-                ChangeSpriteSpeaker?.Invoke();
-
-            if (!line.Listener.Equals(prev.Listener))
-                ChangeSpriteListener?.Invoke();
+            CharacterMap[line.Speaker].SetExpression(line.SpeakerExpression);
+            CharacterMap[line.Listener].SetExpression(line.ListenerExpression);
         }
 
-        public void UpdateAnimation(float deltaTime)
+        public void Update(float deltaTime)
         {
-            if (Lines == null || Lines.Length == 0 || LineIndex >= Lines.Length) return;
-
-            CurrentLine.Speaker?.UpdateAnimation(deltaTime);
-            CurrentLine.Listener?.UpdateAnimation(deltaTime);
+            foreach (var character in CharacterMap.Values)
+                character.Update(deltaTime);
         }
     }
+
     
     public enum LineEventType
     {

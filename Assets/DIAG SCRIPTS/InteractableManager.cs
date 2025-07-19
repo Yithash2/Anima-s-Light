@@ -62,7 +62,6 @@ public class InteractableManager : MonoBehaviour
         {
             if (ctx.started)
             {
-                Debug.Log($"Interact : {_sortedPool.IsEmpty()} and {_currentInteractable != null}");
                 StartInteraction(null);
             }
         }

@@ -16,7 +16,7 @@ namespace Dialogue
                     GameObject.Find("Mice").GetComponent<Animator>().enabled = false;
                     break;
                 case LineEventType.ShareCheese:
-                    GameObject.Find("Cheese-weel").transform.GetChild(0).gameObject.SetActive(false);;
+                    GameObject.Find("Cheese_weel").transform.GetChild(0).gameObject.SetActive(false);;
                     break;
                 
                 case LineEventType.BecomeCheese:
