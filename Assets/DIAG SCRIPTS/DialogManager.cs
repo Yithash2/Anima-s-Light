@@ -16,131 +16,98 @@ public class DialogManager : MonoBehaviour
     
     [SerializeField] private LineEventDispatcher _eventDispatcher;
 
-    private Dialog _currentDialog;
-    private bool _isSpelling;
-
+    private DialogRuntime _runtime;
+    private bool _spelling;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(gameObject);
         else Instance = this;
     }
-
-    public void StartDialog(Dialog dialog)
+    
+    public void StartDialog(Dialog data)
     {
-        if (dialog == null || dialog.Lines == null || dialog.Lines.Length == 0)
-        {
-            Debug.LogError("Dialog is null or has no lines.");
-            return;
-        }
+        _runtime = new DialogRuntime(data);
+        _runtime.Start();
+        SubscribeToCharacterEvents();
 
         _dialogueElements.SetActive(true);
-        _currentDialog = dialog;
-
-        _currentDialog.ChangeSpriteListener += SetListener;
-        _currentDialog.ChangeSpriteSpeaker += SetSpeaker;
-        _currentDialog.EndDialog += EndDialog;
-
-        _currentDialog.Start();
-
-        SetListener();
-        SetSpeaker();
-
-
-        NextLine();
-    }
-    
-    private void SubscribeToCharacterImageChanges()
-    {
-        _currentDialog.CurrentLine.Speaker.ImageChanged += SetSpeaker;
-        _currentDialog.CurrentLine.Listener.ImageChanged += SetListener;
-    }
-    
-    private void UnSubscribeToCharacterImageChanges()
-    {
-        _currentDialog.PreviousLine.Speaker.ImageChanged -= SetSpeaker;
-        _currentDialog.PreviousLine.Listener.ImageChanged -= SetListener;
+        DisplayLine();
     }
 
-    public void CheckIfInterrupted()
+    private void SubscribeToCharacterEvents()
     {
-        if (_isSpelling) _isSpelling = false;
-        else
-        {
-            _currentDialog.NextLine();
-            NextLine();
-        }
+        foreach (var pair in _runtime.CharacterMap)
+            pair.Value.SpriteChanged += UpdateImages;
     }
 
-    private void NextLine()
+    private void UnsubscribeCharacterEvents()
     {
-        if (_currentDialog == null) return;
-        
-        
-        if(_currentDialog.LineIndex != 0) UnSubscribeToCharacterImageChanges();
-        SubscribeToCharacterImageChanges();
-        
-        _isSpelling = true;
-        GUIText.text = "";
-        // Invoke UnityEvent (non-scene)
-        _currentDialog.CurrentLine.Events?.Invoke();
-
-        // Dispatch scene-based event
-        _eventDispatcher?.Dispatch(_currentDialog.CurrentLine.SceneEvent);
-        StartCoroutine(SpellText());
-    }
-
-    private IEnumerator SpellText()
-    {
-        var line = _currentDialog.CurrentLine;
-        float timePerChar = line.Speed / line.Text.Length;
-
-        foreach (char c in line.Text)
-        {
-            GUIText.text += c;
-            if (!_isSpelling)
-            {
-                GUIText.text = line.Text;
-                break;
-            }
-            yield return new WaitForSeconds(timePerChar);
-        }
-        
-
-        _isSpelling = false;
-    }
-
-
-    private void SetSpeaker()
-    {
-        GUINameText.text = _currentDialog.CurrentLine.Speaker.CharacterName;
-        GUISpeakerImage.sprite = _currentDialog.CurrentLine.Speaker.CharacterSprite;
-    }
-
-    private void SetListener()
-    {
-        GUIListenerImage.sprite = _currentDialog.CurrentLine.Listener.CharacterSprite;
-    }
-
-    private void EndDialog()
-    {
-        _dialogueElements.SetActive(false);
-
-        _currentDialog.ChangeSpriteListener -= SetListener;
-        _currentDialog.ChangeSpriteSpeaker -= SetSpeaker;
-        _currentDialog.EndDialog -= EndDialog;
-        _currentDialog = null;
-
-        GUIText.text = "";
-        InteractableManager.Instance.StopInteraction();
+        foreach (var pair in _runtime.CharacterMap)
+            pair.Value.SpriteChanged -= UpdateImages;
     }
 
     private void Update()
     {
-        if (_currentDialog == null) return;
+        if (_runtime is null) return;
+        
+        _runtime?.Update(Time.deltaTime);
 
-        _currentDialog.UpdateAnimation(Time.deltaTime);
+        if (InputsManager.Instance.Jump.triggered && !_spelling)
+        {
+            _runtime.CurrentLine.Events?.Invoke();
+            _eventDispatcher?.Dispatch(_runtime.CurrentLine.SceneEvent);
 
-        if (InputsManager.Instance.Jump.triggered)
-            CheckIfInterrupted();
+            _runtime.NextLine();
+            if (_runtime.IsFinished)
+                EndDialog();
+            else
+                DisplayLine();
+        }
+    }
+
+    private void DisplayLine()
+    {
+        var line = _runtime.CurrentLine;
+        var speaker = _runtime.CharacterMap[line.Speaker];
+
+        GUINameText.text = line.Speaker.CharacterName;
+        GUIText.text = "";
+        StartCoroutine(TypeText(line.Text, line.Speed));
+        UpdateImages();
+    }
+
+    private IEnumerator TypeText(string text, float speed)
+    {
+        _spelling = true;
+        float delay = speed / text.Length;
+
+        foreach (char c in text)
+        {
+            if (InputsManager.Instance.Jump.triggered)
+            {
+                GUIText.text = text;
+                break;
+            }
+            GUIText.text += c;
+            yield return new WaitForSeconds(delay);
+        }
+
+        _spelling = false;
+    }
+
+    private void UpdateImages()
+    {
+        var line = _runtime.CurrentLine;
+        GUISpeakerImage.sprite = _runtime.CharacterMap[line.Speaker].GetSprite();
+        GUIListenerImage.sprite = _runtime.CharacterMap[line.Listener].GetSprite();
+    }
+
+    private void EndDialog()
+    {
+        UnsubscribeCharacterEvents();
+        _dialogueElements.SetActive(false);
+        _runtime = null;
+        InteractableManager.Instance.StopInteraction();
     }
 }
