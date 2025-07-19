@@ -13,93 +13,67 @@ MonoBehaviour:
   m_Name: Tuto
   m_EditorClassIdentifier: 
   <Lines>k__BackingField:
-  - <text>k__BackingField: Bonjour
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+  - <Text>k__BackingField: Bonjour ..
+    <Speed>k__BackingField: 3
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: Bienvenue dans le playtest 1.0 de Anima's Light
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: "Apr\xE8s votre situation ... compliqu\xE9, vous ne devais
+      pas vous rappelez de grand chose, alors je vais vous inculqu\xE9 les bases
+      ..."
+    <Speed>k__BackingField: 2
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: "Q & D pour se d\xE9placer de gauche a droite"
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: Les touches "Q" et "D" sont faites pour aller de gauche
+      a droite, joystick manette sert a la meme chose
+    <Speed>k__BackingField: 2
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: ESPACE pour sauter
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: "La touche 'ESPACE\" ou \"A\" sur manette est utilis\xE9
+      pour saut\xE9, et \"S\" ou \"B\" sur manette pour dive"
+    <Speed>k__BackingField: 2
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: S pour dive
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: "Vous pouvez modifier ces param\xE8tres dans le menu option"
+    <Speed>k__BackingField: 2
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
     <ListenerExpression>k__BackingField: 0
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: . . .
-    <speed>k__BackingField: 3
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
+    <SceneEvent>k__BackingField: 0
+  - <Text>k__BackingField: Sur ceux, je vous souhaite, un bon jeu
+    <Speed>k__BackingField: 2
+    <Speaker>k__BackingField: {fileID: 11400000, guid: 7ac4f9390e1aa9c44af04f8b41131b25, type: 2}
     <SpeakerExpression>k__BackingField: 0
     <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
-    <ListenerExpression>k__BackingField: 0
+    <ListenerExpression>k__BackingField: 4
     <Events>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-  - <text>k__BackingField: CIEL
-    <speed>k__BackingField: 0.2
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
-    <SpeakerExpression>k__BackingField: 1
-    <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
-    <ListenerExpression>k__BackingField: 0
-    <Events>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
-  - <text>k__BackingField: TU NE M'AVAIT PAS DIT
-    <speed>k__BackingField: 0.2
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
-    <SpeakerExpression>k__BackingField: 1
-    <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
-    <ListenerExpression>k__BackingField: 0
-    <Events>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
-  - <text>k__BackingField: QU'C'ETAIS UNE MAGICIENNE
-    <speed>k__BackingField: 0.2
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
-    <SpeakerExpression>k__BackingField: 1
-    <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
-    <ListenerExpression>k__BackingField: 0
-    <Events>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
-  - <text>k__BackingField: "((mtn d\xE9gage))"
-    <speed>k__BackingField: 1
-    <Speaker>k__BackingField: {fileID: 11400000, guid: 76ee61eacbb56554da6f2003063dcf93, type: 2}
-    <SpeakerExpression>k__BackingField: 0
-    <Listener>k__BackingField: {fileID: 11400000, guid: 75322e1b68246004cb6e36b465344890, type: 2}
-    <ListenerExpression>k__BackingField: 2
-    <Events>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
+    <SceneEvent>k__BackingField: 0
