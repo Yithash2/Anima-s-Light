@@ -37,7 +37,7 @@ namespace Dialogue
         private IEnumerator StayCheese()
         {
             PlayerStateMachine.Instance.GetComponent<Animator>().enabled = false;
-            PlayerStateMachine.Instance.GetComponent<SpriteRenderer>().sprite = GameObject.Find("Cheese_weel").GetComponentInChildren<SpriteRenderer>().sprite;
+            PlayerStateMachine.Instance.GetComponent<SpriteRenderer>().sprite = GameObject.Find("Cheese_weel").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
             yield return new WaitForSeconds(120f);
             PlayerStateMachine.Instance.GetComponent<Animator>().enabled = true;
         }
