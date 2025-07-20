@@ -69,7 +69,7 @@ public class LevelObject : Interactable, IDataPersistance
         if (_levelIndex == -1) return;
 
         _panel.Play("Close");
-        if (subscribed) Manager.Unsubscribe(this);
+        Manager.Unsubscribe(this);
     }
 
     void UpdateTimerText(float CurrentTime, TextMeshPro Text){
