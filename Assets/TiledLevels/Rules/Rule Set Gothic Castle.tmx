@@ -200,6 +200,7 @@
   <properties>
    <property name="unity:SortingLayer" value="Floor"/>
    <property name="unity:SortingOrder" type="int" value="20"/>
+   <property name="unity:collision" value="Tilemap"/>
    <property name="unity:ignore" value="Collision"/>
    <property name="unity:layer" value="Ground"/>
   </properties>

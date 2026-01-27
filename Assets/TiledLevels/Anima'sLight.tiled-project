@@ -11,6 +11,43 @@
     ],
     "propertyTypes": [
         {
+            "color": "#ff00ff00",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+            ],
+            "name": "JumpBooster",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ffffffff",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "Color",
+                    "type": "color",
+                    "value": "#ffffffff"
+                },
+                {
+                    "name": "Radius",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "Light",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
             "color": "#ffffffff",
             "drawFill": true,
             "id": 3,
@@ -26,7 +63,7 @@
         {
             "color": "#ff00aa00",
             "drawFill": true,
-            "id": 11,
+            "id": 4,
             "members": [
             ],
             "name": "Bush - 1",
@@ -39,7 +76,7 @@
         {
             "color": "#ff00aa00",
             "drawFill": true,
-            "id": 12,
+            "id": 5,
             "members": [
             ],
             "name": "Bush - 2",
@@ -52,7 +89,7 @@
         {
             "color": "#ff00aa00",
             "drawFill": true,
-            "id": 13,
+            "id": 6,
             "members": [
             ],
             "name": "Bush - 3",
@@ -65,7 +102,7 @@
         {
             "color": "#ff00aa00",
             "drawFill": true,
-            "id": 6,
+            "id": 7,
             "members": [
                 {
                     "name": "Id",
@@ -88,7 +125,7 @@
         {
             "color": "#ffffff00",
             "drawFill": true,
-            "id": 2,
+            "id": 8,
             "members": [
                 {
                     "name": "Color",
@@ -126,7 +163,7 @@
         {
             "color": "#ffffffff",
             "drawFill": true,
-            "id": 7,
+            "id": 9,
             "members": [
                 {
                     "name": "IsFlipped",
@@ -147,22 +184,38 @@
             ]
         },
         {
-            "color": "#ff00ff00",
+            "color": "#ffa0a0a4",
             "drawFill": true,
-            "id": 1,
+            "id": 17,
             "members": [
+                {
+                    "name": "Height",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Location",
+                    "type": "object",
+                    "value": 0
+                },
+                {
+                    "name": "Width",
+                    "type": "float",
+                    "value": 0
+                }
             ],
-            "name": "JumpBooster",
+            "name": "ForcedTeleporter",
             "type": "class",
             "useAs": [
                 "object",
-                "tile"
+                "tile",
+                "project"
             ]
         },
         {
             "color": "#ff0055ff",
             "drawFill": true,
-            "id": 4,
+            "id": 10,
             "members": [
                 {
                     "name": "Height",
@@ -200,32 +253,30 @@
         {
             "color": "#ffaa5500",
             "drawFill": true,
-            "id": 18,
+            "id": 11,
             "members": [
                 {
                     "name": "IsPassable",
                     "type": "bool",
                     "value": false
+                },
+                {
+                    "name": "Size",
+                    "type": "float",
+                    "value": 3
                 }
             ],
             "name": "OneWayPlatform",
             "type": "class",
             "useAs": [
-                "property",
-                "map",
-                "layer",
                 "object",
-                "tile",
-                "tileset",
-                "wangcolor",
-                "wangset",
-                "project"
+                "tile"
             ]
         },
         {
             "color": "#ff482400",
             "drawFill": true,
-            "id": 17,
+            "id": 12,
             "members": [
                 {
                     "name": "HouseIndex",
@@ -236,15 +287,14 @@
             "name": "RandomHouse",
             "type": "class",
             "useAs": [
-                "property",
                 "object",
-                "project"
+                "tile"
             ]
         },
         {
             "color": "#ffff0000",
             "drawFill": true,
-            "id": 16,
+            "id": 13,
             "members": [
                 {
                     "name": "MushroomIndex",
@@ -295,7 +345,7 @@
         {
             "color": "#ff0055ff",
             "drawFill": true,
-            "id": 9,
+            "id": 15,
             "members": [
                 {
                     "name": "Height",

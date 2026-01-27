@@ -20,7 +20,9 @@ public class PlayerDateScriptableObject : ScriptableObject
     
     #region Run
     [SerializeField] private float _runAcceleration;
+    [SerializeField] private float runDeceleration;
     [SerializeField] private float _airAcceleration;
+    [SerializeField] private float airDecceleration;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _linearDrag;
 
@@ -38,6 +40,8 @@ public class PlayerDateScriptableObject : ScriptableObject
     public float WallJumpLength {get {return wallJumpLength;}}
     public float GroundAccelTime {get {return _runAcceleration;}}
     public float AirAccelTime {get {return _airAcceleration;}}
+    public float AirDeccelTime {get {return airDecceleration;}}
+    public float GroundDeccelTime {get {return runDeceleration;}}
     public float MaxSpeed {get {return _maxSpeed;}}
     public float LinearDrag {get {return _linearDrag;}}
 

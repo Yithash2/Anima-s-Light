@@ -16,10 +16,11 @@ public class JumpBoostersPowerUp : MonoBehaviour
 
     private PlayerStateMachine Player;
     private bool _isActivated = true;
-    private float t = 0f;
+    private float _jumpCounter = 0f;
     private float resetCounter = 0f;
     private CircleCollider2D _collider;
     private float _radius;
+    private bool _playerBeenAbove;
 
     void Start()
     {
@@ -33,58 +34,52 @@ public class JumpBoostersPowerUp : MonoBehaviour
         if (collider.CompareTag(playerTag) && _isActivated)
         {
             Player.BufferCounter = 0;
-            if (Player.Rb.velocity.y < 0) Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
-            Player.JumpCount = 0;
-            StartCoroutine(JumpAuthorized());
+            //if (Player.Rb.velocity.y < 0) Player.Rb.velocity = new Vector2(Player.Rb.velocity.x, Player.Rb.velocity.y / 2f);
+            Player.ResetJump();
+            _jumpCounter = 0;
+        }
+    }
 
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.CompareTag(playerTag) && _isActivated)
+        {
+            if(collider.bounds.min.y > transform.position.y) _playerBeenAbove = true;
+            
+            if (_jumpCounter < JumpTime)
+            {
+                Player.CoyoteCounter = 0;
+                if (Player.JumpCount > 0)
+                {
+                    DeActivatePowerUp();
+                }
+
+                _jumpCounter += Time.deltaTime;
+            }
+            else
+            {
+                //Player.JumpCount = 1;
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag(playerTag) && _isActivated)
-        {    
-            if(Player.Rb.velocity.y < 0){
-                _isActivated = false;
-                resetCounter = 0f; // Reset resetCounter on activation
-            }
-            
-        }
-    }
-
-    IEnumerator SpeedFreeze(){
-        float _realTilemScale = 1;
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.3f);
-        Time.timeScale = _realTilemScale;
-    }
-
-    IEnumerator JumpAuthorized()
-    {
-        t = 0f;
-
-        while (t < JumpTime)
+        if (collider.CompareTag("Player"))
         {
-            Player.CoyoteCounter = 0;
-
-            if (Player.JumpCount != 0)
+            if (_jumpCounter < JumpTime)
             {
-                Player.JumpCount = 1;
-                if(Mathf.Abs(Player.Rb.velocity.x) >= 40f){
-                    StartCoroutine(SpeedFreeze());
+                Player.CoyoteCounter = 0;
+                if (Player.JumpCount > 0)
+                {
+                    DeActivatePowerUp();
                 }
-                _isActivated = false;
-                resetCounter = 0f; // Reset resetCounter on activation
-                break; // Exit loop if jump is authorized or player falls
+
+                _jumpCounter += Time.deltaTime;
             }
-
-            t += Time.deltaTime;
-            yield return null;
         }
-
-        // Reset CoyoteCounter to an appropriate value after the loop ends
-        Player.CoyoteCounter = 1f; // Set to a suitable value after the jump ends
     }
+    
 
 
     void Update()
@@ -109,7 +104,7 @@ public class JumpBoostersPowerUp : MonoBehaviour
         else
         {
             resetCounter = 0f;
-            UpdateColliderRadius();
+            //UpdateColliderRadius();
         }
     }
 
@@ -117,6 +112,12 @@ public class JumpBoostersPowerUp : MonoBehaviour
     {
         _isActivated = true;
         SpriteRenderer.sprite = ActivatedSprite;
+    }
+
+    void DeActivatePowerUp()
+    {
+        _isActivated = false;
+        SpriteRenderer.sprite = DesactivatedSprite;
     }
 
     void UpdateColliderRadius()
@@ -136,7 +137,7 @@ public class JumpBoostersPowerUp : MonoBehaviour
     void OnDrawGizmos()
     {
         #if UNITY_EDITOR
-            Handles.Label(transform.position + new Vector3(0, 4, 0), t.ToString());
+            Handles.Label(transform.position + new Vector3(0, 4, 0), _jumpCounter.ToString());
         #endif
     }
 }

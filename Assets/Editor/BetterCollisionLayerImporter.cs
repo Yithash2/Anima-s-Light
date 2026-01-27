@@ -31,7 +31,7 @@ public class BetterCollisionLayerImporter : CustomTmxImporter
             if (customProperties == null) continue;
 
             if (customProperties.m_Properties.Any(p =>
-                p.m_Name == "unity:ignore" && p.m_Value.Equals("Collision", System.StringComparison.OrdinalIgnoreCase)))
+                p.m_Name == "unity:collision" && p.m_Value.Equals("Tilemap", System.StringComparison.OrdinalIgnoreCase)))
             {
                 if (!layer.TryGetComponent<Rigidbody2D>(out var rb))
                 {
@@ -52,7 +52,17 @@ public class BetterCollisionLayerImporter : CustomTmxImporter
                 else
                     composite.isTrigger = false;
 
-                
+                var cpm = layer.AddComponent<CustomPhysicsMaterials>();
+                if (customProperties.m_Properties.Any(p =>
+                        p.m_Name == "custom:material" && p.m_Value.ToLower() == "mud"))
+                    cpm.material = settings.MudPMat;
+                else if (customProperties.m_Properties.Any(p =>
+                             p.m_Name == "custom:material" && p.m_Value.ToLower() == "ice"))
+                    cpm.material = settings.IcePMat;
+                else if (customProperties.m_Properties.Any(p =>
+                             p.m_Name == "custom:material" && p.m_Value.ToLower() == "webs"))
+                    cpm.material = settings.WebPMat;
+                else  cpm.material = settings.DirtPMat;
             }
 
             if (customProperties.m_Properties.Any(p => p.m_Name == "custom:material" && p.m_Value.ToLower() == "water"))

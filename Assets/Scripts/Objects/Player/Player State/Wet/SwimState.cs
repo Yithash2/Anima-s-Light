@@ -20,26 +20,18 @@ public class SwimState : BaseState{
 
         CheckSwitchState();
 
-        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
-
-        bool needsDeceleration = _ctx.XInput != 0 &&
-                                 Mathf.Abs(_ctx.Rb.velocity.x) > 0.5f &&
-                                 (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
-                                  Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
-
-        if (needsDeceleration && !hasDecelerated)
+        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + _ctx.currentSpeedModifier;
+        if (HasChangedDirection())
         {
-            Deceleration();
-            hasDecelerated = true;  // Set flag to prevent repeated deceleration
+            _ctx.Deceleration();
         }
-        else{
-            if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
-                Run();
-            }else if(_ctx.XInput != _ctx.PlayerTransform.localScale.x){
-                Acceleration();
-            }else{
-                Deceleration();
-            }
+        else if (Mathf.Abs(_ctx.Rb.velocity.x) < _targetSpeed)
+        {
+            _ctx.Acceleration(_targetSpeed * _ctx.XInput);
+        }
+        else
+        {
+            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.velocity.x)); // clamp / stabilize speed
         }
 
         if (_ctx.JumpPressed) PressSwim();
@@ -70,22 +62,7 @@ public class SwimState : BaseState{
     {
         
     }
-
-    void Run(){
-        
-        Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
-        
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
-    }
-
-    void Acceleration(){
-        Vector2 _direction = new Vector2(_ctx.XInput, 0) * (_targetSpeed / _ctx.AccelerationTime);
-        _ctx.Rb.AddForce(_direction);
-    }
-
-    void Deceleration(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
-    }
+    
     void Swim()
     {
 
@@ -129,6 +106,10 @@ public class SwimState : BaseState{
 
         _ctx.JumpPressed = false;
     }
-
+    
+    private bool HasChangedDirection()
+    {
+        return Mathf.Sign(_ctx.XInput) != _oldXInput;
+    }
 
 }

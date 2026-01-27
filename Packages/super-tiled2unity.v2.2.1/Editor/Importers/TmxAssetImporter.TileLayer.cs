@@ -167,13 +167,14 @@ namespace SuperTiled2Unity.Editor
             Assert.IsNotNull(m_MapComponent);
 
             // Instantiate object to build all colliders for this chunk
-            m_CurrentCollisionBuilder = new CollisionBuilder(goTilemap, m_TilePolygonDatabase, SuperImportContext, m_MapComponent);
+                m_CurrentCollisionBuilder = new CollisionBuilder(goTilemap, m_TilePolygonDatabase, SuperImportContext, m_MapComponent);
 
             var tileIds = ReadTileIdsFromChunk(chunk);
             PlaceTiles(goTilemap, chunk, tileIds);
 
-            m_CurrentCollisionBuilder.Build(this);
+            m_CurrentCollisionBuilder.Build(this); 
             m_CurrentCollisionBuilder = null;
+            
         }
 
         private List<uint> ReadTileIdsFromChunk(Chunk chunk)

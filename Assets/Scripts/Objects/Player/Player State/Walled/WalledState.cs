@@ -23,7 +23,6 @@ public class WalledState : BaseState
 
     public override void UpdateState()
     {
-        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
 
         _ctx.UpdateDashTimer();
 

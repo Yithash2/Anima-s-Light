@@ -19,23 +19,19 @@ public class JumpControllerState : BaseState{
     public override void UpdateState(){
 
 
-        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + (Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)));
-
-        bool needsDeceleration = _ctx.XInput != 0 &&
-                                Mathf.Abs(_ctx.Rb.velocity.x) > 0.5f &&
-                                (Mathf.Sign(_ctx.XInput) != Mathf.Sign(_ctx.Rb.velocity.x) ||
-                                Mathf.Sign(_ctx.XInput) != Mathf.Sign(_oldXInput));
-
-        if (needsDeceleration && !hasDecelerated)
+        _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + (Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y))) + _ctx.currentSpeedModifier;
+        
+        if (HasChangedDirection())
         {
-            Deceleration();
-            hasDecelerated = true;  // Set flag to prevent repeated deceleration
-        }else{
-            if(Mathf.Abs(_ctx.Rb.velocity.x) > _targetSpeed ){
-                Run();
-            }else{
-                Acceleration();
-            }
+            _ctx.Deceleration();
+        }
+        else if (Mathf.Abs(_ctx.Rb.velocity.x) < _targetSpeed)
+        {
+            _ctx.Acceleration(_targetSpeed * _ctx.XInput);
+        }
+        else
+        {
+            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.velocity.x)); // clamp / stabilize speed
         }
 
 
@@ -52,7 +48,6 @@ public class JumpControllerState : BaseState{
     {
         if(_ctx.XInput == 0){
             SwitchState(_factory.Rising());
-            Deceleration();
         }
     }
 
@@ -60,22 +55,11 @@ public class JumpControllerState : BaseState{
     {
         
     }
-
-    void Run(){
-        
-        Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
-        
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
-    }
-
-    void Acceleration(){
-        Vector2 _direction = new Vector2(_ctx.XInput, 0) * (_targetSpeed / _ctx.AccelerationTime);
-        _ctx.Rb.AddForce(_direction);
-    }
-
-    private void Deceleration()
+    
+    
+    private bool HasChangedDirection()
     {
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x / 3, _ctx.Rb.velocity.y);
+        return Mathf.Sign(_ctx.XInput) != _oldXInput;
     }
 
 }

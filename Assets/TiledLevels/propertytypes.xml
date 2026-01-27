@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
+ <objecttype name="JumpBooster" color="#00ff00"/>
+ <objecttype name="Light" color="#ffffff">
+  <property name="Color" type="color" default="#ffffffff"/>
+  <property name="Radius" type="float" default="0"/>
+ </objecttype>
  <objecttype name="Arrow" color="#ffffff"/>
  <objecttype name="Bush - 1" color="#00aa00"/>
  <objecttype name="Bush - 2" color="#00aa00"/>
@@ -19,7 +24,11 @@
   <property name="IsFlipped" type="bool" default="false"/>
   <property name="Range" type="float" default="5"/>
  </objecttype>
- <objecttype name="JumpBooster" color="#00ff00"/>
+ <objecttype name="ForcedTeleporter" color="#a0a0a4">
+  <property name="Height" type="float" default="0"/>
+  <property name="Location" type="object" default="0"/>
+  <property name="Width" type="float" default="0"/>
+ </objecttype>
  <objecttype name="MovingWater" color="#0055ff">
   <property name="Height" type="float" default="0"/>
   <property name="Speed" type="float" default="0"/>
@@ -29,6 +38,7 @@
  </objecttype>
  <objecttype name="OneWayPlatform" color="#aa5500">
   <property name="IsPassable" type="bool" default="false"/>
+  <property name="Size" type="float" default="3"/>
  </objecttype>
  <objecttype name="RandomHouse" color="#482400">
   <property name="HouseIndex" type="int" default="-1"/>

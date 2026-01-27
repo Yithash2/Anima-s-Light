@@ -1,0 +1,256 @@
+{
+    "activeFile": "Level 1.tmx",
+    "expandedProjectPaths": [
+        "ObjectTemplate",
+        "Rules",
+        "ObjectTemplate/Decoration",
+        "."
+    ],
+    "fileStates": {
+        "32px Utitaries.tsx": {
+            "scaleInDock": 1
+        },
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Biggest Utilitaries.tsx": {
+            "scaleInDock": 1
+        },
+        "Bushes.tsx": {
+            "scaleInDock": 1
+        },
+        "Gothic Pillar.tsx": {
+            "scaleInDock": 1
+        },
+        "Level 1.tmx": {
+            "expandedGroupLayers": [
+                45,
+                48,
+                47
+            ],
+            "expandedObjectLayers": [
+                16,
+                15
+            ],
+            "scale": 1,
+            "selectedLayer": 17,
+            "viewCenter": {
+                "x": 2480.5,
+                "y": 2175.5
+            }
+        },
+        "Level Selector Tile.tsx": {
+            "scaleInDock": 1
+        },
+        "LevelSelector.tmx": {
+            "scale": 0.68837890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 705.2801815860405,
+                "y": -25.42204568023834
+            }
+        },
+        "Mushroom.tsx": {
+            "scaleInDock": 1
+        },
+        "Rules/Autotile Rule Set.tmx": {
+            "scale": 0.550703125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.0907930202865,
+                "y": 253.31252659951764
+            }
+        },
+        "Rules/Cave Ruleset.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 256.5,
+                "y": 256
+            }
+        },
+        "Rules/Gothic Pillars Rule Set.tmx": {
+            "scale": 1.3767578125,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 256.0363172081146,
+                "y": 127.4734004823379
+            }
+        },
+        "Rules/Prison Collum Tile Rule Set.tmx": {
+            "scale": 1.05390625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 255.71534469977757,
+                "y": 127.62045959970345
+            }
+        },
+        "Rules/Prison_Ruleset.tmx": {
+            "scale": 0.550703125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 640.0907930202865,
+                "y": 126.20229819832605
+            }
+        },
+        "Rules/Rule Set Gothic Castle.tmx": {
+            "scale": 0.550703125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 640.0907930202865,
+                "y": 126.20229819832605
+            }
+        },
+        "Rules/Temple Rule Set.tmx": {
+            "scale": 0.9178385416666667,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 128.0181586040573,
+                "y": 255.49155908639523
+            }
+        },
+        "Rules/TileTransition Rule Set.tmx": {
+            "scale": 0.45891927083333334,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -256.0363172081146,
+                "y": -641.7250673854448
+            }
+        },
+        "Rules/Water Rule Set.tmx": {
+            "scale": 0.550703125,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 640.0907930202865,
+                "y": 126.20229819832605
+            }
+        },
+        "Rules/Webs_Ruleset.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 368.6666666666667,
+                "y": 267.33333333333326
+            }
+        },
+        "Rules/Wood Rule Set.tmx": {
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 384.16666666666663,
+                "y": 256.1666666666667
+            }
+        },
+        "Tilesets/32px Utitaries.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Big Spikes.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Bigger Spikes.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Biggest Utilitaries.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Bricks.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Bushes.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Cave_Tiles.tsx": {
+            "scaleInDock": 1.5
+        },
+        "Tilesets/Deny Phase 1-2 Transition.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Gothic Castle.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Gothic Pillar.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Liane.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/LogCabin.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Mushroom.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/OneWayPlatforms-passable.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Prison Collum&Arc.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Prison Tilemap.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Spikes.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Temple Walls and Roof.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Temple_Pillar.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Tree.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Utilitaries.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Water_Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Wood based tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/mini_deny_tilemap5.tsx": {
+            "scaleInDock": 1
+        },
+        "Tree.tsx": {
+            "scaleInDock": 1
+        },
+        "Utilitaries.tsx": {
+            "scaleInDock": 1
+        },
+        "mini_deny_tilemap5.tsx": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/Tilemap",
+    "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.xml",
+    "openFiles": [
+        "Level 1.tmx",
+        "Rules/Cave Ruleset.tmx",
+        "Rules/Gothic Pillars Rule Set.tmx",
+        "Rules/Prison_Ruleset.tmx",
+        "Rules/Autotile Rule Set.tmx"
+    ],
+    "project": "Anima'sLight.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "Rules/Autotile Rule Set.tmx",
+        "Rules/Prison_Ruleset.tmx",
+        "Rules/Gothic Pillars Rule Set.tmx",
+        "Rules/Cave Ruleset.tmx",
+        "Level 1.tmx",
+        "Rules/Prison Collum Tile Rule Set.tmx",
+        "Rules/Wood Rule Set.tmx",
+        "Rules/Water Rule Set.tmx",
+        "Rules/TileTransition Rule Set.tmx",
+        "Rules/Temple Rule Set.tmx",
+        "Rules/Rule Set Gothic Castle.tmx",
+        "LevelSelector.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

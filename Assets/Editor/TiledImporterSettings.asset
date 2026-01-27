@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: TiledImporterSettings
   m_EditorClassIdentifier: 
   waterMaterial: {fileID: 2100000, guid: 38542c777e7f1c24099ff1edfa38c2b5, type: 2}
+  DirtPMat: {fileID: 11400000, guid: c7f0c33ac8d54c64583c09d24c3d3f46, type: 2}
+  MudPMat: {fileID: 11400000, guid: 41bdbc6b90877114cab0639572b822d1, type: 2}
+  IcePMat: {fileID: 11400000, guid: 459f760f8c196c34882c9743c9df17cb, type: 2}
+  WebPMat: {fileID: 11400000, guid: 3f6e6a888c66a7a438cc2a5bae83593d, type: 2}

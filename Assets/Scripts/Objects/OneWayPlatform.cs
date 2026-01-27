@@ -11,18 +11,28 @@ public class OneWayPlatform : MonoBehaviour
     _platformNonActive;
 
     bool _coroutineActive;
-    Collider2D _collider;
+
+    void OnValidate()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<BoxCollider2D>();
+    }
+    
+    [SerializeField] BoxCollider2D _collider;
+    
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] bool _isPassable = true;
-
+    
     public bool IsPassable { set { _isPassable = value; } }
+    public float Size {set {_spriteRenderer.size=new Vector2(value,1); _collider.size=new Vector2(value,1);} }
 
     void Start()
     {
         player = PlayerStateMachine.Instance;
         _platformActive = LayerMask.NameToLayer("Ground");
         _platformNonActive = LayerMask.NameToLayer("Default");
-        _collider = GetComponent<Collider2D>();
+        
     }
 
     void Update()

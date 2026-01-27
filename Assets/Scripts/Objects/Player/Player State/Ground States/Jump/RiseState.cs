@@ -12,7 +12,11 @@ public class RiseState : BaseState{
     }
 
     public override void UpdateState(){
-        //_ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, 0, 0.05f), _ctx.Rb.velocity.y);
+        if(Mathf.Abs(_ctx.Rb.velocity.x) > 0 && Mathf.Abs(_ctx.Rb.velocity.x) <=  _ctx.PlayerData.MaxSpeed + _ctx.currentSpeedModifier){
+            _ctx.Deceleration();
+        }else if(Mathf.Abs(_ctx.Rb.velocity.x) > 0){
+            _ctx.Deceleration(0.5f);
+        }
         CheckSwitchState();
     }
 

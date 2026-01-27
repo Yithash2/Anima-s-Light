@@ -18,11 +18,11 @@ public class RapelState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
-
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.SlideSpeed + _ctx.PlatformVelocityY, float.MaxValue));
+        float coef = 5;
+        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, 
+            -(coef *_ctx.PlayerData.SlideSpeed / ((coef-1)*Mathf.Abs(_ctx.GroundType.friction) + 1)) + _ctx.PlatformVelocityY, float.MaxValue));
 
         
         

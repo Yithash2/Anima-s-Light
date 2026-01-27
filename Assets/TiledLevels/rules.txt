@@ -4,6 +4,8 @@
 ./Rules/Water Rule Set.tmx
 ./Rules/Rule Set Gothic Castle.tmx
 ./Rules/Gothic Pillars Rule Set.tmx
-./Rules/Prison Tile Rule Set.tmx
+./Rules/Prison_Ruleset.tmx
 ./Rules/Prison Collum Tile Rule Set.tmx
 ./Rules/Temple Rule Set.tmx
+./Rules/Cave Ruleset.tmx
+./Rules/Webs_Ruleset.tmx

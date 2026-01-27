@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Levels;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -125,6 +127,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool CanSuffocate = true;
 
+    public bool stuck = false;
+
     [SerializeField] private Transform _autostepBottomCheck;
     [SerializeField] private Transform _autostepBottomAirCheck;
     [SerializeField] private Transform _autostepTopCheck;
@@ -134,6 +138,10 @@ public class PlayerStateMachine : MonoBehaviour
     private Transform _currentBottomAutostepCheck;
     
     private BoxCollider2D _boxCollider;
+
+    public Action Dies;
+
+    public GroundMaterial GroundType;
     
     #region Get Sets
     public FXManager FxManager{get {return _fxManager;}}
@@ -141,7 +149,6 @@ public class PlayerStateMachine : MonoBehaviour
     public bool WallJumpCombo {get {return _wallJumpCombo;} set{_wallJumpCombo = value;}}
     public int AirDashNumber{get {return _numberOfAirDash;} set{_numberOfAirDash = value;}}
     public float JumpPower {get { return _jumpPower;} set { _jumpPower = value;}}
-    public Vector2 Acceleration  {get {return _acceleration;}}
     public float DashCounter {get{return _airDashCounter;} set {_airDashCounter = value;}} 
     public GameObject Bubble {get {return _bubble;}}
     public Animator BubbleAnimator {get {return _bubbleAnimator;}}
@@ -151,7 +158,16 @@ public class PlayerStateMachine : MonoBehaviour
     public Vector2 PlatformAcceleration {get { return new Vector2(_platformAccelerationX, _platformAccelerationY);}set { _platformAccelerationX = value.x; _platformAccelerationY = value.y; } }
     public Vector2 StoredVelocity {get { return new Vector2(_latePlatformVelocityX, _latePlatformVelocityY);}set { _latePlatformVelocityX = value.x; _latePlatformVelocityY = value.y; } }
     public bool IsOnMovingPlatform {get {return _isOnMovingPlatform;}set { _isOnMovingPlatform = value;} }
-    public float AccelerationTime {get { return _accelerationTime;} set { _accelerationTime = value; } }
+
+    public float AccelerationTime
+    {
+        get { return IsTouchingGround() ? PlayerData.GroundAccelTime : PlayerData.AirAccelTime; }
+    }
+
+    public float DeccelerationTime
+    {
+        get { return IsTouchingGround() ? PlayerData.GroundDeccelTime : PlayerData.AirDeccelTime; }
+    }
     public float PlatformVelocityX {get {return _platformVelocityX;} set{_platformVelocityX = value;}}
     public float PlatformVelocityY {get {return _platformVelocityY;} set{_platformVelocityY = value;}}
     public int NumberOfJumps {get {return _numberOfJumps;} set{_numberOfJumps = value;}}
@@ -246,15 +262,16 @@ public class PlayerStateMachine : MonoBehaviour
     
     void Update(){
         if (IsDead) return;
+        
 
         if(!Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer)){
             if(_jumpCount < 1){
                 CoyoteTimer();
             }
                 
-        }else{
-            _coyoteCounter = 0;
-            _jumpCount = 0;
+        }else
+        {
+            ResetJump();
         }
 
         if (CanAutoStep() && _xInput != 0 && (_isDashing || _rb.velocity.y < 5))
@@ -293,9 +310,16 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
+    public void ResetJump()
+    {
+        _coyoteCounter = 0;
+        _jumpCount = 0;
+    }
+
     public void Die()
     {
         tag = "Respawn";
+        Dies?.Invoke();
         _isDead = true;
     }
 
@@ -309,18 +333,19 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     IEnumerator SpeedFreeze(float stopedTime){
-        float _realTilemScale = 1;
         Time.timeScale = 0.55f - (0.1f * NumberOfTimeStopped);
         for (float t = 0; t <= stopedTime; t += Time.deltaTime)
         {
             AudioPlayer.Instance.MusicSpeed = Mathf.Lerp(AudioPlayer.Instance.MusicSpeed, 0.65f ,0.125f);
             yield return 0;
         }
-        Time.timeScale = _realTilemScale;
+        Time.timeScale = 1;
         AudioPlayer.Instance.MusicSpeed = 1f;
     }
 
     void FixedUpdate(){
+        
+        if (stuck) return;
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
@@ -337,6 +362,11 @@ public class PlayerStateMachine : MonoBehaviour
             _currentState.UpdateStates();
 
         }
+    }
+
+    public void ForceUpdateState()
+    {
+        _currentState.UpdateStates();
     }
     
 
@@ -601,7 +631,8 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public bool IsTouchingGround(){
-        return Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer);
+        Collider2D ground  = Physics2D.OverlapBox(_groundCheck.position, _checkSize, 0, GroundLayer);
+        return ground;
     }
 
     public bool IsGrounded(){
@@ -635,8 +666,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool IsWalled()
     {
-
-        return Physics2D.OverlapCircle(_autostepBottomCheck.position, 0.1f, GroundLayer) && Physics2D.OverlapCircle(_autostepTopAirCheck.position, 0.1f, GroundLayer);
+        return Physics2D.OverlapCircle(_currentBottomAutostepCheck.position, 0.1f, GroundLayer) &&
+               GroundType.isWallJumpable;
     }
 
     public bool CanMove(){
@@ -718,6 +749,61 @@ public class PlayerStateMachine : MonoBehaviour
             // No step possible
             Debug.DrawRay(stepOrigin + stepDirection * maxStepHeight, Vector2.right * 0.2f, Color.gray, 0.5f);
         }
+    }
+
+    [HideInInspector]public float currentSpeedModifier;
+    public void Run(float targetSpeed){
+        currentSpeedModifier = IsTouchingGround()
+            ? Mathf.Lerp(currentSpeedModifier, GroundType.maxSpeedAddifier, 0.5f * Time.deltaTime)
+            : Mathf.Lerp(currentSpeedModifier, 1f, 0.5f * Time.deltaTime);
+
+        Vector2 vel = new Vector2(targetSpeed, Rb.velocity.y);
+        if (Mathf.Abs(Rb.velocity.x) > targetSpeed)
+        {
+            Rb.velocity = new Vector2(Mathf.Lerp(Rb.velocity.x, vel.x, 0.5f * Time.deltaTime), Rb.velocity.y);
+        }
+        else
+        {
+            Rb.velocity = new Vector2(vel.x, Rb.velocity.y);
+        }
+        
+    }
+
+    public void Acceleration(float targetSpeed)
+    {
+        currentSpeedModifier = IsTouchingGround()
+            ? Mathf.Lerp(currentSpeedModifier, GroundType.maxSpeedAddifier, 0.5f * Time.deltaTime)
+            : Mathf.Lerp(currentSpeedModifier, 1f, 0.5f * Time.deltaTime);
+
+        float rate =
+            Mathf.Abs(targetSpeed) / AccelerationTime *
+            (IsTouchingGround() ? GroundType.adhesion : 1f);
+
+        float newX = Mathf.MoveTowards(
+            Rb.velocity.x,
+            targetSpeed,
+            rate * Time.deltaTime
+        );
+
+        Rb.velocity = new Vector2(newX, Rb.velocity.y);
+    }
+
+
+    private float friction;
+    public void Deceleration(float factor = 1f){
+        friction = IsTouchingGround() ? GroundType.friction : Mathf.Lerp(friction, 1, 0.5f * Time.deltaTime);
+        
+        float rate =
+            Mathf.Abs(Rb.velocity.x)/DeccelerationTime * friction ;
+
+        float newX = Mathf.MoveTowards(
+            Rb.velocity.x,
+            0,
+            rate * Time.deltaTime * factor
+        );
+
+        Rb.velocity = new Vector2(newX, Rb.velocity.y);
+   
     }
 
 

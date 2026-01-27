@@ -27,7 +27,7 @@ public class JumpState : BaseState{
 
         _ctx.AudioSource.Play();
 
-        if(_hasCeilled){
+        if(_ctx.GroundType.canHeadBoost && _hasCeilled){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
             _hasCeilled = false;
             _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);   
@@ -43,8 +43,6 @@ public class JumpState : BaseState{
 
     public override void UpdateState(){
 
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
-
         CheckSwitchState();
 
         if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
@@ -52,7 +50,7 @@ public class JumpState : BaseState{
             HandleJumpEnd();
         }else{
             
-            if(_ctx.IsCeilled() && !_ctx.JumpReleased && !_hasCeilled){
+            if(_ctx.GroundType.canHeadBoost && _ctx.IsCeilled() && !_ctx.JumpReleased && !_hasCeilled){
                 _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
                 _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);  
                 _hasCeilled = true;
@@ -82,16 +80,15 @@ public class JumpState : BaseState{
             //Debug.Log(_ctx.JumppReleasedT);
             // Ensure player is pressing toward the wall and has enough x-velocity and y-velocity
             bool canWallJump = _ctx.IsWalled() &&
-                            Mathf.Abs(_ctx.XInput) > 0.5f &&                  // Actively holding input toward the wall
-                            Mathf.Abs(_ctx.Rb.velocity.x) > 4.5 * Mathf.Sqrt(Mathf.Abs(_ctx.Rb.velocity.y)) &&  // High enough x-velocity
                             _ctx.DivePressed;                            // Jump button has been released since last jump
                 
 
             if (canWallJump)
             {
                 _stateTimeCounter = _stateTimer;  // End current jump
-                float wallJumpPush = Mathf.Abs(_ctx.Rb.velocity.x) - 20 > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.velocity.x) - 15) : _ctx.JumpPower;
-                _ctx.Rb.velocity = new Vector2(0, wallJumpPush);  // Apply WallJump force
+                float adhesion = _ctx.GroundType.adhesion > 1 ? 1f : _ctx.GroundType.adhesion;
+                float wallJumpPush = Mathf.Abs(_ctx.Rb.velocity.x) - _ctx.PlayerData.MaxSpeed > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.velocity.x) - _ctx.PlayerData.MaxSpeed - _ctx.GroundType.maxSpeedAddifier) : _ctx.JumpPower;
+                _ctx.Rb.velocity = new Vector2(0, wallJumpPush * adhesion);  // Apply WallJump force
                 _ctx.StartWallJumpComboCoroutine(1);
                 _ctx.WallJumpCombo = true;
 

@@ -33,7 +33,7 @@ public class DashState : BaseState{
 
         _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
 
-        if(_hasCeilled){
+        if(_ctx.GroundType.canHeadBoost && _hasCeilled){
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
             _hasCeilled = false;
             _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -150, 150),_ctx.Rb.velocity.y);   
@@ -106,7 +106,7 @@ public class DashState : BaseState{
             _stateTimeCounter = 100f;
         }else if(_ctx.DivePressed && _ctx.JumpPressed && _ctx.IsGrounded() && _ctx.XInput != 0){ 
                 SwitchState(_factory.Dash());
-        }else if(_ctx.DivePressed && _stateTimeCounter >= _stateTimer *95/100 && !_ctx.IsTouchingGround()){
+        }else if(_ctx.DivePressed && _stateTimeCounter >= _stateTimer *90/100 && !_ctx.IsTouchingGround()){
             SwitchState(_factory.Dive());
         }else if(_stateTimeCounter >= _stateTimer){
             if(_ctx.IsTouchingGround()){
@@ -160,8 +160,8 @@ public class DashState : BaseState{
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
         }
         
-
-        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * _ctx.XInput , verticalJumpForce);  
+        float adhesion = _ctx.GroundType.adhesion > 1 ? 1f : _ctx.GroundType.adhesion;
+        _ctx.Rb.velocity = new Vector2((horizontalJumpForce * _ctx.XInput + _ctx.Rb.velocity.x) * adhesion, verticalJumpForce + _ctx.Rb.velocity.y);  
 
     }
 

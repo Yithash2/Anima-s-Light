@@ -96,7 +96,8 @@ public class WallJumpState : BaseState
         _ctx.BufferCounter = 0;
         _ctx.CoyoteCounter = _ctx.CoyoteTime + 1;
         
-        float verticalJumpForce = Mathf.Sqrt((_ctx.PlayerData.WallJumpHeight + _ctx.StoredVelocity.y) * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
+        float adhesion = _ctx.GroundType.adhesion > 1 || _ctx.GroundType.adhesion < 0 ? 1f : _ctx.GroundType.adhesion;
+        float verticalJumpForce = Mathf.Sqrt(((_ctx.PlayerData.WallJumpHeight * adhesion) + _ctx.StoredVelocity.y) * -2 * (Physics2D.gravity.y * _ctx.Rb.gravityScale));
         float timeToPeak = verticalJumpForce / Mathf.Abs(Physics2D.gravity.y * _ctx.Rb.gravityScale);
         float totalTimeInAir = -2 * timeToPeak;
         float horizontalJumpForce = (_ctx.PlayerData.WallJumpLength + _ctx.StoredVelocity.x) / totalTimeInAir;
@@ -110,10 +111,10 @@ public class WallJumpState : BaseState
     // Update the rigidbody's velocity for wall jumping
         _ctx.Rb.velocity = 
             new Vector2((horizontalJumpForce - Mathf.Abs(_ctx.Rb.velocity.x/10)) * wallJumpDirection, 
-            verticalJumpForce + _ctx.Rb.velocity.y + Mathf.Abs(_ctx.Rb.velocity.x/10));
+            verticalJumpForce + _ctx.Rb.velocity.y + Mathf.Abs(_ctx.Rb.velocity.x/10)) ;
 
         if(_ctx.PlayerTransform.localScale.x != wallJumpDirection)
-        _ctx.Flip();
+            _ctx.Flip();
 
     }
 

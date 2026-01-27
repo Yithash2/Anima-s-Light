@@ -43,10 +43,11 @@ public class cam : MonoBehaviour
     {
         #region Smooth movement
         // Determine the desired position (based on player position and the offset)
-        Vector3 desiredPosition = player.transform.position + offset;
+        Vector3 moveDirection = Mathf.Abs(player.Rb.velocity.x) > 1 ? new Vector3(Mathf.Sign(player.Rb.velocity.x),0,0): Vector3.zero;
+        Vector3 desiredPosition = player.transform.position + offset + moveDirection * sideOffset;
 
         // Get the screen position of the player (without offset for bounds calculation)
-        Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(player.transform.position);
+        Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(player.transform.position + moveDirection * sideOffset);
 
         // Get the screen dimensions
         float screenWidth = Screen.width;
@@ -84,21 +85,20 @@ public class cam : MonoBehaviour
         if (!IsFalling)
         {
             _smoothSpeed = smoothSpeed;
+            
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, desiredPosition.y, smoothSpeed), transform.position.z);
-        }
-        else
+        }else
         {
             _smoothSpeed = Mathf.Lerp(_smoothSpeed, 1, 8 * Time.deltaTime);
-            //Debug.Log(_smoothSpeed);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, desiredPosition.y, _smoothSpeed), transform.position.z);
+             
+            transform.position = new Vector3(transform.position.x , Mathf.Lerp(transform.position.y, desiredPosition.y, _smoothSpeed), transform.position.z);
         }
-            
-
-        // Handle diving logic
+        
         if (IsDiving)
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -10), 3 * Time.deltaTime);
         }
+        
     }
 
 

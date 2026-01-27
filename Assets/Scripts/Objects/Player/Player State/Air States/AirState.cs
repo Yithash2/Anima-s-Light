@@ -39,9 +39,6 @@ public class AirState : BaseState
             _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
             _hasCeilled = true;
         }
-        
-
-        _ctx.AccelerationTime = Mathf.Lerp(_ctx.AccelerationTime, _ctx.PlayerData.AirAccelTime, 0.2f);
 
         _ctx.UpdateDashTimer();
 

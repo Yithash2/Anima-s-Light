@@ -26,8 +26,7 @@ public class WetState : BaseState
 
         _ctx.IsWallJumping = false;
         _ctx.IsJumping = false;
-
-        _ctx.AccelerationTime = _ctx.PlayerData.AirAccelTime;
+        
         if (!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[0].name);
         _ctx.Rb.drag = 4;
 

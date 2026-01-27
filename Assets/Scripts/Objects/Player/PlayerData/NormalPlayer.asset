@@ -19,9 +19,11 @@ MonoBehaviour:
   groundSlamMult: 6
   clampedVelocity: 40
   slideSpeed: 3
-  _wallJumpControlTime: 0.4
+  _wallJumpControlTime: 0.2
   _runAcceleration: 0.4
+  runDeceleration: 0.1
   _airAcceleration: 0.2
-  _maxSpeed: 15
+  airDecceleration: 0.05
+  _maxSpeed: 20
   _linearDrag: 0
   <ReleaseCoyoteTimer>k__BackingField: 0.8
