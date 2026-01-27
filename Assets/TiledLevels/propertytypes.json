@@ -1,23 +1,138 @@
 [
     {
+        "color": "#ffffffff",
+        "name": "Arrow",
+        "properties": [
+        ]
+    },
+    {
+        "color": "#ff00aa00",
+        "name": "Bush - 1",
+        "properties": [
+        ]
+    },
+    {
+        "color": "#ff00aa00",
+        "name": "Bush - 2",
+        "properties": [
+        ]
+    },
+    {
+        "color": "#ff00aa00",
+        "name": "Bush - 3",
+        "properties": [
+        ]
+    },
+    {
+        "color": "#ff00aa00",
+        "name": "checkpoint",
+        "properties": [
+            {
+                "name": "Id",
+                "type": "string",
+                "value": "-1"
+            },
+            {
+                "name": "IsPassableMultipleTimes",
+                "type": "bool",
+                "value": false
+            }
+        ]
+    },
+    {
         "color": "#ffa0a0a4",
-        "drawFill": true,
-        "id": 1,
-        "members": [
-        ],
-        "name": "JumpBooster",
-        "type": "class",
-        "useAs": [
-            "property",
-            "object",
-            "project"
+        "name": "Cobweb",
+        "properties": [
+            {
+                "name": "CanFallThrough",
+                "type": "bool",
+                "value": false
+            },
+            {
+                "name": "NumPassage",
+                "type": "int",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "color": "#ffffff00",
+        "name": "CustomLight",
+        "properties": [
+            {
+                "name": "Color",
+                "type": "color",
+                "value": "#ffffffff"
+            },
+            {
+                "name": "FallofStr",
+                "type": "float",
+                "value": 0.5
+            },
+            {
+                "name": "InnerRad",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Intensity",
+                "type": "float",
+                "value": 1
+            },
+            {
+                "name": "OuterRad",
+                "type": "float",
+                "value": 1
+            }
         ]
     },
     {
         "color": "#ffffffff",
-        "drawFill": true,
-        "id": 2,
-        "members": [
+        "name": "FellesShadow",
+        "properties": [
+            {
+                "name": "IsFlipped",
+                "type": "bool",
+                "value": false
+            },
+            {
+                "name": "Range",
+                "type": "float",
+                "value": 5
+            }
+        ]
+    },
+    {
+        "color": "#ffa0a0a4",
+        "name": "ForcedTeleporter",
+        "properties": [
+            {
+                "name": "Height",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Location",
+                "type": "object",
+                "value": 0
+            },
+            {
+                "name": "Width",
+                "type": "float",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "color": "#ff00ff00",
+        "name": "JumpBooster",
+        "properties": [
+        ]
+    },
+    {
+        "color": "#ffffffff",
+        "name": "Light",
+        "properties": [
             {
                 "name": "Color",
                 "type": "color",
@@ -28,13 +143,122 @@
                 "type": "float",
                 "value": 0
             }
-        ],
-        "name": "Light",
-        "type": "class",
-        "useAs": [
-            "property",
-            "object",
-            "project"
+        ]
+    },
+    {
+        "color": "#ff0055ff",
+        "name": "MovingWater",
+        "properties": [
+            {
+                "name": "Height",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Speed",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Width",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "X",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Y",
+                "type": "float",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "color": "#ffaa5500",
+        "name": "OneWayPlatform",
+        "properties": [
+            {
+                "name": "IsPassable",
+                "type": "bool",
+                "value": false
+            },
+            {
+                "name": "Size",
+                "type": "float",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "color": "#ff482400",
+        "name": "RandomHouse",
+        "properties": [
+            {
+                "name": "HouseIndex",
+                "type": "int",
+                "value": -1
+            }
+        ]
+    },
+    {
+        "color": "#ffff0000",
+        "name": "RandomMushroom",
+        "properties": [
+            {
+                "name": "MushroomIndex",
+                "type": "int",
+                "value": -1
+            },
+            {
+                "name": "RandomSize",
+                "type": "bool",
+                "value": false
+            },
+            {
+                "name": "Size",
+                "type": "float",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "color": "#ffa0a0a4",
+        "name": "RandomTree",
+        "properties": [
+            {
+                "name": "InFront",
+                "type": "bool",
+                "value": false
+            },
+            {
+                "name": "TreeIndex",
+                "type": "int",
+                "value": -1
+            }
+        ]
+    },
+    {
+        "color": "#ff0055ff",
+        "name": "Teleporter",
+        "properties": [
+            {
+                "name": "Height",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "Location",
+                "type": "object",
+                "value": 0
+            },
+            {
+                "name": "Width",
+                "type": "float",
+                "value": 0
+            }
         ]
     }
 ]

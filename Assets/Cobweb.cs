@@ -3,15 +3,23 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpiderWeb : MonoBehaviour
+public class Cobweb : MonoBehaviour
 {
+    
+    public int NumPassage
+    {
+        set { allowedPassage = value; }
+    }
 
+    public bool CanFallThrough
+    {
+        set { stopsGravity = value; }
+    }
 
     [SerializeField] private int allowedPassage = 1;
     private int _passageCounter = 0;
 
     [SerializeField] private bool stopsGravity = true;
-    [SerializeField] bool behaviourEnabled = true;
     
     [SerializeField] SpriteRenderer sprRend;
     // Start is called before the first frame update
@@ -19,7 +27,7 @@ public class SpiderWeb : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) return;
         
-        if ((allowedPassage!=-1 && _passageCounter >= allowedPassage) || !behaviourEnabled) return;
+        if ((allowedPassage!=-1 && _passageCounter >= allowedPassage)) return;
 
         StartCoroutine(StuckRoutine());
 
@@ -60,7 +68,6 @@ public class SpiderWeb : MonoBehaviour
     {
         sprRend.enabled = true;
         _passageCounter = 0;
-        behaviourEnabled = true;
         PlayerStateMachine.Instance.Dies -= Reset;
     }
 }

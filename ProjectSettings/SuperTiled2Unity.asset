@@ -54,18 +54,6 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes:
-  - m_Name: JumpBooster
-    m_Color: {r: 0, g: 1, b: 0, a: 1}
-    m_CustomProperties: []
-  - m_Name: Light
-    m_Color: {r: 1, g: 1, b: 1, a: 1}
-    m_CustomProperties:
-    - m_Name: Color
-      m_Type: color
-      m_Value: '#ffffffff'
-    - m_Name: Radius
-      m_Type: float
-      m_Value: 0
   - m_Name: Arrow
     m_Color: {r: 1, g: 1, b: 1, a: 1}
     m_CustomProperties: []
@@ -87,6 +75,15 @@ MonoBehaviour:
     - m_Name: IsPassableMultipleTimes
       m_Type: bool
       m_Value: false
+  - m_Name: Cobweb
+    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_CustomProperties:
+    - m_Name: CanFallThrough
+      m_Type: bool
+      m_Value: false
+    - m_Name: NumPassage
+      m_Type: int
+      m_Value: 1
   - m_Name: CustomLight
     m_Color: {r: 1, g: 1, b: 0, a: 1}
     m_CustomProperties:
@@ -124,6 +121,18 @@ MonoBehaviour:
       m_Type: object
       m_Value: 0
     - m_Name: Width
+      m_Type: float
+      m_Value: 0
+  - m_Name: JumpBooster
+    m_Color: {r: 0, g: 1, b: 0, a: 1}
+    m_CustomProperties: []
+  - m_Name: Light
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+    m_CustomProperties:
+    - m_Name: Color
+      m_Type: color
+      m_Value: '#ffffffff'
+    - m_Name: Radius
       m_Type: float
       m_Value: 0
   - m_Name: MovingWater
@@ -225,3 +234,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 6121176136582357376, guid: a38be05f595a50d418ad5ea8943a0dde, type: 3}
   - m_TypeName: ForcedTeleporter
     m_Prefab: {fileID: 6731154480760583804, guid: 40dce3c183203ae44bbc349bf2fa4a08, type: 3}
+  - m_TypeName: Cobweb
+    m_Prefab: {fileID: 1776547444984603647, guid: ab1bf10c5b5809542b48281a70897d81, type: 3}

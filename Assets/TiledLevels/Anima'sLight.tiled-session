@@ -1,10 +1,11 @@
 {
     "activeFile": "Level 1.tmx",
     "expandedProjectPaths": [
-        "ObjectTemplate",
+        "Tilesets",
         "Rules",
-        "ObjectTemplate/Decoration",
-        "."
+        ".",
+        "ObjectTemplate",
+        "ObjectTemplate/Decoration"
     ],
     "fileStates": {
         "32px Utitaries.tsx": {
@@ -24,19 +25,19 @@
         },
         "Level 1.tmx": {
             "expandedGroupLayers": [
+                47,
                 45,
-                48,
-                47
+                48
             ],
             "expandedObjectLayers": [
                 16,
                 15
             ],
-            "scale": 1,
-            "selectedLayer": 17,
+            "scale": 0.125,
+            "selectedLayer": 20,
             "viewCenter": {
-                "x": 2480.5,
-                "y": 2175.5
+                "x": 996,
+                "y": 868
             }
         },
         "Level Selector Tile.tsx": {
@@ -57,8 +58,8 @@
             "scale": 0.550703125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 640.0907930202865,
-                "y": 253.31252659951764
+                "x": 640.0907930202866,
+                "y": 254.2204568023834
             }
         },
         "Rules/Cave Ruleset.tmx": {
@@ -74,7 +75,7 @@
             "selectedLayer": 3,
             "viewCenter": {
                 "x": 256.0363172081146,
-                "y": 127.4734004823379
+                "y": 127.83657256348418
             }
         },
         "Rules/Prison Collum Tile Rule Set.tmx": {
@@ -89,8 +90,8 @@
             "scale": 0.550703125,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 640.0907930202865,
-                "y": 126.20229819832605
+                "x": 640.0907930202866,
+                "y": 127.11022840119165
             }
         },
         "Rules/Rule Set Gothic Castle.tmx": {
@@ -162,6 +163,11 @@
         "Tilesets/Cave_Tiles.tsx": {
             "scaleInDock": 1.5
         },
+        "Tilesets/Cobweb.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Tilesets/Deny Phase 1-2 Transition.tsx": {
             "scaleInDock": 1
         },
@@ -189,6 +195,11 @@
         "Tilesets/Prison Tilemap.tsx": {
             "scaleInDock": 1
         },
+        "Tilesets/SimpleWeb.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Tilesets/Spikes.tsx": {
             "scaleInDock": 1
         },
@@ -207,6 +218,9 @@
         "Tilesets/Water_Tiles.tsx": {
             "scaleInDock": 1
         },
+        "Tilesets/Webs.tsx": {
+            "scaleInDock": 1
+        },
         "Tilesets/Wood based tiles.tsx": {
             "scaleInDock": 1
         },
@@ -223,34 +237,38 @@
             "scaleInDock": 1
         }
     },
-    "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/Tilemap",
-    "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.xml",
+    "last.externalTilesetPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/Tilesets",
+    "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/decoration",
+    "last.objectTemplatePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/ObjectTemplate",
+    "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.json",
     "openFiles": [
         "Level 1.tmx",
         "Rules/Cave Ruleset.tmx",
         "Rules/Gothic Pillars Rule Set.tmx",
         "Rules/Prison_Ruleset.tmx",
-        "Rules/Autotile Rule Set.tmx"
+        "Rules/Autotile Rule Set.tmx",
+        "Tilesets/SimpleWeb.tsx"
     ],
     "project": "Anima'sLight.tiled-project",
-    "property.type": "float",
+    "property.type": "int",
     "recentFiles": [
+        "Tilesets/SimpleWeb.tsx",
         "Rules/Autotile Rule Set.tmx",
         "Rules/Prison_Ruleset.tmx",
         "Rules/Gothic Pillars Rule Set.tmx",
         "Rules/Cave Ruleset.tmx",
         "Level 1.tmx",
+        "Tilesets/Cobweb.tsx",
         "Rules/Prison Collum Tile Rule Set.tmx",
         "Rules/Wood Rule Set.tmx",
         "Rules/Water Rule Set.tmx",
         "Rules/TileTransition Rule Set.tmx",
-        "Rules/Temple Rule Set.tmx",
-        "Rules/Rule Set Gothic Castle.tmx",
-        "LevelSelector.tmx"
+        "Rules/Temple Rule Set.tmx"
     ],
+    "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 16,
-        "width": 16
+        "height": 64,
+        "width": 64
     }
 }

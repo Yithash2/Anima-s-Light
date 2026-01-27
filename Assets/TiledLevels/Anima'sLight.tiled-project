@@ -11,43 +11,6 @@
     ],
     "propertyTypes": [
         {
-            "color": "#ff00ff00",
-            "drawFill": true,
-            "id": 1,
-            "members": [
-            ],
-            "name": "JumpBooster",
-            "type": "class",
-            "useAs": [
-                "object",
-                "tile"
-            ]
-        },
-        {
-            "color": "#ffffffff",
-            "drawFill": true,
-            "id": 2,
-            "members": [
-                {
-                    "name": "Color",
-                    "type": "color",
-                    "value": "#ffffffff"
-                },
-                {
-                    "name": "Radius",
-                    "type": "float",
-                    "value": 0
-                }
-            ],
-            "name": "Light",
-            "type": "class",
-            "useAs": [
-                "property",
-                "object",
-                "project"
-            ]
-        },
-        {
             "color": "#ffffffff",
             "drawFill": true,
             "id": 3,
@@ -120,6 +83,30 @@
             "useAs": [
                 "object",
                 "tile"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 19,
+            "members": [
+                {
+                    "name": "CanFallThrough",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "NumPassage",
+                    "type": "int",
+                    "value": 1
+                }
+            ],
+            "name": "Cobweb",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
             ]
         },
         {
@@ -209,6 +196,43 @@
             "useAs": [
                 "object",
                 "tile",
+                "project"
+            ]
+        },
+        {
+            "color": "#ff00ff00",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+            ],
+            "name": "JumpBooster",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ffffffff",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "Color",
+                    "type": "color",
+                    "value": "#ffffffff"
+                },
+                {
+                    "name": "Radius",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "Light",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
                 "project"
             ]
         },

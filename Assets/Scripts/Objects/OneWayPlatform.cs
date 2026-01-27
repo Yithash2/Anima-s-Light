@@ -25,7 +25,11 @@ public class OneWayPlatform : MonoBehaviour
     [SerializeField] bool _isPassable = true;
     
     public bool IsPassable { set { _isPassable = value; } }
-    public float Size {set {_spriteRenderer.size=new Vector2(value,1); _collider.size=new Vector2(value,1);} }
+    public float Size {set {
+        _spriteRenderer.size=new Vector2(value,1);
+        _collider.size=new Vector2(value,1);
+        _collider.offset=new Vector2(value/2,0.5f);
+        transform.position += new Vector3(0,0,0);} }
 
     void Start()
     {
