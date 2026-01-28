@@ -29,17 +29,17 @@
         },
         "Level 1.tmx": {
             "expandedGroupLayers": [
-                44,
+                45,
                 46,
                 48,
-                47,
-                45
+                44,
+                47
             ],
             "scale": 0.125,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 2348,
-                "y": 2072
+                "x": 8828,
+                "y": 3392
             }
         },
         "Level Selector Tile.tsx": {
