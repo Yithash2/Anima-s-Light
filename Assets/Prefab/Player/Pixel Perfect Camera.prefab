@@ -146,12 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <offset>k__BackingField: {x: 0, y: 4, z: -10}
   smoothSpeed: 0.125
-  moveShiftMultX: 0
-  moveShiftMultY: 0
+  sideOffset: 2
   animator: {fileID: 6897061408692098921}
-  verticalShift: 4
   _isLerping: 0
-  <Background>k__BackingField: {fileID: 0}
+  IsFalling: 0
+  IsDiving: 0
   leftBound: 0.35
   rightBound: 0.65
   _innerLeftBound: 0.45
@@ -198,11 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 40
-  m_RefResolutionX: 1600
-  m_RefResolutionY: 900
+  m_AssetsPPU: 16
+  m_RefResolutionX: 800
+  m_RefResolutionY: 450
   m_CropFrame: 4
-  m_GridSnapping: 2
+  m_GridSnapping: 1
   m_FilterMode: 1
   m_UpscaleRT: 0
   m_PixelSnapping: 0

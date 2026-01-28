@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adhesion: 0.5
   friction: 0
-  maxSpeedAddifier: 5
+  maxSpeedAddifier: 20
   isWallJumpable: 1
+  canHeadBoost: 1

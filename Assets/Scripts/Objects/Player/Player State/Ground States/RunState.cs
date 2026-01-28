@@ -5,13 +5,14 @@ public class RunState : BaseState{
     :base (currentContext, stateFactory){}
 
     float _targetSpeed;
-    private int _previousXInput;
+    private int _oldXInput;
+    private bool needDecleration;
     
 
     public override void EnterState()
     {
         if (_ctx.XInput != 0)
-            _previousXInput = (int)Mathf.Sign(_ctx.XInput);
+            _oldXInput = (int)Mathf.Sign(_ctx.XInput);
 
     }
 
@@ -19,21 +20,22 @@ public class RunState : BaseState{
         
 
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed + _ctx.currentSpeedModifier;
-        if (HasChangedDirection())
+        if (HasChangedDirection() || needDecleration)
         {
-            Debug.Log("a");
+            needDecleration = true;
             _ctx.Deceleration();
+
+            if (Mathf.Abs(_ctx.Rb.velocity.x) < 10f)
+            {
+                needDecleration = false;
+            }
         }
         else if (Mathf.Abs(_ctx.Rb.velocity.x) < _targetSpeed)
         {
-            Debug.Log("b");
-            
             _ctx.Acceleration(_targetSpeed * _ctx.XInput);
         }
-        else
+        else 
         {
-            Debug.Log("c");
-            
             _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.velocity.x)); // clamp / stabilize speed
         }
         
@@ -41,7 +43,7 @@ public class RunState : BaseState{
         CheckSwitchState();
 
         if (_ctx.XInput != 0)
-            _previousXInput = (int)Mathf.Sign(_ctx.XInput);
+            _oldXInput = (int)Mathf.Sign(_ctx.XInput);
 
     }
 
@@ -71,6 +73,8 @@ public class RunState : BaseState{
 
     private bool HasChangedDirection()
     {
-        return _ctx.Rb.velocity.x == 0 && (int)Mathf.Sign(_ctx.XInput) != (int)Mathf.Sign(_ctx.Rb.velocity.x);
+        return _ctx.XInput != 0 &&
+               (int)Mathf.Sign(_ctx.XInput) != (int)Mathf.Sign(_ctx.Rb.velocity.x) &&
+               Mathf.Abs(_ctx.Rb.velocity.x) > 10f;
     }
 }
