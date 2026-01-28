@@ -70,5 +70,7 @@ public class ForcedTeleporter : Interactable
         
         Manager.StopInteraction();
     }
+    
+    
 }
 

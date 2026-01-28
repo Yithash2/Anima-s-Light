@@ -83,7 +83,7 @@ public class SwimState : BaseState{
         else if (_ctx.DivePressed) yInput = -1;
 
         Vector2 _direction = yInput * Vector2.up * (_ctx.PlayerData.MaxSpeed / _ctx.AccelerationTime);
-        _ctx.Rb.AddForce(_direction);
+        _ctx.Rb.velocity += _direction * Time.fixedDeltaTime;
 
     }
 

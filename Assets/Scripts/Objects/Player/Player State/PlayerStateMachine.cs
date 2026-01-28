@@ -345,7 +345,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     void FixedUpdate(){
         
-        if (stuck) return;
         
         if((_isFacingRight && _xInput < 0f || !_isFacingRight && _xInput > 0f) && CanMove())
         {
@@ -358,7 +357,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(tag == "Respawn" && IsDead){
             Respawn();
-        }else{
+        }else if(!stuck){
             _currentState.UpdateStates();
 
         }

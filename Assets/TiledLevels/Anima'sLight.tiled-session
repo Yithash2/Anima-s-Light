@@ -25,9 +25,9 @@
         },
         "Level 1.tmx": {
             "expandedGroupLayers": [
+                48,
                 47,
-                45,
-                48
+                45
             ],
             "expandedObjectLayers": [
                 16,
@@ -36,8 +36,8 @@
             "scale": 0.125,
             "selectedLayer": 20,
             "viewCenter": {
-                "x": 996,
-                "y": 868
+                "x": 10508,
+                "y": 4572
             }
         },
         "Level Selector Tile.tsx": {
@@ -219,7 +219,8 @@
             "scaleInDock": 1
         },
         "Tilesets/Webs.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Tilesets/Wood based tiles.tsx": {
             "scaleInDock": 1
@@ -238,7 +239,7 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/Tilesets",
-    "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/decoration",
+    "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/Tilemap",
     "last.objectTemplatePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/ObjectTemplate",
     "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.json",
     "openFiles": [
@@ -252,6 +253,7 @@
     "project": "Anima'sLight.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Tilesets/Webs.tsx",
         "Tilesets/SimpleWeb.tsx",
         "Rules/Autotile Rule Set.tmx",
         "Rules/Prison_Ruleset.tmx",
@@ -262,8 +264,7 @@
         "Rules/Prison Collum Tile Rule Set.tmx",
         "Rules/Wood Rule Set.tmx",
         "Rules/Water Rule Set.tmx",
-        "Rules/TileTransition Rule Set.tmx",
-        "Rules/Temple Rule Set.tmx"
+        "Rules/TileTransition Rule Set.tmx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
