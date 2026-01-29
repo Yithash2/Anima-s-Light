@@ -31,12 +31,12 @@ public class DashState : BaseState{
 
         _ctx.AudioSource.Play();
 
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
+        _ctx.Rb.linearVelocity = new Vector2(Mathf.Lerp(_ctx.Rb.linearVelocity.x, Mathf.Sign(_ctx.Rb.linearVelocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.linearVelocity.y);
 
         if(_ctx.GroundType.canHeadBoost && _hasCeilled){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y * 1.5f);
             _hasCeilled = false;
-            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -150, 150),_ctx.Rb.velocity.y);   
+            _ctx.Rb.linearVelocity = new Vector2(Mathf.Clamp(_ctx.Rb.linearVelocity.x, -150, 150),_ctx.Rb.linearVelocity.y);   
         }
 
         HandleJumpStart();
@@ -47,9 +47,9 @@ public class DashState : BaseState{
         _stateTimeCounter += Time.fixedDeltaTime;
 
         if (_stateTimeCounter >= _stateTimer/2){
-            if(-Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.Rb.velocity.x) 
+            if(-Mathf.Sign(_ctx.XInput) == Mathf.Sign(_ctx.Rb.linearVelocity.x) 
             && _ctx.XInput != 0 
-            && _ctx.Rb.velocity.x!=0){
+            && _ctx.Rb.linearVelocity.x!=0){
                 _ctx.Rb.AddForce(new Vector2(5*_ctx.XInput,0));
             }
             
@@ -66,15 +66,15 @@ public class DashState : BaseState{
 
 
         if (_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y* 1.5f); 
             _ctx.HitStop(0f, 0.2f);
             _hasCeilled = true;
         }
 
         
         
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
-            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
+        if(Mathf.Abs(_ctx.Rb.linearVelocity.x) > 80){
+            _ctx.Rb.linearVelocity = new Vector2(Mathf.Lerp(_ctx.Rb.linearVelocity.x, Mathf.Sign(_ctx.Rb.linearVelocity.x)*80, 0.125f), _ctx.Rb.linearVelocity.y);  
         }
     }
 
@@ -96,7 +96,7 @@ public class DashState : BaseState{
     {
         if(_ctx.IsWalled()){
             if(!_ctx.JumpReleased){
-                _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
+                _ctx.Rb.linearVelocity = new Vector2(0,horizontalJumpForce/5 );
                 _ctx.DashCounter = 0;
                 _ctx.StartWallJumpComboCoroutine(0.5f);
                 _ctx.WallJumpCombo = true;
@@ -156,12 +156,12 @@ public class DashState : BaseState{
         horizontalJumpForce = ((20) + _ctx.StoredVelocity.x) / totalTimeInAir;
 
         
-        if(_ctx.Rb.velocity.y < 0){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        if(_ctx.Rb.linearVelocity.y < 0){
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, 0);
         }
         
         float adhesion = _ctx.GroundType.adhesion > 1 ? 1f : _ctx.GroundType.adhesion;
-        _ctx.Rb.velocity = new Vector2((horizontalJumpForce * _ctx.XInput + _ctx.Rb.velocity.x) * adhesion, verticalJumpForce + _ctx.Rb.velocity.y);  
+        _ctx.Rb.linearVelocity = new Vector2((horizontalJumpForce * _ctx.XInput + _ctx.Rb.linearVelocity.x) * adhesion, verticalJumpForce + _ctx.Rb.linearVelocity.y);  
 
     }
 

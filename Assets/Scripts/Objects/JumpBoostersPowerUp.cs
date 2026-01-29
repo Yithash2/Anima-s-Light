@@ -124,8 +124,8 @@ public class JumpBoostersPowerUp : MonoBehaviour
     {
         if (Vector2.Distance(Player.transform.position, transform.position) <= 35)
         {
-            _collider.radius = Player.Rb.velocity.y <= 0
-                ? Mathf.Sqrt((1 / 160f) * (-Player.Rb.velocity.y)) + _radius
+            _collider.radius = Player.Rb.linearVelocity.y <= 0
+                ? Mathf.Sqrt((1 / 160f) * (-Player.Rb.linearVelocity.y)) + _radius
                 : _radius;
         }
         else

@@ -22,14 +22,14 @@ public class CDashState : BaseState{
         _ctx.DrowningCounter += _ctx.DrowningCounter / 10f;
 
         _ctx.AudioSource.Play();
-        _ctx.Rb.drag = 0f;
+        _ctx.Rb.linearDamping = 0f;
 
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.velocity.y);
+        _ctx.Rb.linearVelocity = new Vector2(Mathf.Lerp(_ctx.Rb.linearVelocity.x, Mathf.Sign(_ctx.Rb.linearVelocity.x)*horizontalJumpForce, 0.25f), _ctx.Rb.linearVelocity.y);
 
         if(_hasCeilled){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y * 1.5f);
             _hasCeilled = false;
-            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -150, 150),_ctx.Rb.velocity.y);   
+            _ctx.Rb.linearVelocity = new Vector2(Mathf.Clamp(_ctx.Rb.linearVelocity.x, -150, 150),_ctx.Rb.linearVelocity.y);   
         }
 
         HandleJumpStart();
@@ -48,15 +48,15 @@ public class CDashState : BaseState{
 
 
         if (_ctx.IsCeilled() && !_hasCeilled && _ctx.JumpPressed){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y* 1.5f); 
             _ctx.HitStop(0f, 0.2f);
             _hasCeilled = true;
         }
 
-        _ctx.Rb.drag = Mathf.Lerp(0, 4, StateTimeCounter / StateTimer);
+        _ctx.Rb.linearDamping = Mathf.Lerp(0, 4, StateTimeCounter / StateTimer);
         
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
-            _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, Mathf.Sign(_ctx.Rb.velocity.x)*80, 0.125f), _ctx.Rb.velocity.y);  
+        if(Mathf.Abs(_ctx.Rb.linearVelocity.x) > 80){
+            _ctx.Rb.linearVelocity = new Vector2(Mathf.Lerp(_ctx.Rb.linearVelocity.x, Mathf.Sign(_ctx.Rb.linearVelocity.x)*80, 0.125f), _ctx.Rb.linearVelocity.y);  
         }
 
         if(_ctx.DrowningCounter >= _ctx.DrowningTime)
@@ -80,7 +80,7 @@ public class CDashState : BaseState{
     {
         if(_ctx.IsWalled() && !_ctx.IsSpaced()){
             if(!_ctx.JumpReleased){
-                _ctx.Rb.velocity = new Vector2(0,horizontalJumpForce/5 );
+                _ctx.Rb.linearVelocity = new Vector2(0,horizontalJumpForce/5 );
                 _ctx.DashCounter = 0;
                 _ctx.StartWallJumpComboCoroutine(0.5f);
                 _ctx.WallJumpCombo = true;
@@ -128,12 +128,12 @@ public class CDashState : BaseState{
         horizontalJumpForce = ((20) + _ctx.StoredVelocity.x) / totalTimeInAir;
 
         
-        if(_ctx.Rb.velocity.y < 0){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+        if(_ctx.Rb.linearVelocity.y < 0){
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, 0);
         }
         
 
-        _ctx.Rb.velocity += new Vector2(horizontalJumpForce * _ctx.XInput , verticalJumpForce);
+        _ctx.Rb.linearVelocity += new Vector2(horizontalJumpForce * _ctx.XInput , verticalJumpForce);
 
     }
 

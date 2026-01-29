@@ -24,7 +24,7 @@ public class BreakablePlatform : MonoBehaviour
     void Update()
     {
         
-        if (player.Rb.velocity.y < -45){
+        if (player.Rb.linearVelocity.y < -45){
             gameObject.layer = _platformNonActive;
             _collider.isTrigger = true;
             return;
@@ -36,7 +36,7 @@ public class BreakablePlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(player.Rb.velocity.y < -45 && collision.gameObject == player.gameObject)
+        if(player.Rb.linearVelocity.y < -45 && collision.gameObject == player.gameObject)
         {
             Instantiate(_destoyParticles, transform.position, _destoyParticles.transform.rotation);
             Destroy(gameObject, 0.05f);

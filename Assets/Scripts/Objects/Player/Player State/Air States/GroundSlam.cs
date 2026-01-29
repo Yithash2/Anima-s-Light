@@ -21,15 +21,15 @@ public class GroundSlamState : BaseState
 
         _ctx.Rb.gravityScale = _ctx.GravityScale * _ctx.PlayerData.GroundSlamMult;
 
-        if(Mathf.Abs(_ctx.Rb.velocity.x) < 40){
-            initialVelocity = _ctx.Rb.velocity.x * 2f;
-        }else if(Mathf.Abs(_ctx.Rb.velocity.x) > 80){
-            initialVelocity = _ctx.Rb.velocity.x * 0.75f;
+        if(Mathf.Abs(_ctx.Rb.linearVelocity.x) < 40){
+            initialVelocity = _ctx.Rb.linearVelocity.x * 2f;
+        }else if(Mathf.Abs(_ctx.Rb.linearVelocity.x) > 80){
+            initialVelocity = _ctx.Rb.linearVelocity.x * 0.75f;
         }else{
-            initialVelocity = _ctx.Rb.velocity.x;
+            initialVelocity = _ctx.Rb.linearVelocity.x;
         }
 
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, -_ctx.PlayerData.ClampedVelocity/2);
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, -_ctx.PlayerData.ClampedVelocity/2);
 
     }
 
@@ -37,7 +37,7 @@ public class GroundSlamState : BaseState
 
 
 
-        _ctx.Rb.velocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.velocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 2 - _ctx.PlatformVelocityY), 0));  
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.PlatformVelocityX, Mathf.Clamp(_ctx.Rb.linearVelocity.y, -Mathf.Abs(_ctx.PlayerData.ClampedVelocity * 2 - _ctx.PlatformVelocityY), 0));  
 
         CheckSwitchState();
 
@@ -45,7 +45,7 @@ public class GroundSlamState : BaseState
 
     public override void QuitState()
     {
-        if(Mathf.Sign(_ctx.XInput) == Mathf.Sign(initialVelocity) && _ctx.XInput != 0)_ctx.Rb.velocity = new Vector2(initialVelocity, _ctx.Rb.velocity.y/2);
+        if(Mathf.Sign(_ctx.XInput) == Mathf.Sign(initialVelocity) && _ctx.XInput != 0)_ctx.Rb.linearVelocity = new Vector2(initialVelocity, _ctx.Rb.linearVelocity.y/2);
 
         _stateTimeCounter = 0;
 

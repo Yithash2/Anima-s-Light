@@ -25,13 +25,13 @@ public class SwimState : BaseState{
         {
             _ctx.Deceleration();
         }
-        else if (Mathf.Abs(_ctx.Rb.velocity.x) < _targetSpeed)
+        else if (Mathf.Abs(_ctx.Rb.linearVelocity.x) < _targetSpeed)
         {
             _ctx.Acceleration(_targetSpeed * _ctx.XInput);
         }
         else
         {
-            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.velocity.x)); // clamp / stabilize speed
+            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.linearVelocity.x)); // clamp / stabilize speed
         }
 
         if (_ctx.JumpPressed) PressSwim();
@@ -66,7 +66,7 @@ public class SwimState : BaseState{
     void Swim()
     {
 
-        if (_ctx.Rb.velocity.y >= _ctx.PlayerData.MaxSpeed)
+        if (_ctx.Rb.linearVelocity.y >= _ctx.PlayerData.MaxSpeed)
         {
             SwimNormaly();
         }
@@ -83,7 +83,7 @@ public class SwimState : BaseState{
         else if (_ctx.DivePressed) yInput = -1;
 
         Vector2 _direction = yInput * Vector2.up * (_ctx.PlayerData.MaxSpeed / _ctx.AccelerationTime);
-        _ctx.Rb.velocity += _direction * Time.fixedDeltaTime;
+        _ctx.Rb.linearVelocity += _direction * Time.fixedDeltaTime;
 
     }
 
@@ -93,7 +93,7 @@ public class SwimState : BaseState{
         if (!_ctx.JumpReleased) yInput = 1;
         else if(_ctx.DivePressed) yInput = -1;
 
-        _ctx.Rb.velocity = Vector2.Lerp(_ctx.Rb.velocity, new Vector2(_ctx.Rb.velocity.x, yInput * _ctx.PlayerData.MaxSpeed), 0.00002f * Time.deltaTime);
+        _ctx.Rb.linearVelocity = Vector2.Lerp(_ctx.Rb.linearVelocity, new Vector2(_ctx.Rb.linearVelocity.x, yInput * _ctx.PlayerData.MaxSpeed), 0.00002f * Time.deltaTime);
     }
 
     void PressSwim()
@@ -102,7 +102,7 @@ public class SwimState : BaseState{
 
         _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity) + _ctx.StoredVelocity.y;
 
-        _ctx.Rb.velocity += new Vector2(0, _ctx.JumpPower);
+        _ctx.Rb.linearVelocity += new Vector2(0, _ctx.JumpPower);
 
         _ctx.JumpPressed = false;
     }

@@ -274,10 +274,10 @@ public class PlayerStateMachine : MonoBehaviour
             ResetJump();
         }
 
-        if (CanAutoStep() && _xInput != 0 && (_isDashing || _rb.velocity.y < 5))
+        if (CanAutoStep() && _xInput != 0 && (_isDashing || _rb.linearVelocity.y < 5))
         {
             AutoStep();
-            _rb.velocity = new Vector2(Mathf.Sign(_xInput) * 10, _rb.velocity.y);
+            _rb.linearVelocity = new Vector2(Mathf.Sign(_xInput) * 10, _rb.linearVelocity.y);
         }
 
 
@@ -300,7 +300,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
 
         var emission = _speedlines.emission;
-        emission.enabled = Mathf.Abs(_rb.velocity.x) > 40 || Mathf.Abs(_rb.velocity.y) > 45;
+        emission.enabled = Mathf.Abs(_rb.linearVelocity.x) > 40 || Mathf.Abs(_rb.linearVelocity.y) > 45;
 
         if (_timeStoperCooldownCounter < _timeStopCooldownTimer) _timeStoperCooldownCounter += Time.fixedUnscaledDeltaTime;
         else if(NumberOfTimeStopped != 0)
@@ -324,7 +324,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public void HitStop(float speedRequired, float stopedTime){
-        if(Mathf.Abs(_rb.velocity.magnitude) > speedRequired){
+        if(Mathf.Abs(_rb.linearVelocity.magnitude) > speedRequired){
             Instantiate(_explosion, transform.position, Quaternion.identity);
             StartCoroutine(SpeedFreeze(stopedTime));
             NumberOfTimeStopped = NumberOfTimeStopped >= 5 ? 5 : NumberOfTimeStopped+1;
@@ -376,7 +376,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void LateUpdate(){
 
-        _lateVelocity = _rb.velocity;
+        _lateVelocity = _rb.linearVelocity;
         
         //_rb.velocity = Vector2.ClampMagnitude(_rb.velocity, 150f);
 
@@ -391,7 +391,7 @@ public class PlayerStateMachine : MonoBehaviour
     }*/
 
     void Respawn(){
-        Rb.velocity = new Vector2(0, 0);
+        Rb.linearVelocity = new Vector2(0, 0);
         _bufferCounter = bufferTime;
         _jumpPressed = false;
 
@@ -493,7 +493,7 @@ public class PlayerStateMachine : MonoBehaviour
     IEnumerator LateFixedUpdate(){
         yield return new WaitForEndOfFrame();
 
-        _acceleration = new Vector2(_lateVelocity.x - _rb.velocity.x, _lateVelocity.y - _rb.velocity.y);
+        _acceleration = new Vector2(_lateVelocity.x - _rb.linearVelocity.x, _lateVelocity.y - _rb.linearVelocity.y);
 
 
 
@@ -512,7 +512,7 @@ public class PlayerStateMachine : MonoBehaviour
         
         
         if(_isJumping && ((_platformAccelerationY != 0 && _platformVelocityY == 0)||(_platformAccelerationX != 0 && _platformVelocityX == 0))){
-            _rb.velocity += _latePlatformVelocityY < 0? new Vector2(_latePlatformVelocityX + (_playerTransform.localScale.x * _latePlatformVelocityY),0) : new Vector2(_latePlatformVelocityX,0); 
+            _rb.linearVelocity += _latePlatformVelocityY < 0? new Vector2(_latePlatformVelocityX + (_playerTransform.localScale.x * _latePlatformVelocityY),0) : new Vector2(_latePlatformVelocityX,0); 
             yield return 5;
             yield return new WaitForFixedUpdate();
             yield return new WaitForEndOfFrame();
@@ -605,7 +605,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     void CoyoteTimer(){
-        float _dynamicCoyoteTime = (Mathf.Abs(_rb.velocity.x) > 20)? (Mathf.Sqrt(Mathf.Sign(_rb.velocity.x)*_rb.velocity.x -20)/10+CoyoteTime) : CoyoteTime;
+        float _dynamicCoyoteTime = (Mathf.Abs(_rb.linearVelocity.x) > 20)? (Mathf.Sqrt(Mathf.Sign(_rb.linearVelocity.x)*_rb.linearVelocity.x -20)/10+CoyoteTime) : CoyoteTime;
         if(_coyoteCounter < _dynamicCoyoteTime){
             _coyoteCounter += Time.deltaTime;
             _jumpCount = 0;
@@ -756,14 +756,14 @@ public class PlayerStateMachine : MonoBehaviour
             ? Mathf.Lerp(currentSpeedModifier, GroundType.maxSpeedAddifier, 0.5f * Time.deltaTime)
             : Mathf.Lerp(currentSpeedModifier, 1f, 0.5f * Time.deltaTime);
 
-        Vector2 vel = new Vector2(targetSpeed, Rb.velocity.y);
-        if (Mathf.Abs(Rb.velocity.x) > targetSpeed)
+        Vector2 vel = new Vector2(targetSpeed, Rb.linearVelocity.y);
+        if (Mathf.Abs(Rb.linearVelocity.x) > targetSpeed)
         {
-            Rb.velocity = new Vector2(Mathf.Lerp(Rb.velocity.x, vel.x, 0.5f * Time.deltaTime), Rb.velocity.y);
+            Rb.linearVelocity = new Vector2(Mathf.Lerp(Rb.linearVelocity.x, vel.x, 0.5f * Time.deltaTime), Rb.linearVelocity.y);
         }
         else
         {
-            Rb.velocity = new Vector2(vel.x, Rb.velocity.y);
+            Rb.linearVelocity = new Vector2(vel.x, Rb.linearVelocity.y);
         }
         
     }
@@ -779,12 +779,12 @@ public class PlayerStateMachine : MonoBehaviour
             (IsTouchingGround() ? GroundType.adhesion : 1f);
 
         float newX = Mathf.MoveTowards(
-            Rb.velocity.x,
+            Rb.linearVelocity.x,
             targetSpeed,
             rate * Time.deltaTime
         );
 
-        Rb.velocity = new Vector2(newX, Rb.velocity.y);
+        Rb.linearVelocity = new Vector2(newX, Rb.linearVelocity.y);
     }
 
 
@@ -793,15 +793,15 @@ public class PlayerStateMachine : MonoBehaviour
         friction = IsTouchingGround() ? GroundType.friction : Mathf.Lerp(friction, 1, 0.5f * Time.deltaTime);
         
         float rate =
-            Mathf.Abs(Rb.velocity.x)/DeccelerationTime * friction ;
+            Mathf.Abs(Rb.linearVelocity.x)/DeccelerationTime * friction ;
 
         float newX = Mathf.MoveTowards(
-            Rb.velocity.x,
+            Rb.linearVelocity.x,
             0,
             rate * Time.deltaTime * factor
         );
 
-        Rb.velocity = new Vector2(newX, Rb.velocity.y);
+        Rb.linearVelocity = new Vector2(newX, Rb.linearVelocity.y);
    
     }
 

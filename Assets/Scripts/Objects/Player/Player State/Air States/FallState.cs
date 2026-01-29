@@ -13,11 +13,11 @@ public class FallState : BaseState{
     }
 
     public override void UpdateState(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, Mathf.Clamp(_ctx.Rb.linearVelocity.y, -_ctx.PlayerData.ClampedVelocity, float.MaxValue));
 
-        if(Mathf.Abs(_ctx.Rb.velocity.x) > 0 && Mathf.Abs(_ctx.Rb.velocity.x) <= _ctx.PlayerData.MaxSpeed + _ctx.currentSpeedModifier){
+        if(Mathf.Abs(_ctx.Rb.linearVelocity.x) > 0 && Mathf.Abs(_ctx.Rb.linearVelocity.x) <= _ctx.PlayerData.MaxSpeed + _ctx.currentSpeedModifier){
             _ctx.Deceleration();
-        }else if(Mathf.Abs(_ctx.Rb.velocity.x) > 0){
+        }else if(Mathf.Abs(_ctx.Rb.linearVelocity.x) > 0){
             _ctx.Deceleration(0.5f);
         }
 

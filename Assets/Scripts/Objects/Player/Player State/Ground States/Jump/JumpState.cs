@@ -28,11 +28,11 @@ public class JumpState : BaseState{
         _ctx.AudioSource.Play();
 
         if(_ctx.GroundType.canHeadBoost && _hasCeilled){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y * 1.5f);
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y * 1.5f);
             _hasCeilled = false;
-            _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);   
+            _ctx.Rb.linearVelocity = new Vector2(Mathf.Clamp(_ctx.Rb.linearVelocity.x, -50, 50),_ctx.Rb.linearVelocity.y);   
         }else{
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, 0);
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, 0);
         }
         
 
@@ -45,14 +45,14 @@ public class JumpState : BaseState{
 
         CheckSwitchState();
 
-        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.velocity.y < 0) && !_hasCeilled){
+        if (_stateTimeCounter < _stateTimer && (_ctx.JumpReleased || _ctx.Rb.linearVelocity.y < 0) && !_hasCeilled){
             _stateTimeCounter = _stateTimer + 1;
             HandleJumpEnd();
         }else{
             
             if(_ctx.GroundType.canHeadBoost && _ctx.IsCeilled() && !_ctx.JumpReleased && !_hasCeilled){
-                _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 1.5f, -_ctx.Rb.velocity.y* 1.5f); 
-                _ctx.Rb.velocity = new Vector2(Mathf.Clamp(_ctx.Rb.velocity.x, -50, 50),_ctx.Rb.velocity.y);  
+                _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 1.5f, -_ctx.Rb.linearVelocity.y* 1.5f); 
+                _ctx.Rb.linearVelocity = new Vector2(Mathf.Clamp(_ctx.Rb.linearVelocity.x, -50, 50),_ctx.Rb.linearVelocity.y);  
                 _hasCeilled = true;
             }else if(_ctx.JumpReleased  && _hasCeilled){
                 _hasCeilled = false;
@@ -87,8 +87,8 @@ public class JumpState : BaseState{
             {
                 _stateTimeCounter = _stateTimer;  // End current jump
                 float adhesion = _ctx.GroundType.adhesion > 1 ? 1f : _ctx.GroundType.adhesion;
-                float wallJumpPush = Mathf.Abs(_ctx.Rb.velocity.x) - _ctx.PlayerData.MaxSpeed > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.velocity.x) - _ctx.PlayerData.MaxSpeed - _ctx.GroundType.maxSpeedAddifier) : _ctx.JumpPower;
-                _ctx.Rb.velocity = new Vector2(0, wallJumpPush * adhesion);  // Apply WallJump force
+                float wallJumpPush = Mathf.Abs(_ctx.Rb.linearVelocity.x) - _ctx.PlayerData.MaxSpeed > 0 ? _ctx.JumpPower + (Mathf.Abs(_ctx.Rb.linearVelocity.x) - _ctx.PlayerData.MaxSpeed - _ctx.GroundType.maxSpeedAddifier) : _ctx.JumpPower;
+                _ctx.Rb.linearVelocity = new Vector2(0, wallJumpPush * adhesion);  // Apply WallJump force
                 _ctx.StartWallJumpComboCoroutine(1);
                 _ctx.WallJumpCombo = true;
 
@@ -136,7 +136,7 @@ public class JumpState : BaseState{
         
         _ctx.JumpPower = Mathf.Sqrt(_ctx.PlayerData.InitalJumpHeight * -2 * gravity);
 
-        _ctx.Rb.velocity += new Vector2(0, _ctx.JumpPower);
+        _ctx.Rb.linearVelocity += new Vector2(0, _ctx.JumpPower);
 
         //Un saut complet du joueur fait 14.1550993002wu de distance , et 6wu de haut sans élant
         
@@ -146,7 +146,7 @@ public class JumpState : BaseState{
 
     void HandleJumpEnd(){
         _ctx.IsJumping = false;
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x,_ctx.Rb.velocity.y/1.5f);
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x,_ctx.Rb.linearVelocity.y/1.5f);
     }
 
     

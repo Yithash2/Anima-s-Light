@@ -28,7 +28,7 @@ public class WetState : BaseState
         _ctx.IsJumping = false;
         
         if (!_ctx.IsAnimating("Respawn", _ctx.Animator)) _ctx.Animator.Play(_ctx.Animations[0].name);
-        _ctx.Rb.drag = 4;
+        _ctx.Rb.linearDamping = 4;
 
         _ctx.Rb.gravityScale = _ctx.GravityScale;
 
@@ -72,7 +72,7 @@ public class WetState : BaseState
         _ctx.BubbleAnimator.Play("Basic");
         _ctx.BubbleAnimator.speed = 1;
         _ctx.Bubble.SetActive(false);
-        _ctx.Rb.drag = 0;
+        _ctx.Rb.linearDamping = 0;
         _ctx._camera.ChangeOffset(_baseOffset);
 
     }

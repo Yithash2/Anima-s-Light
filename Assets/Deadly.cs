@@ -46,8 +46,8 @@ public class Deadly : MonoBehaviour
 
     private bool IsInTheGoodDirection(Vector2 normal, Rigidbody2D rb)
     {
-        return (normal.y == 0 || Mathf.Approximately(Mathf.Sign(rb.velocity.y), Mathf.Sign(normal.y))) &&
-               (normal.x == 0 || Mathf.Approximately(Mathf.Sign(rb.velocity.x), Mathf.Sign(normal.x)));
+        return (normal.y == 0 || Mathf.Approximately(Mathf.Sign(rb.linearVelocity.y), Mathf.Sign(normal.y))) &&
+               (normal.x == 0 || Mathf.Approximately(Mathf.Sign(rb.linearVelocity.x), Mathf.Sign(normal.x)));
     }
 
     private static readonly Vector2[] CardinalVectors = new []{Vector2.up, Vector2.right, Vector2.down, Vector2.left};

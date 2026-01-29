@@ -12,7 +12,7 @@ public class RapelState : BaseState{
     public override void EnterState()
     {
         _ctx.WallJumpCounter = 0;
-        _ctx.Rb.velocity = new Vector2(0, _ctx.Rb.velocity.y);
+        _ctx.Rb.linearVelocity = new Vector2(0, _ctx.Rb.linearVelocity.y);
         
     }
 
@@ -21,7 +21,7 @@ public class RapelState : BaseState{
         _targetSpeed = Mathf.Abs(_ctx.StoredVelocity.x) + _ctx.PlayerData.MaxSpeed;
 
         float coef = 5;
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x, Mathf.Clamp(_ctx.Rb.velocity.y, 
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x, Mathf.Clamp(_ctx.Rb.linearVelocity.y, 
             -(coef *_ctx.PlayerData.SlideSpeed / ((coef-1)*Mathf.Abs(_ctx.GroundType.friction) + 1)) + _ctx.PlatformVelocityY, float.MaxValue));
 
         
@@ -51,9 +51,9 @@ public class RapelState : BaseState{
 
     void Run(){
         
-        Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.velocity.x) * _targetSpeed, _ctx.Rb.velocity.y);
+        Vector2 _direction = new Vector2(Mathf.Sign(_ctx.Rb.linearVelocity.x) * _targetSpeed, _ctx.Rb.linearVelocity.y);
         
-        _ctx.Rb.velocity = new Vector2(Mathf.Lerp(_ctx.Rb.velocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
+        _ctx.Rb.linearVelocity = new Vector2(Mathf.Lerp(_ctx.Rb.linearVelocity.x, _direction.x, 0.00002f * Time.deltaTime), _direction.y);
     }
 
     void Acceleration(){
@@ -62,6 +62,6 @@ public class RapelState : BaseState{
     }
 
     void Deceleration(){
-        _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x/3, _ctx.Rb.velocity.y);   
+        _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x/3, _ctx.Rb.linearVelocity.y);   
     }
 }

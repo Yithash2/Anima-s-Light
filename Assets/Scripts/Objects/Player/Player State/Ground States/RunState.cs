@@ -25,18 +25,18 @@ public class RunState : BaseState{
             needDecleration = true;
             _ctx.Deceleration();
 
-            if (Mathf.Abs(_ctx.Rb.velocity.x) < 10f)
+            if (Mathf.Abs(_ctx.Rb.linearVelocity.x) < 10f)
             {
                 needDecleration = false;
             }
         }
-        else if (Mathf.Abs(_ctx.Rb.velocity.x) < _targetSpeed)
+        else if (Mathf.Abs(_ctx.Rb.linearVelocity.x) < _targetSpeed)
         {
             _ctx.Acceleration(_targetSpeed * _ctx.XInput);
         }
         else 
         {
-            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.velocity.x)); // clamp / stabilize speed
+            _ctx.Run(_targetSpeed * Mathf.Sign(_ctx.Rb.linearVelocity.x)); // clamp / stabilize speed
         }
         
 
@@ -74,7 +74,7 @@ public class RunState : BaseState{
     private bool HasChangedDirection()
     {
         return _ctx.XInput != 0 &&
-               (int)Mathf.Sign(_ctx.XInput) != (int)Mathf.Sign(_ctx.Rb.velocity.x) &&
-               Mathf.Abs(_ctx.Rb.velocity.x) > 10f;
+               (int)Mathf.Sign(_ctx.XInput) != (int)Mathf.Sign(_ctx.Rb.linearVelocity.x) &&
+               Mathf.Abs(_ctx.Rb.linearVelocity.x) > 10f;
     }
 }

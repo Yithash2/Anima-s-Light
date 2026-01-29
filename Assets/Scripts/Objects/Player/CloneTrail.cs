@@ -22,8 +22,8 @@ public class CloneTrail : MonoBehaviour
     void FixedUpdate()
     {
         float _maxDistance = 0.8f;
-        float velocityX = Mathf.Abs(_rb.velocity.x);
-        float velocityY = Mathf.Abs(_rb.velocity.y);
+        float velocityX = Mathf.Abs(_rb.linearVelocity.x);
+        float velocityY = Mathf.Abs(_rb.linearVelocity.y);
         
         // Check if the velocity exceeds thresholds to start spawning clones
         if (velocityX > 40 || velocityY > 45) 

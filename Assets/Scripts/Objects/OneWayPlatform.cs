@@ -80,7 +80,7 @@ public class OneWayPlatform : MonoBehaviour
     bool PlayerIsAbove()
     {
         // Check if the player is above the platform and falling
-        return player.Rb.velocity.y <= 0 && player.transform.position.y > (transform.position.y + 1);
+        return player.Rb.linearVelocity.y <= 0 && player.transform.position.y > (transform.position.y + 1);
     }
 
     IEnumerator WaitUntilPlayerIsUnder()

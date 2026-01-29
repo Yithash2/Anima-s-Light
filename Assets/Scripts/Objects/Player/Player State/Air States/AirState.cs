@@ -15,7 +15,7 @@ public class AirState : BaseState
     {   
         if( _ctx.JumpPressed && _ctx.XInput != 0 && _ctx.CanDashInAir()){
             SetSubState(_factory.Dash()); 
-        }else if(_ctx.DivePressed && _ctx.Rb.velocity.y < 0){
+        }else if(_ctx.DivePressed && _ctx.Rb.linearVelocity.y < 0){
             SetSubState(_factory.Dive());
         }else if(_ctx.XInput != 0){
             SetSubState(_factory.Controlling()); 
@@ -36,7 +36,7 @@ public class AirState : BaseState
     { 
 
         if(_ctx.IsCeilled() && !_hasCeilled  && _ctx.JumpPressed){
-            _ctx.Rb.velocity = new Vector2(_ctx.Rb.velocity.x* 2f, -_ctx.Rb.velocity.y* 1.5f); 
+            _ctx.Rb.linearVelocity = new Vector2(_ctx.Rb.linearVelocity.x* 2f, -_ctx.Rb.linearVelocity.y* 1.5f); 
             _hasCeilled = true;
         }
 

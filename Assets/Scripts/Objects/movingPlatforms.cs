@@ -100,8 +100,8 @@ public class MovingPlatforms : MonoBehaviour
             if (collision.gameObject.CompareTag("Player")){
                 PlayerStateMachine PSM = PlayerStateMachine.Instance;
                 if(IsDashing(PSM) ||IsJumping(PSM)){
-                    if(_direction.normalized.y > 0)PSM.Rb.velocity += _direction.normalized * platformSpeed * _friction;
-                    else if(_direction.normalized.x != 0 && !PSM.IsWallJumping) PSM.Rb.velocity += new Vector2(_direction.normalized.x - 1, 0) * platformSpeed * _friction;
+                    if(_direction.normalized.y > 0)PSM.Rb.linearVelocity += _direction.normalized * platformSpeed * _friction;
+                    else if(_direction.normalized.x != 0 && !PSM.IsWallJumping) PSM.Rb.linearVelocity += new Vector2(_direction.normalized.x - 1, 0) * platformSpeed * _friction;
                 }
             }
           

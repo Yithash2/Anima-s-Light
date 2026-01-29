@@ -40,7 +40,7 @@ public class Cobweb : MonoBehaviour
         if(stopsGravity)PlayerStateMachine.Instance.Rb.gravityScale = 0;
         
         PlayerStateMachine.Instance.Dies += Reset;
-        PlayerStateMachine.Instance.Rb.velocity = new Vector2(0, 0);
+        PlayerStateMachine.Instance.Rb.linearVelocity = new Vector2(0, 0);
         PlayerStateMachine.Instance.transform.position = transform.position;
         _passageCounter++;
         PlayerStateMachine.Instance.stuck = true;

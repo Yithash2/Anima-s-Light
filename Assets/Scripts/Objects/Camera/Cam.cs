@@ -43,7 +43,7 @@ public class cam : MonoBehaviour
     {
         #region Smooth movement
         // Determine the desired position (based on player position and the offset)
-        Vector3 moveDirection = Mathf.Abs(player.Rb.velocity.x) > 1 ? new Vector3(Mathf.Sign(player.Rb.velocity.x),0,0): Vector3.zero;
+        Vector3 moveDirection = Mathf.Abs(player.Rb.linearVelocity.x) > 1 ? new Vector3(Mathf.Sign(player.Rb.linearVelocity.x),0,0): Vector3.zero;
         Vector3 desiredPosition = player.transform.position + offset + moveDirection * sideOffset;
 
         // Get the screen position of the player (without offset for bounds calculation)
