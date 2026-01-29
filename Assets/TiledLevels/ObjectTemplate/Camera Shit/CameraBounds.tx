@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object type="CameraBounds" width="16" height="16">
+  <properties>
+   <property name="Height" type="float" value="16"/>
+   <property name="Length" type="float" value="16"/>
+   <property name="virtualCamera" type="object" value="0"/>
+  </properties>
+ </object>
+</template>

@@ -5,11 +5,12 @@
     },
     "activeFile": "Level 1.tmx",
     "expandedProjectPaths": [
-        "Rules",
-        "ObjectTemplate/Decoration",
+        ".",
         "ObjectTemplate",
         "Tilesets",
-        "."
+        "ObjectTemplate/Decoration",
+        "Rules",
+        "ObjectTemplate/Camera Shit"
     ],
     "fileStates": {
         "32px Utitaries.tsx": {
@@ -29,17 +30,18 @@
         },
         "Level 1.tmx": {
             "expandedGroupLayers": [
-                45,
-                46,
-                48,
                 44,
-                47
+                47,
+                45,
+                57,
+                46,
+                48
             ],
-            "scale": 0.125,
-            "selectedLayer": 9,
+            "scale": 0.33,
+            "selectedLayer": 27,
             "viewCenter": {
-                "x": 8828,
-                "y": 3392
+                "x": 3613.6363636363635,
+                "y": 34.84848484848476
             }
         },
         "Level Selector Tile.tsx": {
@@ -256,8 +258,8 @@
     },
     "last.externalTilesetPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/Tilesets",
     "last.imagePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/Textures/Tilemap",
-    "last.objectTemplatePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/ObjectTemplate",
-    "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.json",
+    "last.objectTemplatePath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/ObjectTemplate/Camera Shit",
+    "last.objectTypesPath": "C:/Users/natha/Documents/GitHub/Anima-s-Light/Assets/TiledLevels/propertytypes.xml",
     "map.fixedSize": false,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -271,7 +273,7 @@
         "Tilesets/TempleRoof.tsx"
     ],
     "project": "Anima'sLight.tiled-project",
-    "property.type": "int",
+    "property.type": "bool",
     "recentFiles": [
         "Tilesets/TempleRoof.tsx",
         "Tilesets/Temple Walls and Roof.tsx",

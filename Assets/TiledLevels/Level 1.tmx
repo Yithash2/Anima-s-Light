@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="59" nextobjectid="399">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="60" nextobjectid="424">
  <tileset firstgid="1" source="Tilesets/mini_deny_tilemap5.tsx"/>
  <tileset firstgid="273" source="Tilesets/Wood based tiles.tsx"/>
  <tileset firstgid="321" source="Tilesets/Bricks.tsx"/>
@@ -39301,17 +39301,17 @@
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
    </object>
-   <object id="389" x="-1772" y="3120" width="1828" height="764">
+   <object id="389" x="-2572" y="3120" width="2628" height="764">
     <properties>
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
    </object>
-   <object id="390" x="1360" y="1776" width="460" height="452">
+   <object id="390" x="1372" y="1776" width="400" height="452">
     <properties>
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
    </object>
-   <object id="391" x="740" y="2008" width="620" height="644">
+   <object id="391" x="740" y="2008" width="632" height="644">
     <properties>
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
@@ -39320,7 +39320,7 @@
     <properties>
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
-    <polygon points="0,-28 -264,-32 -252,-392 580,-404 580,-1288 436,-1288 436,-580 -464,-584 -464,120 0,120"/>
+    <polygon points="0,-28 -264,-32 -252,-392 628,-396 628,-1256 376,-1256 380,-576 -556,-592 -556,112 0,120"/>
    </object>
    <object id="396" x="1228" y="208" width="1596" height="416">
     <properties>
@@ -39332,9 +39332,89 @@
      <property name="unity:IsTrigger" type="bool" value="true"/>
     </properties>
    </object>
-   <object id="398" x="2160" y="596" width="116" height="748">
+   <object id="398" x="2160" y="624" width="116" height="720">
     <properties>
      <property name="unity:IsTrigger" type="bool" value="true"/>
+    </properties>
+   </object>
+   <object id="399" x="2828" y="160" width="1596" height="456">
+    <properties>
+     <property name="unity:IsTrigger" type="bool" value="true"/>
+    </properties>
+   </object>
+   <object id="400" type="CameraBounds" x="3052" y="-248" width="1336" height="408">
+    <properties>
+     <property name="Height" type="float" value="408"/>
+     <property name="Length" type="float" value="1384"/>
+     <property name="virtualCamera" type="object" value="411"/>
+    </properties>
+   </object>
+   <object id="401" type="CameraBounds" x="2524" y="-76" width="372" height="224">
+    <properties>
+     <property name="Height" type="float" value="224"/>
+     <property name="Length" type="float" value="356"/>
+     <property name="virtualCamera" type="object" value="413"/>
+    </properties>
+   </object>
+   <object id="402" template="ObjectTemplate/Camera Shit/CameraBounds.tx" type="CameraBounds" x="4376" y="-1116" width="604" height="1812">
+    <properties>
+     <property name="Height" type="float" value="1812"/>
+     <property name="Length" type="float" value="604"/>
+     <property name="virtualCamera" type="object" value="405"/>
+    </properties>
+   </object>
+   <object id="404" x="4680" y="-796" height="1452">
+    <properties>
+     <property name="unity:IsTrigger" type="bool" value="true"/>
+    </properties>
+   </object>
+   <object id="408" x="3060" y="-48" width="1272" height="56"/>
+   <object id="412" x="2680" y="36" width="28" height="28"/>
+   <object id="414" type="CameraBounds" x="2896" y="-256" width="152" height="404">
+    <properties>
+     <property name="Height" type="float" value="612"/>
+     <property name="Length" type="float" value="152"/>
+     <property name="virtualCamera" type="object" value="416"/>
+    </properties>
+   </object>
+   <object id="415" x="2916" y="-240" width="64" height="340"/>
+   <object id="421" x="2988" y="-300">
+    <properties>
+     <property name="Unity:IsTrigger" type="bool" value="true"/>
+    </properties>
+    <polygon points="0,0 -24,0 -24,-248 1368,-232 1368,-36 -4,-48"/>
+   </object>
+   <object id="422" type="CameraBounds" x="2900" y="-592" width="1476" height="324">
+    <properties>
+     <property name="virtualCamera" type="object" value="423"/>
+    </properties>
+   </object>
+  </objectgroup>
+  <objectgroup id="59" name="Cameras">
+   <object id="405" template="ObjectTemplate/Camera Shit/VirtualCamera.tx" type="VirtualCamera" x="4680" y="-72">
+    <properties>
+     <property name="Bounds" type="object" value="404"/>
+    </properties>
+   </object>
+   <object id="411" template="ObjectTemplate/Camera Shit/VirtualCamera.tx" x="3712" y="-20">
+    <properties>
+     <property name="Bounds" type="object" value="408"/>
+    </properties>
+   </object>
+   <object id="413" template="ObjectTemplate/Camera Shit/VirtualCamera.tx" x="2700" y="52">
+    <properties>
+     <property name="Bounds" type="object" value="412"/>
+    </properties>
+   </object>
+   <object id="416" template="ObjectTemplate/Camera Shit/VirtualCamera.tx" x="2968" y="-200">
+    <properties>
+     <property name="Bounds" type="object" value="415"/>
+     <property name="Size" type="float" value="12"/>
+    </properties>
+   </object>
+   <object id="423" template="ObjectTemplate/Camera Shit/VirtualCamera.tx" x="2980" y="-376">
+    <properties>
+     <property name="Bounds" type="object" value="421"/>
     </properties>
    </object>
   </objectgroup>

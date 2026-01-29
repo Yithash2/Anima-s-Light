@@ -4,6 +4,11 @@
  <objecttype name="Bush - 1" color="#00aa00"/>
  <objecttype name="Bush - 2" color="#00aa00"/>
  <objecttype name="Bush - 3" color="#00aa00"/>
+ <objecttype name="CameraBounds" color="#a0a0a4">
+  <property name="Height" type="float" default="0"/>
+  <property name="Length" type="float" default="0"/>
+  <property name="virtualCamera" type="object" default="0"/>
+ </objecttype>
  <objecttype name="checkpoint" color="#00aa00">
   <property name="Id" type="string" default="-1"/>
   <property name="IsPassableMultipleTimes" type="bool" default="false"/>
@@ -60,5 +65,9 @@
   <property name="Height" type="float" default="0"/>
   <property name="Location" type="object" default="0"/>
   <property name="Width" type="float" default="0"/>
+ </objecttype>
+ <objecttype name="VirtualCamera" color="#a0a0a4">
+  <property name="Bounds" type="object" default="0"/>
+  <property name="Size" type="float" default="15"/>
  </objecttype>
 </objecttypes>

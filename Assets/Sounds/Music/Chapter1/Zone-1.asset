@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf558665d9da4155b6384dd702c0a95a, type: 3}
   m_Name: Zone-1
   m_EditorClassIdentifier: 
-  IntroMusic: {fileID: 8300000, guid: 998efda764783fc40849fb97a0b9255d, type: 3}
-  LoopMusic: {fileID: 8300000, guid: 8c897b5f203c85545873c7ceb6946a8c, type: 3}
+  IntroMusic: {fileID: 8300000, guid: 21dbc6d19f83936448005440c31e61cf, type: 3}
+  LoopMusic: {fileID: 8300000, guid: 21dbc6d19f83936448005440c31e61cf, type: 3}
   ExitMusic: {fileID: 0}

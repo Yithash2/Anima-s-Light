@@ -66,6 +66,18 @@ MonoBehaviour:
   - m_Name: Bush - 3
     m_Color: {r: 0, g: 0.6666667, b: 0, a: 1}
     m_CustomProperties: []
+  - m_Name: CameraBounds
+    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_CustomProperties:
+    - m_Name: Height
+      m_Type: float
+      m_Value: 0
+    - m_Name: Length
+      m_Type: float
+      m_Value: 0
+    - m_Name: virtualCamera
+      m_Type: object
+      m_Value: 0
   - m_Name: checkpoint
     m_Color: {r: 0, g: 0.6666667, b: 0, a: 1}
     m_CustomProperties:
@@ -201,6 +213,15 @@ MonoBehaviour:
     - m_Name: Width
       m_Type: float
       m_Value: 0
+  - m_Name: VirtualCamera
+    m_Color: {r: 0.627451, g: 0.627451, b: 0.6431373, a: 1}
+    m_CustomProperties:
+    - m_Name: Bounds
+      m_Type: object
+      m_Value: 0
+    - m_Name: Size
+      m_Type: float
+      m_Value: 15
   m_PrefabReplacements:
   - m_TypeName: Arrow
     m_Prefab: {fileID: 6987539432335736506, guid: e5020499964068a4181b69ed4635cc05, type: 3}
@@ -236,3 +257,7 @@ MonoBehaviour:
     m_Prefab: {fileID: 6731154480760583804, guid: 40dce3c183203ae44bbc349bf2fa4a08, type: 3}
   - m_TypeName: Cobweb
     m_Prefab: {fileID: 1776547444984603647, guid: ab1bf10c5b5809542b48281a70897d81, type: 3}
+  - m_TypeName: CameraBounds
+    m_Prefab: {fileID: 4241729035985591136, guid: 25481b8ef6c32c04eb5bf830929bebf3, type: 3}
+  - m_TypeName: VirtualCamera
+    m_Prefab: {fileID: 3249495850485902198, guid: 06a450b4eb865f94180865cd91f97215, type: 3}

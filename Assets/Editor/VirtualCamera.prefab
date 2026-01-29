@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3146865296340081141}
   - component: {fileID: 1806332866569416868}
   - component: {fileID: 967754547396989579}
-  - component: {fileID: 4165809802327692540}
   - component: {fileID: 7006021965332229373}
+  - component: {fileID: -445544927201905241}
   m_Layer: 0
   m_Name: VirtualCamera
   m_TagString: Untagged
@@ -109,18 +109,6 @@ MonoBehaviour:
     Time: 0.328
     Smoothing: 3.6
     IgnoreY: 1
---- !u!114 &4165809802327692540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3249495850485902198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7006021965332229373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +129,17 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &-445544927201905241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249495850485902198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5090011432243468c5d9e54fb79865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Objects.VirtualCamera
+  virtualCamera: {fileID: 1806332866569416868}
+  virtualConfiner: {fileID: 7006021965332229373}

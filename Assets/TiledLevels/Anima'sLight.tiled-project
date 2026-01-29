@@ -63,6 +63,35 @@
             ]
         },
         {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 22,
+            "members": [
+                {
+                    "name": "Height",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "Length",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "virtualCamera",
+                    "type": "object",
+                    "value": 0
+                }
+            ],
+            "name": "CameraBounds",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
             "color": "#ff00aa00",
             "drawFill": true,
             "id": 7,
@@ -392,6 +421,30 @@
             "useAs": [
                 "object",
                 "tile"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 20,
+            "members": [
+                {
+                    "name": "Bounds",
+                    "type": "object",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "type": "float",
+                    "value": 15
+                }
+            ],
+            "name": "VirtualCamera",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
             ]
         }
     ]
